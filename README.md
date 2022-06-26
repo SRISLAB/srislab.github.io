@@ -1,8 +1,9 @@
-### This is a homepage for the SRIS Lab
 
-<!--
-**SRISLAB/srislab** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-This a homepage for the SRIS Lab
- 
+# SRIS LAB Homepage
 
- 
+This is the repository that holds the hompage for the Advanced Reactors and 
+Fuel Cycles group.  
+
+## Building This Website
+
+Coming soon... 
