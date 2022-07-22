@@ -1,9 +1,6 @@
+# REMEX-Lab
 
-# SRIS LAB Homepage
+This is the home page of REMEX Lab.
+This website template is based on [a bog template](http://www.cssmoban.com/cssthemes/6751.shtml) from [cssmoban.com](http://www.cssmoban.com/).
 
-This is the repository that holds the hompage for the Advanced Reactors and 
-Fuel Cycles group.  
-
-## Building This Website
-
-Coming soon... 
+URL: [REMEX-Lab.github.io](https://REMEX-Lab.github.io)
