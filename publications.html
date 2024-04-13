@@ -38,7 +38,10 @@
             <li><a href="downloads.html">Downloads</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
-
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="index.html">English</a></li>
+            <li><a href="index_x.html">中文</a></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
           </ul>
@@ -74,10 +77,125 @@
       <div class="block-body">
       <div class="block-text">
 
- 
           <!-- -------------------------------------------- -->
           <h3>2024</h3>
           <table><tbody>
+
+            <tr> <!-- An Paper -->
+              <td width="22%" valign="top"><p>
+                <img src="images/src/kbsxiao2024.png" alt="Result" width="200">
+              </p></td>
+              <td width="78%" valign="top">
+                <p>
+                  <b>Extended Residual Learning with One-shot Imitation Learning for Robotic Assembly in Semi-structured Environment</b> <a href="https://link.springer.com/article/10.1007/s10489-024-05417-x" target="_blank"><i class="fa fa-external-link"></i></a>
+                  <br>
+                  <font size="3pt" face="Georgia"><i>
+                    Chuang Wang , Chupeng Su , Bozheng Sun , Gang Chen* and Longhan Xie*
+                  </i></font>
+                  <br>
+                  Frontiers in Neurorobotics,2024
+                  <br>
+                  <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/fnwang2024.pdf" target="_blank">PDF</a> &nbsp;
+                  <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('fnwang2024')">Abstract</a> &nbsp;
+                  <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('fnwang2024')">BibTeX</a> &nbsp;
+              </p>
+              <p id="apllwang2024" class="abstract" style="display: none;">
+                Robotic assembly tasks require precise manipulation and coordination, often necessitating advanced learning techniques to achieve efficient and effective performance. While residual reinforcement learning with a base policy has shown promise in this domain, existing base policy approaches often rely on hand-designed full-state features and policies or extensive demonstrations, limiting their applicability in semi-structured environments. In this study, we propose an innovative Object-Embodiment-Centric Imitation and Residual Reinforcement Learning (OEC-IRRL) approach that leverages an object-embodiment-centric (OEC) task representation to integrate vision models with imitation and residual learning. By utilizing a single demonstration and minimizing interactions with the environment, our method aims to enhance learning efficiency and effectiveness. The proposed method involves three key steps: creating an object-embodiment-centric task representation, employing imitation learning for a base policy using via-point movement primitives for generalization to different settings, and utilizing residual RL for uncertainty-aware policy refinement during the assembly phase. Through a series of comprehensive experiments, we investigate the impact of the OEC task representation on base and residual policy learning and demonstrate the effectiveness of the method in semi-structured environments. Our results indicate that the approach, requiring only a single demonstration and less than 1.2 hours of interaction, improves success rates by 46% and reduces assembly time by 25%. This research presents a promising avenue for robotic assembly tasks, providing a viable solution without the need for specialized expertise or custom fixtures.
+              </p>
+              <pre xml:space="preserve" id="chen2022interpretable" class="bibtex" style="display: none;">
+                @article{wang2024task,
+                  title={Task attention-based multimodal fusion and curriculum residual learning for context generalization in robotic assembly},
+                  author={Wang, Chuang and Lin, Ze and Liu, Biao and Su, Chupeng and Chen, Gang and Xie, Longhan},
+                  journal={Applied Intelligence},
+                  pages={1--23},
+                  year={2024},
+                  publisher={Springer}
+                }
+              </pre>
+              <script language="javascript" type="text/javascript" xml:space="preserve">
+                hideblock('fnwang2024');
+                hideblock('fnwang2024');
+              </script>
+              </td>
+          </tr> <!-- Paper End Here --> 
+          <!-- -------------------------------------------- -->            
+            <tr> <!-- An Paper -->
+              <td width="22%" valign="top"><p>
+                <img src="images/src/apllwang2024.png" alt="Result" width="200">
+              </p></td>
+              <td width="78%" valign="top">
+                <p>
+                  <b>Task attention-based multimodal fusion and curriculum residual learning for context generalization in robotic assembly</b> <a href="https://link.springer.com/article/10.1007/s10489-024-05417-x" target="_blank"><i class="fa fa-external-link"></i></a>
+                  <br>
+                  <font size="3pt" face="Georgia"><i>
+                    Chuang Wang, Ze Lin, Biao Liu, Chupeng Su, Gang Chen*, Longhan Xie*
+                  </i></font>
+                  <br>
+                  Applied Intelligence,2024
+                  <br>
+                  <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/apllwang2024.pdf" target="_blank">PDF</a> &nbsp;
+                  <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('apllwang2024')">Abstract</a> &nbsp;
+                  <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('apllwang2024')">BibTeX</a> &nbsp;
+              </p>
+              <p id="apllwang2024" class="abstract" style="display: none;">
+                In the domain of flexible manufacturing, Deep Reinforcement Learning (DRL) has emerged as a pivotal technology for robotic assembly tasks. Despite advancements in sample efficiency and interaction safety through residual reinforcement learning with initial policies, challenges persist in achieving context generalization amidst stochastic systems characterized by large random errors and variable backgrounds. Addressing these challenges, this study introduces a novel framework that integrates task attention-based multimodal fusion with an adaptive error curriculum within a residual reinforcement learning paradigm. Our approach commences with the formulation of a task attention-based multimodal policy that synergizes task-centric visual, relative pose, and tactile data into a compact, end-to-end model. This model is explicitly designed to enhance context generalization by improving observability, thereby ensuring robustness against stochastic errors and variable backgrounds. The second facet of our framework, curriculum residual learning, introduces an adaptive error curriculum that intelligently modulates the guidance and constraints of a model-based feedback controller. This progression from perfect to significantly imperfect initial policies incrementally enhances policy robustness and learning process stability. Empirical validation demonstrates the capability of our method to efficiently acquire a high-precision policy for assembly tasks with clearances as tight as 0.1 mm and error margins up to 20 mm within a 3.5-hour training window-a feat challenging for existing RL-based methods. The results indicate a substantial reduction in average completion time by 75
+                and a 34  increase in success rate over the classical two-step approach. An ablation study was conducted to assess the contribution of each component within our framework. Real-world task experiments further corroborate the robustness and generalization of our method, achieving over a 90
+                success rate in variable contexts..
+              </p>
+              <pre xml:space="preserve" id="chen2022interpretable" class="bibtex" style="display: none;">
+                @article{wang2024task,
+                  title={Task attention-based multimodal fusion and curriculum residual learning for context generalization in robotic assembly},
+                  author={Wang, Chuang and Lin, Ze and Liu, Biao and Su, Chupeng and Chen, Gang and Xie, Longhan},
+                  journal={Applied Intelligence},
+                  pages={1--23},
+                  year={2024},
+                  publisher={Springer}
+                }
+              </pre>
+              <script language="javascript" type="text/javascript" xml:space="preserve">
+                hideblock('apllwang2024');
+                hideblock('apllwang2024');
+              </script>
+              </td>
+          </tr> <!-- Paper End Here --> 
+          <!-- -------------------------------------------- -->
+ 
+            <tr> <!-- An Paper -->
+              <td width="22%" valign="top"><p>
+                <img src="images/src/timtian2024.png" alt="Result" width="200">
+              </p></td>
+              <td width="78%" valign="top">
+                <p>
+                  <b>A Neural-symbolic Network for Interpretable Fault Diagnosis of Rolling Element Bearings Based on Temporal Logic</b> <a href="https://ieeexplore.ieee.org/abstract/document/10458993/" target="_blank"><i class="fa fa-external-link"></i></a>
+                  <br>
+                  <font size="3pt" face="Georgia"><i>
+                    Ruoyao Tian, Mengqian Cui, Gang Chen*
+                  </i></font>
+                  <br>
+                  IEEE Transactions on Instrumentation and Measurement,2024
+                  <br>
+                  <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/timtian2024.pdf" target="_blank">PDF</a> &nbsp;
+                  <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('timtian2024')">Abstract</a> &nbsp;
+                  <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('timtian2024')">BibTeX</a> &nbsp;
+              </p>
+              <p id="timtian2024" class="abstract" style="display: none;">
+                This study examines the issue of interpretability in fault diagnosis for rolling bearings using a symbolic learning technique. We propose the adoption of weighted signal temporal logic (wSTL) as a formal language and introduce the temporal logic network (TLN) as a neural-symbolic learning architecture capable of encoding symbolic wSTL representations for input signals. TLN comprises three subnetworks: a basic predicate network for abstracting features and generating predicates from vibration signals, an autoencoder for identifying significant signal components, and a logic network for constructing a formal language that aids in fault classification and model interpretation. To improve comprehensibility, timed failure propagation graphs (TFPGs) are used to visually represent the logical relationships and propagation of fault events. Experimental results demonstrate TLN’s ability to extract impulse fault patterns from signals, accurately describe fault events through learned wSTL formulas, and enhance understanding of fault events for nonexpert individuals through TFPGs. These findings contribute to the field of fault diagnosis in rolling bearings by incorporating symbolic learning techniques, using formal language representation and TFPG for improved interpretability.</p>
+              <pre xml:space="preserve" id="tian2024neural" class="bibtex" style="display: none;">
+                @article{tian2024neural,
+                  title={A Neural-symbolic Network for Interpretable Fault Diagnosis of Rolling Element Bearings Based on Temporal Logic},
+                  author={Tian, Ruoyao and Cui, Mengqian and Chen, Gang},
+                  journal={IEEE Transactions on Instrumentation and Measurement},
+                  year={2024},
+                  publisher={IEEE}
+                }
+              </pre>
+              <script language="javascript" type="text/javascript" xml:space="preserve">
+                hideblock('timtian2024');
+                hideblock('timtian2024');
+              </script>
+              </td>
+          </tr> <!-- Paper End Here -->
+             
           <tr> <!-- An Paper -->
             <td width="22%" valign="top"><p>
               <img src="images/src/ijc2024.png" alt="Result" width="200">
@@ -92,22 +210,21 @@
                 <br>
                 International Journal of Control,2024
                 <br>
-                <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/gangchenijc2024.pdf" target="_blank">PDF</a> &nbsp;
+                <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/IJC2024.pdf" target="_blank">PDF</a> &nbsp;
                 <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('gangchenijc2024abs')">Abstract</a> &nbsp;
                 <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('gangchenijc2024abs')">BibTeX</a> &nbsp;
             </p>
             <p id="gangchenijc2024abs" class="abstract" style="display: none;">
               ‘Co-design’ problems try to simultaneously design the physical and control components to improve the overall system performance. However, existing co-design paradigms cannot deal with complex frequency temporal domain specifications. In this paper, we investigate the co-design problem for a class of linear parameter-varying (LPV) systems with frequency temporal domain specifications. Firstly, the frequency temporal domain specifications are written in a formal language called spectral temporal logic (STL). Secondly, the satisfaction conditions of the spectral temporal logic specifications have been transformed into non-linear matrices inequality forms with necessary and sufficient conditions. Thirdly, the co-design problem is transformed into a non-convex optimisation problem with mixed-integer linear matrix inequalities (MILMIs) constraints, and then an iterative algorithm is proposed to solve the co-design problem with semidefinite programming (SDP). Finally, the performance of the algorithm and the expressiveness of spectral temporal logic are illustrated with the applications to micro-electromechanical systems (MEMS).
             </p>
-            <pre xml:space="preserve" id="chen2022interpretable" class="bibtex" style="display: none;">
-              @article{chen2022interpretable,
-                title={Interpretable fault diagnosis with shapelet temporal logic: Theory and application},
-                author={Chen, Gang and Lu, Yu and Su, Rong},
-                journal={Automatica},
-                volume={142},
-                pages={110350},
-                year={2022},
-                publisher={Elsevier}
+            <pre xml:space="preserve" id="chen2024control" class="bibtex" style="display: none;">
+              @article{chen2024control,
+                title={Control/physical systems co-design with spectral temporal logic specifications and its applications to MEMS},
+                author={Chen, Gang and Kong, Zhaodan and Xie, Longhan},
+                journal={International Journal of Control},
+                pages={1--16},
+                year={2024},
+                publisher={Taylor \& Francis}
               }
             </pre>
             <script language="javascript" type="text/javascript" xml:space="preserve">
