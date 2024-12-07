@@ -524,4 +524,42 @@ section:last-child {
 		text-align: center;
 		margin: 10px auto;
 	}
+
+
+
+	  .projectlist {
+		display:flex;
+		flex-flow: row wrap;
+	  } 
+	  
+	  .project {
+		width: 240px;
+		padding-bottom: 10px;
+		margin: 8px;
+		padding: 5px;
+	  }
+	  
+	  .project:hover {
+		background-color: #e7e7e7;
+	  }
+	  
+	  .project .post-title {
+		color: #428bca;
+	  }
+	  
+	  .project .post-excerpt {
+		color: #333;
+	  }
+	  
+	  .project a:hover {
+		text-decoration:none;
+	  }
+	  
+	  img.teaser {
+		float:right;
+		width:45%;
+		padding:15px;
+	  }
+	  
 }
+
