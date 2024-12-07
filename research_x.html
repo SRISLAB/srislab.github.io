@@ -34,14 +34,22 @@
             <li class="active"><a href="index_x.html">主页</a></li>
             <li><a href="people_x.html">团队成员</a></li>
             <li><a href="research_x.html">研究项目</a></li>
-            <li><a href="publications.html">发表著作</a></li>
+            <li class="dropdown">
+              <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">论文 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="journal.html">期刊论文</a></li>
+                <li><a href="conference.html">会议论文</a></li>
+              </ul>
+            </li>
             <li><a href="downloads.html">下载</a></li>
             <li><a href="contact.html">联系我们</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">English</a></li>
-            <li><a href="index_x.html">中文</a></li>
-          </ul>
+          <li class="dropdown">
+            <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">English <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="index_x.html">中文</a></li>
+            </ul>
+          </li>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="index.html"><img src="../../images/logo/logo_w.png" alt="Logo" width="80px"/></a></li>
           </ul>
