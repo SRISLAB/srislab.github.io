@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Research">
+    <meta name="author" content="WeiQM">
+    <link rel="icon" href="../images/logo/RMX_16.ico">
+    <title>SRIS - Research</title>
+    <!-- Bootstrap core CSS -->
+ 
+    <link rel="stylesheet" href="../style/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Custom styles for this template -->
+    <link href="../style/jquery.bxslider.css" rel="stylesheet">
+    <link href="../style/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">  
+          <ul class="nav navbar-nav">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../people.html">People</a></li>
+            <li class="active"><a href="../research.html">Research</a></li>
+            <li class="dropdown">
+              <a href="../publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../journal.html">Journal Papers</a></li>
+                <li><a href="../conference.html">Conference Papers</a></li>
+              </ul>
+            </li>
+            <li><a href="../downloads.html">Downloads</a></li>
+            <li><a href="../contact.html">Contact Us</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="../index.html">English</a></li>
+            <li><a href="../index_x.html">中文</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index.html"><img src="../images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+    <header>
+      <!--
+      <a href="index.html"><img src="images/logo.png"  width="256px"></a>
+      -->
+    </header>
+
+ 
+ 
+ 
+     
+    <h2>Robot Control with Machine Learning</h2>
+    <div class="row-project">
+        <div class="span12">
+            <section>
+                <p>Robot Control with Machine Learning leverages advanced algorithms to enable autonomous and adaptive robotic behaviors in complex environments. By utilizing reinforcement learning, we develop control strategies that optimize performance through continuous interaction and learning.</p>
+                <p>We focus on topics about Reinforcement Learning-Based Control, Policy Optimization for Robotics, and Real-Time Adaptive Control.</p>
+            </section>
+        </div>
+    </div>
+    
+    
+
+    <p>
+        <i class="bi-box-arrow-in-left"></i><small><a style="text-decoration: none;" href="javascript:history.back(-1)">
+                <b>Back</b> </a></small>
+    </p>
+
+    <div class="page-header">
+        <h3><i>Highlight: Robot Control</i></h3>
+    </div>
+    <section>
+        <div class="row">
+        <div class="col-md-12">
+        <article class="content-block">
+        <div class="block-body">
+        <div class="block-text">
+       <table><tbody>
+        <tr> <!-- An Paper -->
+            <td width="22%" valign="top"><p>
+              <img src="images/src/fnwang2024.png" alt="Result" width="200">
+            </p></td>
+            <td width="78%" valign="top">
+              <p>
+                <b>Extended Residual Learning with One-shot Imitation Learning for Robotic Assembly in Semi-structured Environment</b> <a href="https://link.springer.com/article/10.1007/s10489-024-05417-x" target="_blank"><i class="fa fa-external-link"></i></a>
+                <br>
+                <font size="3pt" face="Georgia"><i>
+                  Chuang Wang , Chupeng Su , Bozheng Sun , Gang Chen* and Longhan Xie*
+                </i></font>
+                <br>
+                Frontiers in Neurorobotics,2024
+                <br>
+                <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/fnwang2024.pdf" target="_blank">PDF</a> &nbsp;
+                <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('fnwang2024')">Abstract</a> &nbsp;
+                <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('fnwang2024')">BibTeX</a> &nbsp;
+            </p>
+            <p id="apllwang2024" class="abstract" style="display: none;">
+              Robotic assembly tasks require precise manipulation and coordination, often necessitating advanced learning techniques to achieve efficient and effective performance. While residual reinforcement learning with a base policy has shown promise in this domain, existing base policy approaches often rely on hand-designed full-state features and policies or extensive demonstrations, limiting their applicability in semi-structured environments. In this study, we propose an innovative Object-Embodiment-Centric Imitation and Residual Reinforcement Learning (OEC-IRRL) approach that leverages an object-embodiment-centric (OEC) task representation to integrate vision models with imitation and residual learning. By utilizing a single demonstration and minimizing interactions with the environment, our method aims to enhance learning efficiency and effectiveness. The proposed method involves three key steps: creating an object-embodiment-centric task representation, employing imitation learning for a base policy using via-point movement primitives for generalization to different settings, and utilizing residual RL for uncertainty-aware policy refinement during the assembly phase. Through a series of comprehensive experiments, we investigate the impact of the OEC task representation on base and residual policy learning and demonstrate the effectiveness of the method in semi-structured environments. Our results indicate that the approach, requiring only a single demonstration and less than 1.2 hours of interaction, improves success rates by 46% and reduces assembly time by 25%. This research presents a promising avenue for robotic assembly tasks, providing a viable solution without the need for specialized expertise or custom fixtures.
+            </p>
+            <pre xml:space="preserve" id="chen2022interpretable" class="bibtex" style="display: none;">
+              @article{wang2024task,
+                title={Task attention-based multimodal fusion and curriculum residual learning for context generalization in robotic assembly},
+                author={Wang, Chuang and Lin, Ze and Liu, Biao and Su, Chupeng and Chen, Gang and Xie, Longhan},
+                journal={Applied Intelligence},
+                pages={1--23},
+                year={2024},
+                publisher={Springer}
+              }
+            </pre>
+            <script language="javascript" type="text/javascript" xml:space="preserve">
+              hideblock('fnwang2024');
+              hideblock('fnwang2024');
+            </script>
+            </td>
+        </tr> <!-- Paper End Here --> 
+        <!-- -------------------------------------------- -->            
+          <tr> <!-- An Paper -->
+            <td width="22%" valign="top"><p>
+              <img src="images/src/apllwang2024.png" alt="Result" width="200">
+            </p></td>
+            <td width="78%" valign="top">
+              <p>
+                <b>Task attention-based multimodal fusion and curriculum residual learning for context generalization in robotic assembly</b> <a href="https://link.springer.com/article/10.1007/s10489-024-05417-x" target="_blank"><i class="fa fa-external-link"></i></a>
+                <br>
+                <font size="3pt" face="Georgia"><i>
+                  Chuang Wang, Ze Lin, Biao Liu, Chupeng Su, Gang Chen*, Longhan Xie*
+                </i></font>
+                <br>
+                Applied Intelligence,2024
+                <br>
+                <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/apllwang2024.pdf" target="_blank">PDF</a> &nbsp;
+                <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('apllwang2024')">Abstract</a> &nbsp;
+                <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('apllwang2024')">BibTeX</a> &nbsp;
+            </p>
+            <p id="apllwang2024" class="abstract" style="display: none;">
+              In the domain of flexible manufacturing, Deep Reinforcement Learning (DRL) has emerged as a pivotal technology for robotic assembly tasks. Despite advancements in sample efficiency and interaction safety through residual reinforcement learning with initial policies, challenges persist in achieving context generalization amidst stochastic systems characterized by large random errors and variable backgrounds. Addressing these challenges, this study introduces a novel framework that integrates task attention-based multimodal fusion with an adaptive error curriculum within a residual reinforcement learning paradigm. Our approach commences with the formulation of a task attention-based multimodal policy that synergizes task-centric visual, relative pose, and tactile data into a compact, end-to-end model. This model is explicitly designed to enhance context generalization by improving observability, thereby ensuring robustness against stochastic errors and variable backgrounds. The second facet of our framework, curriculum residual learning, introduces an adaptive error curriculum that intelligently modulates the guidance and constraints of a model-based feedback controller. This progression from perfect to significantly imperfect initial policies incrementally enhances policy robustness and learning process stability. Empirical validation demonstrates the capability of our method to efficiently acquire a high-precision policy for assembly tasks with clearances as tight as 0.1 mm and error margins up to 20 mm within a 3.5-hour training window-a feat challenging for existing RL-based methods. The results indicate a substantial reduction in average completion time by 75
+              and a 34  increase in success rate over the classical two-step approach. An ablation study was conducted to assess the contribution of each component within our framework. Real-world task experiments further corroborate the robustness and generalization of our method, achieving over a 90
+              success rate in variable contexts..
+            </p>
+            <pre xml:space="preserve" id="chen2022interpretable" class="bibtex" style="display: none;">
+              @article{wang2024task,
+                title={Task attention-based multimodal fusion and curriculum residual learning for context generalization in robotic assembly},
+                author={Wang, Chuang and Lin, Ze and Liu, Biao and Su, Chupeng and Chen, Gang and Xie, Longhan},
+                journal={Applied Intelligence},
+                pages={1--23},
+                year={2024},
+                publisher={Springer}
+              }
+            </pre>
+            <script language="javascript" type="text/javascript" xml:space="preserve">
+              hideblock('apllwang2024');
+              hideblock('apllwang2024');
+            </script>
+            </td>
+        </tr> <!-- Paper End Here --> 
+         </tbody></table>
+      </div>
+      </div>
+      </article>
+      </div>
+      </div>
+    </section>  
+    </div><!-- /.container -->
+
+    <footer class="footer">
+      <div class="footer-bottom">  
+        <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.<br>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jquery.bxslider.js"></script>
+    <script src="scripts/mooz.scripts.min.js"></script>
+  </body>
+</html>

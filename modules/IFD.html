@@ -66,15 +66,16 @@
  
  
      
-    <h2>Interpretable Fault Diagnosis</h2>
+    <h2>System Design and Inverse Dynamic Problems</h2>
     <div class="row-project">
         <div class="span12">
             <section>
-                <p>Interpretable Fault Diagnosis focuses on identifying and explaining faults in complex systems using methods that provide clear and understandable insights. By employing temporal logic fault diagnosis, we construct models that capture system behaviors and generate explanations grounded in logical reasoning.</p>
-                <p>We focus on topics about Temporal Logic Modeling, Sparse Explanation Construction, and Real-Time Fault Analysis.</p>
+                <p>Robot Control with Machine Learning leverages advanced algorithms to enable autonomous and adaptive robotic behaviors in complex environments. By utilizing reinforcement learning, we develop control strategies that optimize performance through continuous interaction and learning.</p>
+                <p>We focus on topics about Reinforcement Learning-Based Control, Policy Optimization for Robotics, and Real-Time Adaptive Control.</p>
             </section>
         </div>
     </div>
+    
     
 
     <p>
@@ -83,7 +84,7 @@
     </p>
 
     <div class="page-header">
-        <h3><i>Highlight: Temporal Logic-based Fault Diagnosis</i></h3>
+        <h3><i>Highlight: System Design</i></h3>
     </div>
     <section>
         <div class="row">
@@ -91,210 +92,82 @@
         <article class="content-block">
         <div class="block-body">
         <div class="block-text">
- <table><tbody>
-    <tr> <!-- An Paper -->
-        <td width="22%" valign="top"><p>
-          <img src="../images/src/timtian2024.png" alt="Result" width="200">
-        </p></td>
-        <td width="78%" valign="top">
-          <p>
-            <b>A Neural-symbolic Network for Interpretable Fault Diagnosis of Rolling Element Bearings Based on Temporal Logic</b> <a href="https://ieeexplore.ieee.org/abstract/document/10458993/" target="_blank"><i class="fa fa-external-link"></i></a>
-            <br>
-            <font size="3pt" face="Georgia"><i>
-              Ruoyao Tian, Mengqian Cui, Gang Chen*
-            </i></font>
-            <br>
-            IEEE Transactions on Instrumentation and Measurement,2024
-            <br>
-            <i class="fa fa-file-pdf-o"></i> <a href="../source/pdf/timtian2024.pdf" target="_blank">PDF</a> &nbsp;
-            <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('timtian2024')">Abstract</a> &nbsp;
-            <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('timtian2024')">BibTeX</a> &nbsp;
-        </p>
-        <p id="timtian2024" class="abstract" style="display: none;">
-          This study examines the issue of interpretability in fault diagnosis for rolling bearings using a symbolic learning technique. We propose the adoption of weighted signal temporal logic (wSTL) as a formal language and introduce the temporal logic network (TLN) as a neural-symbolic learning architecture capable of encoding symbolic wSTL representations for input signals. TLN comprises three subnetworks: a basic predicate network for abstracting features and generating predicates from vibration signals, an autoencoder for identifying significant signal components, and a logic network for constructing a formal language that aids in fault classification and model interpretation. To improve comprehensibility, timed failure propagation graphs (TFPGs) are used to visually represent the logical relationships and propagation of fault events. Experimental results demonstrate TLN’s ability to extract impulse fault patterns from signals, accurately describe fault events through learned wSTL formulas, and enhance understanding of fault events for nonexpert individuals through TFPGs. These findings contribute to the field of fault diagnosis in rolling bearings by incorporating symbolic learning techniques, using formal language representation and TFPG for improved interpretability.</p>
-        <pre xml:space="preserve" id="tian2024neural" class="bibtex" style="display: none;">
-          @article{tian2024neural,
-            title={A Neural-symbolic Network for Interpretable Fault Diagnosis of Rolling Element Bearings Based on Temporal Logic},
-            author={Tian, Ruoyao and Cui, Mengqian and Chen, Gang},
-            journal={IEEE Transactions on Instrumentation and Measurement},
-            year={2024},
-            publisher={IEEE}
-          }
-        </pre>
-        <script language="javascript" type="text/javascript" xml:space="preserve">
-          hideblock('timtian2024');
-          hideblock('timtian2024');
-        </script>
-        </td>
-    </tr> <!-- Paper End Here -->
-    <tr> <!-- An Paper -->
-        <td width="22%" valign="top"><p>
-          <img src="../images/src/Automatica2022Interpretable.png" alt="Result" width="200">
-        </p></td>
-        <td width="78%" valign="top">
-          <p>
-            <b>Interpretable fault diagnosis with shapelet temporal logic: Theory and application</b> <a href="https://www.sciencedirect.com/science/article/pii/S000510982200200X" target="_blank"><i class="fa fa-external-link"></i></a>
-            <br>
-            <font size="3pt" face="Georgia"><i>
-              Gang Chen*, Yu Lu, Rong Su
-            </i></font>
-            <br>
-            Automatica, 2022
-            <br>
-            <i class="fa fa-file-pdf-o"></i> <a href="../source/pdf/Automatica2022Intepretable.pdf" target="_blank">PDF</a> &nbsp;
-            <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('Gangautomatica2022Abs')">Abstract</a> &nbsp;
-            <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('chen2022interpretable')">BibTeX</a> &nbsp;
-        </p>
-        <p id="Gangautomatica2022Abs" class="abstract" style="display: none;">
-          Shapelets are discriminative subsequences of sequential data that best predict the target variable and are directly interpretable, which have attracted considerable interest within the interpretable fault diagnosis community. Despite their immense potential as a data mining primitive, currently, shapelet-based methods ignore the temporal properties of shapelets. This paper presents a shapelet temporal logic, which is an expressive formal language to describe the temporal properties of shapelets. Moreover, an incremental algorithm is proposed to find the optimal logic expression with formal and theoretical guarantees, and the obtained logic expression can be used for fault diagnosis. Additionally, a case study on rolling element bearing fault diagnosis shows the proposed method can diagnose and interpret faults with high accuracy. Comparison experiments with other logic-based and shapelet-based methods illustrate the proposed method has better interpretability at the cost of computation efficiency.
-        </p>
-        <pre xml:space="preserve" id="chen2022interpretable" class="bibtex" style="display: none;">
-          @article{chen2022interpretable,
-            title={Interpretable fault diagnosis with shapelet temporal logic: Theory and application},
-            author={Chen, Gang and Lu, Yu and Su, Rong},
-            journal={Automatica},
-            volume={142},
-            pages={110350},
-            year={2022},
-            publisher={Elsevier}
-          }
-        </pre>
-        <script language="javascript" type="text/javascript" xml:space="preserve">
-          hideblock('Gangautomatica2022Abs');
-          hideblock('Gangautomatica2022Abs');
-        </script>
-        </td>
-    </tr> <!-- Paper End Here -->
-
-  
- 
-    <tr> <!-- An Paper -->
-        <td width="22%" valign="top"><p>
-          <img src="../images/src/ChenTII2020.png" alt="Flowchart" width="200">
-        </p></td>
-        <td width="78%" valign="top">
-          <p>
-            <b>Formal language generation for fault diagnosis with spectral logic via adversarial training</b>  <a href="https://ieeexplore.ieee.org/abstract/document/9272306" target="_blank"><i class="fa fa-external-link"></i></a>
-            <br>
-            <font size="3pt" face="Georgia"><i>
-              Gang Chen et al.
-             
-            </i></font>
-            <br>
-            IEEE Transactions on Industrial Informatics, 2020
-            <br>
-            <i class="fa fa-file-pdf-o"></i> <a href="../source/pdf/FormalTII2020.pdf" target="_blank">PDF</a> &nbsp;
-            <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('ChenTII2020_Abs')">Abstract</a> &nbsp;
-            <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('ChenTII2020_Bib')">BibTeX</a> &nbsp;
-          </p>
-          <p id="ChenTII2020_Abs" class="abstract" style="display: none;">
-            Fault diagnosis with formal languages can be performed in an interpretable way. However, the traditional formal languages cannot deal with noisy environments. Additionally, finding the optimal formal language for fault diagnosis is still a challenge due to the sparse reward issue. This article presents a novel method to find formal languages, written with signal spectral logic (SSL), to describe the fault behaviors among frequency domain for fault diagnosis. The formal language defined by SSL is robust to noise, acts as the fault diagnoser, and provides interpretabilities for human operators. Moreover, the fault diagnoser construction procedure has been formulated as a language generation process and an adversarial training technique is used to find the optimal formal language and avoid sparse reward issue existing in language generation problems. Some experiments with real rolling element bearing data and simulated signals demonstrate that our method is able to find formal languages to diagnose faults efficiently and accurately under noisy environments.      
-          </p>
-            <pre xml:space="preserve" id="ChenTII2020_Bib" class="bibtex" style="display: none;">       
-        
-              @article{chen2020formal,
-                title={Formal language generation for fault diagnosis with spectral logic via adversarial training},
-                author={Chen, Gang  et al.},
-                journal={IEEE Transactions on Industrial Informatics},
-                volume={18},
-                number={1},
-                pages={119--129},
-                year={2020},
+       <table><tbody>
+        <tr> <!-- An Paper -->
+            <td width="22%" valign="top"><p>
+              <img src="images/src/fastsu2024.png" alt="Result" width="200">
+            </p></td>
+            <td width="78%" valign="top">
+              <p>
+                <b>Fast Pareto set approximation for multi-objective flexible job shop scheduling via parallel preference-conditioned graph reinforcement learning</b> <a href="https://www.sciencedirect.com/science/article/pii/S2210650224001433" target="_blank"><i class="fa fa-external-link"></i></a>
+                <br>
+                <font size="3pt" face="Georgia"><i>
+                  Chupeng Su, Cong Zhang, Chuang Wang, Weihong Cen, Gang Chen*, Longhan Xie*
+                </i></font>
+                <br>
+                Swarm and Evolutionary Computation,88,2024
+                <br>
+                <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/fastsu2024.pdf" target="_blank">PDF</a> &nbsp;
+                <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('fastsu2024')">Abstract</a> &nbsp;
+                <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('fastsu2024')">BibTeX</a> &nbsp;
+            </p>
+            <p id="apllwang2024" class="abstract" style="display: none;">
+              The Multi-Objective Flexible Job Shop Scheduling Problem (MOFJSP) is a complex challenge in manufacturing, requiring balancing multiple, often conflicting objectives. Traditional methods, such as Multi-Objective Evolutionary Algorithms (MOEA), can be time-consuming and unsuitable for real-time applications. This paper introduces a novel Graph Reinforcement Learning (GRL) approach, named Preference-Conditioned GRL, which efficiently approximates the Pareto set for MOFJSP in a parallelized manner. By decomposing the MOFJSP into distinct sub-problems based on preferences and leveraging a parallel multi-objective training algorithm, our method efficiently produces high-quality Pareto sets, significantly outperforming MOEA methods in both solution quality and speed, especially for large-scale problems. Extensive experiments demonstrate the superiority of our approach, with remarkable results on … </p>
+            <pre xml:space="preserve" id="sensorli2024" class="bibtex" style="display: none;">
+              @article{chen2024enhancing,
+                title={Enhancing Reliability through Interpretability: A Comprehensive Survey of Interpretable Intelligent Fault Diagnosis in Rotating Machinery},
+                author={Chen, Gang and Yuan, Junlin and Zhang, Yiyue and Zhu, Hanyue and Huang, Ruyi and Wang, Fengtao and Li, Weihua},
+                journal={IEEE Access},
+                year={2024},
                 publisher={IEEE}
               }
-              </pre>
-          <script language="javascript" type="text/javascript" xml:space="preserve">
-                  hideblock('ChenTII2020_Abs');
-                  hideblock('ChenTII2020_Bib');
-          </script>
-        </td>
-    </tr> <!-- Paper End Here -->    
-
-    <tr> <!-- An Paper -->
-      <td width="22%" valign="top"><p>
-        <img src="../images/src/MSSP2020_Frequency.bmp" alt="Flowchart" width="200">
-      </p></td>
-      <td width="78%" valign="top">
-        <p>
-          <b>Frequency-temporal-logic-based bearing fault diagnosis and fault interpretation using Bayesian optimization with Bayesian neural networks</b>  <a href="https://www.sciencedirect.com/science/article/pii/S088832702030337X" target="_blank"><i class="fa fa-external-link"></i></a>
-          <br>
-          <font size="3pt" face="Georgia"><i>
-            Gang Chen et al.
-           
-          </i></font>
-          <br>
-          Mechanical Systems and Signal Processing, 2020
-          <br>
-          <i class="fa fa-file-pdf-o"></i> <a href="../source/pdf/MSSP2020_Frequency.pdf" target="_blank">PDF</a> &nbsp;
-          <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('MSSP2020_Frequency_Abs')">Abstract</a> &nbsp;
-          <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('MSSP2020_Frequency_Bib')">BibTeX</a> &nbsp;
-        </p>
-        <p id="MSSP2020_Frequency_Abs" class="abstract" style="display: none;">
-          Rolling element bearings are widely used components in modern rotary machines, and accurate diagnosis and interpretation for faults of bearings are significant for equipment maintenance. This paper introduces a fault diagnosis method with a formal specification language, which overcomes the difficulty of understanding the decision process of fault diagnosis. The formal specification is written with a novel formal language, called frequency-temporal-logic, defining the time-frequency properties of time series signals, which not only is a classifier to diagnose the faults but also gives interpretations for the fault signals with its semantics. To find an optimal description for the fault signals, the Bayesian optimization with Bayesian neural networks has been utilized to infer the structure and parameters of the formal specification. The semantics of frequency-temporal-logic then gives the fault interpretation. Moreover, the quantitative semantics for the formal language is defined based on a novel satisfaction metric, which has a noise resistance property. Analysis of the proposed method shows that the formal description can deal with noisy signals and variable speed operations of the bearings. Finally, comparison experimental results indicate the proposed method can obtain high fault diagnosis accuracy.
-
-        </p>
-          <pre xml:space="preserve" id="MSSP2020_Frequency_Bib" class="bibtex" style="display: none;">       
-      
-            @article{chen2020frequency,
-              title={Frequency-temporal-logic-based bearing fault diagnosis and fault interpretation using Bayesian optimization with Bayesian neural networks},
-              author={Chen, Gang et al.},
-              journal={Mechanical Systems and Signal Processing},
-              volume={145},
-              pages={106951},
-              year={2020},
-              publisher={Elsevier}
-            }
             </pre>
-        <script language="javascript" type="text/javascript" xml:space="preserve">
-                hideblock('MSSP2020_Frequency_Abs');
-                hideblock('MSSP2020_Frequency_Bib');
-        </script>
-      </td>
-  </tr> <!-- Paper End Here -->            
-          
- 
-      
-        
-    <tr> <!-- An Paper -->
-      <td width="22%" valign="top"><p>
-        <img src="../images/src/TIE2020Temporal.bmp" alt="Flowchart" width="200">
-      </p></td>
-      <td width="78%" valign="top">
-        <p>
-          <b>Temporal-logic-based semantic fault diagnosis with time-series data from industrial internet of things</b>  <a href="https://ieeexplore.ieee.org/abstract/document/9142280" target="_blank"><i class="fa fa-external-link"></i></a>
-          <br>
-          <font size="3pt" face="Georgia"><i>
-            Gang Chen, et al.
-          </i></font>
-          <br>
-          IEEE Transactions on Industrial Electronics, 2020
-          <br>
-          <i class="fa fa-file-pdf-o"></i> <a href="../source/pdf/TIE2020Temporal.pdf" target="_blank">PDF</a> &nbsp;
-          <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('TIE2020Temporal_Abs')">Abstract</a> &nbsp;
-          <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('TIE2020Temporal_Bib')">BibTeX</a> &nbsp;
-        </p>
-        <p id="TIE2020Temporal_Abs" class="abstract" style="display: none;">
-          The maturity of sensor network technologies has facilitated the emergence of an industrial Internet of Things (IIoT), which has collected an increasing volume of data. Converting these data into actionable intelligence for fault diagnosis is key to reducing unscheduled downtime and performance degradation, among other examples. This article formalizes a problem called semantic fault diagnosis- to construct the formal specifications of faults directly from data collected from IIoT-enabled systems. The specifications are written as signal temporal logic formulas, which can be easily interpreted by humans. To tackle the issue of the combinatorial explosion that arises, we propose an algorithm that combines ideas from agenda-based searching and imitation learning to train a policy that searches formulas in a strategic order. Specifically, we formulate the problem as a Markov decision process, which is further solved with a reinforcement learning algorithm. Our algorithm is applied to time-series data collected from an IIoT-enabled iron-making factory. The results show empirically that our proposed algorithm is both scalable to the size of the data set and interpretable, therefore allowing human users to take actions, for example, predictive maintenance.       </p>
-
-          <pre xml:space="preserve" id="TIE2020Temporal_Bib" class="bibtex" style="display: none;">       
-      
-            @article{chen2020temporal,
-              title={Temporal-logic-based semantic fault diagnosis with time-series data from industrial internet of things},
-              author={Chen, Gang  et al.},
-              journal={IEEE Transactions on Industrial Electronics},
-              volume={68},
-              number={5},
-              pages={4393--4403},
-              year={2020},
-              publisher={IEEE}
-            }
+            <script language="javascript" type="text/javascript" xml:space="preserve">
+              hideblock('fastsu2024');
+              hideblock('sensorlfastsu2024i2024');
+            </script>
+            </td>
+        </tr> <!-- Paper End Here -->     
+        <tr> <!-- An Paper -->
+            <td width="22%" valign="top"><p>
+              <img src="images/src/asc2023.png" alt="Result" width="200">
+            </p></td>
+            <td width="78%" valign="top">
+              <p>
+                <b>Evolution strategies-based optimized graph reinforcement learning for solving dynamic job shop scheduling problem</b> <a href="https://www.sciencedirect.com/science/article/abs/pii/S1568494623006142" target="_blank"><i class="fa fa-external-link"></i></a>
+                <br>
+                <font size="3pt" face="Georgia"><i>
+                  Chupeng Su, Cong Zhang, Dan Xia, Baoan Han, Chuang Wang, Gang Chen*, Longhan Xie*
+                </i></font>
+                <br>
+                Applied Soft Computing, 2023
+                <br>
+                <i class="fa fa-file-pdf-o"></i> <a href="./source/pdf/Automatica2022Intepretable.pdf" target="_blank">PDF</a> &nbsp;
+                <i class="fa fa-bookmark-o"></i> <a href="javascript:toggleblock('Gangautomatica2022Abs')">Abstract</a> &nbsp;
+                <i class="fa fa-quote-left"></i> <a href="javascript:toggleblock('chen2022interpretable')">BibTeX</a> &nbsp;
+            </p>
+            <p id="Gangautomatica2022Abs" class="abstract" style="display: none;">
+              The job shop scheduling problem (JSSP) with dynamic events and uncertainty is a strongly NP-hard combinatorial optimization problem (COP) with extensive applications in the manufacturing system. Recently, growing interest has been aroused in utilizing machine learning techniques to solve the JSSP. However, most prior arts cannot handle dynamic events and barely consider uncertainties. To close this gap, this paper proposes a framework to solve a dynamic JSSP (DJSP) with machine breakdown and stochastic processing time based on Graph Neural Network (GNN) and deep reinforcement learning (DRL). To this end, we first formulate the DJSP as a Markov Decision Process (MDP), where disjunctive graph represent the states. Secondly, we propose a GNN-based model to effectively extract the embeddings of the state by considering the features of the dynamic events and the stochasticity of the problem, e.g., the machine breakdown and stochastic processing time. Then, the model constructs solutions by dispatching optimal operations to machines based on the learned embeddings. Notably, we propose to use the evolution strategies (ES) to find optimal policies that are more stable and robust than conventional DRL algorithms. The extensive experiments show that our method substantially outperforms existing reinforcement learning-based and traditional methods on multiple classic benchmarks.
+            </p>
+            <pre xml:space="preserve" id="sujssp2023" class="bibtex" style="display: none;">
+              @article{su2023evolution,
+                title={Evolution strategies-based optimized graph reinforcement learning for solving dynamic job shop scheduling problem},
+                author={Su, Chupeng and Zhang, Cong and Xia, Dan and Han, Baoan and Wang, Chuang and Chen, Gang and Xie, Longhan},
+                journal={Applied Soft Computing},
+                volume={145},
+                pages={110596},
+                year={2023},
+                publisher={Elsevier}
+              }
             </pre>
-        <script language="javascript" type="text/javascript" xml:space="preserve">
-                hideblock('TIE2020Temporal_Abs');
-                hideblock('TIE2020Temporal_Bib');
-        </script>
-      </td>
-  </tr> <!-- Paper End Here -->  
+            <script language="javascript" type="text/javascript" xml:space="preserve">
+              hideblock('suAsc2023bs');
+              hideblock('suAsc2023bs');
+            </script>
+            </td>
+        </tr> <!-- Paper End Here -->
+
+
          </tbody></table>
       </div>
       </div>
