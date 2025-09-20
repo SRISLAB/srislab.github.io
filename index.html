@@ -114,6 +114,46 @@
     @media (max-width: 991px){
       .timeline .date{ display:block; min-width:auto; margin-bottom:4px; }
     }
+    /* Fixed-size slideshow window */
+.slider-frame,
+.bx-wrapper .bx-viewport,
+.bxslider li,
+.slider-item {
+  height: 420px !important;       /* <-- pick a height you like */
+}
+
+/* Images fill the window and crop as needed (no distortion) */
+.bxslider li img {
+  width: 100%;
+  height: 100%;
+  display: block;                  /* removes inline-gap */
+  object-fit: cover;               /* maintain aspect ratio; crop edges */
+  object-position: center;         /* center the crop */
+}
+
+/* Optional: headline overlay stays readable */
+.slider-item h2, .slider-item h3 {
+  position: absolute;
+  left: 16px; bottom: 16px;
+  margin: 0;
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 18px;
+}
+
+/* Mobile: shorter window for phones */
+@media (max-width: 767px) {
+  .slider-frame,
+  .bx-wrapper .bx-viewport,
+  .bxslider li,
+  .slider-item {
+    height: 260px !important;
+  }
+  .slider-item h2, .slider-item h3 { font-size: 16px; }
+}
+
   </style>
 </head>
 
