@@ -4,131 +4,397 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="研究项目">
+    <meta name="description" content="Research">
     <meta name="author" content="WeiQM">
-    <link rel="icon" href="../../images/logo/RMX_16.ico">
-    <title>SRIS - 研究项目</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../style/bootstrap.min.css">
+    <link rel="icon" href="images/logo/RMX_16.ico">
+    <title>SRIS - Research</title>
+    <!-- Keep your original styles -->
+    <link rel="stylesheet" href="scripts/bootstrap.css">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Custom styles for this template -->
-    <link href="../../style/jquery.bxslider.css" rel="stylesheet">
-    <link href="../../style/style.css" rel="stylesheet">
-
+    <link href="style/jquery.bxslider.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+    <style>
+      /* One-screen “About” layout */
+      .about-hero {
+        margin-top: 70px;
+        background: linear-gradient(135deg, #0f172a 0%, #1f2937 60%, #0b3d5e 100%);
+        color: #eef2f7;
+        border-radius: 10px;
+        padding: 32px 28px;
+      }
+      .about-hero h1 { font-weight: 700; font-size: 30px; margin: 0 0 8px; letter-spacing: .5px; }
+      .about-hero .tagline { opacity: .95; font-size: 16px; margin-bottom: 14px; }
+      .about-hero .lead {
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #e5e7eb;
+      }
+      .pill {
+        display: inline-block; padding: 4px 10px; border: 1px solid rgba(255,255,255,.3);
+        border-radius: 999px; margin-right: 8px; font-size: 12px; opacity: .9;
+      }
+      .cards-row { margin-top: 18px; }
+      .research-card {
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 12px;
+        padding: 14px;
+        min-height: 220px;
+        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      }
+      .research-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.25); background: rgba(255,255,255,.08); }
+      .research-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: #ffffff; }
+      .research-card .mini { font-size: 12px; color: #cbd5e1; margin-bottom: 8px; }
+      .research-card p { font-size: 13px; line-height: 1.45; color: #e5e7eb; margin-bottom: 8px; }
+      .chip {
+        display: inline-block; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18);
+        color: #e5e7eb; font-size: 11px; padding: 3px 8px; border-radius: 999px; margin: 2px 4px 0 0; white-space: nowrap;
+      }
+      .cta-row { margin-top: 10px; }
+      .cta-row a { color: #93c5fd; text-decoration: none; font-size: 12px; margin-right: 14px; }
+      .cta-row a:hover { text-decoration: underline; }
+      /* Details section (light theme for readability) */
+      .details-wrap {
+        margin-top: 22px; margin-bottom: 30px; color: #111827;
+        background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px 18px 6px;
+      }
+      .details-wrap h2 { margin: 0 0 8px; font-size: 22px; font-weight: 700; color: #0f172a; }
+      .details-wrap .intro { color: #334155; font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+      .accordion { margin-top: 10px; }
+      .accordion-group { border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+      .accordion-heading a {
+        display: block; padding: 10px 12px; background: #f8fafc; color: #0f172a; text-decoration: none; font-weight: 600;
+      }
+      .accordion-heading a:hover { background: #f1f5f9; }
+      .accordion-inner { background: #ffffff; padding: 12px; color: #1f2937; }
+      .accordion-inner h4 { font-size: 14px; margin: 4px 0 6px; color: #0b3d5e; }
+      .badge-kpi {
+        display:inline-block; background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; padding:2px 6px; border-radius:999px; font-size:11px; margin:2px 4px 0 0;
+      }
+      .muted-note { color:#64748b; font-size:12px; margin-top:6px; }
+      @media (max-width: 1199px) { .research-card { min-height: 240px; } }
+      @media (max-width: 979px)  { .research-card { margin-bottom: 14px; } }
+    </style>
   </head>
   <body>
-    <!-- Navigation -->
+    <!-- Navigation (unchanged) -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">  
+        <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index_x.html">主页</a></li>
-            <li><a href="people_x.html">团队成员</a></li>
-            <li><a href="research_x.html">研究项目</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="people.html">People</a></li>
+            <li class="active"><a href="research.html">Research</a></li>
             <li class="dropdown">
-              <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">论文 <span class="caret"></span></a>
+              <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="journal.html">期刊论文</a></li>
-                <li><a href="conference.html">会议论文</a></li>
+                <li><a href="journal.html">Journal Papers</a></li>
+                <li><a href="conference.html">Conference Papers</a></li>
               </ul>
             </li>
-            <li><a href="downloads.html">下载</a></li>
-            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="downloads.html">Downloads</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="index.html">English</a></li>
             <li><a href="index_x.html">中文</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html"><img src="../../images/logo/logo_w.png" alt="Logo" width="80px"/></a></li>
+            <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <div class="container">
-    <header>
-      <!--
-      <a href="index.html"><img src="images/logo.png"  width="256px"></a>
-      -->
-    </header>
-
-    <!--
-    <section class="main-slider">
-      <ul class="bxslider">
-        <li><div class="slider-item"><img src="images/logo/logo_c.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_m.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_y.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_k.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_r.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_g.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_b.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-      </ul>
-    </section>
-    -->
-    
-    <section>
-      <div class="row">
-        <div class="col-md-12">
-          <article class="content-block">
-            <div class="block-body">
-              <div class="block-text" style="margin-left:10%;margin-right:10%">
-
-                <h2>英雄如鲫腾浊浪</h2>
-                <ul style="list-style: none; padding-left: 10px; font-size:15pt;">
-                  <li><span><i class="fa fa-cube"></i></span> <a href="#HWSIA">你可曾见过黄河解冻的景象罢？峭寒余威尚能凌人，万里冰封之象看似依旧坚固，然而天律已在悄然回旋。当冰河开裂之时，无数凌波逐浪的冰凌激荡流荡，犹如千军万马奔腾咆哮着汹涌前扑。千艘齐发竟渡，几人得登彼岸？那奔涌到海的江流深处浮沉隐现多少英雄，却终究大多被涛声无情吞没，化为白浪翻滚间倏然而过的碎沫了。命运昭然而示：天下英雄当真如过江之鲫，浩荡千里之后，那金灿辉煌的彼岸实则只向少数人慷慨敞开。</a></li>
-                  <li><span><i class="fa fa-cube"></i></span> <a href="#CBHIR">当历史长卷舒展恢弘，惊雷闪电间耀目驰过众多豪杰的身影：项羽只带八千江东子弟渡江逐鹿，到最后竟只剩二十八骑相随；曹操横槊赋诗挥洒雄才，却在赤壁的烈焰中几乎焚尽了大好河图……再往前看，多少名贵家族、金殿玉堂，盛放如花却零落如烟。千帆争过处，成功终究属于罕见的锦鲤——太多弄潮而立的英雄身影，最终只余叹息悠悠沉入波浪，未能在苍茫史册上镌刻半个名字。</a></li>
-                  <li><span><i class="fa fa-cube"></i></span> <a href="#WTIIFD">故而，何为？ 答案其实简洁而凝重：命运只在丈量中显形。</a></li>
-			<li><span><i class="fa fa-cube"></i></span> <a href="#WTIIFD">那些侥幸渡过命运大河抵达彼岸的身影，难道生来就有羽翼不成？其实不然，他们是怀揣坚贞笃定的双脚，在当下尘土弥漫的大地上刻下痕迹才奋力踏出来的。莫负今日每尺，日复一日的积攒才是渡过大河的真正天梯。</a></li>
-			<li><span><i class="fa fa-cube"></i></span> <a href="#WTIIFD">细看吧，那窑火中沉默的老匠人额头刻满岁月，手掌枯厚布满裂痕。汗珠沿着黝暗皮肤的沟壑蜿蜒流淌，如同无声之河在暗处奔涌。他们面对炽红烈焰，精魂专注入微，只将一块粗朴泥胎煅成世间独一无二的宝器；那捶打着剑刃的赤膊少年日日汗水交融，铁星闪烁如初升晨星，终将粗铁淬炼成削铁如泥的锐器；即便是微末小草吧，也仰承苍宇一息，于石缝断崖中攒力生长，最后向天空挥扬属于自己的那一缕青痕。九渊雷动起何处？必是潜于跬步无声的丈量中。</a></li>
-			<li><span><i class="fa fa-cube"></i></span> <a href="#WTIIFD">人世间何曾有捷径登天的道理？“当下”这片土地，是我们赖以生存唯一的根本。纵使前路风削骨立，乱云崩散，我们仍需赤手紧握那寸光阴，倾尽这日气力——如同执锹的老农耕耘一寸，则未来得一份希望；如织娘细心牵一梭新线，日后多一缕华彩。不必翘首望那远方虚幻而绚烂的蜃楼海市，当下踏实踩出的每一个脚印，都在泥土中扎下深深的根基，孕育无限生机，终会撑破地表，直指九天！</a></li>
-		<li><span><i class="fa fa-cube"></i></span> <a href="#WTIIFD">英雄虽似过江之鲫，但英雄之志自有千万种！即使如浪沫碎尽不复寻，那激荡而过的身影里依然饱含生命的热力；哪怕最终如未名的断戟深埋黄沙——君不见那千年河底的青铜箭镞，纵然锈迹斑斑，沉在静默深渊里依然遥指苍空——那是昔日劈开过疾风的英魂。</a></li>
-		<li><span><i class="fa fa-cube"></i></span> <a href="#WTIIFD">因此凡以双足在风雨大地上行走，因敬畏而谦卑，因坚韧而前行，又曾向卑微梦想洒过汗水者，皆为英雄。那些曾用尽全力丈量过脚下的沙土尘埃的人们，即便未能渡过巨浪，亦已在长空投下伟岸的痕迹！</a></li>
-			<li><span><i class="fa fa-cube"></i></span> <a href="#WTIIFD">壮阔世间原无永恒碑牌，只留那奔腾不息中泛起的每寸波光。纵使千帆竞渡终成逝水，但请记住：凡真能触摸大地者，已为历史洪涛拓开了一方精神河床；那些曾倾心一掷的搏斗，最终如星点灯火永恒嵌于穹幕暗处——它们永不熄灭，一直照耀后来者追寻的万古长夜！</a></li>
-      
-                </ul>
-
-                <hr />
-                <a id="HWSIA" class="ua"><h3>制造大数据驱动的智能装备可解释故障诊断与形式化验证（2023-2025）</h3></a>
-                <p><br>该项目获得广东省自然科学基金支持（Grant No. 2023A1515010812）</br></p>
-
-                <a id="CBHIR" class="ua"><h3>海上风电机组传动链可解释故障诊断形式化定义、验证与推理（2022-2025）</h3></a>
-                <p><br>该项目获得广东省风电联合基金支持（Grant No. 2022A1515240027）</br></p>
-                <a id="WTIIFD" class="ua"><h3>基于时序逻辑的风电齿轮箱故障演化机理可解释定量表征方法研究（2024-2026）</h3></a>
-                <p><br>该项目获得国家自然科学基金青年基金支持（Grant No.52305105）</br></p>
-                <a id="ZNZZDU" class="ua"><h3>基于MEC的边缘控制与实时仿真基础理论与方法研究（2022-2024）</h3></a>
-                <p><br>该项目获得科技部重点研发项目子课题经费支持（Grant No.2021YFB3301402）</br></p>                                 
-         
-              </div>
-            </div>
-          </article>
+    <!-- One-screen About Section -->
+    <div class="container about-hero">
+      <div class="row-fluid">
+        <div class="span12">
+          <h1>About Our Research</h1>
+          <div class="tagline">
+            We fuse <strong>logic</strong>, <strong>physics</strong>, and <strong>learning</strong> to build trustworthy, high-performance systems for intelligent manufacturing and critical equipment.
+          </div>
+          <div class="lead">
+            Our lab advances a unified methodology—Signal Temporal Logic (STL), causal structure, and physics-guided priors—to achieve interpretable diagnosis, safe autonomy, verifiable machine learning, and fleet-level health management. We aim for exportable industrial software stacks, standards-ready audit trails, and measurable impact on reliability, yield, and safety.
+          </div>
+          <div class="pill"><i class="fa fa-shield"></i> Verifiable</div>
+          <div class="pill"><i class="fa fa-cogs"></i> Industrial-Grade</div>
+          <div class="pill"><i class="fa fa-eye"></i> Interpretable</div>
         </div>
       </div>
-    </section>
-		
-    </div><!-- /.container -->
 
+      <!-- Cards -->
+      <div class="row-fluid cards-row">
+        <!-- Card 1 -->
+        <div class="span3">
+          <div class="research-card">
+            <h3><i class="fa fa-sitemap"></i> Neuro-Symbolic Foundation Models</h3>
+            <div class="mini">Trustworthy Manufacturing AI</div>
+            <p>
+              Multimodal industrial pretraining with <em>STL-regularized</em> objectives and causal priors for machine-checkable rationales and controller-aware outputs.
+            </p>
+            <div>
+              <span class="chip">Causal KGs</span>
+              <span class="chip">Rule distillation</span>
+              <span class="chip">Cross-site transfer</span>
+              <span class="chip">Uncertainty</span>
+            </div>
+            <div class="cta-row">
+              <a href="#d1" data-toggle="collapse">Read details ↓</a>
+              <a href="./modules/IFD.html">Interpretable Diagnosis →</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="span3">
+          <div class="research-card">
+            <h3><i class="fa fa-hand-paper-o"></i> STL-Driven Safe Autonomy</h3>
+            <div class="mini">Dual-Arm & Mobile Manipulation</div>
+            <p>
+              Plans and controllers synthesized under temporal-logic contracts. Reference governors guarantee safety; residual RL optimizes within verified tubes.
+            </p>
+            <div>
+              <span class="chip">Contract mining</span>
+              <span class="chip">Compositional proofs</span>
+              <span class="chip">Vision-force skills</span>
+              <span class="chip">Runtime monitors</span>
+            </div>
+            <div class="cta-row">
+              <a href="#d2" data-toggle="collapse">Read details ↓</a>
+              <a href="./modules/CSTL.html">Control & STL →</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="span3">
+          <div class="research-card">
+            <h3><i class="fa fa-check-square-o"></i> Verifiable Machine Learning</h3>
+            <div class="mini">Safety-Critical Industrial AI</div>
+            <p>
+              We co-optimize learning and proof: robustness radii, logic satisfaction lower bounds, and coverage-controlled predictions for auditable decisions.
+            </p>
+            <div>
+              <span class="chip">Verification-aware nets</span>
+              <span class="chip">Scalable certifiers</span>
+              <span class="chip">Conformal risks</span>
+              <span class="chip">Audit reports</span>
+            </div>
+            <div class="cta-row">
+              <a href="#d3" data-toggle="collapse">Read details ↓</a>
+              <a href="./modules/ISP.html">Signal & Proof →</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="span3">
+          <div class="research-card">
+            <h3><i class="fa fa-industry"></i> Causal-Logic PHM for Critical Equipment</h3>
+            <div class="mini">Energy • Transport • Aerospace • Petrochemical</div>
+            <p>
+              Physics-guided features + causal graphs + STL abstractions to reconstruct propagation chains and recommend cost-aware interventions across fleets.
+            </p>
+            <div>
+              <span class="chip">Order/TP features</span>
+              <span class="chip">PHM ontology</span>
+              <span class="chip">Causal invariants</span>
+              <span class="chip">Fleet policies</span>
+            </div>
+            <div class="cta-row">
+              <a href="#d4" data-toggle="collapse">Read details ↓</a>
+              <a href="./modules/IDP.html">Systems & Inverse Problems →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /about-hero -->
+
+    <!-- Detailed Introductions (expandable) -->
+    <div class="container details-wrap">
+      <h2>Research Directions — Details</h2>
+      <p class="intro">
+        Click a section to expand. Each direction includes a lab-website–friendly introduction, theory-forward core idea, key tasks, representative pilots, metrics, and alignment with national strategy.
+      </p>
+
+      <div class="accordion" id="about-accordion">
+        <!-- D1 -->
+        <div class="accordion-group" id="d1">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#about-accordion" href="#collapseOne">
+              1) Industrial Neuro-Symbolic Foundation Models for Trustworthy Manufacturing AI
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <h4>Introduction</h4>
+              <p>
+                We build the next generation of manufacturing AI by unifying data-driven learning with logic, physics, and causality. By embedding Signal Temporal Logic (STL) constraints and causal structure into the representation space, our models produce machine-checkable rationales and calibrated uncertainty, enabling cross-factory transfer and controller-aware recommendations.
+              </p>
+              <h4>Core idea (theory-forward)</h4>
+              <p>
+                Pretrain on multimodal industrial data (time series, events, logs) with <em>STL-regularized objectives</em>, <em>causal priors</em> from knowledge graphs, and <em>physics-consistent invariants</em>. Dual formulations turn logic satisfaction into differentiable losses; distilled symbolic rules align human audit with closed-loop control.
+              </p>
+              <h4>Key tasks</h4>
+              <ul>
+                <li>Cross-site adaptation via knowledge-based federated learning and domain-invariant causal anchors.</li>
+                <li>Rule distillation from embeddings to minimal STL clauses with margin guarantees.</li>
+                <li>Controller-aware heads that output safe set-points and alarms aligned with contracts.</li>
+                <li>Uncertainty quantification (e.g., conformal prediction) tied to logic satisfaction margins.</li>
+              </ul>
+              <h4>Pilots & Metrics</h4>
+              <p>
+                <span class="badge-kpi">Flexible job-shops</span>
+                <span class="badge-kpi">Robotic assembly</span>
+                <span class="badge-kpi">Rotating machinery</span>
+                <span class="badge-kpi">Rationale fidelity</span>
+                <span class="badge-kpi">Zero/low-shot transfer</span>
+                <span class="badge-kpi">Causal precision/recall</span>
+              </p>
+              <p class="muted-note">National fit: 工业软件自主可控 / 新质生产力。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- D2 -->
+        <div class="accordion-group" id="d2">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#about-accordion" href="#collapseTwo">
+              2) STL-Driven Safe Autonomy for Dual-Arm & Mobile Manipulation
+            </a>
+          </div>
+          <div id="collapseTwo" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <h4>Introduction</h4>
+              <p>
+                We engineer robot autonomy that is safe by construction and fast by design. Safety is specified up-front as <em>temporal logic contracts</em> and embedded throughout planning, learning, and control. The result is dual-arm and mobile manipulation that adapts to changing workcells while certifying task timing, force limits, and human–robot interaction rules.
+              </p>
+              <h4>Core idea (theory-forward)</h4>
+              <p>
+                A hierarchical stack where high-level plans and low-level controllers are synthesized and trained under STL specifications. <em>Reference governors</em> project actions onto contract-satisfying manifolds; <em>residual RL</em> optimizes performance inside verified tubes. Runtime monitors provide certificate-based intervention and graceful recovery.
+              </p>
+              <h4>Key tasks</h4>
+              <ul>
+                <li>Contract mining from expert procedures; automatic refinement to STL/contract forms.</li>
+                <li>Certifiable motion primitives with compositional proofs of safety and timing.</li>
+                <li>Vision–force multimodal policies trained with curriculum schedules respecting contracts.</li>
+                <li>Online contract monitoring with recovery policies and formal violation explanations.</li>
+              </ul>
+              <h4>Pilots & Metrics</h4>
+              <p>
+                <span class="badge-kpi">Force-controlled assembly</span>
+                <span class="badge-kpi">AGV–arm handoff</span>
+                <span class="badge-kpi">Rapid changeover</span>
+                <span class="badge-kpi">STL satisfaction</span>
+                <span class="badge-kpi">Verified accuracy</span>
+                <span class="badge-kpi">Near-miss reduction</span>
+              </p>
+              <p class="muted-note">National fit: 先进制造装备与智能机器人。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- D3 -->
+        <div class="accordion-group" id="d3">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#about-accordion" href="#collapseThree">
+              3) Verifiable Machine Learning (VML) for Safety-Critical Industrial AI
+            </a>
+          </div>
+          <div id="collapseThree" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <h4>Introduction</h4>
+              <p>
+                When AI governs critical lines and equipment, “works on average” is not enough. We design learning systems that carry <em>proof-like guarantees</em>: robustness radii, coverage-controlled predictions, and logic satisfaction lower bounds. Verification is not a post-hoc checkbox—it is co-optimized with learning.
+              </p>
+              <h4>Core idea (theory-forward)</h4>
+              <p>
+                Integrate <em>formal verification</em> into the training–certification–runtime triad. During training, impose <em>STL/physics constraints</em> and <em>robustness dual bounds</em> as differentiable regularizers. Post-training, certify with scalable verifiers (interval/linear-relaxation/dual networks, Lipschitz bounding). At runtime, pair predictions with <em>conformal risk controls</em> and lightweight monitors for shift detection and safe degradation.
+              </p>
+              <h4>Key tasks</h4>
+              <ul>
+                <li>Verification-aware architectures (monotone/PL activations, certifier heads, provable Lipschitz control).</li>
+                <li>Scalable certification via partitioning, importance sampling, and teacher→student “verifier distillation.”</li>
+                <li>Risk-aware serving: conformal prediction under temporal dependence and STL constraints.</li>
+                <li>Audit tooling: machine-readable reports (bounds, coverage, violation traces) for compliance and standards.</li>
+              </ul>
+              <h4>Pilots & Metrics</h4>
+              <p>
+                <span class="badge-kpi">Force/quality envelopes</span>
+                <span class="badge-kpi">Spec limits</span>
+                <span class="badge-kpi">Robustness radius</span>
+                <span class="badge-kpi">STL lower bounds</span>
+                <span class="badge-kpi">Coverage guarantees</span>
+                <span class="badge-kpi">Audit pass rate</span>
+              </p>
+              <p class="muted-note">National fit: 关键软件自主创新 / 安全可控AI。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- D4 -->
+        <div class="accordion-group" id="d4">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#about-accordion" href="#collapseFour">
+              4) Causal-Logic PHM for Critical Equipment Ecosystems
+            </a>
+          </div>
+          <div id="collapseFour" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <h4>Introduction</h4>
+              <p>
+                We move beyond alarms to actionable causality in Prognostics & Health Management. By coupling physics-guided signal processing with causal graphs and temporal logic abstraction, we reconstruct fault propagation chains across components, systems, and fleets—turning heterogeneous data into interventions that save uptime, energy, and cost.
+              </p>
+              <h4>Core idea (theory-forward)</h4>
+              <p>
+                Fuse order/transfer-path–aware features with causal discovery and do-calculus–informed reasoning, then elevate events to STL templates that encode mechanism-consistent signatures. Perform inference on a multi-layer PHM knowledge graph to generate interventions (derating, maintenance windows) with transparent justifications.
+              </p>
+              <h4>Key tasks</h4>
+              <ul>
+                <li>Unified ontology linking events → mechanisms → actions across fleets and vendors.</li>
+                <li>Robust feature extraction under variable regimes; virtual decoupling of mixed excitations.</li>
+                <li>Domain generalization with causal invariants for cross-asset transfer.</li>
+                <li>Fleet-level decision support: counterfactual simulation and cost-aware maintenance policies with logic guarantees.</li>
+              </ul>
+              <h4>Pilots & Metrics</h4>
+              <p>
+                <span class="badge-kpi">Wind & gas turbines</span>
+                <span class="badge-kpi">Rail traction</span>
+                <span class="badge-kpi">CNC & spindles</span>
+                <span class="badge-kpi">Lead time↑</span>
+                <span class="badge-kpi">Forced outage↓</span>
+                <span class="badge-kpi">RUL precision↑</span>
+              </p>
+              <p class="muted-note">National fit: 能源安全 / 交通强国 / 高端装备可靠性工程。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /details-wrap -->
+
+    <!-- Footer (unchanged) -->
     <footer class="footer">
-      <div class="footer-bottom">  
-        <i class="fa fa-copyright"></i> Copyright 2018. All rights reserved.<br>
+      <div class="footer-bottom">
+        <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.<br>
       </div>
     </footer>
 
-    <!-- Bootstrap core JavaScript
-      ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../scripts/jquery.min.js"></script>
-    <script src="../../scripts/bootstrap.min.js"></script>
-    <script src="../../scripts/jquery.bxslider.js"></script>
-    <script src="../../scripts/mooz.scripts.min.js"></script>
+    <!-- JS (unchanged) -->
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jquery.bxslider.js"></script>
+    <script src="scripts/mooz.scripts.min.js"></script>
   </body>
 </html>
