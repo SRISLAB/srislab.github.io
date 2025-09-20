@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SRIS Lab — Gallery (Team Building & Conferences)">
+  <meta name="author" content="SRIS Lab">
+  <link rel="icon" href="images/logo/RMX_16.ico">
+  <title>SRIS — Gallery</title>
+
+  <!-- Bootstrap & site CSS (reuse your stack) -->
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="style/jquery.bxslider.css" rel="stylesheet">
+  <link href="style/style.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#0f172a; --ink2:#1f2937; --muted:#475569; --line:#e5e7eb;
+      --brand:#2563eb; --soft:#f8fafc; --chip:#f1f5f9;
+    }
+    body{ color:var(--ink2); background:#ffffff; }
+
+    /* Hero */
+    .gallery-hero{
+      margin-top:70px; padding:24px; border:1px solid var(--line); border-radius:14px;
+      background: linear-gradient(180deg,#f8fafc 0%,#eef2ff 60%,#e0f2fe 100%);
+    }
+    .gallery-hero h1{ margin:0 0 6px; font-weight:800; color:var(--ink); }
+    .gallery-hero .lead{ color:#475569; font-size:15px; line-height:1.6; }
+
+    /* Filter bar */
+    .filter-bar{ margin:12px 0 6px; }
+    .filter-btn{
+      display:inline-block; margin:6px 8px 0 0; padding:6px 12px; border-radius:999px;
+      border:1px solid var(--line); background:#fff; color:var(--ink); font-weight:600; font-size:12px;
+    }
+    .filter-btn.active{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    .filter-btn:hover{ text-decoration:none; }
+
+    /* Gallery grid */
+    .gallery-wrap{ margin-top:16px; }
+    .photo-card{
+      border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff;
+      box-shadow:0 1px 2px rgba(15,23,42,0.05); transition:.2s ease;
+      margin-bottom:16px; cursor:pointer; height:100%;
+    }
+    .photo-card:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(15,23,42,0.08); }
+    .thumb{
+      width:100%; aspect-ratio: 16 / 9;        /* consistent window */
+      background:#fff; display:block; overflow:hidden; border-bottom:1px solid var(--line);
+    }
+    .thumb img{
+      width:100%; height:100%; object-fit:cover; object-position:center; display:block;
+    }
+    .photo-meta{ padding:10px 12px; }
+    .photo-title{ margin:0; font-weight:700; font-size:14px; color:var(--ink); }
+    .photo-desc{ margin:4px 0 0; color:#64748b; font-size:12px; }
+    .chips{ margin-top:6px; }
+    .chip{
+      display:inline-block; background:var(--chip); border:1px solid #e2e8f0; color:#334155;
+      font-size:11px; padding:3px 8px; border-radius:999px; margin:2px 4px 0 0;
+    }
+
+    /* Modal image should adapt nicely */
+    .modal-img{ width:100%; height:auto; display:block; border-radius:6px; }
+    .modal-title{ font-weight:800; }
+    .meta-small{ color:#64748b; font-size:12px; }
+
+    /* Small tweak to tighten columns spacing */
+    .row.tight > [class*="col-"]{ padding-left:8px; padding-right:8px; }
+    .container.tight{ padding-left:8px; padding-right:8px; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li class="dropdown">
+            <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="journal.html">Journal Papers</a></li>
+              <li><a href="conference.html">Conference Papers</a></li>
+            </ul>
+          </li>
+          <li class="active"><a href="gallery.html">Gallery</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="index.html">English</a></li>
+          <li><a href="index_x.html">中文</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container gallery-hero">
+    <h1>Gallery</h1>
+    <p class="lead">
+      A look at our <strong>Team Building</strong> moments and <strong>Conference Activities</strong> across years.
+      Click any photo to view it larger.
+    </p>
+
+    <!-- Filters -->
+    <div class="filter-bar">
+      <span class="meta-small" style="margin-right:8px;">Category:</span>
+      <a href="#" class="filter-btn active" data-filter="all"><i class="fa fa-th-large"></i> All</a>
+      <a href="#" class="filter-btn" data-filter="team"><i class="fa fa-users"></i> Team Building</a>
+      <a href="#" class="filter-btn" data-filter="conf"><i class="fa fa-university"></i> Conferences</a>
+      <span class="meta-small" style="margin:0 8px 0 16px;">Year:</span>
+      <a href="#" class="filter-btn" data-year="all">All</a>
+      <a href="#" class="filter-btn" data-year="2025">2025</a>
+      <a href="#" class="filter-btn" data-year="2024">2024</a>
+      <a href="#" class="filter-btn" data-year="2023">2023</a>
+    </div>
+  </div>
+
+  <!-- GALLERY GRID -->
+  <div class="container tight gallery-wrap">
+    <div class="row tight" id="galleryGrid">
+
+      <!-- ======= EXAMPLES (replace with your real images) ======= -->
+   
+      <!-- Team building 2024 -->
+      <div class="col-xs-12 col-sm-6 col-md-4 gallery-item" data-group="team" data-year="2024">
+        <div class="photo-card" data-full="images/gallery/labvisitTCL.jpg" data-title="Lab Visit  to TCL" data-caption="Welcome dinner for new students (Sept 2024)">
+          <div class="thumb"><img src="images/gallery/labvisitTCL.jpg" alt="Lab Dinner 2024"></div>
+          <div class="photo-meta">
+            <h4 class="photo-title">Lab Visit  to TCL</h4>
+            <p class="photo-desc">Lab Visit  to TCL (Sept 2024)</p>
+            <div class="chips"><span class="chip">Team Building</span><span class="chip">2024</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conference 2025 -->
+      <div class="col-xs-12 col-sm-6 col-md-4 gallery-item" data-group="conf" data-year="2025">
+        <div class="photo-card" data-full="images/gallery/conf_2025_icml_workshop.jpg" data-title="Dynamic Signal Analysis Workshop" data-caption="Invited (April 2024)">
+          <div class="thumb"><img src="images/gallery/gangchenApirl2025.jpg" alt="ICML Workshop 2025"></div>
+          <div class="photo-meta">
+            <h4 class="photo-title">DAcademic Conference on Dynamic Signal Analysis of China Vibration Engineering Society</h4>
+            <p class="photo-desc">Invited session (April 2025)</p>
+            <div class="chips"><span class="chip">Conference</span><span class="chip">2025</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conference 2024 -->
+      <div class="col-xs-12 col-sm-6 col-md-4 gallery-item" data-group="conf" data-year="2024">
+        <div class="photo-card" data-full="images/gallery/CCC2024.jpg" data-title="CCC2024 Special Session" data-caption="Invited talk (Nov 2024)">
+          <div class="thumb"><img src="images/gallery/CCC2024.jpg" alt="MSSP 2024"></div>
+          <div class="photo-meta">
+            <h4 class="photo-title">Dr.Gang Chen Attended the CCC2024</h4>
+            <p class="photo-desc">Kunming (Dec. 2024)</p>
+            <div class="chips"><span class="chip">Conference</span><span class="chip">2024</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more items by copying a block and changing file, title, caption, group & year -->
+      <!-- e.g., data-group="team" or "conf"; data-year="2023/2024/2025/..." -->
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="border-bottom:1px solid #e5e7eb;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="photoModalLabel">Photo</h4>
+          <div class="meta-small" id="photoModalMeta"></div>
+        </div>
+        <div class="modal-body" style="padding:12px;">
+          <img id="photoModalImg" class="modal-img" src="" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/bootstrap.min.js"></script>
+  <script src="scripts/jquery.bxslider.js"></script>
+  <script src="scripts/mooz.scripts.min.js"></script>
+  <script>
+    // Lightbox: open modal with full image + title + caption
+    $(function(){
+      $('.photo-card').on('click', function(){
+        var full = $(this).data('full');
+        var title = $(this).data('title') || 'Photo';
+        var cap = $(this).data('caption') || '';
+        $('#photoModalImg').attr('src', full);
+        $('#photoModalLabel').text(title);
+        $('#photoModalMeta').text(cap);
+        $('#photoModal').modal('show');
+      });
+
+      // Filtering
+      var currentGroup = 'all', currentYear = 'all';
+      function applyFilters(){
+        $('.gallery-item').each(function(){
+          var g = $(this).data('group');
+          var y = String($(this).data('year'));
+          var showGroup = (currentGroup === 'all' || g === currentGroup);
+          var showYear  = (currentYear  === 'all' || y === currentYear);
+          $(this).toggle(showGroup && showYear);
+        });
+      }
+      $('.filter-btn[data-filter]').on('click', function(e){
+        e.preventDefault();
+        $('.filter-btn[data-filter]').removeClass('active');
+        $(this).addClass('active');
+        currentGroup = $(this).data('filter');
+        applyFilters();
+      });
+      $('.filter-btn[data-year]').on('click', function(e){
+        e.preventDefault();
+        $('.filter-btn[data-year]').removeClass('active');
+        $(this).addClass('active');
+        currentYear = $(this).data('year');
+        applyFilters();
+      });
+    });
+  </script>
+</body>
+</html>
