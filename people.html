@@ -1,469 +1,509 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="People">
-    <meta name="author" content="WeiQM">
-    <link rel="icon" href="images/logo/RMX_16.ico">
-    <title>SRIS - People</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Custom styles for this template -->
-    <link href="style/jquery.bxslider.css" rel="stylesheet">
-    <link href="style/style.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SRIS Lab — People">
+  <meta name="author" content="SRIS Lab">
+  <link rel="icon" href="images/logo/RMX_16.ico">
+  <title>SRIS - People</title>
 
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li class="active"><a href="people.html">People</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li class="dropdown">
-              <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="journal.html">Journal Papers</a></li>
-                <li><a href="conference.html">Conference Papers</a></li>
-              </ul>
-            </li>
-            <li><a href="downloads.html">Downloads</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">English</a></li>
-            <li><a href="index_x.html">中文</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <!-- Bootstrap & site CSS -->
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="style/jquery.bxslider.css" rel="stylesheet">
+  <link href="style/style.css" rel="stylesheet">
 
+  <!-- Page styles -->
+  <style>
+    :root{
+      --ink:#0f172a;
+      --ink2:#1f2937;
+      --muted:#475569;
+      --line:#e5e7eb;
+      --soft:#f8fafc;
+      --brand:#2563eb;
+      --chip:#f1f5f9;
+    }
+    body{ color:var(--ink2); background:#ffffff; }
+    .navbar-inverse{ background:#0f172a; border-color:#0f172a; }
+    .navbar-inverse .navbar-nav>li>a{ color:#e5e7eb; }
+    .navbar-inverse .navbar-nav>.active>a{ color:#fff; border-bottom:2px solid var(--brand); background:transparent; }
+
+    /* Hero */
+    .people-hero{
+      margin-top:70px;
+      padding:24px 24px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:linear-gradient(180deg,#f8fafc 0%,#eef2ff 60%,#e0f2fe 100%);
+    }
+    .people-hero h1{ margin:0 0 6px; font-weight:800; color:var(--ink); }
+    .people-hero .lead{ color:#475569; font-size:15px; line-height:1.6; }
+
+    /* Filter bar */
+    .filter-bar{
+      margin-top:14px; margin-bottom:6px;
+    }
+    .filter-btn{
+      display:inline-block; margin:6px 8px 0 0; padding:6px 12px; border-radius:999px;
+      border:1px solid var(--line); background:#fff; color:var(--ink); font-weight:600; font-size:12px;
+    }
+    .filter-btn.active{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    .filter-btn:hover{ text-decoration:none; }
+
+    /* Grid */
+    .people-section{ margin-top:18px; }
+    .person-card{
+      border:1px solid var(--line); border-radius:12px; background:#fff;
+      height:100%; display:flex; flex-direction:column; overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow:0 1px 2px rgba(15,23,42,.05);
+    }
+    .person-card:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(15,23,42,.08); border-color:#dbe0e6; }
+    .avatar-wrap{
+      width:100%; height:220px; overflow:hidden; background:#fff;
+      display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line);
+    }
+    .avatar-wrap img{
+      width:100%; height:100%; object-fit:cover; object-position:center;
+      display:block;
+    }
+    .person-body{ padding:12px 14px; display:flex; flex-direction:column; gap:6px; }
+    .person-name{ margin:0; font-size:16px; font-weight:800; color:var(--ink); line-height:1.2; }
+    .person-role{ font-size:12px; color:#64748b; }
+    .person-meta{ font-size:12px; color:#64748b; }
+    .person-bio{ font-size:13px; color:#334155; line-height:1.55; margin:0; }
+    .chips{ margin-top:6px; }
+    .chip{
+      display:inline-block; background:var(--chip); border:1px solid #e2e8f0; color:#334155;
+      font-size:11px; padding:3px 8px; border-radius:999px; margin:2px 4px 0 0;
+    }
+    .person-links{ margin-top:8px; }
+    .person-links a{
+      font-size:12px; margin-right:10px; text-decoration:none; color:var(--brand);
+    }
+    .person-links a:hover{ text-decoration:underline; }
+
+    /* Section headers */
+    .group-title{
+      margin:24px 0 10px; font-weight:900; color:var(--ink); border-left:4px solid var(--brand);
+      padding-left:10px;
+    }
+
+    /* Alumni list */
+    .alumni{
+      margin-top:8px; padding:14px; border:1px dashed var(--line); border-radius:12px; background:#fff;
+      font-size:13px; color:#334155;
+    }
+    .alumni p{ margin:0 0 6px; }
+
+    /* Responsiveness */
+    @media (max-width: 991px){
+      .avatar-wrap{ height:200px; }
+    }
+    @media (max-width: 767px){
+      .avatar-wrap{ height:180px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-    <header>
-      <!--
-      <a href="index.html"><img src="images/logo.png"  width="256px"></a>
-      -->
-    </header>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="people.html">People</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li class="dropdown">
+            <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="journal.html">Journal Papers</a></li>
+              <li><a href="conference.html">Conference Papers</a></li>
+            </ul>
+          </li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="index.html">English</a></li>
+          <li><a href="index_x.html">中文</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
+  <div class="container">
 
-
-    <!--
-    <section class="main-slider">
-      <ul class="bxslider">
-        <li><div class="slider-item"><img src="images/logo/logo_c.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_m.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_y.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_k.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_r.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_g.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_b.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-      </ul>
-    </section>
-    -->
-
-    <section>
+    <!-- Hero -->
+    <section class="people-hero">
       <div class="row">
-        <div class="col-md-12">
-          <!-- ------------------ Manager ------------------ -->
-          <h2 class="bio">PI</h2>
-          <article class="bio">
-            <table><tbody>
-              <tr><!-- A New Person -->
-              <td valign="middle">
-                <div class="bio-image">
-                  <img src="images/photo/gangchen.png" alt="GangChen's photo" >
-                </div>
-              </td>
-              <td  valign="top">
-                <h3>陈 &nbsp; 刚 &nbsp; Gang Chen </h3>
-                <span><i class="fa fa-graduation-cap"></i> Associate Professor</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:gangchen@scut.edu.cn">gangchen@scut.edu.cn</a></span>
-                <p>
-                    Dr. Gang Chen received the bachelor’s and master’s degrees in mechanical engineering from Shanghai Jiao Tong University, Shanghai, China, in 2012 and 2015, respectively and his Ph.D. degree in mechanical and aerospace engineering from the University of California, Davis, Davis, CA, in 2020. He was a research fellow with the School of Electrical and Electronic Engineering, Nanyang Technological University, Singapore from 2020 to 2021. He is currently an Associate Professor at the Shien-Ming Wu School of Intelligent Engineering, South China University of Technology, China. His research interests include machine learning, formal methods, control, signal processing and fault diagnosis.
-                </p>
-              </td><!-- Person End -->
-              </tr>
-            </tbody>
-          </table></article>
-
-          <hr />
-          <!-- ------------------ postdoc Students ------------------ -->
-          <h2 class="bio">Postdocs</h2>
-          <article class="bio">
-            <table><tbody>
-            <tr><!-- A New Person -->
-              <td valign="top">
-                <div class="bio-image">
-                  <img src="images/photo/Khan.jpg" alt="khan's photo">
-                </div>
-              </td>
-              <td  valign="top">
-                <h3>Khan &nbsp; Tasir</h3>
-                <span><i class="fa fa-clock-o"></i> 2022.09 ~ Now</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:luph1356023588@126.com">Email</a></span>
-                <p>
-                  Position: Postdoc, Applied Mathematics
-                </p>
-                <p>
-                  Research Area:  Wind prediction.
-                </p>
-              </td>
-            </tr><!-- Person End -->
-         </tbody>
-        </table></article>
-            <hr />
-
-          <!-- ------------------ PhD Students ------------------ -->
-          <h2 class="bio">PhD</h2>
-          <article class="bio">
-            <table><tbody>
-            <tr><!-- A New Person -->
-              <td valign="top">
-                <div class="bio-image">
-                  <img src="images/photo/Penghonglu.jpg" alt="HuDY's photo">
-                </div>
-              </td>
-              <td  valign="top">
-                <h3>逯鹏宏 &nbsp; Penghong Lu</h3>
-                <span><i class="fa fa-clock-o"></i> 2022.09 ~ Now</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:luph1356023588@126.com">Email</a></span>
-                <p>
-                  Position: Ph.D. Student, Mechanical   Engineering
-                </p>
-                <p>
-                  Research Area:  Formal methods and their applications to discrete system fault diagnosis and fault tolerant control.
-                </p>
-              </td>
-            </tr><!-- Person End -->
-
-            <tr><!-- A New Person -->
-              <td valign="top">
-                <div class="bio-image">
-                  <img src="images/photo/yuanjunlin.jpg" alt="junlin's photo">
-                </div>
-              </td>
-              <td  valign="top">
-                <h3>袁俊琳 &nbsp; Junlin Yuan</h3>
-                <span><i class="fa fa-clock-o"></i> 2023.09 ~ Now</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:jlyuan20@163.com">Email</a></span>
-                <p>
-                  Position: Ph.D. Student, Mechanical   Engineering
-                </p>
-                <p>
-                  Research Area:  Formal methods and their applications to fault diagnosis.
-                </p>
-              </td>
-            </tr><!-- Person End -->
-                          <tr><!-- A New Person -->
-              <td valign="top">
-                <div class="bio-image">
-                  <img src="images/photo/zhenpeng.png" alt="junlin's photo">
-                </div>
-              </td>
-              <td  valign="top">
-                <h3>劳振鹏 &nbsp; Zhenpeng Lao</h3>
-                <span><i class="fa fa-clock-o"></i> 2024.09 ~ Now</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:jlyuan20@163.com">Email</a></span>
-                <p>
-                  Position: Ph.D. Student, Mechanical   Engineering
-                </p>
-                <p>
-                  Research Area:  Formal methods and their applications to fault diagnosis.
-                </p>
-              </td>
-            </tr><!-- Person End -->
-            <tr><!-- A New Person -->
-              <td valign="top">
-                <div class="bio-image">
-                  <img src="images/photo/weihong.jpg" alt="junlin's photo">
-                </div>
-              </td>
-              <td  valign="top">
-                <h3>岑伟洪 &nbsp; Weihong Cen</h3>
-                <span><i class="fa fa-clock-o"></i> 2022.09 ~ Now</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:jlyuan20@163.com">Email</a></span>
-                <p>
-                  Position: Ph.D. Student, Mechanical   Engineering
-                </p>
-                <p>
-                  Research Area:  Manufacturing Systems Analysis with machine learning methods.
-                </p>
-                <p> Co-supervised by Professor Xie </p>
-              </td>
-            </tr><!-- Person End -->
-          </tbody>
-        </table></article>
-            
-            <hr />
-          <!-- ------------------ Master Students ------------------ -->
-          <h2 class="bio">Master</h2>
-          <article class="bio">
-            <table><tbody>
-                <tr><!-- A New Person -->
-                  <td valign="top">
-                    <div class="bio-image">
-                      <img src="images/photo/zhuhanrui.jpg" alt="MeiH's photo">
-                    </div>
-                  </td>
-                  <td  valign="top">
-                    <h3>涵悅 &nbsp; 朱 &nbsp; Hanyue Zhu</h3>
-                    <span><i class="fa fa-clock-o"></i> 2023.09 ~ Now</span>
-                    <span><i class="fa fa-envelope-o"></i> <a href="zhyscu2023@163.com">Email</a></span>
-                    <p>
-                      Position: Master Student, Electronic Information Engineering
-                    </p>
-                    <p> Research Area: Physical-informed neural network</p>
-                  </td>
-                  </tr><!-- Person End -->
-
-                <tr><!-- A New Person -->
-                  <td valign="top">
-                    <div class="bio-image">
-                      <img src="images/photo/zhangjiarui.jpg" alt="MeiH's photo">
-                    </div>
-                  </td>
-                  <td  valign="top">
-                    <h3>稼瑞 &nbsp; 张 &nbsp; Jiarui Zhang</h3>
-                    <span><i class="fa fa-clock-o"></i> 2023.09 ~ Now</span>
-                    <span><i class="fa fa-envelope-o"></i> <a href="2046236156@qq.com">Email</a></span>
-                    <p>
-                      Position: Master Student, Electronic Information Engineering
-                    </p>
-                    <p> Research Area: Robot Control with reinforcement learning</p>
-                  </td>
-                  </tr><!-- Person End -->           
-
-                <tr><!-- A New Person -->
-                  <td valign="top">
-                    <div class="bio-image">
-                      <img src="images/photo/zhangyishuo.png" alt="MeiH's photo">
-                    </div>
-                  </td>
-                  <td  valign="top">
-                    <h3>艺栎 &nbsp; 张 &nbsp; Yiyue Zhang</h3>
-                    <span><i class="fa fa-clock-o"></i> 2023.09 ~ Now</span>
-                    <span><i class="fa fa-envelope-o"></i> <a href="wi21060223@mail.scut.edu.cn">Email</a></span>
-                    <p>
-                      Position: Master Student, Electronic Information Engineering
-                    </p>
-                    <p> Research Area: Physical-informed neural network</p>
-                  </td>
-                  </tr><!-- Person End -->                      
-
-                  <tr><!-- A New Person -->
-                    <td valign="top">
-                      <div class="bio-image">
-                        <img src="images/photo/zhenhao.jpg" alt="MeiH's photo">
-                      </div>
-                    </td>
-                    <td  valign="top">
-                      <h3>政豪 &nbsp; 林 &nbsp; Zhenhao Lin</h3>
-                      <span><i class="fa fa-clock-o"></i> 2024.09 ~ Now</span>
-                      <span><i class="fa fa-envelope-o"></i> <a href="wi21060223@mail.scut.edu.cn">Email</a></span>
-                      <p>
-                        Position: Master Student, Mechanical   Engineering
-                      </p>
-                      <p> Research Area: Control Synthesis with Temporal Logic</p>
-                    </td>
-                    </tr><!-- Person End -->                        
-
-                    <tr><!-- A New Person -->
-                      <td valign="top">
-                        <div class="bio-image">
-                          <img src="images/photo/mingyu.jpg" alt="MeiH's photo">
-                        </div>
-                      </td>
-                      <td  valign="top">
-                        <h3>明宇 &nbsp; 陈 &nbsp; Mingyu Chen</h3>
-                        <span><i class="fa fa-clock-o"></i> 2024.09 ~ Now</span>
-                        <span><i class="fa fa-envelope-o"></i> <a href="wi21060223@mail.scut.edu.cn">Email</a></span>
-                        <p>
-                          Position: Master Student, Mechanical   Engineering
-                        </p>
-                        <p> Research Area: Intepretable Fault Diagosis with Temporal Logic</p>
-                      </td>
-                      </tr><!-- Person End -->          
-                      
-                      <tr><!-- A New Person -->
-                        <td valign="top">
-                          <div class="bio-image">
-                            <img src="images/photo/tangchao.jpg" alt="MeiH's photo">
-                          </div>
-                        </td>
-                        <td  valign="top">
-                          <h3>超 &nbsp; 唐 &nbsp; Chao Tang</h3>
-                          <span><i class="fa fa-clock-o"></i> 2024.09 ~ Now</span>
-                          <span><i class="fa fa-envelope-o"></i> <a href="wi21060223@mail.scut.edu.cn">Email</a></span>
-                          <p>
-                            Position: Master Student, Mechanical   Engineering
-                          </p>
-                          <p> Research Area: Reinforcement Learning Control with Temporal Logic</p>
-                        </td>
-                        </tr><!-- Person End -->      
-
-   
-              <tr><!-- A New Person -->
-                <td valign="top">
-                  <div class="bio-image">
-                    <img src="images/photo/jiayuanfeng.jpg" alt="jiayf's photo">
-                  </div>
-                </td>
-                <td  valign="top">
-                  <h3>贾 &nbsp; 远峰 &nbsp; Yuanfeng Jia</h3>
-                  <span><i class="fa fa-clock-o"></i> 2025.09 ~ Now</span>
-                  <span><i class="fa fa-envelope-o"></i> <a href="mailto:fe12012@163.com">Email</a></span>
-                  <p>
-                    Position: Master Student, Mechanical   Engineering
-                  </p>
-                  <p>
-                    Research Area: Control Theory with Temporal Logic.
-                  </p>
-                </td>
-              </tr><!-- Person End -->
-              <tr><!-- A New Person -->
-                <td valign="top">
-                  <div class="bio-image">
-                    <img src="images/photo/yinchuxing.jpg" alt="yin's photo">
-                  </div>
-                </td>
-                <td  valign="top">
-                  <h3>殷 &nbsp; 楚钦 &nbsp; Chuqin Yin</h3>
-                  <span><i class="fa fa-clock-o"></i> 2025.09 ~ Now</span>
-                  <span><i class="fa fa-envelope-o"></i> <a href="ycqin1001@163.com">Email</a></span>
-                  <p>
-                    Position: Master Student, Mechanical   Engineering
-                  </p>
-                  <p>
-                    Research Area: Control Theory with Temporal Logic..
-                  </p>
-                </td>
-                </tr><!-- Person End -->
-
-                <tr><!-- A New Person -->
-                  <td valign="top">
-                    <div class="bio-image">
-                      <img src="images/photo/yinpengyu.jpg" alt="MeiH's photo">
-                    </div>
-                  </td>
-                  <td  valign="top">
-                    <h3>尹 &nbsp; 鹏宇 &nbsp; Pengyu Yin</h3>
-                    <span><i class="fa fa-clock-o"></i> 2025.09 ~ Now</span>
-                    <span><i class="fa fa-envelope-o"></i> <a href="eagleworld2333@163.com">Email</a></span>
-                    <p>
-                      Position: Master Student, Electronic Information Engineering
-                    </p>
-                    <p> Research Area: Fault Sourcing with Causality</p>
-                  </td>
-                  </tr><!-- Person End -->
-
-                         </tbody>
-              </table></article> 
-
-          <hr />
-          
-          <!-- ------------------ Former Graduated Students ------------------ -->
-          <h2 class="bio">Undergraduate</h2>
-          <article class="bio">
-            <table><tbody>
-
-            <tr><!-- A New Person -->
-              <td valign="top">
-                <div class="bio-image">
-                  <img src="images/photo/peixiyang.jpg" alt="peixiyang's photo">
-                </div>
-              </td>
-              <td  valign="top">
-                <h3> 杨 &nbsp;沛希 &nbsp; Peixi Yang</h3>
-                <span><i class="fa fa-clock-o"></i> 2023.03 ~ Now</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:13630064677@163.com">Email</a></span>
-                <p>
-                  Position: Undergraduate Student, Smart Manufacturing Engineering
-                </p>
-                <p> Research Area: Mechanical design</p>
-              </td>
-            </tr><!-- Person End -->
-
-            <tr><!-- A New Person -->
-              <td valign="top">
-                <div class="bio-image">
-                  <img src="images/photo/yanyulu.jpg" alt="yanyulu's photo">
-                </div>
-              </td>
-              <td  valign="top">
-                <h3> 路 &nbsp;延宇 &nbsp; Peixi Yang</h3>
-                <span><i class="fa fa-clock-o"></i> 2023.03 ~ Now</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:2269362564@qq.com">Email</a></span>
-                <p>
-                  Position: Undergraduate Student, Smart Manufacturing Engineering
-                </p>
-                <p> Research Area: Mechanical design</p>
-              </td>
-            </tr><!-- Person End -->
-            <tr><!-- A New Person -->
-              <td valign="top">
-                <div class="bio-image">
-                  <img src="images/photo/katongjia.jpg" alt="katongjia's photo">
-                </div>
-              </td>
-              <td  valign="top">
-                <h3> 贾 &nbsp;凯同 &nbsp; Katong Jia</h3>
-                <span><i class="fa fa-clock-o"></i> 2023.03 ~ Now</span>
-                <span><i class="fa fa-envelope-o"></i> <a href="mailto:1467907567@qq.com">Email</a></span>
-                <p>
-                  Position: Undergraduate Student, Smart Manufacturing Engineering
-                </p>
-                <p> Research Area: Image processing</p>
-              </td>
-            </tr><!-- Person End -->
-
-  
-            </tbody>
-           </table></article>
-          <!-- ------------------ Former Graduated Students ------------------ -->
-          <h2 class="bio">Former Graduated Students</h2>
-            <p>Du Li, Year 2022-2025; Position: Master; First position after graduation: </p>
-           <p>Cai Li, Year 2022-2025; Position: Master; First position after graduation: Startup</p>
-           <p>Ziyue Zeng, Year 2022-2025; Position: Master; First position after graduation: South China University of Technology</p>
-          <p>Ruoyao Tian, Year 2022-2023; Position: Undergraduate; First position after graduation: MS student at Zhejiang University</p>
-          <p>Wen Xin</p>
-          <p>Zhang Chen, Year 2023-2025; Position: Undergraduate; First position after graduation: MS student at Harbin Institute of Technology, Shenzhen</p>
-          <p>Zhang Ran, Year 2023-2024; Position : Undergraduate;  First position after graduation: MS student at University of Science and Technology of China</p>
+        <div class="col-sm-12">
+          <h1>SRIS Lab — People</h1>
+          <p class="lead">
+            We are a team of researchers building <strong>Smart, Reliable, and Interpretable Systems</strong>.
+            This page highlights the PI, postdoctoral fellows, PhD and Master students, undergraduates, and alumni.
+          </p>
+          <div class="filter-bar">
+            <a href="#" class="filter-btn active" data-filter="all"><i class="fa fa-th-large"></i> All</a>
+            <a href="#" class="filter-btn" data-filter="pi"><i class="fa fa-user"></i> PI</a>
+            <a href="#" class="filter-btn" data-filter="postdoc"><i class="fa fa-flask"></i> Postdocs</a>
+            <a href="#" class="filter-btn" data-filter="phd"><i class="fa fa-graduation-cap"></i> PhD</a>
+            <a href="#" class="filter-btn" data-filter="master"><i class="fa fa-mortar-board"></i> Masters</a>
+            <a href="#" class="filter-btn" data-filter="ug"><i class="fa fa-users"></i> Undergrad</a>
+            <a href="#" class="filter-btn" data-filter="alumni"><i class="fa fa-history"></i> Alumni</a>
+          </div>
         </div>
       </div>
     </section>
 
-    </div><!-- /.container -->
-
-    <footer class="footer">
-      <div class="footer-bottom">
-        <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.<br>
-        <!-- <i class="fa fa-anchor"></i> <a href="people_x.html"><b>X！</b><i class="fa fa-sign-in"></i></a> -->
+    <!-- PI -->
+    <h3 class="group-title">PI</h3>
+    <section class="people-section row" id="group-pi">
+      <div class="col-sm-6 col-md-4 person" data-group="pi">
+        <div class="person-card">
+          <div class="avatar-wrap">
+            <img src="images/photo/gangchen.png" alt="Gang Chen">
+          </div>
+          <div class="person-body">
+            <h4 class="person-name">陈 刚 · Gang Chen</h4>
+            <div class="person-role"><i class="fa fa-graduation-cap"></i> Associate Professor, SCUT</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:gangchen@scut.edu.cn">gangchen@scut.edu.cn</a></div>
+            <p class="person-bio">
+              Ph.D. (UC Davis), Postdoc (NTU, Singapore). Research: machine learning, formal methods, control, signal processing, interpretable fault diagnosis.
+            </p>
+            <div class="chips">
+              <span class="chip">Interpretable AI</span>
+              <span class="chip">STL</span>
+              <span class="chip">Fault Diagnosis</span>
+              <span class="chip">CPS Control</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
+    </section>
 
-    <!-- Bootstrap core JavaScript
-      ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="scripts/jquery.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/jquery.bxslider.js"></script>
-    <script src="scripts/mooz.scripts.min.js"></script>
-  </body>
+    <!-- Postdocs -->
+    <h3 class="group-title">Postdocs</h3>
+    <section class="people-section row" id="group-postdoc">
+      <div class="col-sm-6 col-md-4 person" data-group="postdoc">
+        <div class="person-card">
+          <div class="avatar-wrap">
+            <img src="images/photo/Khan.jpg" alt="Khan Tasir">
+          </div>
+          <div class="person-body">
+            <h4 class="person-name">Khan Tasir</h4>
+            <div class="person-role"><i class="fa fa-flask"></i> Postdoctoral Fellow (Applied Mathematics)</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2025.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:luph1356023588@126.com">Email</a></div>
+            <p class="person-bio">Research Area: Wind prediction.</p>
+            <div class="chips">
+              <span class="chip">Time Series</span><span class="chip">Forecasting</span><span class="chip">Optimization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PhD -->
+    <h3 class="group-title">PhD Students</h3>
+    <section class="people-section row" id="group-phd">
+      <div class="col-sm-6 col-md-4 person" data-group="phd">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/Penghonglu.jpg" alt="Penghong Lu"></div>
+          <div class="person-body">
+            <h4 class="person-name">逯鹏宏 · Penghong Lu</h4>
+            <div class="person-role">Ph.D. Student, Mechanical Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2022.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:luph1356023588@126.com">Email</a></div>
+            <p class="person-bio">Formal methods for discrete-system fault diagnosis & fault-tolerant control.</p>
+            <div class="chips"><span class="chip">STL</span><span class="chip">FTC</span><span class="chip">Diagnosis</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="phd">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/yuanjunlin.jpg" alt="Junlin Yuan"></div>
+          <div class="person-body">
+            <h4 class="person-name">袁俊琳 · Junlin Yuan</h4>
+            <div class="person-role">Ph.D. Student, Mechanical Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2023.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:jlyuan20@163.com">Email</a></div>
+            <p class="person-bio">Formal methods and their applications to fault diagnosis.</p>
+            <div class="chips"><span class="chip">STL</span><span class="chip">Diagnosis</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="phd">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/zhenpeng.png" alt="Zhenpeng Lao"></div>
+          <div class="person-body">
+            <h4 class="person-name">劳振鹏 · Zhenpeng Lao</h4>
+            <div class="person-role">Ph.D. Student, Mechanical Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2024.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:jlyuan20@163.com">Email</a></div>
+            <p class="person-bio">Formal methods for interpretable fault diagnosis.</p>
+            <div class="chips"><span class="chip">STL</span><span class="chip">Explainability</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="phd">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/weihong.jpg" alt="Weihong Cen"></div>
+          <div class="person-body">
+            <h4 class="person-name">岑伟洪 · Weihong Cen</h4>
+            <div class="person-role">Ph.D. Student, Mechanical Engineering (Co-supervised by Prof. Xie)</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2022.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:jlyuan20@163.com">Email</a></div>
+            <p class="person-bio">Manufacturing systems analysis with machine learning.</p>
+            <div class="chips"><span class="chip">Manufacturing AI</span><span class="chip">Systems</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Masters -->
+    <h3 class="group-title">Master Students</h3>
+    <section class="people-section row" id="group-master">
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/zhuhanrui.jpg" alt="Hanyue Zhu"></div>
+          <div class="person-body">
+            <h4 class="person-name">朱 涵悅 · Hanyue Zhu</h4>
+            <div class="person-role">Master, Electronic Information Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2023.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:zhyscu2023@163.com">zhyscu2023@163.com</a></div>
+            <p class="person-bio">Physics-informed neural networks.</p>
+            <div class="chips"><span class="chip">PINN</span><span class="chip">Modeling</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/zhangjiarui.jpg" alt="Jiarui Zhang"></div>
+          <div class="person-body">
+            <h4 class="person-name">张 稼瑞 · Jiarui Zhang</h4>
+            <div class="person-role">Master, Electronic Information Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2023.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:2046236156@qq.com">2046236156@qq.com</a></div>
+            <p class="person-bio">Robot control with reinforcement learning.</p>
+            <div class="chips"><span class="chip">RL</span><span class="chip">Robotics</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/zhangyishuo.png" alt="Yiyue Zhang"></div>
+          <div class="person-body">
+            <h4 class="person-name">张 艺栎 · Yiyue Zhang</h4>
+            <div class="person-role">Master, Electronic Information Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2023.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:wi21060223@mail.scut.edu.cn">wi21060223@mail.scut.edu.cn</a></div>
+            <p class="person-bio">Physics-informed neural networks.</p>
+            <div class="chips"><span class="chip">PINN</span><span class="chip">Modeling</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/zhenhao.jpg" alt="Zhenhao Lin"></div>
+          <div class="person-body">
+            <h4 class="person-name">林 政豪 · Zhenhao Lin</h4>
+            <div class="person-role">Master, Mechanical Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2024.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:wi21060223@mail.scut.edu.cn">wi21060223@mail.scut.edu.cn</a></div>
+            <p class="person-bio">Control synthesis with temporal logic.</p>
+            <div class="chips"><span class="chip">STL</span><span class="chip">Control</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/mingyu.jpg" alt="Mingyu Chen"></div>
+          <div class="person-body">
+            <h4 class="person-name">陈 明宇 · Mingyu Chen</h4>
+            <div class="person-role">Master, Mechanical Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2024.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:wi21060223@mail.scut.edu.cn">wi21060223@mail.scut.edu.cn</a></div>
+            <p class="person-bio">Interpretable fault diagnosis with temporal logic.</p>
+            <div class="chips"><span class="chip">Explainability</span><span class="chip">STL</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/tangchao.jpg" alt="Chao Tang"></div>
+          <div class="person-body">
+            <h4 class="person-name">唐 超 · Chao Tang</h4>
+            <div class="person-role">Master, Mechanical Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2024.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:wi21060223@mail.scut.edu.cn">wi21060223@mail.scut.edu.cn</a></div>
+            <p class="person-bio">Reinforcement learning control with temporal logic.</p>
+            <div class="chips"><span class="chip">RL</span><span class="chip">STL</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/jiayuanfeng.jpg" alt="Yuanfeng Jia"></div>
+          <div class="person-body">
+            <h4 class="person-name">贾 远峰 · Yuanfeng Jia</h4>
+            <div class="person-role">Master, Mechanical Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2025.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:fe12012@163.com">fe12012@163.com</a></div>
+            <p class="person-bio">Control theory with temporal logic.</p>
+            <div class="chips"><span class="chip">Control</span><span class="chip">STL</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/yinchuxing.jpg" alt="Chuqin Yin"></div>
+          <div class="person-body">
+            <h4 class="person-name">殷 楚钦 · Chuqin Yin</h4>
+            <div class="person-role">Master, Mechanical Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2025.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:ycqin1001@163.com">ycqin1001@163.com</a></div>
+            <p class="person-bio">Control theory with temporal logic.</p>
+            <div class="chips"><span class="chip">Control</span><span class="chip">STL</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="master">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/yinpengyu.jpg" alt="Pengyu Yin"></div>
+          <div class="person-body">
+            <h4 class="person-name">尹 鹏宇 · Pengyu Yin</h4>
+            <div class="person-role">Master, Electronic Information Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2025.09 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:eagleworld2333@163.com">eagleworld2333@163.com</a></div>
+            <p class="person-bio">Fault sourcing with causality.</p>
+            <div class="chips"><span class="chip">Causality</span><span class="chip">Diagnosis</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Undergraduates -->
+    <h3 class="group-title">Undergraduate Students</h3>
+    <section class="people-section row" id="group-ug">
+      <div class="col-sm-6 col-md-4 person" data-group="ug">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/peixiyang.jpg" alt="Peixi Yang"></div>
+          <div class="person-body">
+            <h4 class="person-name">杨 沛希 · Peixi Yang</h4>
+            <div class="person-role">Undergraduate, Smart Manufacturing Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2023.03 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:13630064677@163.com">13630064677@163.com</a></div>
+            <p class="person-bio">Mechanical design.</p>
+            <div class="chips"><span class="chip">Design</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="ug">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/yanyulu.jpg" alt="Yanyu Lu"></div>
+          <div class="person-body">
+            <h4 class="person-name">路 延宇 · Yanyu Lu</h4>
+            <div class="person-role">Undergraduate, Smart Manufacturing Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2023.03 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:2269362564@qq.com">2269362564@qq.com</a></div>
+            <p class="person-bio">Mechanical design.</p>
+            <div class="chips"><span class="chip">Design</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 person" data-group="ug">
+        <div class="person-card">
+          <div class="avatar-wrap"><img src="images/photo/katongjia.jpg" alt="Katong Jia"></div>
+          <div class="person-body">
+            <h4 class="person-name">贾 凯同 · Katong Jia</h4>
+            <div class="person-role">Undergraduate, Smart Manufacturing Engineering</div>
+            <div class="person-meta"><i class="fa fa-clock-o"></i> 2023.03 – Now</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:1467907567@qq.com">1467907567@qq.com</a></div>
+            <p class="person-bio">Image processing.</p>
+            <div class="chips"><span class="chip">Vision</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alumni -->
+    <h3 class="group-title">Alumni</h3>
+    <section class="alumni person" data-group="alumni">
+      <p><strong>Du Li</strong> (Master, 2022–2025) — First position: <em>—</em></p>
+      <p><strong>Cai Li</strong> (Master, 2022–2025) — First position: Startup</p>
+      <p><strong>Ziyue Zeng</strong> (Master, 2022–2025) — First position: South China University of Technology</p>
+      <p><strong>Ruoyao Tian</strong> (Undergraduate, 2022–2023) — First position: MS student at Zhejiang University</p>
+      <p><strong>Wen Xin</strong> — <em>—</em></p>
+      <p><strong>Zhang Chen</strong> (Undergraduate, 2023–2025) — First position: MS student at Harbin Institute of Technology, Shenzhen</p>
+      <p><strong>Zhang Ran</strong> (Undergraduate, 2023–2024) — First position: MS student at University of Science and Technology of China</p>
+    </section>
+
+    <div style="height:16px;"></div>
+  </div><!-- /.container -->
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/bootstrap.min.js"></script>
+  <script src="scripts/jquery.bxslider.js"></script>
+  <script src="scripts/mooz.scripts.min.js"></script>
+  <script>
+    // Simple filter logic (no external deps)
+    $(function(){
+      $('.filter-btn').on('click', function(e){
+        e.preventDefault();
+        var g = $(this).data('filter');
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+
+        if(g === 'all'){
+          $('.person, .alumni').show();
+          return;
+        }
+        // hide all
+        $('.person, .alumni').hide();
+        // show specific groups
+        if(g === 'alumni'){
+          $('.alumni').show();
+        }else{
+          $('[data-group="'+g+'"]').show();
+        }
+        // scroll to first section on mobile for better UX
+        $('html,body').animate({scrollTop: $('.people-hero').offset().top + 120}, 200);
+      });
+    });
+  </script>
+</body>
 </html>
