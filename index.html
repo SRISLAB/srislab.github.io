@@ -1,40 +1,137 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Home page of SRIS — Smart, Reliable and Interpretable Systems">
+  <meta name="author" content="SRIS Lab">
+  <link rel="icon" href="images/logo/RMX_16.ico">
+  <title>SRIS — Smart, Reliable and Interpretable Systems</title>
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Home page of REMEX">
-    <meta name="author" content="WeiQM">
-    <link rel="icon" href="images/logo/RMX_16.ico">
-    <title>SRIS-Smart, Reliable and Interpretable Systems</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Custom styles for this template -->
-    <link href="style/jquery.bxslider.css" rel="stylesheet">
-    <link href="style/style.css" rel="stylesheet">
-  </head>
+  <!-- Bootstrap & site CSS (keep your originals) -->
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="style/jquery.bxslider.css" rel="stylesheet">
+  <link href="style/style.css" rel="stylesheet">
 
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+  <!-- Minimal modern styling to enhance look & feel -->
+  <style>
+    :root{
+      --ink:#0f172a;           /* deep slate */
+      --ink-2:#1f2937;
+      --muted:#475569;
+      --line:#e5e7eb;
+      --surface:#ffffff;
+      --soft:#f8fafc;
+      --brand:#2563eb;         /* bright blue */
+      --brand-2:#60a5fa;       /* soft blue */
+      --accent:#0ea5e9;        /* cyan accent */
+    }
+    body{ color:var(--ink-2); background:#ffffff; }
+    .navbar-inverse{ background:#0f172a; border-color:#0f172a; }
+    .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand{ color:#e5e7eb; }
+    .navbar-inverse .navbar-nav>.active>a{ background:transparent; color:#ffffff; border-bottom:2px solid var(--brand); }
+    /* HERO */
+    .hero{
+      margin-top:70px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 60%, #e0f2fe 100%);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero h1{
+      font-weight:800; letter-spacing:.2px; margin:0 0 8px; color:var(--ink);
+    }
+    .hero p.lead{
+      color:var(--muted); font-size:16px; margin:0 0 16px; line-height:1.6;
+    }
+    .hero .badges .pill{
+      display:inline-block; background:#fff; border:1px solid var(--line);
+      padding:5px 10px; border-radius:999px; font-size:12px; margin:6px 8px 0 0; color:var(--ink);
+    }
+    .hero .cta .btn{
+      margin-right:10px; margin-top:10px;
+      border-radius:999px; padding:8px 16px; font-weight:600;
+    }
+    .btn-brand{
+      background:var(--brand); border-color:var(--brand); color:#fff;
+    }
+    .btn-brand:hover{ background:#1e40af; border-color:#1e40af; color:#fff; }
+    .btn-ghost{
+      background:#ffffff; color:var(--ink); border:1px solid var(--line);
+    }
+    .btn-ghost:hover{ background:#f1f5f9; color:var(--ink); }
+
+    /* QUICK LINKS (value props) */
+    .props{ margin-top:18px; }
+    .prop-card{
+      background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px;
+      height:100%; transition:all .2s ease; box-shadow:0 1px 2px rgba(15,23,42,0.05);
+    }
+    .prop-card:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(15,23,42,0.08); }
+    .prop-card h4{ margin:0 0 6px; font-weight:700; color:var(--ink); font-size:16px; }
+    .prop-card p{ margin:0; color:var(--muted); font-size:13px; line-height:1.55; }
+
+    /* SLIDER (kept but slimmed by frame) */
+    .main-slider{ margin-top:18px; }
+    .slider-frame{
+      border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff;
+    }
+    .bx-wrapper{ border:none !important; box-shadow:none !important; margin-bottom:0 !important; }
+
+    /* INTRO PANEL (logo + text) */
+    .intro{
+      margin-top:18px; padding:18px; border:1px solid var(--line); border-radius:12px; background:#fff;
+    }
+    .intro .brandline{ color:var(--muted); font-size:14px; line-height:1.6; }
+    .intro img{ border-radius:10px; border:1px solid var(--line); }
+
+    /* NEWS TIMELINE */
+    .news{
+      margin-top:18px; padding:18px; border:1px solid var(--line); border-radius:12px; background:#fff;
+    }
+    .news h3{ margin:0 0 10px; font-weight:800; color:var(--ink); }
+    .timeline{ list-style:none; padding-left:0; margin:0; }
+    .timeline li{
+      padding:12px 0; border-bottom:1px dashed var(--line);
+    }
+    .timeline li:last-child{ border-bottom:none; }
+    .timeline .date{ display:inline-block; min-width:110px; color:#64748b; font-size:12px; }
+    .timeline a{ color:var(--brand); text-decoration:none; }
+    .timeline a:hover{ text-decoration:underline; }
+
+    /* FOOTER */
+    .footer{ margin-top:24px; border-top:1px solid var(--line); background:#ffffff; }
+    .footer-bottom{ text-align:center; padding:16px 0; color:#64748b; }
+    /* UTIL */
+    .spacer-8{ height:8px; }
+    .spacer-16{ height:16px; }
+    .spacer-24{ height:24px; }
+    .muted{ color:#64748b; }
+    @media (max-width: 991px){
+      .timeline .date{ display:block; min-width:auto; margin-bottom:4px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">  
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="people.html">People</a></li>
-            <li><a href="research.html">Research</a></li>
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="research.html">Research</a></li>
           <li class="dropdown">
             <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -42,104 +139,206 @@
               <li><a href="conference.html">Conference Papers</a></li>
             </ul>
           </li>
-            <li><a href="downloads.html">Downloads</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">English</a></li>
-            <li><a href="index_x.html">中文</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
-          </ul>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="index.html">English</a></li>
+          <li><a href="index_x.html">中文</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="row">
+        <div class="col-md-8">
+          <h1>SRIS Lab</h1>
+          <p class="lead">
+            <strong>S</strong>mart, <strong>R</strong>eliable, and <strong>I</strong>nterpretable <strong>S</strong>ystems —
+            we fuse <em>logic</em>, <em>physics</em>, and <em>learning</em> to build trustworthy AI for intelligent manufacturing and critical equipment.
+          </p>
+          <p class="lead">
+            Our unified methodology—<em>Signal Temporal Logic (STL)</em>, <em>causal structure</em>, and <em>physics-guided priors</em>—drives interpretable diagnosis, STL-driven safe autonomy, verifiable machine learning, and fleet-level health management.
+          </p>
+          <div class="badges">
+            <span class="pill"><i class="fa fa-shield"></i> Verifiable</span>
+            <span class="pill"><i class="fa fa-cogs"></i> Industrial-Grade</span>
+            <span class="pill"><i class="fa fa-eye"></i> Interpretable</span>
+          </div>
+          <div class="cta">
+            <a class="btn btn-brand" href="research.html"><i class="fa fa-flask"></i> Explore Research</a>
+            <a class="btn btn-ghost" href="people.html"><i class="fa fa-users"></i> Meet the Team</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="images/logonew.jpg" alt="SRIS Logo" class="img-responsive" style="max-width:320px;margin:6px auto;">
+          <div class="muted" style="font-size:12px;">South China University of Technology • Guangzhou International Campus</div>
         </div>
       </div>
-    </nav>
-    <div class="container">
-    <header>
-      <!--
-      <a href="index.html"><img src="images/sun.jpg"  width="256px"></a>
-      -->
-    </header>
-  
-    <section class="main-slider">
+
+      <!-- Quick value props -->
+      <div class="props">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="prop-card">
+              <h4><i class="fa fa-sitemap"></i> Neuro-Symbolic Models</h4>
+              <p>STL-regularized pretraining, causal KGs, and rule distillation for audit-ready industrial AI.</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="prop-card">
+              <h4><i class="fa fa-check-square-o"></i> Verifiable ML</h4>
+              <p>Co-optimize learning and proof: robustness radii, coverage guarantees, logic satisfaction bounds.</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="prop-card">
+              <h4><i class="fa fa-hand-paper-o"></i> Safe Autonomy</h4>
+              <p>STL contracts, reference governors, and residual RL for dual-arm & mobile manipulation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDER (kept, framed) -->
+    <section class="main-slider slider-frame">
       <ul class="bxslider">
-        <li><div class="slider-item"><img src="images/photo_x/scutgraduate2025.jpg" title="Logo" /><h2><a href="http://www2.scut.edu.cn/gzic_en/" title="Loge">Campus View !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/photo_x/networkstructure.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/photo_x/spectrallogic.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
+        <li>
+          <div class="slider-item">
+            <img src="images/photo_x/scutgraduate2025.jpg" title="Campus View">
+            <h2><a href="http://www2.scut.edu.cn/gzic_en/">Campus View</a></h2>
+          </div>
+        </li>
+        <li>
+          <div class="slider-item">
+            <img src="images/photo_x/networkstructure.png" title="Neuro-Symbolic">
+            <h2><a href="research.html">Neuro-Symbolic Foundations</a></h2>
+          </div>
+        </li>
+        <li>
+          <div class="slider-item">
+            <img src="images/photo_x/spectrallogic.png" title="Spectral Logic">
+            <h2><a href="research.html">STL-Driven Safe Autonomy</a></h2>
+          </div>
+        </li>
       </ul>
     </section>
 
-
-    <section>
+    <!-- INTRO (clear, concise) -->
+    <section class="intro">
       <div class="row">
-        <!-- Main Page -->
-        <div class="col-md-12">
-          <introduce class="content-block">
-            <div class="block-body">
-            
-              <td width="40%" valign="right"><p>
-              <img src="images/logonew.jpg" alt="Result" width="400">
-            </p></td>
-            <td width="60%" valign="left">
-              <p>
-               <b>SRIS</b> (<b>S</b>mart, <b>R</b>eliable, and <b>I</b>nterpretable <b>S</b>ystems) lab is a research group directed by Dr. Gang Chen at South China University of Technology. The main research interest includes machine learning, formal methods, control theory, signal processing and their applications on cyber-physical system monitoring and control.
-            </p>
-            </td>
-            </div>
-
-              <h3 align="left">Recent News</h3><br />
-              <div class="block-text">
-            <table><tbody>
-              <ul>
-                <p>[August 15, 2025]  Our paper "Instantaneous frequency extraction of overlapped multicomponent signals with an adaptive constraints approach" has been accepted by  Engineering Research Express </p>
-                <p>[August 4, 2025]  Our paper "Decomposition-Based MPC for Uncertain Systems with Nested Signal Temporal Logic Specifications" has been accepted by  IEEE Control Systems Letters </p>
-                <p>[July 12, 2025]  Our paper "Event driven causal knowledge graphs for bottleneck root cause analysis in manufacturing systems" has been accepted by Expert Systems with Applications</p>
-                <p>[June 27, 2025] Congratulations to our lab masters Li Cai, Li Du and Zeng Ziyue for their graduation.</p>
-                <p>[June 19, 2025]  Our paper "A dual spatial temporal neural network for bottleneck prediction in manufacturing systems" has been accepted by Engineering Applications of Artificial Intelligence</p>
-                <p>[Jan 14, 2025]   Our lab has received a research grant from "State Key Laboratory of Performance Monitoring and Protecting of Rail Transit Infrastructure,East China Jiaotong University" on     gearbox fault diagnosis.</p>
-                <p>[Jan 9, 2025]  Our paper "Temporal Logic Inference for Interpretable Fault Diagnosis of Bearings via Sparse and Structured Neural Attention" has been accepted by ISA Transactions</p>
-                <p>[Dec 22, 2024]  Our paper "Multi-source data fusion monitoring system for super-elevation in laser powder bed fusion based on bi-stream cross-mode fusion network" has been accepted by Optics and Lasers in Engineering</p>
-                <p>[Oct 14, 2024]  Our paper "Fault tracing in multistage gearbox systems based on an improved transfer path analysis method" has been accepted by Measurement </p>
-                <p>[Sept 25, 2024]  Our paper "In-situ quality inspection based on coaxial melt pool images for laser powder bed fusion with depth graph network guided by prior knowledge" has been accepted by Mechanical Systems and Signal Processing. </p>
-                <p>[July 12, 2024]  Our paper "VNCCD: A Gearbox Fault Diagnosis Technique under Nonstationary Conditions via Virtual Decoupled Transfer Paths" has been accepted by Mechanical Systems and Signal Processing. </p>
-                <p>[June 29, 2024]  Our paper "Enhancing Reliability through Interpretability: A Comprehensive Survey of Interpretable Intelligent Fault Diagnosis in Rotating Machinery" has been accepted by IEEE ACCESS. </p>
-                <p>[May 13, 2024]  Our paper "Fast Pareto Set Approximation for Multiobjective Flexible Job Shop Scheduling via Parallel Preference-Conditioned Graph Reinforcement Learning" has been accepted by Swarm and Evolutionary Computation. </p>
- 
-                
-              </ul>
-
-
-
-              
-                </tbody></table>
-              </div>
-              <div class="get-more" align="right"><a href="news.html"> More </a></div>
-            </div>
-          </introduce>
+        <div class="col-sm-12">
+          <p class="brandline">
+            <b>SRIS</b> is led by <b>Dr. Gang Chen</b>. We study machine learning, formal methods, control, and signal processing for cyber-physical system monitoring and control.
+            Our deliverables include interpretable fault diagnosis algorithms, contract-based controllers, verifiable ML toolchains, and fleet-level PHM (Prognostics & Health Management).
+          </p>
+          <div class="spacer-8"></div>
+          <div class="row">
+            <div class="col-sm-2"><a href="./modules/IFD.html" class="btn btn-ghost btn-block"><i class="fa fa-search"></i> Interpretable Diagnosis</a></div>
+            <div class="col-sm-2"><a href="./modules/CSTL.html" class="btn btn-ghost btn-block"><i class="fa fa-sliders"></i> Control & STL</a></div>
+            <div class="col-sm-2"><a href="./modules/RCML.html" class="btn btn-ghost btn-block"><i class="fa fa-android"></i> Robot ML</a></div>
+            <div class="col-sm-2"><a href="./modules/ITSP.html" class="btn btn-ghost btn-block"><i class="fa fa-tasks"></i> Planning & Scheduling</a></div>
+            <div class="col-sm-2"><a href="./modules/ISP.html" class="btn btn-ghost btn-block"><i class="fa fa-signal"></i> Signal Processing</a></div>
+            <div class="col-sm-2"><a href="./modules/IDP.html" class="btn btn-ghost btn-block"><i class="fa fa-cogs"></i> Systems & Inverse</a></div>
+          </div>
         </div>
-
       </div>
     </section>
-    </div><!-- /.container -->
 
-    <footer class="footer">
-      <div class="footer-bottom">  
-        <i class="fa fa-copyright"></i> 
-          Copyright 2022. All rights reserved.<br>
-        <!-- <i class="fa fa-anchor"></i> <a href="index_x.html"><b>X！</b><i class="fa fa-sign-in"></i></a> -->
-      </div>
-      
-    </footer>
+    <!-- NEWS timeline -->
+    <section class="news">
+      <h3>Recent News</h3>
+      <ul class="timeline">
+        <li>
+          <span class="date">Aug 15, 2025</span>
+          Our paper <em>Instantaneous frequency extraction of overlapped multicomponent signals with an adaptive constraints approach</em> has been accepted by <strong>Engineering Research Express</strong>.
+        </li>
+        <li>
+          <span class="date">Aug 4, 2025</span>
+          <em>Decomposition-Based MPC for Uncertain Systems with Nested STL Specifications</em> accepted by <strong>IEEE Control Systems Letters</strong>.
+        </li>
+        <li>
+          <span class="date">Jul 12, 2025</span>
+          <em>Event driven causal knowledge graphs for bottleneck root cause analysis in manufacturing systems</em> accepted by <strong>Expert Systems with Applications</strong>.
+        </li>
+        <li>
+          <span class="date">Jun 27, 2025</span>
+          Congratulations to our graduates: <strong>Li Cai</strong>, <strong>Li Du</strong>, <strong>Zeng Ziyue</strong>.
+        </li>
+        <li>
+          <span class="date">Jun 19, 2025</span>
+          <em>A dual spatial temporal neural network for bottleneck prediction in manufacturing systems</em> accepted by <strong>EAAI</strong>.
+        </li>
+        <li>
+          <span class="date">Jan 14, 2025</span>
+          New grant from <strong>State Key Lab of Performance Monitoring and Protecting of Rail Transit Infrastructure</strong> on gearbox fault diagnosis.
+        </li>
+        <li>
+          <span class="date">Jan 9, 2025</span>
+          <em>Temporal Logic Inference for Interpretable Fault Diagnosis of Bearings via Sparse and Structured Neural Attention</em> accepted by <strong>ISA Transactions</strong>.
+        </li>
+        <li>
+          <span class="date">Dec 22, 2024</span>
+          <em>Multi-source data fusion monitoring system for super-elevation in LPBF</em> accepted by <strong>Optics and Lasers in Engineering</strong>.
+        </li>
+        <li>
+          <span class="date">Oct 14, 2024</span>
+          <em>Fault tracing in multistage gearbox systems</em> accepted by <strong>Measurement</strong>.
+        </li>
+        <li>
+          <span class="date">Sep 25, 2024</span>
+          <em>In-situ quality inspection for LPBF with depth graph network</em> accepted by <strong>MSSP</strong>.
+        </li>
+        <li>
+          <span class="date">Jul 12, 2024</span>
+          <em>VNCCD: Gearbox diagnosis under nonstationary conditions</em> accepted by <strong>MSSP</strong>.
+        </li>
+        <li>
+          <span class="date">Jun 29, 2024</span>
+          Survey <em>Enhancing Reliability through Interpretability…</em> accepted by <strong>IEEE Access</strong>.
+        </li>
+        <li>
+          <span class="date">May 13, 2024</span>
+          <em>Fast Pareto Set Approximation…</em> accepted by <strong>Swarm and Evolutionary Computation</strong>.
+        </li>
+      </ul>
+      <div class="spacer-8"></div>
+      <div class="text-right"><a href="news.html" class="btn btn-ghost"><i class="fa fa-newspaper-o"></i> More</a></div>
+    </section>
+  </div><!-- /.container -->
 
+  <footer class="footer">
+    <div class="footer-bottom">
+      <i class="fa fa-copyright"></i>
+      Copyright 2022. All rights reserved.
+    </div>
+  </footer>
 
-    <!-- Bootstrap core JavaScript
-      ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="scripts/jquery.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/jquery.bxslider.js"></script>
-    <script src="scripts/mooz.scripts.min.js"></script>
-    <script src="scripts/togglehide.js"></script>
-  </body>
+  <!-- JS -->
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/bootstrap.min.js"></script>
+  <script src="scripts/jquery.bxslider.js"></script>
+  <script src="scripts/mooz.scripts.min.js"></script>
+  <script src="scripts/togglehide.js"></script>
+  <script>
+    // Init slider with gentle autoplay
+    $(document).ready(function(){
+      $('.bxslider').bxSlider({
+        auto: true,
+        pause: 4500,
+        speed: 600,
+        controls: false,
+        pager: true,
+        adaptiveHeight: true
+      });
+    });
+  </script>
+</body>
 </html>
