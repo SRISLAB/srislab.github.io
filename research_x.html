@@ -14,73 +14,82 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="style/jquery.bxslider.css" rel="stylesheet">
     <link href="style/style.css" rel="stylesheet">
-    <style>
-      /* One-screen “About” layout */
-      .about-hero {
-        margin-top: 70px;
-        background: linear-gradient(135deg, #0f172a 0%, #1f2937 60%, #0b3d5e 100%);
-        color: #eef2f7;
-        border-radius: 10px;
-        padding: 32px 28px;
-      }
-      .about-hero h1 { font-weight: 700; font-size: 30px; margin: 0 0 8px; letter-spacing: .5px; }
-      .about-hero .tagline { opacity: .95; font-size: 16px; margin-bottom: 14px; }
-      .about-hero .lead {
-        background: rgba(255,255,255,.06);
-        border: 1px solid rgba(255,255,255,.14);
-        border-radius: 8px;
-        padding: 10px 12px;
-        margin-top: 8px;
-        font-size: 13px;
-        line-height: 1.5;
-        color: #e5e7eb;
-      }
-      .pill {
-        display: inline-block; padding: 4px 10px; border: 1px solid rgba(255,255,255,.3);
-        border-radius: 999px; margin-right: 8px; font-size: 12px; opacity: .9;
-      }
-      .cards-row { margin-top: 18px; }
-      .research-card {
-        background: rgba(255,255,255,.06);
-        border: 1px solid rgba(255,255,255,.12);
-        border-radius: 12px;
-        padding: 14px;
-        min-height: 220px;
-        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      }
-      .research-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.25); background: rgba(255,255,255,.08); }
-      .research-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: #ffffff; }
-      .research-card .mini { font-size: 12px; color: #cbd5e1; margin-bottom: 8px; }
-      .research-card p { font-size: 13px; line-height: 1.45; color: #e5e7eb; margin-bottom: 8px; }
-      .chip {
-        display: inline-block; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18);
-        color: #e5e7eb; font-size: 11px; padding: 3px 8px; border-radius: 999px; margin: 2px 4px 0 0; white-space: nowrap;
-      }
-      .cta-row { margin-top: 10px; }
-      .cta-row a { color: #93c5fd; text-decoration: none; font-size: 12px; margin-right: 14px; }
-      .cta-row a:hover { text-decoration: underline; }
-      /* Details section (light theme for readability) */
-      .details-wrap {
-        margin-top: 22px; margin-bottom: 30px; color: #111827;
-        background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px 18px 6px;
-      }
-      .details-wrap h2 { margin: 0 0 8px; font-size: 22px; font-weight: 700; color: #0f172a; }
-      .details-wrap .intro { color: #334155; font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
-      .accordion { margin-top: 10px; }
-      .accordion-group { border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
-      .accordion-heading a {
-        display: block; padding: 10px 12px; background: #f8fafc; color: #0f172a; text-decoration: none; font-weight: 600;
-      }
-      .accordion-heading a:hover { background: #f1f5f9; }
-      .accordion-inner { background: #ffffff; padding: 12px; color: #1f2937; }
-      .accordion-inner h4 { font-size: 14px; margin: 4px 0 6px; color: #0b3d5e; }
-      .badge-kpi {
-        display:inline-block; background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; padding:2px 6px; border-radius:999px; font-size:11px; margin:2px 4px 0 0;
-      }
-      .muted-note { color:#64748b; font-size:12px; margin-top:6px; }
-      @media (max-width: 1199px) { .research-card { min-height: 240px; } }
-      @media (max-width: 979px)  { .research-card { margin-bottom: 14px; } }
-    </style>
+   <style>
+  /* ===== Light theme overrides for hero & cards ===== */
+
+  /* Hero：由深色渐变改为浅浅的冷色渐变，文字改深色以提高可读性 */
+  .about-hero {
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 65%, #e0f2fe 100%);
+    color: #0f172a; /* 深蓝灰文本 */
+    border: 1px solid #e5e7eb;
+  }
+  .about-hero h1 { color: #0f172a; }
+  .about-hero .tagline { color: #1f2937; }
+  .about-hero .lead {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #334155;
+  }
+  .pill {
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    background: #ffffff;
+  }
+
+  /* Cards：改为白底浅边框，hover 时微微提亮，不再是深色玻璃态 */
+  .research-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #0f172a;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+  .research-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    background: #f8fafc;
+  }
+  .research-card h3 { color: #111827; }
+  .research-card .mini { color: #475569; }
+  .research-card p { color: #334155; }
+
+  /* 小标签（chips）：浅灰底、浅边框、深灰字 */
+  .chip {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+  }
+
+  /* CTA 链接：更清晰的蓝色，hover 下划线 */
+  .cta-row a {
+    color: #2563eb; /* 明亮但不过饱和 */
+  }
+  .cta-row a:hover { text-decoration: underline; }
+
+  /* 细节区域保持浅色风格 */
+  .details-wrap {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #0f172a;
+  }
+  .details-wrap h2 { color: #0f172a; }
+  .details-wrap .intro { color: #334155; }
+  .accordion-group { border: 1px solid #e5e7eb; }
+  .accordion-heading a {
+    background: #f8fafc;
+    color: #0f172a;
+  }
+  .accordion-heading a:hover { background: #f1f5f9; }
+  .accordion-inner { background: #ffffff; color: #1f2937; }
+
+  /* KPI 徽章：更淡的底色 */
+  .badge-kpi {
+    background: #eef2ff;
+    color: #3730a3;
+    border: 1px solid #c7d2fe;
+  }
+  .muted-note { color: #64748b; }
+</style>
+
   </head>
   <body>
     <!-- Navigation (unchanged) -->
@@ -126,7 +135,7 @@
         <div class="span12">
           <h1>About Our Research</h1>
           <div class="tagline">
-            We fuse <strong>logic</strong>, <strong>physics</strong>, and <strong>learning</strong> to build trustworthy, high-performance systems for intelligent manufacturing and critical equipment.
+                At the <strong>Smart, Reliable, and Interpretable Systems (SRIS) Lab</strong>, we fuse <strong>logic</strong>, <strong>physics</strong>, and <strong>learning</strong> to build trustworthy, high-performance systems for intelligent manufacturing and critical equipment.
           </div>
           <div class="lead">
             Our lab advances a unified methodology—Signal Temporal Logic (STL), causal structure, and physics-guided priors—to achieve interpretable diagnosis, safe autonomy, verifiable machine learning, and fleet-level health management. We aim for exportable industrial software stacks, standards-ready audit trails, and measurable impact on reliability, yield, and safety.
