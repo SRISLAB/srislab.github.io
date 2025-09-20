@@ -4,32 +4,97 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Research">
     <meta name="author" content="WeiQM">
     <link rel="icon" href="images/logo/RMX_16.ico">
     <title>SRIS - Research</title>
-    <!-- Bootstrap core CSS -->
+    <!-- Keep your original styles -->
     <link rel="stylesheet" href="scripts/bootstrap.css">
-   <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Custom styles for this template -->
     <link href="style/jquery.bxslider.css" rel="stylesheet">
     <link href="style/style.css" rel="stylesheet">
+   <style>
+      /* One-screen “About” layout */
+      .about-hero {
+        margin-top: 70px;
+        background: linear-gradient(135deg, #0f172a 0%, #1f2937 60%, #0b3d5e 100%);
+       color: #ffffff; /* pure white */
+        border-radius: 10px;
+        padding: 32px 28px;
+      }
+      .about-hero h1 { font-weight: 700; font-size: 30px; margin: 0 0 8px; letter-spacing: .5px; }
+      .about-hero .tagline { opacity: .95; font-size: 16px; margin-bottom: 14px; }
+      .about-hero .lead {
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #e5e7eb;
+      }
+      .pill {
+        display: inline-block; padding: 4px 10px; border: 1px solid rgba(255,255,255,.3);
+        border-radius: 999px; margin-right: 8px; font-size: 12px; opacity: .9;
+      }
+      .cards-row { margin-top: 18px; }
+      .research-card {
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 12px;
+        padding: 14px;
+        min-height: 220px;
+        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      }
+      .research-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.25); background: rgba(255,255,255,.08); }
+      .research-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: #ffffff; }
+      .research-card .mini { font-size: 12px; color: #cbd5e1; margin-bottom: 8px; }
+      .research-card p { font-size: 13px; line-height: 1.45; color: #e5e7eb; margin-bottom: 8px; }
+      .chip {
+        display: inline-block; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18);
+        color: #e5e7eb; font-size: 11px; padding: 3px 8px; border-radius: 999px; margin: 2px 4px 0 0; white-space: nowrap;
+      }
+      .cta-row { margin-top: 10px; }
+      .cta-row a { color: #93c5fd; text-decoration: none; font-size: 12px; margin-right: 14px; }
+      .cta-row a:hover { text-decoration: underline; }
+      /* Details section (light theme for readability) */
+      .details-wrap {
+        margin-top: 22px; margin-bottom: 30px; color: #111827;
+        background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px 18px 6px;
+      }
+      .details-wrap h2 { margin: 0 0 8px; font-size: 22px; font-weight: 700; color: #0f172a; }
+      .details-wrap .intro { color: #334155; font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+      .accordion { margin-top: 10px; }
+      .accordion-group { border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+      .accordion-heading a {
+        display: block; padding: 10px 12px; background: #f8fafc; color: #0f172a; text-decoration: none; font-weight: 600;
+      }
+      .accordion-heading a:hover { background: #f1f5f9; }
+      .accordion-inner { background: #ffffff; padding: 12px; color: #1f2937; }
+      .accordion-inner h4 { font-size: 14px; margin: 4px 0 6px; color: #0b3d5e; }
+      .badge-kpi {
+        display:inline-block; background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; padding:2px 6px; border-radius:999px; font-size:11px; margin:2px 4px 0 0;
+      }
+      .muted-note { color:#64748b; font-size:12px; margin-top:6px; }
+      @media (max-width: 1199px) { .research-card { min-height: 240px; } }
+      @media (max-width: 979px)  { .research-card { margin-bottom: 14px; } }
+    </style>
   </head>
   <body>
-    <!-- Navigation -->
+    <!-- Navigation (unchanged) -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">  
+        <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="people.html">People</a></li>
@@ -55,149 +120,266 @@
       </div>
     </nav>
 
-    <div class="container">
-    <header>
-      <!--
-      <a href="index.html"><img src="images/logo.png"  width="256px"></a>
-      -->
-    </header>
-
-    <!--
-    <section class="main-slider">
-      <ul class="bxslider">
-        <li><div class="slider-item"><img src="images/logo/logo_c.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_m.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_y.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_k.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_r.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_g.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-        <li><div class="slider-item"><img src="images/logo/logo_b.png" title="Logo" /><h3><a href="" title="Loge">New published !</a></h3></div></li>
-      </ul>
-    </section>
-    -->
-    
- 
-		
-    <div class="container" style="margin-top: 50px;">
-        <h2>Research Projects</h2>
-        <div class="row-project">
-
-            <div class="span12">
-                <p>
-		Our research in the  <b> Smart, Reliable, and Interpretable Systems Lab </b> primarily focuses on  <b> Interpretable Fault Diagnosis and Control with Formal Methods and Their Applications</b> in complex electromechanical systems, aiming to enhance system intelligence, reliability, and interpretability.
-                </p>
-            </div>
+    <!-- One-screen About Section -->
+    <div class="container about-hero">
+      <div class="row-fluid">
+        <div class="span12">
+          <h1>About Our Research</h1>
+          <div class="tagline">
+                At the <strong>Smart, Reliable, and Interpretable Systems (SRIS) Lab</strong>, we fuse <strong>logic</strong>, <strong>physics</strong>, and <strong>learning</strong> to build trustworthy, high-performance systems for intelligent manufacturing and critical equipment.
+          </div>
+          <div class="lead">
+            Our lab advances a unified methodology—Signal Temporal Logic (STL), causal structure, and physics-guided priors—to achieve interpretable diagnosis, safe autonomy, verifiable machine learning, and fleet-level health management. We aim for exportable industrial software stacks, standards-ready audit trails, and measurable impact on reliability, yield, and safety.
+          </div>
+          <div class="pill"><i class="fa fa-shield"></i> Verifiable</div>
+          <div class="pill"><i class="fa fa-cogs"></i> Industrial-Grade</div>
+          <div class="pill"><i class="fa fa-eye"></i> Interpretable</div>
         </div>
-        <section>
-            <div class="row-project">
-                <div class="span12">
-                    <div class="row-fluid">
+      </div>
 
-                        <div class="span4">
-                            <div class="row-fluid">
-                                <div class="thumbnails" style="text-align: center;margin-top: 10px;">
-                                    <li class="span12" style="height: 190px;">
-                                        <a href="./modules/IFD.html" class="thumbnail"
-                                            style="height: 190px; display:flex;justify-content:center;">
-                                            <img src="./images/material/IFD.png" alt="">
-                                            <a style="text-decoration: none;" href="./modules/IFD.html"><b>Interpretable Fault Diagnosis</b></a>
-                                        </a>
-                                    </li>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="span4">
-                            <div class="row-fluid">
-                                <div class="thumbnails" style="text-align: center;margin-top: 10px;">
-                                    <li class="span12" style="height: 190px;">
-                                        <a href="./modules/CSTL.html" class="thumbnail"
-                                            style="height: 190px; display:flex;justify-content:center;">
-                                            <img src="./images/material/CSTL.png" alt="">
-                                            <a style="text-decoration: none;" href="./modules/CSTL.htm"><b>Control Synthesis with Temporal Logic</b></a>
-                                        </a>
-                                    </li>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="span4">
-                            <div class="row-fluid">
-                                <div class="thumbnails" style="text-align: center;margin-top: 10px;">
-                                    <li class="span12" style="height: 190px;">
-                                        <a href="./modules/RCML.html" class="thumbnail"
-                                            style="height: 190px; display:flex;justify-content:center;">
-                                            <img src="./images/material/RCML.png" alt="">
-                                            <a style="text-decoration: none;" href="./modules/RCML.htm"><b>Robot Control with Machine Learning</b></a>
-                                        </a>
-                                    </li>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="span4" style="margin-left: 0;margin-top: 50px;">
-                            <div class="row-fluid" style="margin-left: 0%;">
-                                <div class="thumbnails" style="text-align: center">
-                                    <li class="span12" style="height: 190px;">
-                                        <a href="./modules/ITSP.html" class="thumbnail"
-                                            style="height: 190px; display:flex;justify-content:center;">
-                                            <img src="./images/material/TSP.png" alt="">
-                                            <a style="text-decoration: none;" href="./modules/ITSP.htm"><b>Intelligent Task Scheduling and Planning</b></a>
-                                        </a>
-                                    </li>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="span4" style="margin-top: 50px;">
-                            <div class="row-fluid">
-                                <div class="thumbnails" style="text-align: center">
-                                    <li class="span12" style="height: 190px;">
-                                        <a href="./modules/ISP.html" class="thumbnail"
-                                            style="height: 190px; display:flex;justify-content:center;">
-                                            <img src="./images/material/ISP.png" alt="">
-                                            <a style="text-decoration: none;" href="./modules/ISP.htm"><b>Intelligent Signal Processing</b></a>
-                                        </a>
-                                    </li>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="span4" style="margin-top: 50px; margin-bottom: 25px;">
-                            <div class="row-fluid">
-                                <div class="thumbnails" style="text-align: center">
-                                    <li class="span12" style="height: 190px;">
-                                        <a href="./modules/IDP.html" class="thumbnail"
-                                            style="height: 190px; display:flex;justify-content:center;">
-                                            <img src="./images/material/IDP.png" alt="">
-                                            <a style="text-decoration: none;" href="./modules/IDP.htm"><b>System Design and Inverse Dynamic Problems</b></a>
-                                        </a>
-                                    </li>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+      <!-- Cards -->
+      <div class="row-fluid cards-row">
+        <!-- Card 1 -->
+        <div class="span3">
+          <div class="research-card">
+            <h3><i class="fa fa-sitemap"></i> Neuro-Symbolic Foundation Models</h3>
+            <div class="mini">Trustworthy Manufacturing AI</div>
+            <p>
+              Multimodal industrial pretraining with <em>STL-regularized</em> objectives and causal priors for machine-checkable rationales and controller-aware outputs.
+            </p>
+            <div>
+              <span class="chip">Causal KGs</span>
+              <span class="chip">Rule distillation</span>
+              <span class="chip">Cross-site transfer</span>
+              <span class="chip">Uncertainty</span>
             </div>
-        </section>
-        <div class="row-project" style="margin-top: 10px;">
-            <div class="span12">
-                <ul>
-                <li><b>Interpretable Fault Diagnosis</b> aims to provide transparent and understandable explanations for system faults through advanced interpretability techniques. Our work encompasses diverse directions, including symbolic neural networks, sparse temporal logic explanations, and explainable machine learning for reliable fault analysis.</li>
-
-                <li><b>Control Synthesis with Temporal Logic</b> aims to develop robust control strategies that adhere to specified temporal logic constraints. Our research spans key areas such as signal temporal logic-based control design, logic graph construction, and real-time implementations in safety-critical systems.</li>
-
-                <li><b>Robot Control with Machine Learning</b> aims to enhance the adaptability and precision of robotic systems using state-of-the-art machine learning techniques. Our work includes reinforcement learning for dynamic motion control, imitation learning for human-like coordination, and transfer learning for sim-to-real performance.</li>
-
-                <li><b>Intelligent Task Scheduling and Planning</b> focuses on optimizing the assignment of tasks and resources in complex environments using intelligent algorithms. Our research covers adaptive scheduling methods, multi-agent planning, and real-time decision-making in constrained scenarios.</li>
-
-                <li><b>Intelligent Signal Processing</b> aims to extract, analyze, and interpret valuable information from complex and noisy signals using advanced processing methods. Our work includes instantaneous frequency analysis, fault signal modeling, and interpretable signal processing techniques for industrial applications.</li>
-
-               <li><b>System Design and Inverse Dynamic Problems</b> aim to tackle the complexities of designing and analyzing advanced systems under dynamic conditions. Our work encompasses a wide range of directions, including complex system modeling and parameter estimation, dynamic behavior analysis, optimization-based inverse dynamics, and robust performance evaluation.</li>
-
-                </ul>
+            <div class="cta-row">
+              <a href="#d1" data-toggle="collapse">Read details ↓</a>
+              <a href="./modules/IFD.html">Interpretable Diagnosis →</a>
             </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="span3">
+          <div class="research-card">
+            <h3><i class="fa fa-hand-paper-o"></i> STL-Driven Safe Autonomy</h3>
+            <div class="mini">Dual-Arm & Mobile Manipulation</div>
+            <p>
+              Plans and controllers synthesized under temporal-logic contracts. Reference governors guarantee safety; residual RL optimizes within verified tubes.
+            </p>
+            <div>
+              <span class="chip">Contract mining</span>
+              <span class="chip">Compositional proofs</span>
+              <span class="chip">Vision-force skills</span>
+              <span class="chip">Runtime monitors</span>
+            </div>
+            <div class="cta-row">
+              <a href="#d2" data-toggle="collapse">Read details ↓</a>
+              <a href="./modules/CSTL.html">Control & STL →</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="span3">
+          <div class="research-card">
+            <h3><i class="fa fa-check-square-o"></i> Verifiable Machine Learning</h3>
+            <div class="mini">Safety-Critical Industrial AI</div>
+            <p>
+              We co-optimize learning and proof: robustness radii, logic satisfaction lower bounds, and coverage-controlled predictions for auditable decisions.
+            </p>
+            <div>
+              <span class="chip">Verification-aware nets</span>
+              <span class="chip">Scalable certifiers</span>
+              <span class="chip">Conformal risks</span>
+              <span class="chip">Audit reports</span>
+            </div>
+            <div class="cta-row">
+              <a href="#d3" data-toggle="collapse">Read details ↓</a>
+              <a href="./modules/ISP.html">Signal & Proof →</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="span3">
+          <div class="research-card">
+            <h3><i class="fa fa-industry"></i> Causal-Logic PHM for Critical Equipment</h3>
+            <div class="mini">Energy • Transport • Aerospace • Petrochemical</div>
+            <p>
+              Physics-guided features + causal graphs + STL abstractions to reconstruct propagation chains and recommend cost-aware interventions across fleets.
+            </p>
+            <div>
+              <span class="chip">Order/TP features</span>
+              <span class="chip">PHM ontology</span>
+              <span class="chip">Causal invariants</span>
+              <span class="chip">Fleet policies</span>
+            </div>
+            <div class="cta-row">
+              <a href="#d4" data-toggle="collapse">Read details ↓</a>
+              <a href="./modules/IDP.html">Systems & Inverse Problems →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /about-hero -->
+
+    <!-- Detailed Introductions (expandable) -->
+    <div class="container details-wrap">
+      <h2>Research Directions — Details</h2>
+      <p class="intro">
+        Click a section to expand. Each direction includes a lab-website–friendly introduction, theory-forward core idea, key tasks, representative pilots, metrics, and alignment with national strategy.
+      </p>
+
+      <div class="accordion" id="about-accordion">
+        <!-- D1 -->
+        <div class="accordion-group" id="d1">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#about-accordion" href="#collapseOne">
+              1) Industrial Neuro-Symbolic Foundation Models for Trustworthy Manufacturing AI
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <h4>Introduction</h4>
+              <p>
+                We build the next generation of manufacturing AI by unifying data-driven learning with logic, physics, and causality. By embedding Signal Temporal Logic (STL) constraints and causal structure into the representation space, our models produce machine-checkable rationales and calibrated uncertainty, enabling cross-factory transfer and controller-aware recommendations.
+              </p>
+              <h4>Core idea (theory-forward)</h4>
+              <p>
+                Pretrain on multimodal industrial data (time series, events, logs) with <em>STL-regularized objectives</em>, <em>causal priors</em> from knowledge graphs, and <em>physics-consistent invariants</em>. Dual formulations turn logic satisfaction into differentiable losses; distilled symbolic rules align human audit with closed-loop control.
+              </p>
+              <h4>Key tasks</h4>
+              <ul>
+                <li>Cross-site adaptation via knowledge-based federated learning and domain-invariant causal anchors.</li>
+                <li>Rule distillation from embeddings to minimal STL clauses with margin guarantees.</li>
+                <li>Controller-aware heads that output safe set-points and alarms aligned with contracts.</li>
+                <li>Uncertainty quantification (e.g., conformal prediction) tied to logic satisfaction margins.</li>
+              </ul>
+              <h4>Pilots & Metrics</h4>
+              <p>
+                <span class="badge-kpi">Flexible job-shops</span>
+                <span class="badge-kpi">Robotic assembly</span>
+                <span class="badge-kpi">Rotating machinery</span>
+                <span class="badge-kpi">Rationale fidelity</span>
+                <span class="badge-kpi">Zero/low-shot transfer</span>
+                <span class="badge-kpi">Causal precision/recall</span>
+              </p>
+              <p class="muted-note">National fit: 工业软件自主可控 / 新质生产力。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- D2 -->
+        <div class="accordion-group" id="d2">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#about-accordion" href="#collapseTwo">
+              2) STL-Driven Safe Autonomy for Dual-Arm & Mobile Manipulation
+            </a>
+          </div>
+          <div id="collapseTwo" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <h4>Introduction</h4>
+              <p>
+                We engineer robot autonomy that is safe by construction and fast by design. Safety is specified up-front as <em>temporal logic contracts</em> and embedded throughout planning, learning, and control. The result is dual-arm and mobile manipulation that adapts to changing workcells while certifying task timing, force limits, and human–robot interaction rules.
+              </p>
+              <h4>Core idea (theory-forward)</h4>
+              <p>
+                A hierarchical stack where high-level plans and low-level controllers are synthesized and trained under STL specifications. <em>Reference governors</em> project actions onto contract-satisfying manifolds; <em>residual RL</em> optimizes performance inside verified tubes. Runtime monitors provide certificate-based intervention and graceful recovery.
+              </p>
+              <h4>Key tasks</h4>
+              <ul>
+                <li>Contract mining from expert procedures; automatic refinement to STL/contract forms.</li>
+                <li>Certifiable motion primitives with compositional proofs of safety and timing.</li>
+                <li>Vision–force multimodal policies trained with curriculum schedules respecting contracts.</li>
+                <li>Online contract monitoring with recovery policies and formal violation explanations.</li>
+              </ul>
+              <h4>Pilots & Metrics</h4>
+              <p>
+                <span class="badge-kpi">Force-controlled assembly</span>
+                <span class="badge-kpi">AGV–arm handoff</span>
+                <span class="badge-kpi">Rapid changeover</span>
+                <span class="badge-kpi">STL satisfaction</span>
+                <span class="badge-kpi">Verified accuracy</span>
+                <span class="badge-kpi">Near-miss reduction</span>
+              </p>
+              <p class="muted-note">National fit: 先进制造装备与智能机器人。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- D3 -->
+        <div class="accordion-group" id="d3">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#about-accordion" href="#collapseThree">
+              3) Verifiable Machine Learning (VML) for Safety-Critical Industrial AI
+            </a>
+          </div>
+          <div id="collapseThree" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <h4>Introduction</h4>
+              <p>
+                When AI governs critical lines and equipment, “works on average” is not enough. We design learning systems that carry <em>proof-like guarantees</em>: robustness radii, coverage-controlled predictions, and logic satisfaction lower bounds. Verification is not a post-hoc checkbox—it is co-optimized with learning.
+              </p>
+              <h4>Core idea (theory-forward)</h4>
+              <p>
+                Integrate <em>formal verification</em> into the training–certification–runtime triad. During training, impose <em>STL/physics constraints</em> and <em>robustness dual bounds</em> as differentiable regularizers. Post-training, certify with scalable verifiers (interval/linear-relaxation/dual networks, Lipschitz bounding). At runtime, pair predictions with <em>conformal risk controls</em> and lightweight monitors for shift detection and safe degradation.
+              </p>
+              <h4>Key tasks</h4>
+              <ul>
+                <li>Verification-aware architectures (monotone/PL activations, certifier heads, provable Lipschitz control).</li>
+                <li>Scalable certification via partitioning, importance sampling, and teacher→student “verifier distillation.”</li>
+                <li>Risk-aware serving: conformal prediction under temporal dependence and STL constraints.</li>
+                <li>Audit tooling: machine-readable reports (bounds, coverage, violation traces) for compliance and standards.</li>
+              </ul>
+              <h4>Pilots & Metrics</h4>
+              <p>
+                <span class="badge-kpi">Force/quality envelopes</span>
+                <span class="badge-kpi">Spec limits</span>
+                <span class="badge-kpi">Robustness radius</span>
+                <span class="badge-kpi">STL lower bounds</span>
+                <span class="badge-kpi">Coverage guarantees</span>
+                <span class="badge-kpi">Audit pass rate</span>
+              </p>
+              <p class="muted-note">National fit: 关键软件自主创新 / 安全可控AI。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- D4 -->
+        <div class="accordion-group" id="d4">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#about-accordion" href="#collapseFour">
+              4) Causal-Logic PHM for Critical Equipment Ecosystems
+            </a>
+          </div>
+          <div id="collapseFour" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <h4>Introduction</h4>
+              <p>
+                We move beyond alarms to actionable causality in Prognostics & Health Management. By coupling physics-guided signal processing with causal graphs and temporal logic abstraction, we reconstruct fault propagation chains across components, systems, and fleets—turning heterogeneous data into interventions that save uptime, energy, and cost.
+              </p>
+              <h4>Core idea (theory-forward)</h4>
+              <p>
+                Fuse order/transfer-path–aware features with causal discovery and do-calculus–informed reasoning, then elevate events to STL templates that encode mechanism-consistent signatures. Perform inference on a multi-layer PHM knowledge graph to generate interventions (derating, maintenance windows) with transparent justifications.
+              </p>
+              <h4>Key tasks</h4>
+              <ul>
+                <li>Unified ontology linking events → mechanisms → actions across fleets and vendors.</li>
+                <li>Robust feature extraction under variable regimes; virtual decoupling of mixed excitations.</li>
+                <li>Domain generalization with causal invariants for cross-asset transfer.</li>
+                <li>Fleet-level decision support: counterfactual simulation and cost-aware maintenance policies with logic guarantees.</li>
+              </ul>
+              <h4>Pilots & Metrics</h4>
+              <p>
+                <span class="badge-kpi">Wind & gas turbines</span>
+                <span class="badge-kpi">Rail traction</span>
+                <span class="badge-kpi">CNC & spindles</span>
+                <span class="badge-kpi">Lead time↑</span>
+                <span class="badge-kpi">Forced outage↓</span>
+                <span class="badge-kpi">RUL precision↑</span>
+              </p>
+              <p class="muted-note">National fit: 能源安全 / 交通强国 / 高端装备可靠性工程。</p>
+            </div>
+          </div>
         </div>
 
         <h2>Fundings</h2>
@@ -210,18 +392,19 @@
             <li>2022.01-2024.12 基于MEC的边缘控制与实时仿真基础理论与方法研究 国家重点研发计划课题</li>
         </ul>
 
-    </div>
-    </div><!-- /.container -->
+      </div>
+    </div><!-- /details-wrap -->
 
+
+
+    <!-- Footer (unchanged) -->
     <footer class="footer">
-      <div class="footer-bottom">  
+      <div class="footer-bottom">
         <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.<br>
       </div>
     </footer>
 
-    <!-- Bootstrap core JavaScript
-      ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JS (unchanged) -->
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
     <script src="scripts/jquery.bxslider.js"></script>
