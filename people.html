@@ -270,20 +270,7 @@
   .avatar-wrap{ flex: 0 0 auto; width:100%; max-width:none; height:220px; border-right:0; border-bottom:1px solid #e5e7eb; }
   .person-bio{ -webkit-line-clamp:4; }
 }
-/* Clamp long bios (used by PI; reusable for others) */
-.person-bio.clamped{
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;    /* show 3 lines when collapsed */
-  overflow: hidden;
-}
-
-/* Optional: smaller link-button spacing */
-.bio-toggle{
-  padding-left: 0;
-  font-size: 12px;
-}
-
+  
   </style>
 </head>
 <body>
@@ -349,38 +336,29 @@
 
     <!-- PI -->
     <h3 class="group-title">PI</h3>
-<section class="people-section row" id="group-pi">
-  <div class="col-sm-6 col-md-4 person" data-group="pi">
-    <div class="person-card">
-      <div class="avatar-wrap">
-        <img src="images/photo/gangchen.png" alt="Gang Chen">
-      </div>
-      <div class="person-body">
-        <h4 class="person-name">陈 刚 · Gang Chen</h4>
-        <div class="person-role"><i class="fa fa-graduation-cap"></i> Associate Professor, SCUT</div>
-        <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:gangchen@scut.edu.cn">gangchen@scut.edu.cn</a></div>
-
-        <!-- Clamp by default -->
-        <p class="person-bio clamped" id="pi-bio">
-          Ph.D. (UC Davis), Postdoc (NTU, Singapore). Research: machine learning, formal methods,
-          control, signal processing, interpretable fault diagnosis. 
-        </p>
-
-        <!-- Toggle button -->
-        <button class="btn btn-link btn-xs bio-toggle" data-target="#pi-bio" aria-expanded="false" aria-controls="pi-bio">
-          Read more
-        </button>
-
-        <div class="chips">
-          <span class="chip">Interpretable AI</span>
-          <span class="chip">STL</span>
-          <span class="chip">Fault Diagnosis</span>
-          <span class="chip">CPS Control</span>
+   <section class="people-section row" id="group-pi">
+      <div class="col-sm-6 col-md-4 person" data-group="pi">
+        <div class="person-card">
+          <div class="avatar-wrap">
+            <img src="images/photo/gangchen.png" alt="Gang Chen">
+          </div>
+          <div class="person-body">
+            <h4 class="person-name">陈 刚 · Gang Chen</h4>
+            <div class="person-role"><i class="fa fa-graduation-cap"></i> Associate Professor, SCUT</div>
+            <div class="person-meta"><i class="fa fa-envelope-o"></i> <a href="mailto:gangchen@scut.edu.cn">gangchen@scut.edu.cn</a></div>
+            <p class="person-bio">
+              Ph.D. (UC Davis), Postdoc (NTU, Singapore). Research: machine learning, formal methods, control, signal processing, interpretable fault diagnosis.
+            </p>
+            <div class="chips">
+              <span class="chip">Interpretable AI</span>
+              <span class="chip">STL</span>
+              <span class="chip">Fault Diagnosis</span>
+              <span class="chip">CPS Control</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
     <!-- Postdocs -->
