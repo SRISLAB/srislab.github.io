@@ -143,6 +143,80 @@
     @media (max-width: 767px){
       .avatar-wrap{ height:180px; }
     }
+    /* === Horizontal person card: photo left, text right === */
+.person-card{
+  display: flex;
+  flex-direction: row;           /* ← side-by-side */
+  align-items: stretch;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15,23,42,.05);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  min-height: 200px;             /* keeps rows tidy */
+}
+.person-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15,23,42,.08);
+  border-color: #dbe0e6;
+}
+
+/* Left-side photo panel (fixed width) */
+.avatar-wrap{
+  flex: 0 0 180px;               /* ← image column width (try 160–220px) */
+  max-width: 180px;
+  height: 260px;                 /* ← card image height (try 220–300px) */
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 0;              /* remove previous bottom border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Tall portraits: show whole image (no cropping) */
+.avatar-wrap img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;           /* change to 'cover' if you prefer edge-to-edge */
+  object-position: center;
+  display: block;
+  background: #ffffff;
+}
+
+/* Right-side content panel */
+.person-body{
+  flex: 1 1 auto;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Tidy text hierarchy */
+.person-name{ margin: 0; font-size: 18px; font-weight: 800; color: #0f172a; line-height: 1.25; }
+.person-role, .person-meta{ font-size: 12px; color: #64748b; }
+.person-bio{ font-size: 13px; color: #334155; line-height: 1.55; margin: 2px 0 0; }
+.chips{ margin-top: 4px; }
+.chip{ display:inline-block; background:#f1f5f9; border:1px solid #e2e8f0; color:#334155;
+       font-size:11px; padding:3px 8px; border-radius:999px; margin:2px 4px 0 0; }
+
+/* Responsive: stack on small screens */
+@media (max-width: 991px){
+  .avatar-wrap{ flex-basis: 160px; max-width: 160px; height: 240px; }
+}
+@media (max-width: 767px){
+  .person-card{ flex-direction: column; }       /* stack vertically on phones */
+  .avatar-wrap{
+    border-right: 0;
+    border-bottom: 1px solid #e5e7eb;
+    width: 100%; max-width: none;
+    height: 240px;                               /* shorter mobile portrait */
+  }
+}
+
   </style>
 </head>
 <body>
