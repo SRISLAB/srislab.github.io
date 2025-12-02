@@ -275,7 +275,7 @@
         <button class="filter-btn" data-filter="under-review">审核中</button>
         <button class="filter-btn" data-filter="accepted">已接受</button>
         <button class="filter-btn" data-filter="published">已发表</button>
-        <button class="filter-btn" data-filter="rejected">被拒绝</button>
+        <button class="filter-btn" data-filter="revision-under-review">以返修</button>
       </div>
     </div>
 
@@ -301,125 +301,95 @@
   <script>
     // 论文数据 - 实际使用时可以替换为从服务器获取的数据
     const papersData = [
+
+
       {
         id: 1,
-        title: "WPANet: A physically consistent and interpretable framework for fault diagnosis via wavelet prior-guided algorithm unrolling",
-        authors: "Chen, G., Li, X., Wang, Z., Zhang, Y.",
-        journal: "Neurocomputing",
-        status: "accepted",
-        date: "2025-11-30"
+        title: "Physics-Consistent and Interpretable Bearing Remaining Useful Life Prediction via Wavelet-NISTA and KAN-Constrained PINNs ",
+        authors: "Yuan Junlin, et al.",
+        journal: "Reliability Engineering & System Safety ",
+        status: "under-review",
+        date: "2025-11-5"
       },
       {
         id: 2,
-        title: "Instantaneous frequency extraction of overlapped multicomponent signals with an adaptive constraints approach",
-        authors: "Wang, Z., Chen, G., Li, X.",
-        journal: "Engineering Research Express",
-        status: "accepted",
-        date: "2025-08-15"
-      },
-      {
-        id: 3,
-        title: "Decomposition-Based MPC for Uncertain Systems with Nested STL Specifications",
-        authors: "Zhang, Y., Chen, G., Wang, Z.",
-        journal: "IEEE Control Systems Letters",
-        status: "accepted",
-        date: "2025-08-04"
-      },
-      {
-        id: 4,
-        title: "Event driven causal knowledge graphs for bottleneck root cause analysis in manufacturing systems",
-        authors: "Li, X., Chen, G., Zhang, Y.",
-        journal: "Expert Systems with Applications",
-        status: "accepted",
-        date: "2025-07-12"
-      },
-      {
-        id: 5,
-        title: "A dual spatial temporal neural network for bottleneck prediction in manufacturing systems",
-        authors: "Wang, Z., Chen, G., Li, X.",
-        journal: "EAAI",
-        status: "accepted",
-        date: "2025-06-19"
-      },
-      {
-        id: 6,
-        title: "Temporal Logic Inference for Interpretable Fault Diagnosis of Bearings via Sparse and Structured Neural Attention",
-        authors: "Chen, G., Zhang, Y., Wang, Z.",
-        journal: "ISA Transactions",
-        status: "accepted",
-        date: "2025-01-09"
-      },
-      {
-        id: 7,
-        title: "Multi-source data fusion monitoring system for super-elevation in LPBF",
-        authors: "Li, X., Chen, G., Wang, Z.",
-        journal: "Optics and Lasers in Engineering",
-        status: "accepted",
-        date: "2024-12-22"
-      },
-      {
-        id: 8,
-        title: "Fault tracing in multistage gearbox systems",
-        authors: "Wang, Z., Chen, G., Li, X.",
-        journal: "Measurement",
-        status: "accepted",
-        date: "2024-10-14"
-      },
-      {
-        id: 9,
-        title: "In-situ quality inspection for LPBF with depth graph network",
-        authors: "Chen, G., Li, X., Wang, Z.",
-        journal: "MSSP",
-        status: "accepted",
-        date: "2024-09-25"
-      },
-      {
-        id: 10,
-        title: "VNCCD: Gearbox diagnosis under nonstationary conditions",
-        authors: "Zhang, Y., Chen, G., Wang, Z.",
-        journal: "MSSP",
-        status: "accepted",
-        date: "2024-07-12"
-      },
-      {
-        id: 11,
-        title: "Enhancing Reliability through Interpretability: A Survey of Industrial AI Applications",
-        authors: "Chen, G., Li, X., Wang, Z., Zhang, Y.",
-        journal: "IEEE Access",
-        status: "accepted",
-        date: "2024-06-29"
-      },
-      {
-        id: 12,
-        title: "Fast Pareto Set Approximation for Multi-objective Flexible Job Shop Scheduling",
-        authors: "Wang, Z., Chen, G., Li, X.",
-        journal: "Swarm and Evolutionary Computation",
-        status: "accepted",
-        date: "2024-05-13"
-      },
-      {
-        id: 13,
-        title: "A Novel Approach to Safe Reinforcement Learning with Temporal Logic Constraints",
-        authors: "Chen, G., Zhang, Y., Wang, Z.",
-        journal: "IEEE Transactions on Neural Networks and Learning Systems",
-        status: "under-review",
-        date: "2025-12-15"
-      },
-      {
-        id: 14,
-        title: "Interpretable Fault Diagnosis with Adaptive Wavelet Neural Networks",
-        authors: "Li, X., Chen, G., Wang, Z.",
-        journal: "Mechanical Systems and Signal Processing",
+        title: "An interpretable causal invariant graph neural network for unseen domain gear fault diagnosis",
+        authors: "Lao Zhenpeng, et al.",
+        journal: "Engineering Applications of Artificial Intelligence",
         status: "under-review",
         date: "2025-11-20"
       },
       {
-        id: 15,
-        title: "Causal Inference for Industrial Process Monitoring",
-        authors: "Wang, Z., Chen, G., Li, X.",
-        journal: "Journal of Process Control",
-        status: "submitted",
-        date: "2025-12-01"
+        id: 3,
+        title: "Collaborative design of fault diagnosis and fault tolerance control under nested signal temporal logic specifications",
+        authors: "Lu Penghong, et al.",
+        journal: "IEEE Transactions on Automation Science and Engineering",
+        status: "under-review",
+        date: "2025-10-21"
+      },
+       {
+        id: 4,
+        title: "F-DiffWave: A Fault-aware Wavelet-Structured Diffusion Framework for robust fault diagnosis under Variable Operating Conditions",
+        authors: "Zhu Hanyue, et al.",
+        journal: "Measurement Science and Technology",
+        status: "under-review",
+        date: "2025-11-21"
+      },
+       {
+        id: 5,
+        title: "Collaborative design of fault diagnosis and fault tolerance control under nested signal temporal logic specifications",
+        authors: "Lu Penghong, et al.",
+        journal: "IEEE Transactions on Automation Science and Engineering",
+        status: "under-review",
+        date: "2025-10-21"
+      },
+      {
+        id: 6,
+        title: "Automated High-Precision Control of Twisted and Coiled Polymers under Parameter Variability",
+        authors: "Zhang Chen, et al.",
+        journal: "IEEE Robotics and Automation Letters",
+        status: "under-review",
+        date: "2025-10-21"
+      },
+     {
+        id: 7,
+        title: "Adaptive Control with Integral Concurrent Learning and Prescribed Performance for Uncertain Nonlinear Systems",
+        authors: "Lu Penghong, et al.",
+        journal: "IEEE Robotics and Automation Letters",
+        status: "under-review",
+        date: "2025-10-21"
+      },
+     {
+        id: 8,
+        title: "Reconfiguration-Based Fault-Tolerant Control Synthesis for Time-Optimal Scheduling in Automated Manufacturing Systems",
+        authors: "Chen Gang, et al.",
+        journal: "IEEE Transactions on Systems, Man and Cybernetics: Systems",
+        status: "under-review",
+        date: "2025-10-12"
+      },
+      {
+        id: 9,
+        title: "Enhancing Neural Network Explainability via Event Causal Graphs for Bottleneck Prediction in Production Systems",
+        authors: "Cen Weihong, et al.",
+        journal: "Applied Soft Computing Journal",
+        status: "under-review",
+        date: "2025-10-18"
+      } ,
+       {
+        id: 10,
+        title: "Certifiable Shared Autonomy under Time-Varying Intent via Set-Membership and Control Barrier Functions",
+        authors: "Chen Gang, et al.",
+        journal: "Automatica",
+        status: "under-review",
+        date: "2025-10-12"
+      },
+   {
+        id: 11,
+        title: "Adaptive Online Shapelet Temporal Logic for Interpretable Multivariate Time Series Classification under Concept Drift",
+        authors: "Chen Mingyu, et al.",
+        journal: "Information Science",
+        status: "under-review",
+        date: "2025-12-12"
       }
     ];
 
