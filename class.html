@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feedback Control Theorem — Course Page</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --accent:#2563eb;
+      --accent2:#059669;
+      --shadow: 0 10px 24px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+    header{
+      padding:22px 20px;
+      background: #f9fafb;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow: var(--shadow);
+    }
+    h1{margin:0 0 8px;font-size:28px;letter-spacing:.2px}
+    .sub{color:var(--muted);margin:0}
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+    }
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px 18px 16px;
+      box-shadow: var(--shadow);
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 16px;
+      color:var(--muted);
+      font-size:14px;
+      margin:8px 0 0;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: #ffffff;
+    }
+    .pill b{color:var(--text);font-weight:600}
+    .hint{
+      color:var(--muted);
+      font-size:14px;
+      margin:10px 0 0;
+    }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: #ffffff;
+    }
+    thead th{
+      text-align:left;
+      font-weight:600;
+      font-size:14px;
+      color:var(--muted);
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      background: #f9fafb;
+    }
+    tbody td{
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      vertical-align:middle;
+      font-size:14px;
+    }
+    tbody tr:hover{background: #f9fafb}
+    tbody tr:last-child td{border-bottom:none}
+
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    .btn{
+      display:inline-block;
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid rgba(37,99,235,.35);
+      background: rgba(37,99,235,.08);
+      color:var(--text);
+      font-weight:600;
+      font-size:13px;
+      text-decoration:none;
+      transition: transform .05s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); text-decoration:none}
+    .btn.hw{
+      border-color: rgba(5,150,105,.35);
+      background: rgba(5,150,105,.08);
+    }
+    .note{
+      color:var(--muted);
+      font-size:13px;
+    }
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    code{
+      background: #f3f4f6;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid var(--line);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Feedback Control Theorem</h1>
+      <p class="sub">Course page · Lecture notes & homework downloads</p>
+      <div class="meta">
+        <span class="pill"><b>Format</b> Lecture + Homework</span>
+        <span class="pill"><b>Materials</b> PDF / ZIP</span>
+        <span class="pill"><b>Download</b> Direct links</span>
+      </div>
+ 
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Course Introduction</h2>
+        <p>
+          This course introduces the foundational theorem(s) and practical design principles of feedback control.
+          Topics include modeling and linearization, stability and performance analysis, frequency-domain design,
+          state-space methods, observer-based control, robustness margins, and implementation considerations.
+        </p>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>Lectures & Downloads</h2>
+      <table aria-label="Lecture notes and homework downloads">
+        <thead>
+          <tr>
+            <th style="width:110px;">Lecture</th>
+            <th>Topic</th>
+            <th style="width:190px;">Lecture Note</th>
+            <th style="width:190px;">Homework</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lecture 01</td>
+            <td>Course overview; feedback concepts; examples</td>
+            <td><a class="btn" href="files/lecture01.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw01.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 02</td>
+            <td>System modeling; transfer functions; block diagrams</td>
+            <td><a class="btn" href="files/lecture02.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw02.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 03</td>
+            <td>Time-domain analysis; transient response; steady-state error</td>
+            <td><a class="btn" href="files/lecture03.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw03.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 04</td>
+            <td>Stability fundamentals; Routh–Hurwitz criterion</td>
+            <td><a class="btn" href="files/lecture04.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw04.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 05</td>
+            <td>Root locus design; controller shaping</td>
+            <td><a class="btn" href="files/lecture05.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw05.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 06</td>
+            <td>Frequency response; Bode plots; gain/phase margins</td>
+            <td><a class="btn" href="files/lecture06.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw06.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 07</td>
+            <td>Nyquist criterion; loop shaping for robustness</td>
+            <td><a class="btn" href="files/lecture07.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw07.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 08</td>
+            <td>PID design & tuning; practical considerations</td>
+            <td><a class="btn" href="files/lecture08.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw08.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 09</td>
+            <td>State-space modeling; controllability/observability</td>
+            <td><a class="btn" href="files/lecture09.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw09.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 10</td>
+            <td>State feedback; pole placement; LQR basics</td>
+            <td><a class="btn" href="files/lecture10.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw10.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 11</td>
+            <td>Observers; Kalman filter overview; output feedback</td>
+            <td><a class="btn" href="files/lecture11.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw11.pdf" download>Download HW</a></td>
+          </tr>
+          <tr>
+            <td>Lecture 12</td>
+            <td>Robust control summary; implementation & case studies</td>
+            <td><a class="btn" href="files/lecture12.pdf" download>Download Note</a></td>
+            <td><a class="btn hw" href="files/hw12.pdf" download>Download HW</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer>
+        <div>Hint: homeworks should be sent to the email address given in the homework assignments with name format as: Name_studentnumber_homeworkname (e.g., <code>Jason_2024857363_HW2</code>).</div>
+      </footer>
+    </section>
+  </div>
+</body>
+</html>
