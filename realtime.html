@@ -149,13 +149,35 @@
     .paper-card.published::before { background-color: var(--published); }
     .paper-card.rejected::before { background-color: var(--rejected); }
     
+    /* 卡片编号样式 */
+    .paper-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .paper-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    
     .paper-status {
       display: inline-block;
       padding: 4px 12px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
-      margin-bottom: 15px;
     }
     
     .paper-status.submitted { background: rgba(245, 158, 11, 0.1); color: var(--submitted); }
@@ -214,6 +236,12 @@
       
       .filter-buttons {
         justify-content: center;
+      }
+      
+      .paper-number {
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
       }
     }
   </style>
@@ -301,8 +329,6 @@
   <script>
     // 论文数据 - 实际使用时可以替换为从服务器获取的数据
     const papersData = [
-
-
       {
         id: 1,
         title: "Physics-Consistent and Interpretable Bearing Remaining Useful Life Prediction via Wavelet-NISTA and KAN-Constrained PINNs ",
@@ -327,7 +353,7 @@
         status: "accepted",
         date: "2025-10-21"
       },
-       {
+      {
         id: 4,
         title: "F-DiffWave: A Fault-aware Wavelet-Structured Diffusion Framework for robust fault diagnosis under Variable Operating Conditions",
         authors: "Zhu Hanyue, et al.",
@@ -335,7 +361,7 @@
         status: "accepted",
         date: "2025-11-21"
       },
-       {
+      {
         id: 5,
         title: "Adaptive Prescribed-Performance Control of Twisted-and-Coiled Polymer Actuators via Integral Concurrent Learning",
         authors: "Lu Penghong, et al.",
@@ -351,7 +377,7 @@
         status: "accepted",
         date: "2025-10-21"
       },
-     {
+      {
         id: 7,
         title: "Adaptive Control with Integral Concurrent Learning and Prescribed Performance for Uncertain Nonlinear Systems",
         authors: "Lu Penghong, et al.",
@@ -359,7 +385,7 @@
         status: "under-review",
         date: "2026-2-16"
       },
-     {
+      {
         id: 8,
         title: "Reconfiguration-Based Fault-Tolerant Control Synthesis for Time-Optimal Scheduling in Automated Manufacturing Systems",
         authors: "Chen Gang, et al.",
@@ -374,8 +400,8 @@
         journal: "Applied Soft Computing Journal",
         status: "under-review",
         date: "2025-10-18"
-      } ,
-       {
+      },
+      {
         id: 10,
         title: "Certifiable Shared Autonomy under Time-Varying Intent via Set-Membership and Control Barrier Functions",
         authors: "Chen Gang, et al.",
@@ -383,7 +409,7 @@
         status: "under-review",
         date: "2025-10-12"
       },
-     {
+      {
         id: 11,
         title: "Adaptive Online Shapelet Temporal Logic for Interpretable Multivariate Time Series Classification under Concept Drift",
         authors: "Chen Mingyu, et al.",
@@ -398,16 +424,16 @@
         journal: "Mechanical Systems and Signal Processing ",
         status: "under-review",
         date: "2025-12-18"
-      },    
-        {
+      },
+      {
         id: 13,
         title: "GSTAR: A Distributed Robust Graph Barrier and Learning-Accelerated STL Control Framework for Disturbed Multi-Agent Systems",
         authors: "Tang Chao, et al.",
         journal: "IEEE Transactions on Automation Science and Engineering",
         status: "under-review",
         date: "2026-1-18"
-      },   
-       {
+      },
+      {
         id: 14,
         title: "Safe Reinforcement Learning for Uncertain Nonlinear Systems via ICL CLF–HOCBF Filters and Adaptive Barrier Tuning",
         authors: "Lin Zhenhao, et al.",
@@ -415,7 +441,7 @@
         status: "under-review",
         date: "2026-2-21"
       },
-  {
+      {
         id: 15,
         title: "Interpretable and Robust Fault Diagnosis via Nonconvex Sparse Decomposition and Order-Domain Modal Expansion",
         authors: "Zhang Yiyue, et al.",
@@ -423,7 +449,7 @@
         status: "under-review",
         date: "2025-12-25"
       },
-        {
+      {
         id: 16,
         title: "Optimization-Free Safety and Task Execution for High-Order Multi-Agent Systems via STL-Guided Auxiliary Reference Governor",
         authors: "Lu Penghong, et al.",
@@ -431,7 +457,7 @@
         status: "under-review",
         date: "2025-7-31"
       },
-       {
+      {
         id: 17,
         title: "Speed-Informed Multi-Resonance Fault-Order Extraction With Verifiable Interpretability",
         authors: "Zhenpeng Lao, et al.",
@@ -439,7 +465,7 @@
         status: "under-review",
         date: "2026-2-15"
       },
-       {
+      {
         id: 18,
         title: "Cognition-inspired Robot Learning and Manipulation for Assembly in Semi-structured Environments",
         authors: "Chuang Wang, et al.",
@@ -447,7 +473,7 @@
         status: "under-review",
         date: "2026-2-3"
       },
-        {
+      {
         id: 19,
         title: "Semi-Tensor-Product Realization of Supervisor-Compatible Quotients for Timed Resource-Allocation Discrete Event Systems",
         authors: "Gang Chen, et al.",
@@ -480,12 +506,16 @@
         return;
       }
       
-      filteredPapers.forEach(paper => {
+      // 在筛选模式下，我们需要重新编号，从1开始
+      filteredPapers.forEach((paper, index) => {
         const statusInfo = statusMap[paper.status];
         const paperCard = document.createElement('div');
         paperCard.className = `paper-card ${paper.status}`;
         paperCard.innerHTML = `
-          <div class="paper-status ${paper.status}">${statusInfo.text}</div>
+          <div class="paper-header">
+            <div class="paper-number">${index + 1}</div>
+            <div class="paper-status ${paper.status}">${statusInfo.text}</div>
+          </div>
           <h3 class="paper-title">${paper.title}</h3>
           <div class="paper-authors">${paper.authors}</div>
           <div class="paper-journal">
