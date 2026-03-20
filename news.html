@@ -1,103 +1,292 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Home page of REMEX">
-    <meta name="author" content="WeiQM">
+    <meta name="description" content="News - SRIS Lab">
+    <meta name="author" content="SRIS Lab">
     <link rel="icon" href="images/logo/RMX_16.ico">
-    <title>SRIS-Smart, Reliable and Interpretable Systems</title>
-    <!-- Bootstrap core CSS -->
+    <title>News - SRIS Lab</title>
+    <!-- Bootstrap & site CSS -->
     <link rel="stylesheet" href="style/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
-    <link href="style/jquery.bxslider.css" rel="stylesheet">
     <link href="style/style.css" rel="stylesheet">
-  </head>
+    <style>
+        body {
+            padding-top: 80px;
+            background-color: #f8fafc;
+        }
 
-  <body>
-    <!-- Navigation -->
+        .news-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-header {
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .news-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-content {
+            line-height: 1.6;
+        }
+
+        .back-home {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 (与首页一致) -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li class="dropdown">
+                        <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="journal.html">Journal Papers</a></li>
+                            <li><a href="conference.html">Conference Papers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">English</a></li>
+                    <li><a href="index_x.html">中文</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px" /></a></li>
+                </ul>
+            </div>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">  
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="people.html">People</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li class="dropdown">
-              <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="journal.html">Journal Papers</a></li>
-                <li><a href="conference.html">Conference Papers</a></li>
-              </ul>
-            </li>
-            <li><a href="downloads.html">Downloads</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">English</a></li>
-            <li><a href="index_x.html">中文</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
-          </ul>
-        </div>
-      </div>
     </nav>
+
     <div class="container">
-    <header>
-      <!--
-      <a href="index.html"><img src="images/sun.jpg"  width="256px"></a>
-      -->
-    </header>
+        <div class="news-container">
+            <div class="page-header">
+                <h2><i class="fa fa-newspaper-o"></i> SRIS Lab News</h2>
+                <p class="text-muted">Latest updates from our research laboratory</p>
+            </div>
 
-              <h3 align="left">  News</h3><br />
-              <div class="block-text">
-            <table><tbody>
-              <ul>
-                        <li>
-          <span class="date">Jun 19, 2025</span>
-          <em>A dual spatial temporal neural network for bottleneck prediction in manufacturing systems</em> accepted by <strong>EAAI</strong>.
-        </li>
-        <li>
-          <span class="date">Jan 14, 2025</span>
-          New grant from <strong>State Key Lab of Performance Monitoring and Protecting of Rail Transit Infrastructure</strong> on gearbox fault diagnosis.
-        </li>
-     
-                  <p>[June 27, 2025] Congratulations to our lab masters Li Cai, Li Du and Zeng Ziyue for their graduation.</p>
-                    <p>[Jan 14, 2025]   Our lab has received a research grant from "State Key Laboratory of Performance Monitoring and Protecting of Rail Transit Infrastructure,East China Jiaotong University" on     gearbox fault diagnosis.</p>
-                <p>[Jan 9, 2025]  Our paper "Temporal Logic Inference for Interpretable Fault Diagnosis of Bearings via Sparse and Structured Neural Attention" has been accepted by ISA Transactions</p>
-                 <p>[Dec 22, 2024]  Our paper "Multi-source data fusion monitoring system for super-elevation in laser powder bed fusion based on bi-stream cross-mode fusion network" has been accepted by Optics and Lasers in Engineering</p>
-                <p>[Oct 14, 2024]  Our paper "Fault tracing in multistage gearbox systems based on an improved transfer path analysis method" has been accepted by Measurement </p>
-                <p>[Sept 25, 2024]  Our paper "In-situ quality inspection based on coaxial melt pool images for laser powder bed fusion with depth graph network guided by prior knowledge" has been accepted by Mechanical Systems and Signal Processing. </p>
-                <p>[July 12, 2024]  Our paper "VNCCD: A Gearbox Fault Diagnosis Technique under Nonstationary Conditions via Virtual Decoupled Transfer Paths" has been accepted by Mechanical Systems and Signal Processing. </p>
-                <p>[June 29, 2024]  Our paper "Enhancing Reliability through Interpretability: A Comprehensive Survey of Interpretable Intelligent Fault Diagnosis in Rotating Machinery" has been accepted by IEEE ACCESS. </p>
-                <p>[May 13, 2024]  Our paper "Fast Pareto Set Approximation for Multiobjective Flexible Job Shop Scheduling via Parallel Preference-Conditioned Graph Reinforcement Learning" has been accepted by Swarm and Evolutionary Computation. </p>
-                <p>[April 30, 2024] Our lab has received a   research grant from "State Key Laboratory of Mechanical Transmission for Advanced Equipment, Chongqing University" on wind turbine gearbox fault diagnosis. 
-                <p>[April 25, 2024]  Our paper "Bearing Fault Diagnosis via Robust PCA with Nonconvex Rank Approximation" has been accepted by IEEE Sensors Journal. </p>
-                <p>[April 9, 2024]  Our paper " Knowledge-Based Clustering Federated Learning for Fault Diagnosis in Robotic Assembly Systems" has been accepted by Knowledge-Based Systems. </p>
-                <p> [March 25, 2024] Our paper "Extended Residual Learning with One-shot Imitation Learning for Robotic Assembly in Semi-structured Environment" has been accepted by Frontiers in Neurorobotics.</p>
-                <p> [March 18, 2024] Our paper "Task attention-based multimodal policy and curriculum residual learning for context generalization in robotic assembly" has been accepted by Applied Intelligence.</p>
-                <p> [Jan 30, 2024] Our paper "A Neural-symbolic Network for Interpretable Fault Diagnosis of Rolling Element Bearings Based on Temporal Logic" has been accepted by IEEE Transactions on Instrumentation and Measurement.</p>
-                <p> [Jan 22, 2024] Our paper "Control/Physical Systems Co-design  with Spectral Temporal Logic Specifications and Its Applications to MEMS" has been accepted by the International Journal of Control.</p>
-                
-              </ul>
+            <!-- 新闻列表 - 这是首页动态加载的来源 -->
+            <div id="news-list">
+                <div class="news-item">
+                    <div class="news-date">Feb 15, 2026</div>
+                    <div class="news-content">
+                        <em>   Our paper An interpretable causal invariant graph neural network for unseen domain gear fault diagnosis</em>has been accepted by <strong>EAAI</strong>.
+                    </div>
+                </div>              
+                <div class="news-item">
+                    <div class="news-date">Jan 31, 2026</div>
+                    <div class="news-content">
+                        <em>  Our paper "Automated High-Precision Control of Twisted and Coiled Polymers Under Parameter Variability</em>has been accepted by <strong>IEEE Robotics and Automation Letters</strong>.
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Aug 4, 2025</div>
+                    <div class="news-content">
+                        <em> Our paper Collaborative design of fault diagnosis and fault tolerance control under nested signal temporal logic specifications</em> has been accepted<strong> IEEE Transactions on Automation Science and Engineering</strong>.
+                    </div>
+                </div>              
+                <div class="news-item">
+                    <div class="news-date">Dec 13, 2025</div>
+                    <div class="news-content">
+                        <em> Our paper F-DiffWave: A Fault-aware Wavelet-Structured Diffusion Framework for robust fault diagnosis under Variable Operating Conditions</em>has been accepted by <strong>Measurement Science and Technology</strong>.
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Nov 30, 2025</div>
+                    <div class="news-content">
+                        <em>Our paper WPANet: A physically consistent and interpretable framework for fault diagnosis via wavelet prior-guided algorithm unrolling</em>has been accepted by <strong>Neurocomputing.</strong>.
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Nov 11, 2025</div>
+                    <div class="news-content">
+                        <em>  Our lab received a grant from the Guangdong Provincial Natural Science Foundation for a project on "An Integrated Approach to Explainable Monitoring and Control for Collaborative Robots Based on Temporal Logic".</em>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Aug 15, 2025</div>
+                    <div class="news-content">
+                        <em> Our paper Instantaneous frequency extraction of overlapped multicomponent signals with an adaptive constraints approach</em>has been accepted by <strong>Engineering Research Express</strong>.
+                    </div>
+                </div>              
+                <div class="news-item">
+                    <div class="news-date">Aug 4, 2025</div>
+                    <div class="news-content">
+                        <em> Decomposition-Based MPC for Uncertain Systems with Nested STL Specifications</em>has been accepted by <strong>IEEE Control Systems Letters</strong>.
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Jul 12, 2025</div>
+                    <div class="news-content">
+                        <em>Event driven causal knowledge graphs for bottleneck root cause analysis in manufacturing systems</em>has been accepted by <strong> Expert Systems with Applications.</strong>.
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Jun 27, 2025</div>
+                    <div class="news-content">
+                        <em>Congratulations to our graduates:  <strong>Li Cai, Li Du, Zeng Ziyue</strong>.
+                    </div>
+                </div>              
+                <div class="news-item">
+                    <div class="news-date">Jun 19, 2025</div>
+                    <div class="news-content">
+                        <em>A dual spatial temporal neural network for bottleneck prediction in manufacturing
+                            systems</em> has been accepted by <strong>EAAI</strong>.
+                    </div>
+                </div>
 
-              
-                </tbody></table>
-              </div>
+                <div class="news-item">
+                    <div class="news-date">Jan 14, 2025</div>
+                    <div class="news-content">
+                        New grant from <strong>State Key Lab of Performance Monitoring and Protecting of Rail Transit
+                            Infrastructure</strong> on gearbox fault diagnosis.
+                    </div>
+                </div>
 
+                <div class="news-item">
+                    <div class="news-date">June 27, 2025</div>
+                    <div class="news-content">
+                        Congratulations to our lab masters Li Cai, Li Du and Zeng Ziyue for their graduation.
+                    </div>
+                </div>
 
+                <div class="news-item">
+                    <div class="news-date">Jan 14, 2025</div>
+                    <div class="news-content">
+                        Our lab has received a research grant from "State Key Laboratory of Performance Monitoring and
+                        Protecting of Rail Transit Infrastructure, East China Jiaotong University" on gearbox fault
+                        diagnosis.
+                    </div>
+                </div>
 
-      
+                <div class="news-item">
+                    <div class="news-date">Jan 9, 2025</div>
+                    <div class="news-content">
+                        Our paper "Temporal Logic Inference for Interpretable Fault Diagnosis of Bearings via Sparse and
+                        Structured Neural Attention" has been accepted by ISA Transactions.
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">Dec 22, 2024</div>
+                    <div class="news-content">
+                        Our paper "Multi-source data fusion monitoring system for super-elevation in laser powder bed
+                        fusion based on bi-stream cross-mode fusion network" has been accepted by Optics and Lasers in
+                        Engineering.
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">Oct 14, 2024</div>
+                    <div class="news-content">
+                        Our paper "Fault tracing in multistage gearbox systems based on an improved transfer path
+                        analysis method" has been accepted by Measurement.
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">Sept 25, 2024</div>
+                    <div class="news-content">
+                        Our paper "In-situ quality inspection based on coaxial melt pool images for laser powder bed
+                        fusion with depth graph network guided by prior knowledge" has been accepted by Mechanical
+                        Systems and Signal Processing.
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">July 12, 2024</div>
+                    <div class="news-content">
+                        Our paper "VNCCD: A Gearbox Fault Diagnosis Technique under Nonstationary Conditions via Virtual
+                        Decoupled Transfer Paths" has been accepted by Mechanical Systems and Signal Processing.
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">June 29, 2024</div>
+                    <div class="news-content">
+                        Our paper "Enhancing Reliability through Interpretability: A Comprehensive Survey of
+                        Interpretable Intelligent Fault Diagnosis in Rotating Machinery" has been accepted by IEEE
+                        ACCESS.
+                    </div>
+                </div>
+
+                <!-- 更多新闻项（首页只会加载前10条） -->
+                <div class="news-item">
+                    <div class="news-date">May 13, 2024</div>
+                    <div class="news-content">
+                        Our paper "Fast Pareto Set Approximation for Multiobjective Flexible Job Shop Scheduling via
+                        Parallel Preference-Conditioned Graph Reinforcement Learning" has been accepted by Swarm and
+                        Evolutionary Computation.
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">April 30, 2024</div>
+                    <div class="news-content">
+                        Our lab has received a research grant from "State Key Laboratory of Mechanical Transmission for
+                        Advanced Equipment, Chongqing University" on wind turbine gearbox fault diagnosis.
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">April 25, 2024</div>
+                    <div class="news-content">
+                        Our paper "Bearing Fault Diagnosis via Robust PCA with Nonconvex Rank Approximation" has been
+                        accepted by IEEE Sensors Journal.
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+</body>
+
+</html>
