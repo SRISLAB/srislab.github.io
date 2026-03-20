@@ -1,671 +1,764 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Home page of SRIS — Smart, Reliable and Interpretable Systems">
-    <meta name="author" content="SRIS Lab">
-    <link rel="icon" href="images/logo/RMX_16.ico">
-    <title>SRIS — Smart, Reliable and Interpretable Systems</title>
-    <!-- Bootstrap & site CSS -->
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="style/jquery.bxslider.css" rel="stylesheet">
-    <link href="style/style.css" rel="stylesheet">
-    <!-- 增强的现代样式 -->
-    <style>
-        :root {
-            --ink: #0f172a;
-            --ink-2: #1f2937;
-            --muted: #475569;
-            --line: #e5e7eb;
-            --surface: #ffffff;
-            --soft: #f8fafc;
-            --brand: #2563eb;
-            --brand-2: #60a5fa;
-            --accent: #0ea5e9;
-            --success: #10b981;
-        }
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Home page of SRIS — Smart, Reliable and Interpretable Systems">
+  <meta name="author" content="SRIS Lab">
+  <link rel="icon" href="images/logo/RMX_16.ico">
+  <title>SRIS — Smart, Reliable and Interpretable Systems</title>
 
-        body {
-            color: var(--ink-2);
-            background: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-        }
+  <!-- Bootstrap & site CSS -->
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="style/jquery.bxslider.css" rel="stylesheet">
+  <link href="style/style.css" rel="stylesheet">
 
-        .navbar-inverse {
-            background: #0f172a;
-            border: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        }
+  <!-- 增强的现代样式 -->
+  <style>
+    :root {
+      --ink: #0f172a;
+      --ink-2: #1f2937;
+      --muted: #475569;
+      --line: #e5e7eb;
+      --surface: #ffffff;
+      --soft: #f8fafc;
+      --brand: #2563eb;
+      --brand-2: #60a5fa;
+      --accent: #0ea5e9;
+      --date-bg: #1e40af;
+      --date-color: #ffffff;
+    }
 
-        .navbar-inverse .navbar-nav>li>a,
-        .navbar-inverse .navbar-brand {
-            color: #e5e7eb;
-            transition: color 0.2s ease;
-        }
+    body {
+      color: var(--ink-2);
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    }
 
-        .navbar-inverse .navbar-nav>li>a:hover {
-            color: #ffffff;
-        }
+    .navbar-inverse {
+      background: #0f172a;
+      border: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
 
-        .navbar-inverse .navbar-nav>.active>a {
-            background: transparent;
-            color: #ffffff;
-            border-bottom: 2px solid var(--brand);
-        }
+    .navbar-inverse .navbar-nav>li>a,
+    .navbar-inverse .navbar-brand {
+      color: #e5e7eb;
+      transition: color 0.2s ease;
+    }
 
-        /* HERO SECTION */
-        .hero {
-            margin-top: 80px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #e0f2fe 100%);
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
-        }
+    .navbar-inverse .navbar-nav>li>a:hover {
+      color: #ffffff;
+    }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, rgba(96, 165, 250, 0) 70%);
-        }
+    .navbar-inverse .navbar-nav>.active>a {
+      background: transparent;
+      color: #ffffff;
+      border-bottom: 2px solid var(--brand);
+    }
 
-        .hero h1 {
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin: 0 0 12px;
-            color: var(--ink);
-            font-size: 2.8rem;
-        }
+    /* HERO SECTION */
+    .hero {
+      margin-top: 80px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #e0f2fe 100%);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+    }
 
-        .hero p.lead {
-            color: var(--muted);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, rgba(96, 165, 250, 0) 70%);
+    }
 
-        .hero .badges .pill {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid var(--line);
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            margin: 6px 8px 0 0;
-            color: var(--ink);
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-        }
+    .hero h1 {
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 2.8rem;
+    }
 
-        .hero .cta .btn {
-            margin-right: 12px;
-            margin-top: 12px;
-            border-radius: 999px;
-            padding: 10px 24px;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    .hero p.lead {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
 
-        .btn-brand {
-            background: var(--brand);
-            border-color: var(--brand);
-            color: #fff;
-        }
+    .hero .badges .pill {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin: 6px 8px 0 0;
+      color: var(--ink);
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+    }
 
-        .btn-brand:hover {
-            background: #1e40af;
-            border-color: #1e40af;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-        }
+    .hero .cta .btn {
+      margin-right: 12px;
+      margin-top: 12px;
+      border-radius: 999px;
+      padding: 10px 24px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .btn-ghost {
-            background: #ffffff;
-            color: var(--ink);
-            border: 1px solid var(--line);
-        }
+    .btn-brand {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
 
-        .btn-ghost:hover {
-            background: #f1f5f9;
-            color: var(--ink);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
-        }
+    .btn-brand:hover {
+      background: #1e40af;
+      border-color: #1e40af;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
 
-        /* VALUE PROPOSITIONS */
-        .props {
-            margin-top: 2.5rem;
-        }
+    .btn-ghost {
+      background: #ffffff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
 
-        .prop-card {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 1.5rem;
-            height: 100%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
-        }
+    .btn-ghost:hover {
+      background: #f1f5f9;
+      color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
+    }
 
-        .prop-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
-            border-color: var(--brand-2);
-        }
+    /* VALUE PROPOSITIONS */
+    .props {
+      margin-top: 2.5rem;
+    }
 
-        .prop-card h4 {
-            margin: 0 0 10px;
-            font-weight: 700;
-            color: var(--ink);
-            font-size: 1.1rem;
-        }
+    .prop-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: 100%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    }
 
-        .prop-card p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
+    .prop-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--brand-2);
+    }
 
-        /* NEWS SECTION - 卡片式悬浮设计 */
-        .news-section {
-            margin-top: 3rem;
-            padding: 2rem;
-            border-radius: 18px;
-            background: #fff;
-            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
-        }
+    .prop-card h4 {
+      margin: 0 0 10px;
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.1rem;
+    }
 
-        .news-section h3 {
-            margin: 0 0 1.5rem;
-            font-weight: 800;
-            color: var(--ink);
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-        }
+    .prop-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
 
-        .news-section h3 i {
-            margin-right: 10px;
-            color: var(--brand);
-        }
+    /* 固定高度的轮播图区域 */
+    .main-slider {
+      margin-top: 2rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      height: 420px; /* 固定高度 */
+      position: relative;
+    }
 
-        #news-cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
+    .bx-wrapper, 
+    .bx-viewport, 
+    .bxslider,
+    .bxslider li,
+    .slider-item {
+      height: 100% !important;
+    }
 
-        .news-card {
-            background: var(--soft);
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
+    .slider-item {
+      height: 100%;
+      position: relative;
+    }
 
-        .news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
-            border-color: var(--brand-2);
-            background: #ffffff;
-        }
+    .slider-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 保持宽高比，裁剪适应 */
+      display: block;
+    }
 
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--brand);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+    .slider-item h2, 
+    .slider-item h3 {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      margin: 0;
+      padding: 8px 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 1.2rem;
+    }
 
-        .news-card:hover::before {
-            opacity: 1;
-        }
+    .slider-item h2 a,
+    .slider-item h3 a {
+      color: #fff;
+      text-decoration: none;
+    }
 
-        .news-date {
-            display: inline-block;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--brand);
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 999px;
-            margin-bottom: 12px;
-        }
+    /* INTRO SECTION */
+    .intro {
+      margin-top: 2rem;
+      padding: 2rem;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
 
-        .news-content {
-            color: var(--ink-2);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
+    /* NEWS SECTION - 单列新闻，左右分块设计 */
+    .news-section {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+    }
 
-        .news-content em {
-            font-style: normal;
-            font-weight: 600;
-            color: var(--ink);
-        }
+    .news-section h3 {
+      margin: 0 0 1.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+    }
 
-        .news-content strong {
-            color: var(--brand);
-        }
+    .news-section h3 i {
+      margin-right: 10px;
+      color: var(--brand);
+    }
 
-        .loading-news,
-        .news-error {
-            text-align: center;
-            padding: 3rem;
-            color: var(--muted);
-            grid-column: 1 / -1;
-        }
+    /* 新闻单列布局 */
+    .news-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
 
-        .news-error {
-            color: #dc2626;
-        }
+    /* 每条新闻项 - 左右分块 */
+    .news-item {
+      display: flex;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
+      padding: 0;
+      margin: 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
 
-        .view-all-news {
-            text-align: center;
-            margin-top: 1rem;
-        }
+    .news-item:hover {
+      border-left-color: var(--brand);
+      background-color: rgba(37, 99, 235, 0.02);
+    }
 
-        /* 其他部分样式保持优化 */
-        .main-slider {
-            margin-top: 2rem;
-        }
+    /* 左侧日期块 */
+    .news-date-block {
+      flex: 0 0 150px;
+      background-color: var(--date-bg);
+      color: var(--date-color);
+      padding: 1.2rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-width: 150px;
+    }
 
-        .slider-frame {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        }
+    .news-day {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
 
-        .intro {
-            margin-top: 2rem;
-            padding: 2rem;
-            border-radius: 16px;
-            background: #fff;
-            border: 1px solid var(--line);
-        }
+    .news-month-year {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
 
-        .footer {
-            margin-top: 3rem;
-            border-top: 1px solid var(--line);
-            background: #ffffff;
-            padding: 2rem 0 0;
-        }
+    /* 右侧新闻内容块 */
+    .news-content-block {
+      flex: 1;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      background-color: #ffffff;
+    }
 
-        .footer-bottom {
-            text-align: center;
-            padding: 1.5rem 0;
-            color: #64748b;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--line);
-            margin-top: 2rem;
-        }
+    .news-content {
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: 1rem;
+      margin: 0;
+    }
 
-        /* 响应式调整 */
-        @media (max-width: 991px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+    .news-content em {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--ink);
+    }
 
-            #news-cards-container {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-        }
+    .news-content strong {
+      color: var(--brand);
+    }
 
-        @media (max-width: 767px) {
-            .hero {
-                padding: 1.5rem;
-                margin-top: 70px;
-            }
+    /* 加载和错误状态 */
+    .loading-news,
+    .news-error {
+      text-align: center;
+      padding: 3rem;
+      color: var(--muted);
+    }
 
-            .hero h1 {
-                font-size: 1.8rem;
-            }
+    .news-error {
+      color: #dc2626;
+    }
 
-            .news-section {
-                padding: 1.5rem;
-            }
+    .view-all-news {
+      text-align: center;
+      margin-top: 2rem;
+    }
 
-            #news-cards-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* FOOTER */
+    .footer {
+      margin-top: 3rem;
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+      padding: 2rem 0 0;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: #64748b;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--line);
+      margin-top: 2rem;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 991px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        padding: 1.5rem;
+        margin-top: 70px;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .news-section {
+        padding: 1.5rem;
+      }
+
+      .main-slider {
+        height: 280px; /* 移动端更小的高度 */
+      }
+
+      /* 移动端：新闻项堆叠布局 */
+      .news-item {
+        flex-direction: column;
+        border-left: none;
+        border-top: 3px solid transparent;
+      }
+
+      .news-item:hover {
+        border-left-color: transparent;
+        border-top-color: var(--brand);
+      }
+
+      .news-date-block {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 0.8rem 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .news-day {
+        font-size: 1.4rem;
+        margin-bottom: 0;
+      }
+
+      .news-month-year {
+        font-size: 0.85rem;
+      }
+
+      .news-content-block {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="people.html">People</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li class="dropdown">
-                        <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="journal.html">Journal Papers</a></li>
-                            <li><a href="conference.html">Conference Papers</a></li>
-                            <li><a href="realtime.html">Submitted Papers</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="downloads.html">Downloads</a></li>
-                    <li><a href="class.html">Courses</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">English</a></li>
-                    <li><a href="index_x.html">中文</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px" /></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+  <!-- 导航栏 -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-        <!-- 英雄区域 -->
-        <section class="hero">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1>SRIS Lab</h1>
-                    <p class="lead">
-                        <strong>S</strong>mart, <strong>R</strong>eliable, and <strong>I</strong>nterpretable
-                        <strong>S</strong>ystems — we fuse <em>logic</em>, <em>physics</em>, and <em>learning</em> to
-                        build trustworthy AI for intelligent manufacturing and critical equipment.
-                    </p>
-                    <p class="lead">
-                        Our unified methodology—<em>Signal Temporal Logic (STL)</em>, <em>causal structure</em>, and
-                        <em>physics-guided priors</em>—drives interpretable diagnosis, STL-driven safe autonomy,
-                        verifiable machine learning, and fleet-level health management.
-                    </p>
-                    <div class="badges">
-                        <span class="pill"><i class="fa fa-shield"></i> Verifiable</span>
-                        <span class="pill"><i class="fa fa-cogs"></i> Industrial-Grade</span>
-                        <span class="pill"><i class="fa fa-eye"></i> Interpretable</span>
-                    </div>
-                    <div class="cta">
-                        <a class="btn btn-brand" href="research.html"><i class="fa fa-flask"></i> Explore Research</a>
-                        <a class="btn btn-ghost" href="people.html"><i class="fa fa-users"></i> Meet the Team</a>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <img src="images/SRISlogo.png" alt="SRIS Logo" class="img-responsive"
-                        style="max-width:320px;margin:6px auto;">
-                    <div class="muted" style="font-size:12px;">South China University of Technology • Guangzhou
-                        International Campus</div>
-                </div>
-            </div>
-
-            <!-- 价值主张 -->
-            <div class="props">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="prop-card">
-                            <h4><i class="fa fa-sitemap"></i> Neuro-Symbolic Models</h4>
-                            <p>STL-regularized pretraining, causal KGs, and rule distillation for audit-ready industrial
-                                AI.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="prop-card">
-                            <h4><i class="fa fa-industry"></i> Causal-Logic PHM</h4>
-                            <p>Physics-guided features + causal graphs + STL abstractions to reconstruct propagation
-                                chains.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="prop-card">
-                            <h4><i class="fa fa-hand-paper-o"></i> Safe Autonomy</h4>
-                            <p>STL contracts, reference governors, and residual RL for dual-arm & mobile manipulation.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 轮播图 -->
-        <section class="main-slider slider-frame">
-            <ul class="bxslider">
-                <li>
-                    <div class="slider-item">
-                        <img src="images/photo_x/scutgraduate2025.jpg" title="Campus View">
-                        <h2><a href="">Campus View</a></h2>
-                    </div>
-                </li>
-                <li>
-                    <div class="slider-item">
-                        <img src="images/photo_x/networkstructure.png" title="Neuro-Symbolic">
-                        <h2><a href="research.html">Neuro-Symbolic Foundations</a></h2>
-                    </div>
-                </li>
-                <li>
-                    <div class="slider-item">
-                        <img src="images/photo_x/spectrallogic.png" title="Spectral Logic">
-                        <h2><a href="research.html">STL-Driven Safe Autonomy</a></h2>
-                    </div>
-                </li>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li class="dropdown">
+            <a href="publications.html" class="dropdown-toggle" data-toggle="dropdown">Publications <span
+                class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="journal.html">Journal Papers</a></li>
+              <li><a href="conference.html">Conference Papers</a></li>
+              <li><a href="realtime.html">Submitted Papers</a></li>
             </ul>
-        </section>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="class.html">Courses</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="index.html">English</a></li>
+          <li><a href="index_x.html">中文</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-        <!-- 介绍区域 -->
-        <section class="intro">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p class="brandline">
-                        <b>SRIS</b> is led by <b>Dr. Gang Chen</b>. We study machine learning, formal methods, control,
-                        and signal processing for cyber-physical system monitoring and control. Our deliverables include
-                        interpretable fault diagnosis algorithms, contract-based controllers, verifiable ML toolchains,
-                        and fleet-level PHM (Prognostics & Health Management).
-                    </p>
-                    <div style="height: 16px;"></div>
-                    <div class="row">
-                        <div class="col-sm-2"><a href="./modules/IFD.html" class="btn btn-ghost btn-block"><i
-                                    class="fa fa-search"></i> Interpretable Diagnosis</a></div>
-                        <div class="col-sm-2"><a href="./modules/CSTL.html" class="btn btn-ghost btn-block"><i
-                                    class="fa fa-sliders"></i> Control & STL</a></div>
-                        <div class="col-sm-2"><a href="./modules/RCML.html" class="btn btn-ghost btn-block"><i
-                                    class="fa fa-android"></i> Robot ML</a></div>
-                        <div class="col-sm-2"><a href="./modules/ITSP.html" class="btn btn-ghost btn-block"><i
-                                    class="fa fa-tasks"></i> Planning & Scheduling</a></div>
-                        <div class="col-sm-2"><a href="./modules/ISP.html" class="btn btn-ghost btn-block"><i
-                                    class="fa fa-signal"></i> Signal Processing</a></div>
-                        <div class="col-sm-2"><a href="./modules/IDP.html" class="btn btn-ghost btn-block"><i
-                                    class="fa fa-cogs"></i> Systems & Verification</a></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 新闻区域 - 动态加载 -->
-        <section class="news-section">
-            <h3><i class="fa fa-newspaper-o"></i> Latest News</h3>
-            <div id="news-cards-container">
-                <!-- 新闻卡片将由JavaScript动态生成 -->
-                <div class="loading-news">
-                    <i class="fa fa-spinner fa-spin fa-2x"></i>
-                    <p style="margin-top: 1rem;">Loading news...</p>
-                </div>
-            </div>
-            <div class="view-all-news">
-                <a href="news.html" class="btn btn-ghost"><i class="fa fa-arrow-right"></i> View All News</a>
-            </div>
-        </section>
-    </div><!-- /.container -->
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h5>SRIS Lab</h5>
-                    <p>Smart, Reliable and Interpretable Systems<br>
-                        South China University of Technology<br>
-                        Guangzhou International Campus</p>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <p>
-                        <a href="contact.html"><i class="fa fa-envelope"></i> Contact Us</a><br>
-                        <small>© 2022 SRIS Lab. All rights reserved.</small>
-                    </p>
-                </div>
-            </div>
+  <div class="container">
+    <!-- 英雄区域 -->
+    <section class="hero">
+      <div class="row">
+        <div class="col-md-8">
+          <h1>SRIS Lab</h1>
+          <p class="lead">
+            <strong>S</strong>mart, <strong>R</strong>eliable, and <strong>I</strong>nterpretable
+            <strong>S</strong>ystems — we fuse <em>logic</em>, <em>physics</em>, and <em>learning</em> to
+            build trustworthy AI for intelligent manufacturing and critical equipment.
+          </p>
+          <p class="lead">
+            Our unified methodology—<em>Signal Temporal Logic (STL)</em>, <em>causal structure</em>, and
+            <em>physics-guided priors</em>—drives interpretable diagnosis, STL-driven safe autonomy,
+            verifiable machine learning, and fleet-level health management.
+          </p>
+          <div class="badges">
+            <span class="pill"><i class="fa fa-shield"></i> Verifiable</span>
+            <span class="pill"><i class="fa fa-cogs"></i> Industrial-Grade</span>
+            <span class="pill"><i class="fa fa-eye"></i> Interpretable</span>
+          </div>
+          <div class="cta">
+            <a class="btn btn-brand" href="research.html"><i class="fa fa-flask"></i> Explore Research</a>
+            <a class="btn btn-ghost" href="people.html"><i class="fa fa-users"></i> Meet the Team</a>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.
-            </div>
+        <div class="col-md-4 text-center">
+          <img src="images/SRISlogo.png" alt="SRIS Logo" class="img-responsive"
+            style="max-width:320px;margin:6px auto;">
+          <div class="muted" style="font-size:12px;">South China University of Technology • Guangzhou
+            International Campus</div>
         </div>
-    </footer>
+      </div>
 
-    <!-- JavaScript -->
-    <script src="scripts/jquery.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/jquery.bxslider.js"></script>
-    <script>
-        // 初始化轮播图
-        $(document).ready(function () {
-            $('.bxslider').bxSlider({
-                auto: true,
-                pause: 4500,
-                speed: 600,
-                controls: false,
-                pager: true,
-                adaptiveHeight: true
-            });
+      <!-- 价值主张 -->
+      <div class="props">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="prop-card">
+              <h4><i class="fa fa-sitemap"></i> Neuro-Symbolic Models</h4>
+              <p>STL-regularized pretraining, causal KGs, and rule distillation for audit-ready industrial
+                AI.</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="prop-card">
+              <h4><i class="fa fa-industry"></i> Causal-Logic PHM</h4>
+              <p>Physics-guided features + causal graphs + STL abstractions to reconstruct propagation
+                chains.</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="prop-card">
+              <h4><i class="fa fa-hand-paper-o"></i> Safe Autonomy</h4>
+              <p>STL contracts, reference governors, and residual RL for dual-arm & mobile manipulation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            // 动态加载新闻
-            loadNewsFromPage();
+    <!-- 固定高度轮播图 -->
+    <section class="main-slider">
+      <ul class="bxslider">
+        <li>
+          <div class="slider-item">
+            <img src="images/photo_x/scutgraduate2025.jpg" title="Campus View">
+            <h2><a href="">Campus View</a></h2>
+          </div>
+        </li>
+        <li>
+          <div class="slider-item">
+            <img src="images/photo_x/networkstructure.png" title="Neuro-Symbolic">
+            <h2><a href="research.html">Neuro-Symbolic Foundations</a></h2>
+          </div>
+        </li>
+        <li>
+          <div class="slider-item">
+            <img src="images/photo_x/spectrallogic.png" title="Spectral Logic">
+            <h2><a href="research.html">STL-Driven Safe Autonomy</a></h2>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 介绍区域 -->
+    <section class="intro">
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="brandline">
+            <b>SRIS</b> is led by <b>Dr. Gang Chen</b>. We study machine learning, formal methods, control,
+            and signal processing for cyber-physical system monitoring and control. Our deliverables include
+            interpretable fault diagnosis algorithms, contract-based controllers, verifiable ML toolchains,
+            and fleet-level PHM (Prognostics & Health Management).
+          </p>
+          <div style="height: 16px;"></div>
+          <div class="row">
+            <div class="col-sm-2"><a href="./modules/IFD.html" class="btn btn-ghost btn-block"><i
+                  class="fa fa-search"></i> Interpretable Diagnosis</a></div>
+            <div class="col-sm-2"><a href="./modules/CSTL.html" class="btn btn-ghost btn-block"><i
+                  class="fa fa-sliders"></i> Control & STL</a></div>
+            <div class="col-sm-2"><a href="./modules/RCML.html" class="btn btn-ghost btn-block"><i
+                  class="fa fa-android"></i> Robot ML</a></div>
+            <div class="col-sm-2"><a href="./modules/ITSP.html" class="btn btn-ghost btn-block"><i
+                  class="fa fa-tasks"></i> Planning & Scheduling</a></div>
+            <div class="col-sm-2"><a href="./modules/ISP.html" class="btn btn-ghost btn-block"><i
+                  class="fa fa-signal"></i> Signal Processing</a></div>
+            <div class="col-sm-2"><a href="./modules/IDP.html" class="btn btn-ghost btn-block"><i
+                  class="fa fa-cogs"></i> Systems & Verification</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 新闻区域 - 单列布局，左右分块 -->
+    <section class="news-section">
+      <h3><i class="fa fa-newspaper-o"></i> Latest News</h3>
+      <div class="news-timeline" id="news-container">
+        <!-- 新闻将由JavaScript动态加载 -->
+        <div class="loading-news">
+          <i class="fa fa-spinner fa-spin fa-2x"></i>
+          <p style="margin-top: 1rem;">Loading latest news...</p>
+        </div>
+      </div>
+      <div class="view-all-news">
+        <a href="news.html" class="btn btn-ghost"><i class="fa fa-arrow-right"></i> View All News</a>
+      </div>
+    </section>
+  </div><!-- /.container -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h5>SRIS Lab</h5>
+          <p>Smart, Reliable and Interpretable Systems<br>
+            South China University of Technology<br>
+            Guangzhou International Campus</p>
+        </div>
+        <div class="col-sm-6 text-right">
+          <p>
+            <a href="contact.html"><i class="fa fa-envelope"></i> Contact Us</a><br>
+            <small>© 2022 SRIS Lab. All rights reserved.</small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/bootstrap.min.js"></script>
+  <script src="scripts/jquery.bxslider.js"></script>
+  <script>
+    // 初始化轮播图
+    $(document).ready(function () {
+      $('.bxslider').bxSlider({
+        auto: true,
+        pause: 4500,
+        speed: 600,
+        controls: false,
+        pager: true,
+        adaptiveHeight: false, // 固定高度
+        touchEnabled: true
+      });
+
+      // 动态加载新闻
+      loadNewsFromPage();
+    });
+
+    // 从news.html页面加载新闻的函数
+    async function loadNewsFromPage() {
+      const container = document.getElementById('news-container');
+      if (!container) return;
+
+      try {
+        // 获取news.html页面的内容
+        const response = await fetch('news.html');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const htmlText = await response.text();
+
+        // 创建一个临时DOM元素来解析HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+
+        // 从news.html中提取新闻项
+        const newsItems = [];
+        
+        // 尝试查找具有news-item类的div元素
+        const newsElements = doc.querySelectorAll('.news-item');
+        
+        if (newsElements.length > 0) {
+          // 如果是.news-item格式
+          newsElements.forEach(item => {
+            const dateElement = item.querySelector('.news-date');
+            const contentElement = item.querySelector('.news-content');
+            
+            if (dateElement && contentElement) {
+              const date = dateElement.textContent.trim();
+              const content = contentElement.innerHTML.trim();
+              newsItems.push({ date, content });
+            }
+          });
+        } else {
+          // 回退：从页面文本中提取新闻
+          const text = doc.body.textContent || '';
+          const lines = text.split('\n').filter(line => line.trim().length > 0);
+          
+          // 简单解析，寻找包含日期的行
+          for (let i = 0; i < lines.length && newsItems.length < 10; i++) {
+            const line = lines[i].trim();
+            // 匹配日期格式，如 "Jun 19, 2025" 或 "June 27, 2025"
+            const dateMatch = line.match(/([A-Z][a-z]{2,8}\s+\d{1,2},\s+\d{4})/);
+            
+            if (dateMatch && i + 1 < lines.length) {
+              const date = dateMatch[0];
+              const content = lines[i + 1].trim();
+              if (content.length > 10) { // 确保是有效内容
+                newsItems.push({ date, content });
+                i++; // 跳过下一行
+              }
+            }
+          }
+        }
+
+        // 只取前10条新闻
+        const recentNews = newsItems.slice(0, 10);
+
+        // 清空容器并显示新闻
+        container.innerHTML = '';
+
+        if (recentNews.length === 0) {
+          container.innerHTML = '<div class="news-error"><i class="fa fa-exclamation-triangle"></i><p>No news found or unable to parse news page.</p></div>';
+          return;
+        }
+
+        // 创建新闻项
+        recentNews.forEach(item => {
+          const newsItem = document.createElement('div');
+          newsItem.className = 'news-item';
+          
+          // 解析日期
+          let day = '';
+          let monthYear = '';
+          
+          if (item.date) {
+            const dateParts = item.date.split(' ');
+            if (dateParts.length >= 3) {
+              day = dateParts[1].replace(',', '');
+              monthYear = dateParts[0] + ' ' + dateParts[2];
+            } else {
+              // 回退：如果格式不标准
+              day = item.date;
+              monthYear = '';
+            }
+          }
+          
+          // 创建新闻HTML
+          newsItem.innerHTML = `
+            <div class="news-date-block">
+              <div class="news-day">${day}</div>
+              <div class="news-month-year">${monthYear}</div>
+            </div>
+            <div class="news-content-block">
+              <div class="news-content">${item.content}</div>
+            </div>
+          `;
+          
+          container.appendChild(newsItem);
         });
 
-        // 从news.html页面加载新闻的函数
-        async function loadNewsFromPage() {
-            const container = document.getElementById('news-cards-container');
-            if (!container) return;
-
-            try {
-                // 获取news.html页面的内容
-                const response = await fetch('news.html');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const htmlText = await response.text();
-
-                // 创建一个临时DOM元素来解析HTML
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlText, 'text/html');
-
-                // 从news.html中提取新闻项
-                // 根据提供的news.html结构，新闻在<ul>列表的<li>元素中
-                const newsItems = [];
-                const listItems = doc.querySelectorAll('ul li, .block-text p');
-
-                // 处理两种可能的格式：<li> 和 <p>
-                listItems.forEach(item => {
-                    // 检查是否是新闻项（包含日期和内容）
-                    const text = item.textContent.trim();
-                    if (!text || text.length < 10) return;
-
-                    // 尝试提取日期（格式如 "Jun 19, 2025" 或 "[June 27, 2025]"）
-                    let date = '';
-                    let content = text;
-
-                    // 匹配 "Jun 19, 2025" 格式
-                    const dateMatch1 = text.match(/([A-Z][a-z]{2,8}\s+\d{1,2},\s+\d{4})/);
-                    // 匹配 "[June 27, 2025]" 格式
-                    const dateMatch2 = text.match(/\[([A-Z][a-z]{2,8}\s+\d{1,2},\s+\d{4})\]/);
-
-                    if (dateMatch1) {
-                        date = dateMatch1[0];
-                        content = text.replace(date, '').trim();
-                    } else if (dateMatch2) {
-                        date = dateMatch2[1];
-                        content = text.replace(dateMatch2[0], '').trim();
-                    }
-
-                    // 清理内容开头可能的多余符号
-                    content = content.replace(/^[:\s\-]+/, '').trim();
-
-                    if (content) {
-                        newsItems.push({ date, content });
-                    }
-                });
-
-                // 只取前10条新闻
-                const recentNews = newsItems.slice(0, 10);
-
-                // 清空容器并显示新闻卡片
-                container.innerHTML = '';
-
-                if (recentNews.length === 0) {
-                    container.innerHTML = '<div class="news-error"><i class="fa fa-exclamation-triangle"></i><p>No news found or unable to parse news page.</p></div>';
-                    return;
-                }
-
-                // 创建新闻卡片
-                recentNews.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'news-card';
-
-                    // 格式化日期显示
-                    let dateHtml = '';
-                    if (item.date) {
-                        dateHtml = `<div class="news-date"><i class="fa fa-calendar"></i> ${item.date}</div>`;
-                    }
-
-                    // 处理内容中的强调和加粗文本
-                    let contentHtml = item.content
-                        .replace(/<em>(.*?)<\/em>/g, '<em>$1</em>')
-                        .replace(/<strong>(.*?)<\/strong>/g, '<strong>$1</strong>')
-                        .replace(/\b(accepted by|accepted)\b/gi, '<strong>$1</strong>');
-
-                    card.innerHTML = `
-                        ${dateHtml}
-                        <div class="news-content">${contentHtml}</div>
-                    `;
-
-                    container.appendChild(card);
-                });
-
-            } catch (error) {
-                console.error('Error loading news:', error);
-                container.innerHTML = '<div class="news-error"><i class="fa fa-exclamation-triangle"></i><p>Failed to load news. Please check the news page.</p></div>';
-            }
-        }
-    </script>
+      } catch (error) {
+        console.error('Error loading news:', error);
+        container.innerHTML = '<div class="news-error"><i class="fa fa-exclamation-triangle"></i><p>Failed to load news. Please check the news page.</p></div>';
+      }
+    }
+  </script>
 </body>
-
 </html>
