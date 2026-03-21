@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SRIS Lab — Publications">
+  <meta name="author" content="SRIS Lab">
+  <link rel="icon" href="images/logo/RMX_16.ico">
+  <title>Publications | SRIS Lab</title>
+
+  <!-- Bootstrap 5 & Font Awesome 4.4.0 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="style/jquery.bxslider.css" rel="stylesheet">
+  <link href="style/style.css" rel="stylesheet">
+
+  <!-- 论文发表页面样式 - 与SRIS网站风格统一 -->
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #60a5fa;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --accent: #8b5cf6;
+      --light: #f8fafc;
+      --light-gray: #f1f5f9;
+      --gray: #64748b;
+      --dark: #0f172a;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+      --card-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #334155;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* 导航栏 - 与SRIS网站统一 */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      padding: 1rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .navbar-brand {
+      font-weight: 800;
+      color: var(--dark);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .navbar-brand span {
+      color: var(--primary);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      color: var(--dark) !important;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary) !important;
+      background-color: rgba(37, 99, 235, 0.08);
+    }
+    
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem;
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+    
+    /* 主标题区域 */
+    .hero-section {
+      padding: 6rem 0 4rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 30%, #f8fafc 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%232563eb" fill-opacity="0.03" d="M45.1,-68.8C58.1,-60.8,68.6,-47.7,75.2,-32.8C81.8,-17.9,84.5,-1.3,81.6,13.8C78.7,28.9,70.2,42.5,58.6,53.5C47,64.5,32.4,72.9,16.7,77.1C1.1,81.3,-15.6,81.4,-30.4,76.1C-45.2,70.8,-58.2,60.1,-68.2,46.8C-78.2,33.5,-85.3,17.7,-86.6,0.9C-87.9,-15.9,-83.4,-31.9,-73.9,-45C-64.4,-58.1,-49.9,-68.4,-34.3,-75.2C-18.8,-82,-1.2,-85.4,14.8,-82.6C30.8,-79.8,45.5,-70.9,45.1,-68.8Z" transform="translate(100 100)" /></svg>') no-repeat;
+      background-size: cover;
+      opacity: 0.5;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--gray);
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-highlight {
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    
+    .hero-highlight p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+    
+    /* 过滤标签栏 */
+    .filter-section {
+      padding: 2rem 0 1rem;
+      background-color: #ffffff;
+    }
+    
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .filter-tag {
+      padding: 0.6rem 1.5rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      transition: var(--transition);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .filter-tag:hover, .filter-tag.active {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+    
+    .filter-tag i {
+      font-size: 0.9rem;
+    }
+    
+    /* 统计信息卡片 */
+    .stats-section {
+      padding: 3rem 0 5rem;
+      background-color: #ffffff;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--primary-light);
+    }
+    
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1rem;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    
+    .stat-label {
+      color: var(--gray);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    /* 论文卡片区域 */
+    .publications-section {
+      padding: 3rem 0 5rem;
+      background-color: #ffffff;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .year-group {
+      margin-bottom: 3rem;
+    }
+    
+    .year-header {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .year-header i {
+      color: var(--primary);
+    }
+    
+    .publication-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .publication-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--primary-light);
+    }
+    
+    .publication-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .publication-card:hover::before {
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+    
+    .publication-type {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+    
+    .publication-type.journal {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--secondary);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+    
+    .publication-type.conference {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--accent);
+      border-color: rgba(139, 92, 246, 0.2);
+    }
+    
+    .publication-type.preprint {
+      background: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.2);
+    }
+    
+    .publication-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    
+    .publication-authors {
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    
+    .publication-venue {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .publication-venue i {
+      font-size: 0.9rem;
+    }
+    
+    .publication-abstract {
+      color: var(--dark);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .publication-abstract.expanded {
+      max-height: 500px;
+    }
+    
+    .publication-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .publication-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+    
+    .publication-link:hover {
+      background: rgba(37, 99, 235, 0.2);
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    
+    .publication-link i {
+      font-size: 0.8rem;
+    }
+    
+    .toggle-abstract {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+    
+    .toggle-abstract:hover {
+      color: var(--primary-dark);
+    }
+    
+    .toggle-abstract i {
+      transition: transform 0.3s ease;
+    }
+    
+    .toggle-abstract.expanded i {
+      transform: rotate(180deg);
+    }
+    
+    /* 页脚 */
+    .footer {
+      background: var(--dark);
+      color: #cbd5e1;
+      padding: 3rem 0 2rem;
+      margin-top: 2rem;
+    }
+    
+    .footer-content {
+      text-align: center;
+    }
+    
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-logo span {
+      color: var(--primary-light);
+    }
+    
+    .footer-text {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #94a3b8;
+    }
+    
+    .copyright {
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .year-header {
+        font-size: 1.7rem;
+      }
+      
+      .publication-title {
+        font-size: 1.2rem;
+      }
+      
+      .publication-card {
+        padding: 1.5rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .filter-container {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+      }
+      
+      .filter-tag {
+        white-space: nowrap;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+      }
+      
+      .publication-links {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .publication-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fa fa-flask"></i>
+        <span>SRIS</span> Lab
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="people.html">People</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="research.html">Research</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+              Publications
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#journal">Journal Papers</a></li>
+              <li><a class="dropdown-item" href="#conference">Conference Papers</a></li>
+              <li><a class="dropdown-item" href="#preprint">Preprints</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">EN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index_x.html">中文</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主标题区域 -->
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="hero-title">Publications</h1>
+      <p class="hero-subtitle">
+        Explore the research outputs of the SRIS Lab. Our publications span journals, conferences, and preprints, 
+        covering topics in interpretable AI, signal temporal logic, fault diagnosis, cyber-physical systems, and more.
+      </p>
+      
+      <div class="hero-highlight">
+        <p>
+          Our research is regularly published in top-tier journals and conferences. This page provides access to 
+          our latest publications, with links to full papers, code repositories, and supplementary materials.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 过滤标签栏 -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-container" id="filterContainer">
+        <div class="filter-tag active" data-filter="all">
+          <i class="fa fa-th-large"></i> All Publications
+        </div>
+        <div class="filter-tag" data-filter="journal">
+          <i class="fa fa-book"></i> Journal Papers
+        </div>
+        <div class="filter-tag" data-filter="conference">
+          <i class="fa fa-users"></i> Conference Papers
+        </div>
+        <div class="filter-tag" data-filter="preprint">
+          <i class="fa fa-file-text"></i> Preprints
+        </div>
+        <div class="filter-tag" data-filter="2024">
+          <i class="fa fa-calendar"></i> 2024
+        </div>
+        <div class="filter-tag" data-filter="2023">
+          <i class="fa fa-calendar"></i> 2023
+        </div>
+        <div class="filter-tag" data-filter="2022">
+          <i class="fa fa-calendar"></i> 2022
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 统计信息 -->
+  <section class="stats-section">
+    <div class="container">
+      <h2 class="section-title">Research Output</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa fa-book"></i>
+          </div>
+          <div class="stat-number">24</div>
+          <div class="stat-label">Journal Papers</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa fa-users"></i>
+          </div>
+          <div class="stat-number">18</div>
+          <div class="stat-label">Conference Papers</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa fa-file-text"></i>
+          </div>
+          <div class="stat-number">7</div>
+          <div class="stat-label">Preprints</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa fa-quote-right"></i>
+          </div>
+          <div class="stat-number">350+</div>
+          <div class="stat-label">Citations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 论文发表区域 -->
+  <section class="publications-section">
+    <div class="container">
+      <!-- 2024年论文 -->
+      <div class="year-group" id="2024">
+        <h2 class="year-header">
+          <i class="fa fa-calendar"></i> 2024
+        </h2>
+        
+        <!-- 期刊论文示例 -->
+        <div class="publication-card" data-type="journal" data-year="2024">
+          <span class="publication-type journal">Journal Paper</span>
+          <h3 class="publication-title">Neuro-Symbolic Foundation Models for Interpretable Fault Diagnosis in Industrial Systems</h3>
+          <p class="publication-authors">Gang Chen, Penghong Lu, Junlin Yuan, Zhenpeng Lao</p>
+          <div class="publication-venue">
+            <i class="fa fa-book"></i> IEEE Transactions on Industrial Informatics, 20(3), 1234-1245
+          </div>
+          <p class="publication-abstract" id="abstract-2024-1">
+            This paper presents a novel neuro-symbolic framework that combines deep learning with signal temporal logic 
+            for interpretable fault diagnosis in industrial systems. Our approach leverages pre-trained foundation models 
+            with STL-regularized objectives to produce machine-checkable rationales for fault detection and classification. 
+            Experimental results on wind turbine and CNC machine datasets demonstrate state-of-the-art performance with 
+            significantly improved interpretability compared to black-box alternatives.
+          </p>
+          <button class="toggle-abstract" data-target="abstract-2024-1">
+            <i class="fa fa-chevron-down"></i> Show Abstract
+          </button>
+          <div class="publication-links">
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-external-link"></i> IEEE Xplore
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-file-pdf-o"></i> PDF
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-code"></i> Code
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-quote-right"></i> Cite
+            </a>
+          </div>
+        </div>
+        
+        <!-- 会议论文示例 -->
+        <div class="publication-card" data-type="conference" data-year="2024">
+          <span class="publication-type conference">Conference Paper</span>
+          <h3 class="publication-title">STL-Driven Safe Autonomy for Dual-Arm Robotic Manipulation</h3>
+          <p class="publication-authors">Gang Chen, Jiarui Zhang, Zhenhao Lin, Chao Tang</p>
+          <div class="publication-venue">
+            <i class="fa fa-users"></i> Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)
+          </div>
+          <p class="publication-abstract" id="abstract-2024-2">
+            We present a contract-based control framework for dual-arm robotic manipulation that guarantees safety 
+            through signal temporal logic specifications. Our approach combines reference governors with residual 
+            reinforcement learning to ensure safety constraints are satisfied while optimizing performance. 
+            The framework is validated on a 7-DOF dual-arm robot performing assembly tasks, demonstrating 
+            improved safety and efficiency compared to conventional methods.
+          </p>
+          <button class="toggle-abstract" data-target="abstract-2024-2">
+            <i class="fa fa-chevron-down"></i> Show Abstract
+          </button>
+          <div class="publication-links">
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-external-link"></i> Proceedings
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-file-pdf-o"></i> PDF
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-video-camera"></i> Video
+            </a>
+          </div>
+        </div>
+        
+        <!-- 预印本示例 -->
+        <div class="publication-card" data-type="preprint" data-year="2024">
+          <span class="publication-type preprint">Preprint</span>
+          <h3 class="publication-title">Causal-Logic PHM: Physics-Guided Causal Inference for Fleet-Level Health Management</h3>
+          <p class="publication-authors">Gang Chen, Weihong Cen, Pengyu Yin, Yuanfeng Jia</p>
+          <div class="publication-venue">
+            <i class="fa fa-archive"></i> arXiv preprint arXiv:2403.12345
+          </div>
+          <p class="publication-abstract" id="abstract-2024-3">
+            This work introduces a causal-logic framework for prognostics and health management (PHM) that 
+            combines physics-guided feature extraction with causal discovery and temporal logic abstractions. 
+            Our approach enables the reconstruction of fault propagation chains across equipment fleets and 
+            recommends cost-aware interventions. The framework is evaluated on wind turbine and railway 
+            traction system datasets, showing significant improvements in fault prediction accuracy and 
+            interpretability over state-of-the-art methods.
+          </p>
+          <button class="toggle-abstract" data-target="abstract-2024-3">
+            <i class="fa fa-chevron-down"></i> Show Abstract
+          </button>
+          <div class="publication-links">
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-external-link"></i> arXiv
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-file-pdf-o"></i> PDF
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 2023年论文 -->
+      <div class="year-group" id="2023">
+        <h2 class="year-header">
+          <i class="fa fa-calendar"></i> 2023
+        </h2>
+        
+        <!-- 期刊论文示例 -->
+        <div class="publication-card" data-type="journal" data-year="2023">
+          <span class="publication-type journal">Journal Paper</span>
+          <h3 class="publication-title">Temporal Logic Neural Networks for Interpretable Time Series Classification</h3>
+          <p class="publication-authors">Gang Chen, Hanyue Zhu, Yiyue Zhang</p>
+          <div class="publication-venue">
+            <i class="fa fa-book"></i> IEEE Transactions on Pattern Analysis and Machine Intelligence, 45(8), 9876-9889
+          </div>
+          <p class="publication-abstract" id="abstract-2023-1">
+            We propose Temporal Logic Neural Networks (TLNNs), a novel architecture that integrates signal 
+            temporal logic constraints directly into neural network layers for interpretable time series 
+            classification. TLNNs learn STL formulas that characterize class-discriminative temporal patterns, 
+            providing human-readable explanations for classification decisions. Experiments on 12 benchmark 
+            datasets demonstrate that TLNNs achieve competitive accuracy while providing significantly 
+            more interpretable models than conventional deep learning approaches.
+          </p>
+          <button class="toggle-abstract" data-target="abstract-2023-1">
+            <i class="fa fa-chevron-down"></i> Show Abstract
+          </button>
+          <div class="publication-links">
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-external-link"></i> IEEE Xplore
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-file-pdf-o"></i> PDF
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-code"></i> Code
+            </a>
+          </div>
+        </div>
+        
+        <!-- 会议论文示例 -->
+        <div class="publication-card" data-type="conference" data-year="2023">
+          <span class="publication-type conference">Conference Paper</span>
+          <h3 class="publication-title">Physics-Informed Neural Networks with Temporal Logic Constraints for System Identification</h3>
+          <p class="publication-authors">Gang Chen, Hanyue Zhu, Khan Tasir</p>
+          <div class="publication-venue">
+            <i class="fa fa-users"></i> Proceedings of the International Conference on Machine Learning (ICML)
+          </div>
+          <p class="publication-abstract" id="abstract-2023-2">
+            This paper introduces Physics-Informed Neural Networks with Temporal Logic Constraints (PINN-TL), 
+            a framework that combines physics-based modeling with STL constraints for system identification. 
+            PINN-TL enforces both physical laws and temporal logic specifications during training, resulting 
+            in models that are both physically consistent and satisfy desired temporal properties. We demonstrate 
+            the effectiveness of PINN-TL on several dynamical system identification tasks, showing improved 
+            accuracy and generalization compared to standard PINNs.
+          </p>
+          <button class="toggle-abstract" data-target="abstract-2023-2">
+            <i class="fa fa-chevron-down"></i> Show Abstract
+          </button>
+          <div class="publication-links">
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-external-link"></i> Proceedings
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-file-pdf-o"></i> PDF
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 2022年论文 -->
+      <div class="year-group" id="2022">
+        <h2 class="year-header">
+          <i class="fa fa-calendar"></i> 2022
+        </h2>
+        
+        <!-- 期刊论文示例 -->
+        <div class="publication-card" data-type="journal" data-year="2022">
+          <span class="publication-type journal">Journal Paper</span>
+          <h3 class="publication-title">Formal Methods for Interpretable Fault Diagnosis in Cyber-Physical Systems</h3>
+          <p class="publication-authors">Gang Chen, Penghong Lu, Junlin Yuan</p>
+          <div class="publication-venue">
+            <i class="fa fa-book"></i> ACM Transactions on Cyber-Physical Systems, 6(2), 45-67
+          </div>
+          <p class="publication-abstract" id="abstract-2022-1">
+            We present a formal methods approach to fault diagnosis in cyber-physical systems that provides 
+            interpretable diagnostic explanations. Our framework uses signal temporal logic to specify normal 
+            and faulty system behaviors, and employs model checking techniques to identify violations that 
+            indicate faults. The approach generates human-readable diagnostic reports that explain not only 
+            what fault occurred but also why it was detected. Case studies on automotive and industrial 
+            automation systems demonstrate the effectiveness and interpretability of our approach.
+          </p>
+          <button class="toggle-abstract" data-target="abstract-2022-1">
+            <i class="fa fa-chevron-down"></i> Show Abstract
+          </button>
+          <div class="publication-links">
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-external-link"></i> ACM Digital Library
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-file-pdf-o"></i> PDF
+            </a>
+          </div>
+        </div>
+        
+        <!-- 会议论文示例 -->
+        <div class="publication-card" data-type="conference" data-year="2022">
+          <span class="publication-type conference">Conference Paper</span>
+          <h3 class="publication-title">Contract-Based Control with Signal Temporal Logic for Safe Autonomous Systems</h3>
+          <p class="publication-authors">Gang Chen, Jiarui Zhang, Mingyu Chen</p>
+          <div class="publication-venue">
+            <i class="fa fa-users"></i> Proceedings of the IEEE Conference on Decision and Control (CDC)
+          </div>
+          <p class="publication-abstract" id="abstract-2022-2">
+            This paper develops a contract-based control framework for autonomous systems where safety 
+            specifications are expressed in signal temporal logic. We introduce a hierarchical control 
+            architecture that synthesizes high-level plans and low-level controllers under STL contracts, 
+            with runtime monitoring for contract compliance. The framework is applied to autonomous 
+            vehicle navigation and robotic manipulation tasks, demonstrating provable safety guarantees 
+            while maintaining system performance.
+          </p>
+          <button class="toggle-abstract" data-target="abstract-2022-2">
+            <i class="fa fa-chevron-down"></i> Show Abstract
+          </button>
+          <div class="publication-links">
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-external-link"></i> Proceedings
+            </a>
+            <a href="#" class="publication-link" target="_blank">
+              <i class="fa fa-file-pdf-o"></i> PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fa fa-flask"></i>
+          <span>SRIS</span> Lab
+        </div>
+        <p class="footer-text">
+          Smart, Reliable, and Interpretable Systems Laboratory<br>
+          South China University of Technology • Guangzhou International Campus<br>
+          Integrating logic, physics, and learning for trustworthy intelligent systems.
+        </p>
+        <div class="copyright">
+          <i class="fa fa-copyright"></i> Copyright 2022‑2024 SRIS Lab. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 论文过滤功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterContainer = document.getElementById('filterContainer');
+      const filterTags = document.querySelectorAll('.filter-tag');
+      const publicationCards = document.querySelectorAll('.publication-card');
+      const yearGroups = document.querySelectorAll('.year-group');
+      
+      // 添加筛选功能
+      filterTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          const filterValue = this.getAttribute('data-filter');
+          
+          // 更新活跃标签
+          filterTags.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // 显示/隐藏论文卡片
+          publicationCards.forEach(card => {
+            if (filterValue === 'all') {
+              card.style.display = 'block';
+            } else {
+              const cardType = card.getAttribute('data-type');
+              const cardYear = card.getAttribute('data-year');
+              
+              if (cardType === filterValue || cardYear === filterValue) {
+                card.style.display = 'block';
+              } else {
+                card.style.display = 'none';
+              }
+            }
+          });
+          
+          // 显示/隐藏年份分组
+          yearGroups.forEach(group => {
+            const year = group.getAttribute('id');
+            const hasVisibleCards = Array.from(group.querySelectorAll('.publication-card'))
+              .some(card => card.style.display !== 'none');
+            
+            if (filterValue === 'all' || year === filterValue || hasVisibleCards) {
+              group.style.display = 'block';
+            } else {
+              group.style.display = 'none';
+            }
+          });
+          
+          // 平滑滚动到第一个可见部分
+          setTimeout(() => {
+            const firstVisible = document.querySelector('.publication-card[style="display: block;"]');
+            if (firstVisible) {
+              firstVisible.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start',
+                inline: 'nearest'
+              });
+            }
+          }, 100);
+        });
+      });
+      
+      // 摘要展开/收起功能
+      document.querySelectorAll('.toggle-abstract').forEach(button => {
+        button.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-target');
+          const abstract = document.getElementById(targetId);
+          
+          if (abstract.classList.contains('expanded')) {
+            abstract.classList.remove('expanded');
+            this.innerHTML = '<i class="fa fa-chevron-down"></i> Show Abstract';
+            this.classList.remove('expanded');
+          } else {
+            abstract.classList.add('expanded');
+            this.innerHTML = '<i class="fa fa-chevron-up"></i> Hide Abstract';
+            this.classList.add('expanded');
+          }
+        });
+      });
+      
+      // 卡片悬停效果增强
+      document.querySelectorAll('.publication-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-8px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+      
+      // 平滑滚动锚点
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if(targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if(targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
