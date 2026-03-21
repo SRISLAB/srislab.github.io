@@ -1,1178 +1,230 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SRIS Lab — People">
-  <meta name="author" content="SRIS Lab">
-  <link rel="icon" href="images/logo/RMX_16.ico">
-  <title>People | SRIS Lab</title>
-
-  <!-- Bootstrap 5 & Font Awesome 4.4.0 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="style/style.css" rel="stylesheet">
-
-  <!-- 优化后的人物页面样式 -->
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-light: #60a5fa;
-      --primary-dark: #1d4ed8;
-      --secondary: #10b981;
-      --accent: #8b5cf6;
-      --light: #f8fafc;
-      --light-gray: #f1f5f9;
-      --gray: #64748b;
-      --dark: #0f172a;
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
-      --card-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #ffffff;
-      color: #334155;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    /* 导航栏 */
-    .navbar {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      padding: 1rem 0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    
-    .navbar-brand {
-      font-weight: 800;
-      color: var(--dark);
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .navbar-brand span {
-      color: var(--primary);
-    }
-    
-    .nav-link {
-      font-weight: 500;
-      color: var(--dark) !important;
-      margin: 0 0.5rem;
-      padding: 0.5rem 1rem !important;
-      border-radius: 8px;
-      transition: var(--transition);
-    }
-    
-    .nav-link:hover, .nav-link.active {
-      color: var(--primary) !important;
-      background-color: rgba(37, 99, 235, 0.08);
-    }
-    
-    .navbar-toggler {
-      border: none;
-      padding: 0.5rem;
-    }
-    
-    .navbar-toggler:focus {
-      box-shadow: none;
-    }
-    
-    /* 主标题区域 */
-    .hero-section {
-      padding: 6rem 0 4rem;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 30%, #f8fafc 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 40%;
-      height: 100%;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%232563eb" fill-opacity="0.03" d="M45.1,-68.8C58.1,-60.8,68.6,-47.7,75.2,-32.8C81.8,-17.9,84.5,-1.3,81.6,13.8C78.7,28.9,70.2,42.5,58.6,53.5C47,64.5,32.4,72.9,16.7,77.1C1.1,81.3,-15.6,81.4,-30.4,76.1C-45.2,70.8,-58.2,60.1,-68.2,46.8C-78.2,33.5,-85.3,17.7,-86.6,0.9C-87.9,-15.9,-83.4,-31.9,-73.9,-45C-64.4,-58.1,-49.9,-68.4,-34.3,-75.2C-18.8,-82,-1.2,-85.4,14.8,-82.6C30.8,-79.8,45.5,-70.9,45.1,-68.8Z" transform="translate(100 100)" /></svg>') no-repeat;
-      background-size: cover;
-      opacity: 0.5;
-    }
-    
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--gray);
-      max-width: 800px;
-      margin-bottom: 2rem;
-    }
-    
-    .hero-highlight {
-      background: linear-gradient(90deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
-      border-left: 4px solid var(--primary);
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin: 2rem 0;
-    }
-    
-    .hero-highlight p {
-      margin: 0;
-      font-size: 1.1rem;
-      color: var(--dark);
-    }
-    
-    /* 过滤标签栏 */
-    .filter-section {
-      padding: 2rem 0 1rem;
-      background-color: #ffffff;
-    }
-    
-    .filter-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    
-    .filter-tag {
-      padding: 0.6rem 1.5rem;
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--primary);
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-      transition: var(--transition);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .filter-tag:hover, .filter-tag.active {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-    }
-    
-    .filter-tag i {
-      font-size: 0.9rem;
-    }
-    
-    /* 研究人员部分 */
-    .people-section {
-      padding: 3rem 0 5rem;
-      background-color: #ffffff;
-    }
-    
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 2rem;
-      padding-left: 1rem;
-      border-left: 4px solid var(--primary);
-    }
-    
-    /* PI卡片 - 横向详细布局 */
-    .pi-card {
-      background: white;
-      border-radius: 16px;
-      padding: 0;
-      height: 100%;
-      border: 1px solid #e2e8f0;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      margin-bottom: 3rem;
-    }
-    
-    .pi-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--card-shadow-hover);
-      border-color: var(--primary-light);
-    }
-    
-    .pi-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--primary);
-      transition: var(--transition);
-    }
-    
-    .pi-card:hover::before {
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    }
-    
-    /* PI照片区域 - 圆形 */
-    .pi-avatar-section {
-      flex: 0 0 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
-      border-right: 1px solid #e2e8f0;
-    }
-    
-    .pi-avatar-container {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid white;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    }
-    
-    .pi-avatar-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    
-    /* PI信息区域 */
-    .pi-info-section {
-      flex: 1;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .pi-name {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.5rem;
-    }
-    
-    .pi-role {
-      font-size: 1.1rem;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .pi-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      color: var(--gray);
-      font-size: 0.9rem;
-    }
-    
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .meta-item i {
-      color: var(--primary);
-    }
-    
-    .meta-item a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .meta-item a:hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
-    }
-    
-    .pi-bio {
-      color: var(--dark);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-    }
-    
-    /* 研究标签 */
-    .research-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: auto;
-    }
-    
-    .research-tag {
-      padding: 0.4rem 0.8rem;
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--primary);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-      transition: var(--transition);
-    }
-    
-    .research-tag:hover {
-      background: rgba(37, 99, 235, 0.2);
-      transform: translateY(-2px);
-    }
-    
-    /* 学生网格布局 - 紧凑型 */
-    .student-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .student-card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      border: 1px solid #e2e8f0;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .student-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--card-shadow-hover);
-      border-color: var(--primary-light);
-    }
-    
-    /* 学生圆形头像 */
-    .student-avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid white;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      margin-bottom: 1.2rem;
-    }
-    
-    .student-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    
-    .student-info {
-      width: 100%;
-    }
-    
-    .student-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
-    }
-    
-    .student-role {
-      font-size: 0.85rem;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-    
-    .student-bio {
-      font-size: 0.85rem;
-      color: var(--gray);
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-      height: 2.5rem;
-      overflow: hidden;
-    }
-    
-    .student-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      justify-content: center;
-      margin-top: auto;
-    }
-    
-    .student-tag {
-      padding: 0.2rem 0.6rem;
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--primary);
-      border-radius: 12px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-    }
-    
-    /* 校友部分 */
-    .alumni-section {
-      padding: 3rem 0 5rem;
-      background-color: #ffffff;
-    }
-    
-    .alumni-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .alumni-card {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: var(--transition);
-    }
-    
-    .alumni-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--card-shadow);
-      border-color: var(--primary-light);
-    }
-    
-    .alumni-name {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 0.5rem;
-    }
-    
-    .alumni-info {
-      color: var(--gray);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .alumni-position {
-      color: var(--primary);
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    
-    /* 页脚 */
-    .footer {
-      background: var(--dark);
-      color: #cbd5e1;
-      padding: 3rem 0 2rem;
-      margin-top: 2rem;
-    }
-    
-    .footer-content {
-      text-align: center;
-    }
-    
-    .footer-logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 1rem;
-    }
-    
-    .footer-logo span {
-      color: var(--primary-light);
-    }
-    
-    .footer-text {
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      color: #94a3b8;
-    }
-    
-    .copyright {
-      padding-top: 2rem;
-      border-top: 1px solid #334155;
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-    
-    /* 响应式调整 */
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .pi-card {
-        flex-direction: column;
-      }
-      
-      .pi-avatar-section {
-        flex: 0 0 auto;
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #e2e8f0;
-      }
-      
-      .pi-avatar-container {
-        width: 140px;
-        height: 140px;
-      }
-      
-      .student-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1.5rem;
-      }
-      
-      .student-avatar {
-        width: 100px;
-        height: 100px;
-      }
-      
-      .filter-container {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-      }
-      
-      .filter-tag {
-        white-space: nowrap;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .student-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-      
-      .student-avatar {
-        width: 90px;
-        height: 90px;
-      }
-      
-      .student-name {
-        font-size: 1rem;
-      }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="People - SRIS Lab" name="description"/>
+<title>People | SRIS Lab</title>
+<link href="images/logo/RMX_16.ico" rel="icon"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/sris-theme.css" rel="stylesheet"/>
 </head>
 <body>
-  <!-- 导航栏 -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="fa fa-brain"></i>
-        <span>SRIS</span> Lab
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="people.html">People</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="research.html">Research</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              Publications
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="journal.html">Journal Papers</a></li>
-              <li><a class="dropdown-item" href="conference.html">Conference Papers</a></li>
-              <li><a class="dropdown-item" href="realtime.html">Submitted Papers</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="gallery.html">Gallery</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">EN</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index_x.html">中文</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- 主标题区域 -->
-  <section class="hero-section">
-    <div class="container">
-      <h1 class="hero-title">Our Team</h1>
-      <p class="hero-subtitle">
-        The SRIS Lab brings together a diverse team of researchers passionate about building <strong>Smart, Reliable, and Interpretable Systems</strong>. We are united by our commitment to advancing the frontier of trustworthy AI for intelligent manufacturing and critical infrastructure.
-      </p>
-      
-      <div class="hero-highlight">
-        <p>
-          Our team includes faculty members, postdoctoral researchers, PhD and Master's students, and undergraduate researchers—all working collaboratively to tackle fundamental challenges at the intersection of logic, physics, and machine learning.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 过滤标签栏 -->
-  <section class="filter-section">
-    <div class="container">
-      <div class="filter-container" id="filterContainer">
-        <div class="filter-tag active" data-filter="all">
-          <i class="fa fa-th-large"></i> All Members
-        </div>
-        <div class="filter-tag" data-filter="pi">
-          <i class="fa fa-user"></i> Principal Investigator
-        </div>
-        <div class="filter-tag" data-filter="postdoc">
-          <i class="fa fa-flask"></i> Postdoctoral Fellows
-        </div>
-        <div class="filter-tag" data-filter="phd">
-          <i class="fa fa-graduation-cap"></i> PhD Students
-        </div>
-        <div class="filter-tag" data-filter="master">
-          <i class="fa fa-mortar-board"></i> Master Students
-        </div>
-        <div class="filter-tag" data-filter="ug">
-          <i class="fa fa-users"></i> Undergraduate Students
-        </div>
-        <div class="filter-tag" data-filter="alumni">
-          <i class="fa fa-history"></i> Alumni
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 研究人员部分 -->
-  <section class="people-section">
-    <div class="container">
-      <!-- Principal Investigator -->
-      <h2 class="section-title" id="pi-section">Principal Investigator</h2>
-      <div class="pi-card" data-group="pi">
-        <div class="pi-avatar-section">
-          <div class="pi-avatar-container">
-            <img src="images/photo/leftgangchen.png" alt="Gang Chen">
-          </div>
-        </div>
-        <div class="pi-info-section">
-          <h3 class="pi-name">陈 刚 · Gang Chen</h3>
-          <div class="pi-role">
-            <i class="fa fa-graduation-cap"></i> Associate Professor, South China University of Technology
-          </div>
-          <div class="pi-meta">
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:gangchen@scut.edu.cn">gangchen@scut.edu.cn</a>
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-map-marker"></i>
-              Guangzhou International Campus
-            </div>
-          </div>
-          <p class="pi-bio">
-            Dr. Gang Chen received the bachelor's and master 's degrees  in mechanical engineering from Shanghai Jiao Tong University, Shanghai, China, in 2012 and 2015, respectively and his Ph.D. degree in mechanical and aerospace engineering from the University of California, Davis, Davis, CA, in 2020.  He was a research fellow at the School of Electrical and Electronic Engineering, Nanyang Technological University, Singapore from 2020 to 2021. 
-            He is currently an associate professor at the   Shien-Ming Wu School of Intelligent Engineering, South China University of Technology, China.
-            His research interests span machine learning, formal methods, control theory, and signal processing, with a focus on interpretable 
-            fault diagnosis and trustworthy cyber-physical systems. He leads the SRIS Lab in developing unified methodologies that combine 
-            Signal Temporal Logic (STL), control, causal inference, and physics-guided priors for building smart, reliable, and interpretable systems.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Interpretable AI</span>
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Fault Diagnosis</span>
-            <span class="research-tag">Cyber-Physical Systems</span>
-            <span class="research-tag">Control Theory</span>
-            <span class="research-tag">Machine Learning</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Postdoctoral Fellows -->
-      <h2 class="section-title" id="postdoc-section">Postdoctoral Fellows</h2>
-      <div class="student-grid" data-group="postdoc">
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/Khan.jpg" alt="Khan Tasir">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">Khan Tasir</h4>
-            <div class="student-role">Postdoctoral Fellow</div>
-            <p class="student-bio">Applied Mathematics, Wind prediction</p>
-            <div class="student-tags">
-              <span class="student-tag">Time Series</span>
-              <span class="student-tag">Forecasting</span>
-              <span class="student-tag">Optimization</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PhD Students -->
-      <h2 class="section-title" id="phd-section">PhD Students</h2>
-      <div class="student-grid" data-group="phd">
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/Penghonglu.jpg" alt="Penghong Lu">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">逯鹏宏</h4>
-            <div class="student-role">PhD Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">STL</span>
-              <span class="student-tag">FTC</span>
-              <span class="student-tag">Diagnosis</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/yuanjunlin.jpg" alt="Junlin Yuan">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">袁俊琳</h4>
-            <div class="student-role">PhD Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">STL</span>
-              <span class="student-tag">Diagnosis</span>
-              <span class="student-tag">Formal Methods</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/zhenpeng.png" alt="Zhenpeng Lao">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">劳振鹏</h4>
-            <div class="student-role">PhD Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">STL</span>
-              <span class="student-tag">Explainability</span>
-              <span class="student-tag">Diagnosis</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/weihong.jpg" alt="Weihong Cen">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">岑伟洪</h4>
-            <div class="student-role">PhD Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">Manufacturing AI</span>
-              <span class="student-tag">Systems</span>
-              <span class="student-tag">ML</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Master Students -->
-      <h2 class="section-title" id="master-section">Master Students</h2>
-      <div class="student-grid" data-group="master">
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/zhuhanrui.jpg" alt="Hanyue Zhu">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">朱涵悅</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Electronic Information Eng.</p>
-            <div class="student-tags">
-              <span class="student-tag">PINN</span>
-              <span class="student-tag">Modeling</span>
-              <span class="student-tag">ML</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/zhangjiarui.jpg" alt="Jiarui Zhang">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">张稼瑞</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Electronic Information Eng.</p>
-            <div class="student-tags">
-              <span class="student-tag">RL</span>
-              <span class="student-tag">Robotics</span>
-              <span class="student-tag">Control</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/zhangyishuo.png" alt="Yiyue Zhang">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">张艺栎</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Electronic Information Eng.</p>
-            <div class="student-tags">
-              <span class="student-tag">PINN</span>
-              <span class="student-tag">Modeling</span>
-              <span class="student-tag">ML</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/zhenhao.jpg" alt="Zhenhao Lin">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">林政豪</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">STL</span>
-              <span class="student-tag">Control</span>
-              <span class="student-tag">Synthesis</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/mingyu.jpg" alt="Mingyu Chen">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">陈明宇</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">Explainability</span>
-              <span class="student-tag">STL</span>
-              <span class="student-tag">Diagnosis</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/tangchao.jpg" alt="Chao Tang">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">唐超</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">RL</span>
-              <span class="student-tag">STL</span>
-              <span class="student-tag">Control</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/jiayuanfeng.jpg" alt="Yuanfeng Jia">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">贾远峰</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">Control</span>
-              <span class="student-tag">STL</span>
-              <span class="student-tag">Theory</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/yinchuxing.jpg" alt="Chuqin Yin">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">殷楚钦</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Mechanical Engineering</p>
-            <div class="student-tags">
-              <span class="student-tag">Control</span>
-              <span class="student-tag">STL</span>
-              <span class="student-tag">Theory</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/yinpengyu.jpg" alt="Pengyu Yin">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">尹鹏宇</h4>
-            <div class="student-role">Master Student</div>
-            <p class="student-bio">Electronic Information Eng.</p>
-            <div class="student-tags">
-              <span class="student-tag">Causality</span>
-              <span class="student-tag">Diagnosis</span>
-              <span class="student-tag">Fault Sourcing</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Undergraduate Students -->
-      <h2 class="section-title" id="ug-section">Undergraduate Students</h2>
-      <div class="student-grid" data-group="ug">
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/peixiyang.jpg" alt="Peixi Yang">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">杨沛希</h4>
-            <div class="student-role">Undergraduate</div>
-            <p class="student-bio">Smart Manufacturing Eng.</p>
-            <div class="student-tags">
-              <span class="student-tag">Design</span>
-              <span class="student-tag">Prototyping</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/yanyulu.jpg" alt="Yanyu Lu">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">路延宇</h4>
-            <div class="student-role">Undergraduate</div>
-            <p class="student-bio">Smart Manufacturing Eng.</p>
-            <div class="student-tags">
-              <span class="student-tag">Design</span>
-              <span class="student-tag">CAD</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="student-card">
-          <div class="student-avatar">
-            <img src="images/photo/katongjia.jpg" alt="Katong Jia">
-          </div>
-          <div class="student-info">
-            <h4 class="student-name">贾凯同</h4>
-            <div class="student-role">Undergraduate</div>
-            <p class="student-bio">Smart Manufacturing Eng.</p>
-            <div class="student-tags">
-              <span class="student-tag">Vision</span>
-              <span class="student-tag">Image Processing</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 校友部分 -->
-  <section class="alumni-section">
-    <div class="container">
-      <h2 class="section-title" id="alumni-section">Alumni</h2>
-      <div class="alumni-grid" data-group="alumni">
-        <div class="alumni-card">
-          <h3 class="alumni-name">李杜· Du Li</h3>
-          <div class="alumni-info">Master Student, 2022–2025</div>
-          <div class="alumni-position">Position: —</div>
-        </div>
-        
-        <div class="alumni-card">
-          <h3 class="alumni-name">李才 · Cai Li</h3>
-          <div class="alumni-info">Master Student, 2022–2025</div>
-          <div class="alumni-position">Position: Startup</div>
-        </div>
-        
-        <div class="alumni-card">
-          <h3 class="alumni-name">曾子越 · Ziyue Zeng</h3>
-          <div class="alumni-info">Master Student, 2022–2025</div>
-          <div class="alumni-position">Position: South China University of Technology</div>
-        </div>
-        
-        <div class="alumni-card">
-          <h3 class="alumni-name">田若瑶 · Ruoyao Tian</h3>
-          <div class="alumni-info">Undergraduate, 2022–2023</div>
-          <div class="alumni-position">Position: MS Student at Zhejiang University</div>
-        </div>
-        
-        <div class="alumni-card">
-          <h3 class="alumni-name">张 晨 · Zhang Chen</h3>
-          <div class="alumni-info">Undergraduate, 2023–2025</div>
-          <div class="alumni-position">Position: MS Student at Harbin Institute of Technology, Shenzhen</div>
-        </div>
-        
-        <div class="alumni-card">
-          <h3 class="alumni-name">张 然 · Zhang Ran</h3>
-          <div class="alumni-info">Undergraduate, 2023–2024</div>
-          <div class="alumni-position">Position: MS Student at University of Science and Technology of China</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 页脚 -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <i class="fa fa-brain"></i>
-          <span>SRIS</span> Lab
-        </div>
-        <p class="footer-text">
-          Smart, Reliable, and Interpretable Systems Laboratory<br>
-          South China University of Technology • Guangzhou International Campus<br>
-          Integrating logic, physics, and learning for trustworthy intelligent systems.
-        </p>
-        <div class="copyright">
-          <i class="fa fa-copyright"></i> Copyright 2022‑2024 SRIS Lab. All rights reserved.
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // 人员过滤功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const filterContainer = document.getElementById('filterContainer');
-      const filterTags = document.querySelectorAll('.filter-tag');
-      const piCard = document.querySelector('.pi-card');
-      const studentGrids = document.querySelectorAll('.student-grid, .alumni-grid');
-      const sectionTitles = document.querySelectorAll('.section-title');
-      
-      // 添加筛选功能
-      filterTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-          const filterValue = this.getAttribute('data-filter');
-          
-          // 更新活跃标签
-          filterTags.forEach(t => t.classList.remove('active'));
-          this.classList.add('active');
-          
-          // 处理PI卡片
-          if (filterValue === 'all' || filterValue === 'pi') {
-            piCard.style.display = 'flex';
-            document.getElementById('pi-section').style.display = 'block';
-          } else {
-            piCard.style.display = 'none';
-            document.getElementById('pi-section').style.display = 'none';
-          }
-          
-          // 处理学生网格
-          studentGrids.forEach(grid => {
-            const gridGroup = grid.getAttribute('data-group');
-            
-            if (filterValue === 'all' || gridGroup === filterValue) {
-              grid.style.display = 'grid';
-              if (document.getElementById(`${gridGroup}-section`)) {
-                document.getElementById(`${gridGroup}-section`).style.display = 'block';
-              }
-            } else {
-              grid.style.display = 'none';
-              if (document.getElementById(`${gridGroup}-section`)) {
-                document.getElementById(`${gridGroup}-section`).style.display = 'none';
-              }
-            }
-          });
-          
-          // 处理校友部分
-          const alumniSection = document.getElementById('alumni-section');
-          const alumniGrid = document.querySelector('.alumni-grid');
-          
-          if (filterValue === 'all' || filterValue === 'alumni') {
-            alumniSection.style.display = 'block';
-            alumniGrid.style.display = 'grid';
-          } else {
-            alumniSection.style.display = 'none';
-            alumniGrid.style.display = 'none';
-          }
-          
-          // 平滑滚动到第一个可见部分
-          setTimeout(() => {
-            const firstVisible = document.querySelector('.pi-card[style="display: flex;"]') || 
-                               document.querySelector('.student-grid[style="display: grid;"]');
-            if (firstVisible) {
-              firstVisible.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start',
-                inline: 'nearest'
-              });
-            }
-          }, 100);
-        });
-      });
-      
-      // 卡片悬停效果增强
-      document.querySelectorAll('.student-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-8px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
-        });
-      });
-      
-      // PI卡片悬停效果
-      if (piCard) {
-        piCard.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-8px)';
-        });
-        
-        piCard.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
-        });
-      }
-    });
-  </script>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top site-nav">
+<div class="container">
+<a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="fa fa-brain"></i></span><span>SRIS</span> Lab</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1"><li class="nav-item"><a class="nav-link" href="index.html">Home</a></li><li class="nav-item"><a class="nav-link active" href="people.html">People</a></li><li class="nav-item"><a class="nav-link" href="research.html">Research</a></li><li class="nav-item dropdown">
+</li><li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+</li><li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li><li class="nav-item"><a class="nav-link" href="class.html">Courses</a></li><li class="nav-item"><a class="nav-link" href="news.html">News</a></li><li class="nav-item"><a class="nav-link" href="realtime.html">Submitted</a></li></ul>
+<ul class="navbar-nav lang-switch ms-lg-3"><li class="nav-item"><a class="nav-link" href="people.html">EN</a></li><li class="nav-item"><a class="nav-link" href="people.html">中文</a></li></ul></div>
+</div>
+</nav>
+<header class="hero-shell page-hero subpage-hero">
+<div class="hero-backdrop"></div>
+<div class="container hero-grid">
+<div class="hero-copy">
+<div class="eyebrow"><i class="fa-solid fa-flask"></i> SRIS Laboratory</div>
+<h1 class="hero-title">Our Team</h1>
+<p class="hero-subtitle">Meet the faculty, researchers, and students who shape the SRIS Lab across formal methods, interpretable intelligence, diagnosis, and safe autonomy.</p>
+<div class="hero-chips"><span class="hero-chip">Faculty</span><span class="hero-chip">Postdocs</span><span class="hero-chip">PhD Students</span><span class="hero-chip">Master Students</span><span class="hero-chip">Undergraduates</span></div>
+</div>
+<div class="hero-panel home-panel subpage-logo-panel"><div class="hero-panel-top"><span>SRIS Laboratory</span><span>SCUT · GZIC</span></div><div class="hero-logo-card subpage-logo-card"><img alt="SRIS Logo" class="lab-logo" src="images/SRISlogo.png"/><div class="hero-caption">Smart, Reliable, and Interpretable Systems</div></div></div>
+</div>
+</header>
+<main>
+<section class="section pi-people-section"><div class="container"><div class="section-head"><div><div class="section-kicker">Leadership</div><h2 class="section-title">Principal investigator</h2></div></div><div class="detail-card-unified"><div class="pi-people-layout"><div class="pi-portrait-frame"><img alt="陈 刚 · Gang Chen" class="pi-photo" src="images/photo/leftgangchen.png"/></div><div><h3 class="feature-title">陈 刚 · Gang Chen</h3><div class="member-role">Associate Professor, South China University of Technology</div><p class="feature-text mt-3">Dr. Gang Chen received his Ph.D. from UC Davis and was a postdoctoral researcher at Nanyang Technological University, Singapore. His research interests span machine learning, formal methods, control theory, and signal processing, with a focus on interpretable fault diagnosis and trustworthy cyber-physical systems. He leads the SRIS Lab in developing unified methodologies that combine Signal Temporal Logic (STL), causal inference, and physics-guided priors for building smart, reliable, and interpretable systems.</p><div class="member-meta"><span class="tag">gangchen@scut.edu.cn</span><span class="tag">Guangzhou International Campus</span></div><div class="member-meta mt-3"><span class="tag">Interpretable AI</span><span class="tag">Signal Temporal Logic</span><span class="tag">Fault Diagnosis</span><span class="tag">Cyber-Physical Systems</span><span class="tag">Control Theory</span><span class="tag">Machine Learning</span></div></div></div></div></div></section>
+<section class="section"><div class="container"><div class="section-head"><div><div class="section-kicker">Team structure</div><h2 class="section-title">Postdoctoral Fellows</h2></div></div><div class="member-grid">
+<div class="member-card">
+<div class="member-avatar"><img alt="Khan Tasir" src="images/photo/Khan.jpg"/></div>
+<h3 class="member-name">Khan Tasir</h3>
+<div class="member-role">Postdoctoral Fellow</div>
+<p class="member-bio">Applied Mathematics, Wind prediction</p>
+<div class="member-meta"><span class="tag">Time Series</span><span class="tag">Forecasting</span><span class="tag">Optimization</span></div>
+</div></div></div></section>
+<section class="section"><div class="container"><div class="section-head"><div><div class="section-kicker">Team structure</div><h2 class="section-title">PhD Students</h2></div></div><div class="member-grid">
+<div class="member-card">
+<div class="member-avatar"><img alt="Penghong Lu" src="images/photo/Penghonglu.jpg"/></div>
+<h3 class="member-name">逯鹏宏</h3>
+<div class="member-role">PhD Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">STL</span><span class="tag">FTC</span><span class="tag">Diagnosis</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Junlin Yuan" src="images/photo/yuanjunlin.jpg"/></div>
+<h3 class="member-name">袁俊琳</h3>
+<div class="member-role">PhD Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">STL</span><span class="tag">Diagnosis</span><span class="tag">Formal Methods</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Zhenpeng Lao" src="images/photo/zhenpeng.png"/></div>
+<h3 class="member-name">劳振鹏</h3>
+<div class="member-role">PhD Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">STL</span><span class="tag">Explainability</span><span class="tag">Diagnosis</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Weihong Cen" src="images/photo/weihong.jpg"/></div>
+<h3 class="member-name">岑伟洪</h3>
+<div class="member-role">PhD Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">Manufacturing AI</span><span class="tag">Systems</span><span class="tag">ML</span></div>
+</div></div></div></section>
+<section class="section"><div class="container"><div class="section-head"><div><div class="section-kicker">Team structure</div><h2 class="section-title">Master Students</h2></div></div><div class="member-grid">
+<div class="member-card">
+<div class="member-avatar"><img alt="Hanyue Zhu" src="images/photo/zhuhanrui.jpg"/></div>
+<h3 class="member-name">朱涵悅</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Electronic Information Eng.</p>
+<div class="member-meta"><span class="tag">PINN</span><span class="tag">Modeling</span><span class="tag">ML</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Jiarui Zhang" src="images/photo/zhangjiarui.jpg"/></div>
+<h3 class="member-name">张稼瑞</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Electronic Information Eng.</p>
+<div class="member-meta"><span class="tag">RL</span><span class="tag">Robotics</span><span class="tag">Control</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Yiyue Zhang" src="images/photo/zhangyishuo.png"/></div>
+<h3 class="member-name">张艺栎</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Electronic Information Eng.</p>
+<div class="member-meta"><span class="tag">PINN</span><span class="tag">Modeling</span><span class="tag">ML</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Zhenhao Lin" src="images/photo/zhenhao.jpg"/></div>
+<h3 class="member-name">林政豪</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">STL</span><span class="tag">Control</span><span class="tag">Synthesis</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Mingyu Chen" src="images/photo/mingyu.jpg"/></div>
+<h3 class="member-name">陈明宇</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">Explainability</span><span class="tag">STL</span><span class="tag">Diagnosis</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Chao Tang" src="images/photo/tangchao.jpg"/></div>
+<h3 class="member-name">唐超</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">RL</span><span class="tag">STL</span><span class="tag">Control</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Yuanfeng Jia" src="images/photo/jiayuanfeng.jpg"/></div>
+<h3 class="member-name">贾远峰</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">Control</span><span class="tag">STL</span><span class="tag">Theory</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Chuqin Yin" src="images/photo/yinchuxing.jpg"/></div>
+<h3 class="member-name">殷楚钦</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Mechanical Engineering</p>
+<div class="member-meta"><span class="tag">Control</span><span class="tag">STL</span><span class="tag">Theory</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Pengyu Yin" src="images/photo/yinpengyu.jpg"/></div>
+<h3 class="member-name">尹鹏宇</h3>
+<div class="member-role">Master Student</div>
+<p class="member-bio">Electronic Information Eng.</p>
+<div class="member-meta"><span class="tag">Causality</span><span class="tag">Diagnosis</span><span class="tag">Fault Sourcing</span></div>
+</div></div></div></section>
+<section class="section"><div class="container"><div class="section-head"><div><div class="section-kicker">Team structure</div><h2 class="section-title">Undergraduate Students</h2></div></div><div class="member-grid">
+<div class="member-card">
+<div class="member-avatar"><img alt="Peixi Yang" src="images/photo/peixiyang.jpg"/></div>
+<h3 class="member-name">杨沛希</h3>
+<div class="member-role">Undergraduate</div>
+<p class="member-bio">Smart Manufacturing Eng.</p>
+<div class="member-meta"><span class="tag">Design</span><span class="tag">Prototyping</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Yanyu Lu" src="images/photo/yanyulu.jpg"/></div>
+<h3 class="member-name">路延宇</h3>
+<div class="member-role">Undergraduate</div>
+<p class="member-bio">Smart Manufacturing Eng.</p>
+<div class="member-meta"><span class="tag">Design</span><span class="tag">CAD</span></div>
+</div>
+<div class="member-card">
+<div class="member-avatar"><img alt="Katong Jia" src="images/photo/katongjia.jpg"/></div>
+<h3 class="member-name">贾凯同</h3>
+<div class="member-role">Undergraduate</div>
+<p class="member-bio">Smart Manufacturing Eng.</p>
+<div class="member-meta"><span class="tag">Vision</span><span class="tag">Image Processing</span></div>
+</div></div></div></section>
+<section class="section"><div class="container"><div class="section-head"><div><div class="section-kicker">Lab history</div><h2 class="section-title">Alumni</h2></div></div><div class="grid-3">
+<div class="soft-card p-4">
+<h3 class="feature-title">李杜· Du Li</h3>
+<p class="feature-text mb-2">Master Student, 2022–2025</p>
+<div class="tag">Position: —</div>
+</div>
+<div class="soft-card p-4">
+<h3 class="feature-title">李才 · Cai Li</h3>
+<p class="feature-text mb-2">Master Student, 2022–2025</p>
+<div class="tag">Position: Startup</div>
+</div>
+<div class="soft-card p-4">
+<h3 class="feature-title">曾子越 · Ziyue Zeng</h3>
+<p class="feature-text mb-2">Master Student, 2022–2025</p>
+<div class="tag">Position: South China University of Technology</div>
+</div>
+<div class="soft-card p-4">
+<h3 class="feature-title">田若瑶 · Ruoyao Tian</h3>
+<p class="feature-text mb-2">Undergraduate, 2022–2023</p>
+<div class="tag">Position: MS Student at Zhejiang University</div>
+</div>
+<div class="soft-card p-4">
+<h3 class="feature-title">张 晨 · Zhang Chen</h3>
+<p class="feature-text mb-2">Undergraduate, 2023–2025</p>
+<div class="tag">Position: MS Student at Harbin Institute of Technology, Shenzhen</div>
+</div>
+<div class="soft-card p-4">
+<h3 class="feature-title">张 然 · Zhang Ran</h3>
+<p class="feature-text mb-2">Undergraduate, 2023–2024</p>
+<div class="tag">Position: MS Student at University of Science and Technology of China</div>
+</div></div></div></section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div>
+<div class="footer-brand footer-brand-with-logo"><img alt="SRIS logo" class="footer-logo-img" src="images/SRISlogo.png"/><div class="footer-brand-textwrap"><div class="footer-brand-title">SRIS Laboratory</div><div class="footer-brand-subtitle">Smart, Reliable, and Interpretable Systems</div></div></div>
+<p class="footer-text">We work at the intersection of machine learning, formal methods, control, and signal processing to build smart, reliable, and interpretable systems.</p>
+</div>
+<div>
+<h4>Explore</h4>
+<ul class="footer-links">
+<li><a href="research.html">Research Directions</a></li>
+<li><a href="people.html">Team Members</a></li>
+<li><a href="publications.html">Research Output</a></li>
+</ul>
+</div>
+<div>
+<h4>Connect</h4>
+<ul class="footer-links">
+<li><a href="mailto:gangchen@scut.edu.cn">gangchen@scut.edu.cn</a></li>
+<li>South China University of Technology</li>
+<li>Guangzhou International Campus</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">© 2022–2026 SRIS Laboratory. All rights reserved.</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/sris-theme.js"></script>
 </body>
 </html>

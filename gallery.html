@@ -1,835 +1,150 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SRIS Lab — Gallery (Team Building & Conferences)">
-  <meta name="author" content="SRIS Lab">
-  <link rel="icon" href="images/logo/RMX_16.ico">
-  <title>Gallery | SRIS Lab</title>
-
-  <!-- Bootstrap 5 & Font Awesome 4.4.0 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="style/style.css" rel="stylesheet">
-
-  <!-- Gallery页面样式 - 与SRIS网站风格统一 -->
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-light: #60a5fa;
-      --primary-dark: #1d4ed8;
-      --secondary: #10b981;
-      --accent: #8b5cf6;
-      --light: #f8fafc;
-      --light-gray: #f1f5f9;
-      --gray: #64748b;
-      --dark: #0f172a;
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
-      --card-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #ffffff;
-      color: #334155;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    /* 导航栏 - 与SRIS网站统一 */
-    .navbar {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      padding: 1rem 0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    
-    .navbar-brand {
-      font-weight: 800;
-      color: var(--dark);
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .navbar-brand span {
-      color: var(--primary);
-    }
-    
-    .nav-link {
-      font-weight: 500;
-      color: var(--dark) !important;
-      margin: 0 0.5rem;
-      padding: 0.5rem 1rem !important;
-      border-radius: 8px;
-      transition: var(--transition);
-    }
-    
-    .nav-link:hover, .nav-link.active {
-      color: var(--primary) !important;
-      background-color: rgba(37, 99, 235, 0.08);
-    }
-    
-    .navbar-toggler {
-      border: none;
-      padding: 0.5rem;
-    }
-    
-    .navbar-toggler:focus {
-      box-shadow: none;
-    }
-    
-    /* 主标题区域 */
-    .hero-section {
-      padding: 6rem 0 4rem;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 30%, #f8fafc 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 40%;
-      height: 100%;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%232563eb" fill-opacity="0.03" d="M45.1,-68.8C58.1,-60.8,68.6,-47.7,75.2,-32.8C81.8,-17.9,84.5,-1.3,81.6,13.8C78.7,28.9,70.2,42.5,58.6,53.5C47,64.5,32.4,72.9,16.7,77.1C1.1,81.3,-15.6,81.4,-30.4,76.1C-45.2,70.8,-58.2,60.1,-68.2,46.8C-78.2,33.5,-85.3,17.7,-86.6,0.9C-87.9,-15.9,-83.4,-31.9,-73.9,-45C-64.4,-58.1,-49.9,-68.4,-34.3,-75.2C-18.8,-82,-1.2,-85.4,14.8,-82.6C30.8,-79.8,45.5,-70.9,45.1,-68.8Z" transform="translate(100 100)" /></svg>') no-repeat;
-      background-size: cover;
-      opacity: 0.5;
-    }
-    
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--gray);
-      max-width: 800px;
-      margin-bottom: 2rem;
-    }
-    
-    .hero-highlight {
-      background: linear-gradient(90deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
-      border-left: 4px solid var(--primary);
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin: 2rem 0;
-    }
-    
-    .hero-highlight p {
-      margin: 0;
-      font-size: 1.1rem;
-      color: var(--dark);
-    }
-    
-    /* 过滤标签栏 */
-    .filter-section {
-      padding: 2rem 0 1rem;
-      background-color: #ffffff;
-    }
-    
-    .filter-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    
-    .filter-tag {
-      padding: 0.6rem 1.5rem;
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--primary);
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-      transition: var(--transition);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .filter-tag:hover, .filter-tag.active {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-    }
-    
-    .filter-tag i {
-      font-size: 0.9rem;
-    }
-    
-    /* Gallery内容区域 */
-    .gallery-section {
-      padding: 3rem 0 5rem;
-      background-color: #ffffff;
-    }
-    
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 2rem;
-      padding-left: 1rem;
-      border-left: 4px solid var(--primary);
-    }
-    
-    /* Gallery网格布局 */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    
-    .gallery-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid #e2e8f0;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      position: relative;
-      cursor: pointer;
-    }
-    
-    .gallery-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--card-shadow-hover);
-      border-color: var(--primary-light);
-    }
-    
-    .gallery-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--primary);
-      transition: var(--transition);
-      opacity: 0;
-    }
-    
-    .gallery-card:hover::before {
-      opacity: 1;
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    }
-    
-    /* 图片容器 */
-    .image-container {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .image-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      transition: var(--transition);
-    }
-    
-    .gallery-card:hover .image-container img {
-      transform: scale(1.05);
-    }
-    
-    /* 图片信息 */
-    .image-info {
-      padding: 1.5rem;
-    }
-    
-    .image-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
-    }
-    
-    .image-description {
-      color: var(--gray);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-    
-    .image-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .image-tag {
-      padding: 0.3rem 0.7rem;
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--primary);
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-    }
-    
-    .image-tag.team {
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--secondary);
-      border-color: rgba(16, 185, 129, 0.2);
-    }
-    
-    .image-tag.conference {
-      background: rgba(139, 92, 246, 0.1);
-      color: var(--accent);
-      border-color: rgba(139, 92, 246, 0.2);
-    }
-    
-    .image-tag.year {
-      background: rgba(245, 158, 11, 0.1);
-      color: #f59e0b;
-      border-color: rgba(245, 158, 11, 0.2);
-    }
-    
-    /* 模态框样式 */
-    .modal-content {
-      border: none;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    }
-    
-    .modal-header {
-      background: var(--dark);
-      color: white;
-      border-bottom: 1px solid #334155;
-      padding: 1.5rem;
-    }
-    
-    .modal-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-    
-    .modal-body {
-      padding: 0;
-    }
-    
-    .modal-image {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    .modal-caption {
-      padding: 1.5rem;
-      background: #f8fafc;
-      color: var(--gray);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      border-top: 1px solid #e2e8f0;
-    }
-    
-    .btn-close {
-      filter: invert(1) grayscale(100%) brightness(200%);
-    }
-    
-    /* 页脚 */
-    .footer {
-      background: var(--dark);
-      color: #cbd5e1;
-      padding: 3rem 0 2rem;
-      margin-top: 2rem;
-    }
-    
-    .footer-content {
-      text-align: center;
-    }
-    
-    .footer-logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 1rem;
-    }
-    
-    .footer-logo span {
-      color: var(--primary-light);
-    }
-    
-    .footer-text {
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      color: #94a3b8;
-    }
-    
-    .copyright {
-      padding-top: 2rem;
-      border-top: 1px solid #334155;
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-    
-    /* 响应式调整 */
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1rem;
-      }
-      
-      .image-container {
-        height: 180px;
-      }
-      
-      .filter-container {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-      }
-      
-      .filter-tag {
-        white-space: nowrap;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .image-container {
-        height: 160px;
-      }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Gallery - SRIS Lab" name="description"/>
+<title>Gallery | SRIS Lab</title>
+<link href="images/logo/RMX_16.ico" rel="icon"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/sris-theme.css" rel="stylesheet"/>
 </head>
 <body>
-  <!-- 导航栏 -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="fa fa-flask"></i>
-        <span>SRIS</span> Lab
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="people.html">People</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="research.html">Research</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              Publications
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="journal.html">Journal Papers</a></li>
-              <li><a class="dropdown-item" href="realtime.html">Submitted Papers</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="gallery.html">Gallery</a>
-          </li>
-
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">EN</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index_x.html">中文</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- 主标题区域 -->
-  <section class="hero-section">
-    <div class="container">
-      <h1 class="hero-title">Gallery</h1>
-      <p class="hero-subtitle">
-        A visual journey through our <strong>Team Building</strong> moments and <strong>Conference Activities</strong>.
-        Explore the vibrant life of the SRIS Lab through photos of our research, collaborations, and community events.
-      </p>
-      
-      <div class="hero-highlight">
-        <p>
-          From lab visits and academic conferences to team gatherings and research presentations, 
-          our gallery captures the dynamic spirit of the SRIS Lab community.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 过滤标签栏 -->
-  <section class="filter-section">
-    <div class="container">
-      <div class="filter-container" id="filterContainer">
-        <div class="filter-tag active" data-filter="all">
-          <i class="fa fa-th-large"></i> All Photos
-        </div>
-        <div class="filter-tag" data-filter="team">
-          <i class="fa fa-users"></i> Team Building
-        </div>
-        <div class="filter-tag" data-filter="conference">
-          <i class="fa fa-university"></i> Conferences
-        </div>
-        <div class="filter-tag" data-year="all">
-          <i class="fa fa-calendar"></i> All Years
-        </div>
-        <div class="filter-tag" data-year="2025">
-          <i class="fa fa-calendar"></i> 2025
-        </div>
-        <div class="filter-tag" data-year="2024">
-          <i class="fa fa-calendar"></i> 2024
-        </div>
-        <div class="filter-tag" data-year="2023">
-          <i class="fa fa-calendar"></i> 2023
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery内容区域 -->
-  <section class="gallery-section">
-    <div class="container">
-      <h2 class="section-title">Lab Memories</h2>
-      <div class="gallery-grid" id="galleryGrid">
-        <!-- 团队建设 2024 -->
-        <div class="gallery-card" data-group="team" data-year="2024" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="Lab Visit to TCL" 
-             data-description="SRIS Lab members visited TCL for industrial collaboration and knowledge exchange" 
-             data-image="gallery/labvisitTCL.jpg">
-          <div class="image-container">
-            <img src="gallery/labvisitTCL.jpg" alt="Lab Visit to TCL">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">Lab Visit to TCL</h4>
-            <p class="image-description">Industrial collaboration visit to TCL facilities for knowledge exchange and research discussions.</p>
-            <div class="image-tags">
-              <span class="image-tag team">Team Building</span>
-              <span class="image-tag year">2024</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 会议 2025 -->
-        <div class="gallery-card" data-group="conference" data-year="2025" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="Sensing, Measurement & Data Analytics (ICSMD 2025)" 
-             data-description="SRIS Lab participation at the International Conference on Sensing, Measurement & Data Analytics" 
-             data-image="gallery/icsmd2025.jpg">
-          <div class="image-container">
-            <img src="gallery/icsmd2025.jpg" alt="ICSMD 2025">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">ICSMD 2025 Conference</h4>
-            <p class="image-description">SRIS Lab members attended and presented at the International Conference on Sensing, Measurement & Data Analytics.</p>
-            <div class="image-tags">
-              <span class="image-tag conference">Conference</span>
-              <span class="image-tag year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 会议 2025 -->
-        <div class="gallery-card" data-group="conference" data-year="2025" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="Zhenpeng Lao at ICSMD 2025" 
-             data-description="PhD student Zhenpeng Lao presenting research at ICSMD 2025 conference" 
-             data-image="gallery/zhenpeng.jpg">
-          <div class="image-container">
-            <img src="gallery/zhenpeng.jpg" alt="Zhenpeng Lao ICSMD 2025">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">Zhenpeng Lao at ICSMD 2025</h4>
-            <p class="image-description">PhD student Zhenpeng Lao presenting his research on formal methods for interpretable fault diagnosis.</p>
-            <div class="image-tags">
-              <span class="image-tag conference">Conference</span>
-              <span class="image-tag year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 会议 2025 -->
-        <div class="gallery-card" data-group="conference" data-year="2025" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="Peixi Yang at ICSMD 2025" 
-             data-description="Undergraduate student Peixi Yang presenting research at ICSMD 2025 conference" 
-             data-image="gallery/peixi.jpg">
-          <div class="image-container">
-            <img src="gallery/peixi.jpg" alt="Peixi Yang ICSMD 2025">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">Peixi Yang at ICSMD 2025</h4>
-            <p class="image-description">Undergraduate student Peixi Yang presenting research on mechanical design applications.</p>
-            <div class="image-tags">
-              <span class="image-tag conference">Conference</span>
-              <span class="image-tag year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 会议 2025 -->
-        <div class="gallery-card" data-group="conference" data-year="2025" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="Yiyue Zhang at ICSMD 2025" 
-             data-description="Master's student Yiyue Zhang presenting research at ICSMD 2025 conference" 
-             data-image="gallery/yiyue.jpg">
-          <div class="image-container">
-            <img src="gallery/yiyue.jpg" alt="Yiyue Zhang ICSMD 2025">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">Yiyue Zhang at ICSMD 2025</h4>
-            <p class="image-description">Master's student Yiyue Zhang presenting research on physics-informed neural networks.</p>
-            <div class="image-tags">
-              <span class="image-tag conference">Conference</span>
-              <span class="image-tag year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 会议 2025 -->
-        <div class="gallery-card" data-group="conference" data-year="2025" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="Dynamic Signal Analysis Workshop" 
-             data-description="Dr. Gang Chen at the Academic Conference on Dynamic Signal Analysis" 
-             data-image="gallery/gangchenApirl2025.jpg">
-          <div class="image-container">
-            <img src="gallery/gangchenApirl2025.jpg" alt="Dynamic Signal Analysis Workshop 2025">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">Dynamic Signal Analysis Workshop</h4>
-            <p class="image-description">Dr. Gang Chen participating in the Academic Conference on Dynamic Signal Analysis of China Vibration Engineering Society.</p>
-            <div class="image-tags">
-              <span class="image-tag conference">Conference</span>
-              <span class="image-tag year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 会议 2025 -->
-        <div class="gallery-card" data-group="conference" data-year="2025" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="System and Dynamic Safety Forum" 
-             data-description="Dr. Gang Chen organized a forum at the 9th Nonlinear Systems and Control Conference" 
-             data-image="gallery/siss2025.jpg">
-          <div class="image-container">
-            <img src="gallery/siss2025.jpg" alt="System and Dynamic Safety Forum 2025">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">System and Dynamic Safety Forum</h4>
-            <p class="image-description">Dr. Gang Chen organized a forum at the 9th Nonlinear Systems and Control Conference and the 1st International Conference on Super Robotics.</p>
-            <div class="image-tags">
-              <span class="image-tag conference">Conference</span>
-              <span class="image-tag year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 会议 2025 -->
-        <div class="gallery-card" data-group="conference" data-year="2025" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="Hydromechatronics and Robot Control Conference" 
-             data-description="Jia Kaitong presenting at the 2025 Hydromechatronics and Advanced Robot Control Technology conference" 
-             data-image="gallery/jia2025.jpg">
-          <div class="image-container">
-            <img src="gallery/jia2025.jpg" alt="HARCT 2025">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">Hydromechatronics Conference 2025</h4>
-            <p class="image-description">Undergraduate student Jia Kaitong presenting at the 2025 Hydromechatronics and Advanced Robot Control Technology conference.</p>
-            <div class="image-tags">
-              <span class="image-tag conference">Conference</span>
-              <span class="image-tag year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 会议 2024 -->
-        <div class="gallery-card" data-group="conference" data-year="2024" data-bs-toggle="modal" data-bs-target="#imageModal" 
-             data-title="CCC 2024 Conference" 
-             data-description="Dr. Gang Chen attended the Chinese Control Conference 2024 in Kunming" 
-             data-image="gallery/CCC2024.jpg">
-          <div class="image-container">
-            <img src="gallery/CCC2024.jpg" alt="CCC 2024">
-          </div>
-          <div class="image-info">
-            <h4 class="image-title">CCC 2024 Conference</h4>
-            <p class="image-description">Dr. Gang Chen attended the Chinese Control Conference 2024 in Kunming, participating in special sessions and presenting research.</p>
-            <div class="image-tags">
-              <span class="image-tag conference">Conference</span>
-              <span class="image-tag year">2024</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 可继续添加更多图片 -->
-      </div>
-    </div>
-  </section>
-
-  <!-- 图片模态框 -->
-  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="imageModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <img id="modalImage" class="modal-image" src="" alt="">
-          <div class="modal-caption" id="modalCaption"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 页脚 -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <i class="fa fa-flask"></i>
-          <span>SRIS</span> Lab
-        </div>
-        <p class="footer-text">
-          Smart, Reliable, and Interpretable Systems Laboratory<br>
-          South China University of Technology • Guangzhou International Campus<br>
-          Integrating logic, physics, and learning for trustworthy intelligent systems.
-        </p>
-        <div class="copyright">
-          <i class="fa fa-copyright"></i> Copyright 2022‑2024 SRIS Lab. All rights reserved.
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Gallery过滤功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const filterContainer = document.getElementById('filterContainer');
-      const filterTags = document.querySelectorAll('.filter-tag');
-      const galleryCards = document.querySelectorAll('.gallery-card');
-      
-      let currentFilter = 'all';
-      let currentYear = 'all';
-      
-      // 添加筛选功能
-      filterTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-          const filterType = this.getAttribute('data-filter');
-          const yearFilter = this.getAttribute('data-year');
-          
-          // 更新活跃标签
-          if (filterType) {
-            filterTags.forEach(t => {
-              if (t.getAttribute('data-filter')) t.classList.remove('active');
-            });
-            this.classList.add('active');
-            currentFilter = filterType;
-          }
-          
-          if (yearFilter) {
-            filterTags.forEach(t => {
-              if (t.getAttribute('data-year')) t.classList.remove('active');
-            });
-            this.classList.add('active');
-            currentYear = yearFilter;
-          }
-          
-          // 应用筛选
-          applyFilters();
-        });
-      });
-      
-      function applyFilters() {
-        galleryCards.forEach(card => {
-          const cardGroup = card.getAttribute('data-group');
-          const cardYear = card.getAttribute('data-year');
-          
-          const showByGroup = currentFilter === 'all' || cardGroup === currentFilter;
-          const showByYear = currentYear === 'all' || cardYear === currentYear;
-          
-          if (showByGroup && showByYear) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      }
-      
-      // 图片模态框功能
-      const imageModal = document.getElementById('imageModal');
-      const modalTitle = document.getElementById('imageModalLabel');
-      const modalImage = document.getElementById('modalImage');
-      const modalCaption = document.getElementById('modalCaption');
-      
-      imageModal.addEventListener('show.bs.modal', function(event) {
-        const button = event.relatedTarget;
-        const title = button.getAttribute('data-title');
-        const description = button.getAttribute('data-description');
-        const imageSrc = button.getAttribute('data-image');
-        
-        modalTitle.textContent = title;
-        modalImage.src = imageSrc;
-        modalImage.alt = title;
-        modalCaption.textContent = description;
-      });
-      
-      // 卡片悬停效果增强
-      galleryCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-8px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
-        });
-      });
-    });
-  </script>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top site-nav">
+<div class="container">
+<a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="fa fa-brain"></i></span><span>SRIS</span> Lab</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1"><li class="nav-item"><a class="nav-link" href="index.html">Home</a></li><li class="nav-item"><a class="nav-link" href="people.html">People</a></li><li class="nav-item"><a class="nav-link" href="research.html">Research</a></li><li class="nav-item dropdown">
+</li><li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+</li><li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li><li class="nav-item"><a class="nav-link" href="class.html">Courses</a></li><li class="nav-item"><a class="nav-link" href="news.html">News</a></li><li class="nav-item"><a class="nav-link" href="realtime.html">Submitted</a></li></ul>
+<ul class="navbar-nav lang-switch ms-lg-3"><li class="nav-item"><a class="nav-link" href="gallery.html">EN</a></li><li class="nav-item"><a class="nav-link" href="gallery.html">中文</a></li></ul></div>
+</div>
+</nav>
+<header class="hero-shell page-hero subpage-hero">
+<div class="hero-backdrop"></div>
+<div class="container hero-grid">
+<div class="hero-copy">
+<div class="eyebrow"><i class="fa-solid fa-flask"></i> SRIS Laboratory</div>
+<h1 class="hero-title">Gallery</h1>
+<div class="hero-chips"><span class="hero-chip">Lab life</span><span class="hero-chip">Conferences</span><span class="hero-chip">Collaboration</span></div>
+</div>
+<div class="hero-panel home-panel subpage-logo-panel"><div class="hero-panel-top"><span>SRIS Laboratory</span><span>SCUT · GZIC</span></div><div class="hero-logo-card subpage-logo-card"><img alt="SRIS Logo" class="lab-logo" src="images/SRISlogo.png"/><div class="hero-caption">Smart, Reliable, and Interpretable Systems</div></div></div>
+</div>
+</header>
+<main>
+<section class="section"><div class="container"><div class="section-head"><div><div class="section-kicker">Lab culture</div><h2 class="section-title">Memories, conferences, and collaboration</h2></div></div><div class="filter-bar" id="galleryFilter"><button class="filter-chip active" data-gallery="all">All</button><button class="filter-chip" data-gallery="Conference">Conference</button><button class="filter-chip" data-gallery="Team Building">Team Building</button></div><div class="gallery-grid" id="galleryGrid">
+<div class="gallery-card-unified" data-category="Team Building" data-year="2024">
+<div class="photo"><img alt="Lab Visit to TCL" src="gallery/labvisitTCL.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Team Building</span><span class="tag">2024</span></div>
+<h3 class="gallery-title">Lab Visit to TCL</h3>
+<p class="gallery-text">Industrial collaboration visit to TCL facilities for knowledge exchange and research discussions.</p>
+</div>
+</div>
+<div class="gallery-card-unified" data-category="Conference" data-year="2025">
+<div class="photo"><img alt="ICSMD 2025 Conference" src="gallery/icsmd2025.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Conference</span><span class="tag">2025</span></div>
+<h3 class="gallery-title">ICSMD 2025 Conference</h3>
+<p class="gallery-text">SRIS Lab members attended and presented at the International Conference on Sensing, Measurement &amp; Data Analytics.</p>
+</div>
+</div>
+<div class="gallery-card-unified" data-category="Conference" data-year="2025">
+<div class="photo"><img alt="Zhenpeng Lao at ICSMD 2025" src="gallery/zhenpeng.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Conference</span><span class="tag">2025</span></div>
+<h3 class="gallery-title">Zhenpeng Lao at ICSMD 2025</h3>
+<p class="gallery-text">PhD student Zhenpeng Lao presenting his research on formal methods for interpretable fault diagnosis.</p>
+</div>
+</div>
+<div class="gallery-card-unified" data-category="Conference" data-year="2025">
+<div class="photo"><img alt="Peixi Yang at ICSMD 2025" src="gallery/peixi.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Conference</span><span class="tag">2025</span></div>
+<h3 class="gallery-title">Peixi Yang at ICSMD 2025</h3>
+<p class="gallery-text">Undergraduate student Peixi Yang presenting research on mechanical design applications.</p>
+</div>
+</div>
+<div class="gallery-card-unified" data-category="Conference" data-year="2025">
+<div class="photo"><img alt="Yiyue Zhang at ICSMD 2025" src="gallery/yiyue.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Conference</span><span class="tag">2025</span></div>
+<h3 class="gallery-title">Yiyue Zhang at ICSMD 2025</h3>
+<p class="gallery-text">Master's student Yiyue Zhang presenting research on physics-informed neural networks.</p>
+</div>
+</div>
+<div class="gallery-card-unified" data-category="Conference" data-year="2025">
+<div class="photo"><img alt="Dynamic Signal Analysis Workshop" src="gallery/gangchenApirl2025.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Conference</span><span class="tag">2025</span></div>
+<h3 class="gallery-title">Dynamic Signal Analysis Workshop</h3>
+<p class="gallery-text">Dr. Gang Chen participating in the Academic Conference on Dynamic Signal Analysis of China Vibration Engineering Society.</p>
+</div>
+</div>
+<div class="gallery-card-unified" data-category="Conference" data-year="2025">
+<div class="photo"><img alt="System and Dynamic Safety Forum" src="gallery/siss2025.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Conference</span><span class="tag">2025</span></div>
+<h3 class="gallery-title">System and Dynamic Safety Forum</h3>
+<p class="gallery-text">Dr. Gang Chen organized a forum at the 9th Nonlinear Systems and Control Conference and the 1st International Conference on Super Robotics.</p>
+</div>
+</div>
+<div class="gallery-card-unified" data-category="Conference" data-year="2025">
+<div class="photo"><img alt="Hydromechatronics Conference 2025" src="gallery/jia2025.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Conference</span><span class="tag">2025</span></div>
+<h3 class="gallery-title">Hydromechatronics Conference 2025</h3>
+<p class="gallery-text">Undergraduate student Jia Kaitong presenting at the 2025 Hydromechatronics and Advanced Robot Control Technology conference.</p>
+</div>
+</div>
+<div class="gallery-card-unified" data-category="Conference" data-year="2024">
+<div class="photo"><img alt="CCC 2024 Conference" src="gallery/CCC2024.jpg"/></div>
+<div class="gallery-body">
+<div class="member-meta mb-2"><span class="tag">Conference</span><span class="tag">2024</span></div>
+<h3 class="gallery-title">CCC 2024 Conference</h3>
+<p class="gallery-text">Dr. Gang Chen attended the Chinese Control Conference 2024 in Kunming, participating in special sessions and presenting research.</p>
+</div>
+</div></div></div></section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div>
+<div class="footer-brand footer-brand-with-logo"><img alt="SRIS logo" class="footer-logo-img" src="images/SRISlogo.png"/><div class="footer-brand-textwrap"><div class="footer-brand-title">SRIS Laboratory</div><div class="footer-brand-subtitle">Smart, Reliable, and Interpretable Systems</div></div></div>
+<p class="footer-text">We work at the intersection of machine learning, formal methods, control, and signal processing to build smart, reliable, and interpretable systems.</p>
+</div>
+<div>
+<h4>Explore</h4>
+<ul class="footer-links">
+<li><a href="research.html">Research Directions</a></li>
+<li><a href="people.html">Team Members</a></li>
+<li><a href="publications.html">Research Output</a></li>
+</ul>
+</div>
+<div>
+<h4>Connect</h4>
+<ul class="footer-links">
+<li><a href="mailto:gangchen@scut.edu.cn">gangchen@scut.edu.cn</a></li>
+<li>South China University of Technology</li>
+<li>Guangzhou International Campus</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">© 2022–2026 SRIS Laboratory. All rights reserved.</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/sris-theme.js"></script>
+<script>
+(function(){const chips=[...document.querySelectorAll('#galleryFilter .filter-chip')]; const cards=[...document.querySelectorAll('#galleryGrid .gallery-card-unified')]; chips.forEach(chip=>chip.addEventListener('click',()=>{chips.forEach(c=>c.classList.remove('active')); chip.classList.add('active'); const val=chip.dataset.gallery; cards.forEach(card=>{card.style.display = (val==='all'||card.dataset.category===val)?'':'none';});}));})();
+</script>
 </body>
 </html>
