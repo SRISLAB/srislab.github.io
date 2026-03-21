@@ -1,128 +1,1135 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Home page of SRIS — Smart, Reliable and Interpretable Systems" name="description"/>
+<meta content="SRIS Lab" name="author"/>
+<link href="images/logo/RMX_16.ico" rel="icon"/>
+<title>SRIS — 智能、可靠、可解释系统</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="style/jquery.bxslider.css" rel="stylesheet"/>
+<style>
+    :root {
+      --navy: #0b1220;
+      --blue-900: #0f2f6d;
+      --blue-700: #1d4ed8;
+      --blue-500: #3b82f6;
+      --cyan-400: #22d3ee;
+      --teal-500: #14b8a6;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-500: #64748b;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --surface: #ffffff;
+      --surface-alt: #f8fbff;
+      --section-tint: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%);
+      --hero-bg: radial-gradient(circle at 15% 20%, rgba(59,130,246,0.16), transparent 28%),
+                 radial-gradient(circle at 85% 25%, rgba(34,211,238,0.14), transparent 24%),
+                 linear-gradient(135deg, #f8fbff 0%, #edf4ff 48%, #ffffff 100%);
+      --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.12);
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --transition: all .32s cubic-bezier(.4,0,.2,1);
+    }
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Home page of REMEX">
-    <meta name="author" content="WeiQM">
-    <link rel="icon" href="images/logo/RMX_16.ico">
-    <title>SRIS-Smart, Reliable and Interpretable Systems</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Custom styles for this template -->
-    <link href="style/jquery.bxslider.css" rel="stylesheet">
-    <link href="style/style.css" rel="stylesheet">
-  </head>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--slate-700);
+      background: #fff;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
 
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
+    .section-pad { padding: 5.5rem 0; }
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue-700);
+      padding: .55rem .9rem;
+      background: rgba(59,130,246,.08);
+      border: 1px solid rgba(59,130,246,.12);
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      font-weight: 850;
+      letter-spacing: -.03em;
+      color: var(--slate-900);
+      margin-bottom: .85rem;
+    }
+    .section-subtitle {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: var(--slate-500);
+    }
+
+    .navbar {
+      background: rgba(255,255,255,.82);
+      backdrop-filter: saturate(180%) blur(18px);
+      border-bottom: 1px solid rgba(226,232,240,.85);
+      padding: .9rem 0;
+    }
+    .navbar-brand {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--slate-900);
+      letter-spacing: -.02em;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .navbar-brand .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue-700), var(--cyan-400));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 10px 24px rgba(29,78,216,.22);
+    }
+    .navbar-brand span { color: var(--blue-700); }
+    .nav-link {
+      color: var(--slate-800) !important;
+      font-weight: 600;
+      padding: .65rem .95rem !important;
+      border-radius: 999px;
+      margin: 0 .15rem;
+      transition: var(--transition);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--blue-700) !important;
+      background: rgba(59,130,246,.08);
+    }
+    .navbar .lang-switch .nav-link {
+      padding-inline: .8rem !important;
+      font-size: .92rem;
+    }
+
+    .hero-section {
+      position: relative;
+      padding: 8.5rem 0 5.5rem;
+      background: var(--hero-bg);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(15,23,42,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,23,42,.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 88%);
+      z-index: -2;
+    }
+    .hero-orb, .hero-orb-2 {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      z-index: -1;
+      opacity: .7;
+    }
+    .hero-orb {
+      width: 320px; height: 320px;
+      right: -70px; top: 120px;
+      background: radial-gradient(circle, rgba(59,130,246,.18) 0%, rgba(59,130,246,0) 70%);
+    }
+    .hero-orb-2 {
+      width: 240px; height: 240px;
+      left: -40px; bottom: 20px;
+      background: radial-gradient(circle, rgba(20,184,166,.14) 0%, rgba(20,184,166,0) 70%);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .55rem .95rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(59,130,246,.12);
+      color: var(--blue-900);
+      font-weight: 700;
+      font-size: .88rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      line-height: .98;
+      letter-spacing: -.05em;
+      font-weight: 900;
+      color: var(--slate-900);
+      max-width: 760px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title .gradient {
+      background: linear-gradient(90deg, var(--blue-900) 0%, var(--blue-500) 48%, var(--teal-500) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      max-width: 760px;
+      font-size: 1.16rem;
+      color: var(--slate-500);
+      margin-bottom: 1.4rem;
+    }
+    .hero-highlight {
+      max-width: 780px;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 1rem;
+      padding: 1.15rem 1.2rem;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(148,163,184,.18);
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.6rem;
+    }
+    .hero-highlight .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-700), var(--cyan-400));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+    }
+    .hero-highlight p { margin: 0; color: var(--slate-800); }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      margin: 1.7rem 0 1.8rem;
+    }
+    .btn-main, .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .95rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+    .btn-main {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
+      box-shadow: 0 16px 30px rgba(29,78,216,.24);
+    }
+    .btn-main:hover { color: #fff; transform: translateY(-2px); }
+    .btn-ghost {
+      color: var(--blue-900);
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(59,130,246,.16);
+    }
+    .btn-ghost:hover { color: var(--blue-900); transform: translateY(-2px); }
+
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin-top: .4rem;
+    }
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .55rem .9rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(203,213,225,.95);
+      color: var(--slate-700);
+      font-size: .92rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-chip i { color: var(--blue-700); }
+
+    .hero-panel {
+      position: relative;
+      padding: 1.1rem;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.68));
+      border: 1px solid rgba(226,232,240,.9);
+      box-shadow: var(--shadow-lg);
+      max-width: 470px;
+      margin-left: auto;
+    }
+    .hero-panel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .9rem;
+      color: var(--slate-500);
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .hero-logo-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border-radius: 22px;
+      padding: 1.35rem;
+      border: 1px solid var(--slate-200);
+    }
+    .lab-logo {
+      width: min(100%, 330px);
+      margin: 0 auto 1rem;
+      border-radius: 18px;
+      box-shadow: var(--shadow-md);
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .8rem;
+      margin-top: 1rem;
+    }
+    .stat-card {
+      padding: 1rem;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--slate-200);
+    }
+    .stat-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1;
+      margin-bottom: .35rem;
+    }
+    .stat-label { font-size: .9rem; color: var(--slate-500); }
+    .hero-caption {
+      margin-top: .95rem;
+      color: var(--slate-500);
+      font-size: .95rem;
+      text-align: center;
+    }
+
+    .overview-strip {
+      margin-top: -2rem;
+      position: relative;
+      z-index: 4;
+    }
+    .overview-wrap {
+      background: linear-gradient(135deg, #0f172a 0%, #132950 55%, #0f2f6d 100%);
+      color: #e2e8f0;
+      border-radius: 28px;
+      padding: 1.35rem;
+      box-shadow: var(--shadow-lg);
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .overview-item {
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .overview-item .small {
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .76rem;
+      font-weight: 700;
+      color: rgba(226,232,240,.74);
+      margin-bottom: .5rem;
+    }
+    .overview-item .big {
+      font-size: 1.18rem;
+      color: #fff;
+      font-weight: 750;
+      line-height: 1.35;
+    }
+
+    .values-section {
+      padding: 6rem 0 5rem;
+      background: #ffffff;
+    }
+    .cards-row { margin-top: 2.5rem; }
+    .value-card {
+      position: relative;
+      height: 100%;
+      padding: 2rem;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .value-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--blue-700), var(--cyan-400));
+    }
+    .value-card.card-2::before {
+      background: linear-gradient(90deg, var(--teal-500), #34d399);
+    }
+    .value-card.card-3::before {
+      background: linear-gradient(90deg, #2563eb, #0ea5e9);
+    }
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(59,130,246,.22);
+    }
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .45rem .8rem;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--blue-700);
+      background: rgba(59,130,246,.08);
+      margin-bottom: 1.1rem;
+    }
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.35rem;
+      margin-bottom: 1.35rem;
+      box-shadow: 0 14px 28px rgba(15,23,42,.12);
+    }
+    .card-1 .card-icon { background: linear-gradient(135deg, var(--blue-900), var(--blue-500)); }
+    .card-2 .card-icon { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+    .card-3 .card-icon { background: linear-gradient(135deg, #1d4ed8, #22d3ee); }
+    .card-title {
+      font-size: 1.45rem;
+      line-height: 1.28;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: .8rem;
+    }
+    .card-description {
+      color: var(--slate-500);
+      margin-bottom: 1rem;
+    }
+    .card-points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: .55rem;
+    }
+    .card-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      color: var(--slate-700);
+      font-size: .95rem;
+    }
+    .card-points i {
+      color: var(--teal-500);
+      margin-top: .18rem;
+    }
+
+    .capability-section {
+      background: var(--section-tint);
+      position: relative;
+    }
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2.4rem;
+    }
+    .capability-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: .95rem;
+      align-items: start;
+      padding: 1.15rem 1.2rem;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(226,232,240,.9);
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .capability-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .capability-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(59,130,246,.10);
+      color: var(--blue-700);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .capability-item h4 {
+      margin: 0 0 .28rem;
+      font-size: 1.08rem;
+      font-weight: 750;
+      color: var(--slate-900);
+    }
+    .capability-item p {
+      margin: 0;
+      color: var(--slate-500);
+      font-size: .95rem;
+    }
+
+    .slider-section {
+      background: #fff;
+    }
+    .slider-shell {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 1.4rem;
+      align-items: stretch;
+      margin-top: 2.4rem;
+    }
+    .slider-intro {
+      padding: 2rem;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+    }
+    .slider-intro h3 {
+      font-size: 1.8rem;
+      font-weight: 820;
+      line-height: 1.12;
+      color: var(--slate-900);
+      margin-bottom: .8rem;
+    }
+    .slider-intro p { color: var(--slate-500); margin-bottom: 1rem; }
+    .slider-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .8rem;
+      margin-top: 1.2rem;
+    }
+    .slider-metric {
+      padding: .9rem 1rem;
+      background: var(--slate-100);
+      border-radius: 16px;
+    }
+    .slider-metric strong {
+      display: block;
+      color: var(--slate-900);
+      font-size: 1.1rem;
+      margin-bottom: .2rem;
+    }
+    .main-slider {
+      min-height: 520px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      background: #0f172a;
+    }
+    .bx-wrapper, .bx-viewport, .bxslider, .bxslider li, .slider-item { height: 100% !important; }
+    .slider-item { position: relative; }
+    .slider-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11,18,32,.04) 0%, rgba(11,18,32,.20) 40%, rgba(11,18,32,.76) 100%);
+    }
+    .slider-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slider-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 2rem;
+      z-index: 2;
+      color: #fff;
+    }
+    .slider-caption .caption-tag {
+      display: inline-block;
+      padding: .4rem .7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.18);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+    .slider-caption h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: .45rem;
+    }
+    .slider-caption a { color: #fff; }
+    .slider-caption p {
+      max-width: 620px;
+      font-size: 1rem;
+      color: rgba(255,255,255,.86);
+      margin: 0;
+    }
+
+    .news-section {
+      background: linear-gradient(180deg, #f7fbff 0%, #f8fafc 100%);
+    }
+    .news-grid {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .news-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1.2rem;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(226,232,240,.92);
+      border-radius: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .news-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(59,130,246,.2);
+    }
+    .news-date-block {
+      border-radius: 18px;
+      background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1px solid rgba(59,130,246,.12);
+      text-align: center;
+      padding: .85rem .6rem;
+    }
+    .news-day {
+      font-size: 1.65rem;
+      font-weight: 850;
+      line-height: 1;
+      color: var(--blue-900);
+      margin-bottom: .32rem;
+    }
+    .news-month-year {
+      font-size: .84rem;
+      color: var(--slate-500);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .news-content-block {
+      min-width: 0;
+      padding-right: .2rem;
+    }
+    .news-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .38rem .62rem;
+      border-radius: 999px;
+      background: rgba(20,184,166,.10);
+      color: #0f766e;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-bottom: .72rem;
+    }
+    .news-content {
+      color: var(--slate-800);
+      font-size: .98rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .news-content em {
+      font-style: normal;
+      color: var(--blue-700);
+      font-weight: 700;
+    }
+    .news-headline {
+      font-size: 1.06rem;
+      font-weight: 820;
+      line-height: 1.38;
+      color: var(--slate-900);
+      margin: 0 0 .55rem;
+    }
+    .loading-news, .news-error {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--slate-500);
+      padding: 3rem 1rem;
+      background: rgba(255,255,255,.72);
+      border-radius: 22px;
+      border: 1px dashed var(--slate-300);
+    }
+    .news-error { color: #b91c1c; }
+    .view-all-news { text-align: center; margin-top: 2rem; }
+
+    .btn-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
+      border: none;
+      color: #fff;
+      padding: .95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 14px 28px rgba(29,78,216,.22);
+      transition: var(--transition);
+    }
+    .btn-brand:hover { color: #fff; transform: translateY(-2px); }
+
+    .footer {
+      background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+      color: #cbd5e1;
+      padding: 4rem 0 2.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(59,130,246,.16), transparent 30%), radial-gradient(circle at 90% 0%, rgba(20,184,166,.10), transparent 22%);
+      pointer-events: none;
+    }
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .footer-logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-700), var(--cyan-400));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .footer-logo span { color: #93c5fd; }
+    .footer-text {
+      max-width: 760px;
+      margin: 0 auto 1.7rem;
+      color: #94a3b8;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 1.8rem;
+    }
+    .footer-links a {
+      color: #cbd5e1;
+      padding: .55rem .95rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .footer-links a:hover { color: #fff; background: rgba(59,130,246,.18); }
+    .copyright {
+      padding-top: 1.6rem;
+      border-top: 1px solid rgba(148,163,184,.18);
+      font-size: .92rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 1199px) {
+      .slider-shell { grid-template-columns: 1fr; }
+      .slider-intro { order: -1; }
+      .overview-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 991px) {
+      .hero-section { padding-top: 7.2rem; }
+      .hero-panel { margin: 2rem auto 0; }
+      .capability-grid, .news-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 767px) {
+      .section-pad, .values-section { padding: 4.5rem 0; }
+      .hero-title { font-size: 2.6rem; }
+      .hero-subtitle { font-size: 1.05rem; }
+      .hero-highlight { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-main, .btn-ghost { justify-content: center; }
+      .hero-stats, .slider-metrics, .overview-grid { grid-template-columns: 1fr; }
+      .news-item { grid-template-columns: 76px 1fr; }
+      .main-slider { min-height: 380px; }
+      .slider-caption h3 { font-size: 1.45rem; }
+    }
+    @media (max-width: 575px) {
+      .navbar-brand { font-size: 1.2rem; }
+      .hero-section { padding-top: 6.8rem; }
+      .hero-title { font-size: 2.2rem; }
+      .hero-chip { width: 100%; justify-content: center; }
+      .news-item { grid-template-columns: 1fr; }
+      .news-date-block { text-align: left; display: flex; align-items: center; gap: .8rem; }
+      .news-day { margin-bottom: 0; }
+      .main-slider { min-height: 320px; }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<div class="container">
+<a class="navbar-brand" href="index_x.html">
+<span class="brand-mark"><i class="fa fa-brain"></i></span>
+<span>SRIS</span> Lab
+      </a>
+<button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-lg-center">
+<li class="nav-item"><a class="nav-link active" href="index_x.html">首页</a></li>
+<li class="nav-item"><a class="nav-link" href="people_x.html">团队成员</a></li>
+<li class="nav-item"><a class="nav-link" href="research_x.html">研究方向</a></li>
+<li class="nav-item"><a class="nav-link" href="publications_x.html">论文发表</a></li>
+<li class="nav-item"><a class="nav-link" href="gallery_x.html">相册</a></li>
+<li class="nav-item"><a class="nav-link" href="class_x.html">课程</a></li>
+</ul>
+<ul class="navbar-nav lang-switch ms-lg-3">
+<li class="nav-item"><a class="nav-link" href="index.html">EN</a></li>
+<li class="nav-item"><a class="nav-link" href="index_x.html">中文</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="hero-section">
+<span class="hero-orb"></span>
+<span class="hero-orb-2"></span>
+<div class="container">
+<div class="row align-items-center g-5">
+<div class="col-lg-7">
+<div class="hero-eyebrow"><i class="fa fa-flask"></i> Trustworthy AI for Intelligent Systems</div>
+<h1 class="hero-title">构建<span class="gradient">智能、可靠、可解释</span>的系统。</h1>
+<p class="hero-subtitle">
+            SRIS Lab integrates <strong>logic</strong>, <strong>physics</strong>, and <strong>learning</strong> to build trustworthy intelligent systems for advanced manufacturing, safety-critical autonomy, and health-aware infrastructure.
+          </p>
+<div class="hero-highlight">
+<div class="icon"><i class="fa fa-shield"></i></div>
+<p>
+              Our methodology unifies <em>信号时序逻辑</em>, <em>causal inference</em>, and <em>physics-guided priors</em> to support interpretable diagnosis, verifiable machine learning, safe autonomy, and fleet-level prognostics.
+            </p>
+</div>
+<div class="hero-actions">
+<a class="btn-main" href="research_x.html"><i class="fa fa-compass"></i> 查看研究方向</a>
+<a class="btn-ghost" href="publications_x.html"><i class="fa fa-file-text-o"></i> 查看成果</a>
+</div>
+<div class="hero-chips">
+<span class="hero-chip"><i class="fa fa-check-circle"></i> Neuro-symbolic AI</span>
+<span class="hero-chip"><i class="fa fa-cogs"></i> Physics-guided diagnosis</span>
+<span class="hero-chip"><i class="fa fa-rocket"></i> Safe robot autonomy</span>
+</div>
+</div>
+<div class="col-lg-5">
+<div class="hero-panel">
+<div class="hero-panel-top">
+<span>SRIS实验室</span>
+<span>SCUT · GZIC</span>
+</div>
+<div class="hero-logo-card">
+<img alt="SRIS Logo" class="lab-logo" src="images/SRISlogo.png"/>
+<div class="hero-stats">
+<div class="stat-card">
+<div class="stat-value">Logic + Learning</div>
+<div class="stat-label">Interpretable and certifiable AI pipelines</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">智能运维</div>
+<div class="stat-label">Diagnosis, prediction, and decision-making</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">机器人</div>
+<div class="stat-label">Safe autonomy and human-centered systems</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">重大系统</div>
+<div class="stat-label">Manufacturing and infrastructure applications</div>
+</div>
+</div>
+<div class="hero-caption">South China University of Technology · Guangzhou International Campus</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="overview-strip">
+<div class="container">
+<div class="overview-wrap">
+<div class="overview-grid">
+<div class="overview-item">
+<div class="small">Research philosophy</div>
+<div class="big">From formal semantics to deployable engineering systems</div>
+</div>
+<div class="overview-item">
+<div class="small">Method stack</div>
+<div class="big">Temporal logic · Causality · Physics-guided learning</div>
+</div>
+<div class="overview-item">
+<div class="small">Application domains</div>
+<div class="big">Manufacturing, robotics, PHM, and resilient infrastructure</div>
+</div>
+<div class="overview-item">
+<div class="small">Lab value</div>
+<div class="big">Interpretability, reliability, and safety by design</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="values-section">
+<div class="container">
+<div class="text-center">
+<div class="section-kicker"><i class="fa fa-sitemap"></i> Research Thrusts</div>
+<h2 class="section-title">三个紧密耦合的研究方向</h2>
+</div>
+<div class="row cards-row g-4">
+<div class="col-lg-4 col-md-6">
+<div class="value-card card-1">
+<div class="card-badge">01 · Foundations</div>
+<div class="card-icon"><i class="fa fa-sitemap"></i></div>
+<h3 class="card-title">神经符号基础模型</h3>
+<p class="card-description">融合逻辑约束、因果结构与学习表征，构建可信工业智能。</p>
+<ul class="card-points">
+<li><i class="fa fa-check-circle"></i><span>STL-regularized pretraining and rule distillation</span></li>
+<li><i class="fa fa-check-circle"></i><span>Machine-checkable rationales and audit-ready outputs</span></li>
+<li><i class="fa fa-check-circle"></i><span>Scalable multimodal learning with structured priors</span></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="value-card card-2">
+<div class="card-badge">02 · Diagnosis</div>
+<div class="card-icon"><i class="fa fa-industry"></i></div>
+<h3 class="card-title">因果逻辑预测与健康管理</h3>
+<p class="card-description">结合物理引导特征与时序逻辑抽象，重构退化路径并支撑干预决策。</p>
+<ul class="card-points">
+<li><i class="fa fa-check-circle"></i><span>Fault propagation tracing across components and fleets</span></li>
+<li><i class="fa fa-check-circle"></i><span>Interpretable diagnosis with causal and temporal evidence</span></li>
+<li><i class="fa fa-check-circle"></i><span>Cost-aware maintenance decision support</span></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="value-card card-3">
+<div class="card-badge">03 · Safe Autonomy</div>
+<div class="card-icon"><i class="fa fa-hand-paper-o"></i></div>
+<h3 class="card-title">STL驱动的安全机器人与自主系统</h3>
+<p class="card-description">面向移动操作、人机协作机器人和具身智能系统的安全优先规划与控制框架。</p>
+<ul class="card-points">
+<li><i class="fa fa-check-circle"></i><span>Contract-based planning and control synthesis</span></li>
+<li><i class="fa fa-check-circle"></i><span>Reference governors, CBFs, and residual RL</span></li>
+<li><i class="fa fa-check-circle"></i><span>Fast deployment under explicit safety guarantees</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div> 
+<section class="slider-section section-pad">
+<div class="container">
+<div class="text-center">
+<div class="section-kicker"><i class="fa fa-camera"></i> Lab Highlights</div>
+</div>
+<div class="slider-shell">
+<div class="slider-intro">
+<h3>研究、团队与系统的一体化视觉叙事。</h3>
+<p>轮播区不应只是普通图片集合，而应在一瞥之间传达研究环境、技术定位与应用价值。</p>
+<a class="btn-brand" href="gallery_x.html"><i class="fa fa-picture-o"></i> Visit Gallery</a>
+<div class="slider-metrics">
+<div class="slider-metric"><strong>Campus &amp; Team</strong><span>Environment and academic community</span></div>
+<div class="slider-metric"><strong>Methods</strong><span>Logic, learning, and physics integration</span></div>
+<div class="slider-metric"><strong>系统</strong><span>From algorithms to deployable platforms</span></div>
+<div class="slider-metric"><strong>Impact</strong><span>Trustworthy intelligence for engineering</span></div>
+</div>
+</div>
+<div class="main-slider">
+<ul class="bxslider">
+<li>
+<div class="slider-item">
+<img alt="Graduation and Campus View" src="images/photo_x/scutgraduate2025.jpg"/>
+<div class="slider-caption">
+<div class="caption-tag">Academic Community</div>
+<h3><a href="gallery_x.html">Graduation and Lab Culture</a></h3>
+<p>华南理工大学充满活力的研究环境，连接人才、思想与跨学科合作。</p>
+</div>
+</div>
+</li>
+<li>
+<div class="slider-item">
+<img alt="Neuro-Symbolic Foundations" src="images/photo_x/networkstructure.png"/>
+<div class="slider-caption">
+<div class="caption-tag">Methodology</div>
+<h3><a href="research_x.html">神经符号基础</a></h3>
+<p>Multimodal representation learning guided by temporal logic, causal structure, and machine-verifiable semantics.</p>
+</div>
+</div>
+</li>
+<li>
+<div class="slider-item">
+<img alt="STL-Driven Safe Autonomy" src="images/photo_x/spectrallogic.png"/>
+<div class="slider-caption">
+<div class="caption-tag">Autonomy</div>
+<h3><a href="research_x.html">STL-Driven Safe Autonomy</a></h3>
+<p>规划 and control synthesized under temporal-logic contracts for safe and efficient embodied intelligence.</p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="news-section section-pad">
+<div class="container">
+<div class="text-center">
+<div class="section-kicker"><i class="fa fa-bullhorn"></i> Latest News</div>
+<h2 class="section-title">实验室最新动态</h2>
+<p class="section-subtitle">首页会直接从新闻页面读取最新六条动态，因此只需在一个位置更新新闻，首页展示即可自动同步。</p>
+</div>
+<div class="news-grid" id="news-container">
+<div class="loading-news">
+<i class="fa fa-spinner fa-spin fa-2x"></i>
+<p style="margin-top: 1rem; margin-bottom: 0;">正在加载最新新闻……</p>
+</div>
+</div>
+<div class="view-all-news">
+<a class="btn-brand" href="news_x.html"><i class="fa fa-arrow-right"></i> 查看全部新闻</a>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-logo">
+<span class="footer-logo-mark"><i class="fa fa-robot"></i></span>
+<span>SRIS</span> Lab
         </div>
-        <div id="navbar" class="collapse navbar-collapse">  
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index_x.html">主页</a></li>
-            <li><a href="people_x.html">团队成员</a></li>
-            <li><a href="research_x.html">研究项目</a></li>
-            <li><a href="publications.html">发表著作</a></li>
-            <li><a href="downloads.html">下载</a></li>
-            <li><a href="contact.html">联系我们</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">English</a></li>
-            <li><a href="index_x.html">中文</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html"><img src="images/logo/logo_w.png" alt="Logo" width="50px"/></a></li>
-          </ul>
+<p class="footer-text">
+          Smart, Reliable, and Interpretable Systems Laboratory<br/>
+          South China University of Technology · Guangzhou International Campus<br/>
+          Integrating logic, physics, and learning for trustworthy intelligent systems.
+        </p>
+<div class="footer-links">
+<a href="people_x.html">团队成员</a>
+<a href="research_x.html">研究方向</a>
+<a href="Journal_x.html">成果总览</a>
+<a href="gallery_x.html">相册</a>
+<a href="class_x.html">课程</a>
+</div>
+<div class="copyright">
+<i class="fa fa-copyright"></i> Copyright 2022–2026 SRIS Lab. All rights reserved.
         </div>
-      </div>
-    </nav>
-    <div class="container">
-    <header>
-      <!--
-      <a href="index.html"><img src="images/sun.jpg"  width="256px"></a>
-      -->
-    </header>
-  
-    <section class="main-slider">
-      <ul class="bxslider">
-        <li><div class="slider-item"><img src="images/photo_x/labmember.jpeg" title="Logo" /><h2><a href="http://www2.scut.edu.cn/gzic_en/" title="Loge">Campus View !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/photo_x/networkstructure.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-        <li><div class="slider-item"><img src="images/photo_x/spectrallogic.png" title="Logo" /><h2><a href="" title="Loge">New published !</a></h2></div></li>
-      </ul>
-    </section>
+</div>
+</div>
+</footer>
+<script src="scripts/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="scripts/jquery.bxslider.js"></script>
+<script src="assets/sris-theme.js"></script>
+<script>
+    $(document).ready(function () {
+      $('.bxslider').bxSlider({
+        auto: true,
+        pause: 4600,
+        speed: 650,
+        controls: true,
+        pager: true,
+        adaptiveHeight: false,
+        touchEnabled: true,
+        mode: 'fade'
+      });
 
+      loadNewsFromPage();
+    });
 
-    <section>
-      <div class="row">
-        <!-- Main Page -->
-        <div class="col-md-12">
-          <introduce class="content-block">
-            <div class="block-body">
-            
-              <td width="40%" valign="right"><p>
-              <img src="images/logonew.jpg" alt="Result" width="400">
-            </p></td>
-            <td width="60%" valign="left">
-              <p>
-               <b>智能、可靠、可解释系统</b>  (<b>S</b>mart, <b>R</b>eliable, and <b>I</b>nterpretable <b>S</b>ystems,SRIS) 实验室是华南理工大学陈刚博士领导的一个研究小组。 主要研究兴趣包括机器学习、形式化方法、控制理论、信号处理及其在信息物理系统监测与控制中的应用。     </p>
-            </td>
+    async function loadNewsFromPage() {
+      const container = document.getElementById('news-container');
+      if (!container) return;
+
+      try {
+        const newsItems = await window.SRISNews.fetchNewsItemsFromPage('news_x.html');
+        const recentNews = newsItems.slice(0, 6);
+        container.innerHTML = '';
+
+        if (recentNews.length === 0) {
+          container.innerHTML = '<div class="news-error"><i class="fa fa-exclamation-triangle"></i><p style="margin: .9rem 0 0;">新闻页面中未找到新闻内容。</p></div>';
+          return;
+        }
+
+        recentNews.forEach(item => {
+          const newsItem = document.createElement('div');
+          newsItem.className = 'news-item';
+          const parts = window.SRISNews.formatDateParts(item.date);
+          const esc = window.SRISNews.escapeHtml;
+
+          newsItem.innerHTML = `
+            <div class="news-date-block">
+              <div class="news-day">${esc(parts.day)}</div>
+              <div class="news-month-year">${esc(parts.monthYear)}</div>
             </div>
-
-              <h3 align="left">Recent News</h3><br />
-              <div class="block-text">
-            <table><tbody>
-              <ul>
-                <p>[2024 年 11 月6 日] 实验室成员李才获得国家奖学金</p>
-                <p>[2024 年 10 月 14 日] 我们的论文“基于改进的传递路径分析方法的多级齿轮箱系统故障追踪”已被《测量》接受 </p>
-                <p>[2024 年 9 月 25 日] 我们的论文“基于先验知识引导的深度图网络的激光粉末床熔合同轴熔池图像的现场质量检测”已被《机械系统与信号处理》接受。 </p>
-                <p>[2024 年 7 月 12 日] 我们的论文“VNCCD：一种通过虚拟解耦传递路径在非平稳条件下进行齿轮箱故障诊断的技术”已被《机械系统与信号处理》接受。 </p>
-                <p>[2024 年 6 月 29 日] 我们的论文“通过可解释性提高可靠性：旋转机械可解释智能故障诊断的综合调查”已被 IEEE ACCESS 接受。 </p>
-                <p>[2024年5月13日] 我们的论文“通过并行偏好条件图强化学习实现多目标灵活作业车间调度的快速帕累托集近似”已被 Swarm and Evolutionary Computation 接受。 </p>    
-              </ul>
-
-
-              
-                </tbody></table>
-              </div>
-              <div class="get-more" align="right"><a href="publications.html"> More </a></div>
+            <div class="news-content-block">
+              <div class="news-label"><i class="fa fa-bullhorn"></i> ${esc(item.category)}</div>
+              <h3 class="news-headline">${esc(item.headline)}</h3>
+              <p class="news-content">${esc(item.summary)}</p>
             </div>
-          </introduce>
-        </div>
+          `;
 
-      </div>
-    </section>
-    </div><!-- /.container -->
-
-    <footer class="footer">
-      <div class="footer-bottom">  
-        <i class="fa fa-copyright"></i> 
-          Copyright 2022. All rights reserved.<br>
-        <!-- <i class="fa fa-anchor"></i> <a href="index_x.html"><b>X！</b><i class="fa fa-sign-in"></i></a> -->
-      </div>
-      
-    </footer>
-
-
-    <!-- Bootstrap core JavaScript
-      ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="scripts/jquery.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/jquery.bxslider.js"></script>
-    <script src="scripts/mooz.scripts.min.js"></script>
-    <script src="scripts/togglehide.js"></script>
-  </body>
+          container.appendChild(newsItem);
+        });
+      } catch (error) {
+        console.error('Error loading news:', error);
+        container.innerHTML = '<div class="news-error"><i class="fa fa-exclamation-triangle"></i><p style="margin: .9rem 0 0;">无法从 news_x.html 加载新闻。请通过本地服务器或网站服务器打开站点。</p></div>';
+      }
+    }
+  </script>
+</body>
 </html>
