@@ -1,4 +1,21 @@
 (function(){
+  var isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
+  function t(en, zh){ return isZh ? zh : en; }
+  function normalizeCategory(category){
+    var c = String(category || '').trim();
+    var lower = c.toLowerCase();
+    if (c === '论文' || lower === 'paper') return 'Paper';
+    if (c === '项目' || lower === 'grant') return 'Grant';
+    if (c === '人员' || lower === 'people') return 'People';
+    if (c === '奖项' || lower === 'award') return 'Award';
+    if (c === '活动' || lower === 'event') return 'Event';
+    return c || 'Update';
+  }
+  function displayCategory(category){
+    var canonical = normalizeCategory(category);
+    var map = { Paper: t('Paper', '论文'), Grant: t('Grant', '项目'), People: t('People', '人员'), Award: t('Award', '奖项'), Event: t('Event', '活动'), Update: t('Update', '更新') };
+    return map[canonical] || category;
+  }
   function initPaperAbstractToggles(){
     document.querySelectorAll('[data-toggle-abstract]').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -23,8 +40,8 @@
       .map(function(item){
         return {
           date: (item.date || '').trim(),
-          category: (item.category || 'Update').trim(),
-          headline: (item.headline || 'Lab update').trim(),
+          category: normalizeCategory((item.category || 'Update').trim()),
+          headline: (item.headline || t('Lab update','实验室动态')).trim(),
           summary: (item.summary || '').trim(),
           link: (item.link || '').trim()
         };
@@ -41,25 +58,27 @@
   function formatDisplayDate(dateString){
     var d = new Date(dateString);
     if (isNaN(d.getTime())) return dateString;
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return d.toLocaleDateString(isZh ? 'zh-CN' : 'en-US', isZh ? { year: 'numeric', month: 'short', day: 'numeric' } : { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
   function formatDateParts(dateString){
     var d = new Date(dateString);
     if (isNaN(d.getTime())) return { day: '', monthYear: dateString };
     return {
-      day: d.toLocaleDateString('en-US', { day: '2-digit' }),
-      monthYear: d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+      day: d.toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { day: '2-digit' }),
+      monthYear: d.toLocaleDateString(isZh ? 'zh-CN' : 'en-US', isZh ? { year: 'numeric', month: 'short' } : { month: 'short', year: 'numeric' })
     };
   }
 
   function getCategoryIcon(category){
+    var canonical = normalizeCategory(category);
     var map = { Paper: 'fa-file-lines', Grant: 'fa-flask-vial', People: 'fa-user-graduate', Award: 'fa-award', Event: 'fa-calendar-check' };
-    return map[category] || 'fa-bolt';
+    return map[canonical] || 'fa-bolt';
   }
 
   function categorySlug(category){
-    return String(category || 'update').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    var canonical = normalizeCategory(category);
+    return String(canonical || 'update').toLowerCase().replace(/[^a-z0-9]+/g, '-');
   }
 
   async function fetchNewsItemsFromPage(url){
@@ -124,7 +143,7 @@
     var filtered = items.filter(function(item){ return filter === 'all' || item.category.toLowerCase() === filter.toLowerCase(); });
     container.innerHTML = '';
     if (!filtered.length) {
-      container.innerHTML = '<div class="news-empty-state">No news entries match this category.</div>';
+      container.innerHTML = '<div class="news-empty-state">' + t('No news entries match this category.','当前分类下暂无新闻。') + '</div>';
       return;
     }
     filtered.forEach(function(item){
@@ -145,8 +164,8 @@
     var grantEl = document.querySelector('[data-news-stat="grant"]');
     if (totalEl) totalEl.textContent = String(items.length);
     if (latestYearEl && items.length) latestYearEl.textContent = String(new Date(items[0].date).getFullYear());
-    if (paperEl) paperEl.textContent = String(items.filter(function(item){ return item.category === 'Paper'; }).length);
-    if (grantEl) grantEl.textContent = String(items.filter(function(item){ return item.category === 'Grant'; }).length);
+    if (paperEl) paperEl.textContent = String(items.filter(function(item){ return normalizeCategory(item.category) === 'Paper'; }).length);
+    if (grantEl) grantEl.textContent = String(items.filter(function(item){ return normalizeCategory(item.category) === 'Grant'; }).length);
   }
 
   function escapeHtml(text){
@@ -197,7 +216,7 @@
 
       function renderYearPills(){
         yearPills.innerHTML = '';
-        var allBtn = createYearButton('All', 'all');
+        var allBtn = createYearButton(t('All','全部'), 'all');
         yearPills.appendChild(allBtn);
         years.forEach(function(year){
           yearPills.appendChild(createYearButton(year, year));
@@ -235,7 +254,7 @@
             emptyState.style.display = 'block';
             results.appendChild(emptyState);
           }
-          if (countLabel) countLabel.textContent = '0 papers found';
+          if (countLabel) countLabel.textContent = isZh ? '找到 0 篇论文' : '0 papers found';
           return;
         }
 
@@ -257,7 +276,7 @@
             button.type = 'button';
             button.className = 'year-group-toggle' + (index === 0 ? ' is-open' : '');
             button.setAttribute('aria-expanded', index === 0 ? 'true' : 'false');
-            button.innerHTML = '<span class="year-group-left"><span class="year-badge">' + escapeHtml(year) + '</span><span class="year-group-count">' + groups[year].length + ' paper' + (groups[year].length > 1 ? 's' : '') + '</span></span><span class="year-group-icon"><i class="fa-solid fa-chevron-down"></i></span>';
+            button.innerHTML = '<span class="year-group-left"><span class="year-badge">' + escapeHtml(year) + '</span><span class="year-group-count">' + (isZh ? (groups[year].length + ' 篇论文') : (groups[year].length + ' paper' + (groups[year].length > 1 ? 's' : ''))) + '</span></span><span class="year-group-icon"><i class="fa-solid fa-chevron-down"></i></span>';
 
             var body = document.createElement('div');
             body.className = 'year-group-body' + (index === 0 ? ' is-open' : '');
@@ -279,9 +298,16 @@
           });
 
         if (countLabel){
-          var label = filtered.length + ' paper' + (filtered.length > 1 ? 's' : '') + ' found';
-          if (state.year !== 'all') label += ' · ' + state.year;
-          if (state.query) label += ' · keyword: ' + state.query;
+          var label;
+          if (isZh) {
+            label = '找到 ' + filtered.length + ' 篇论文';
+            if (state.year !== 'all') label += ' · ' + state.year + ' 年';
+            if (state.query) label += ' · 关键词：' + state.query;
+          } else {
+            label = filtered.length + ' paper' + (filtered.length > 1 ? 's' : '') + ' found';
+            if (state.year !== 'all') label += ' · ' + state.year;
+            if (state.query) label += ' · keyword: ' + state.query;
+          }
           countLabel.textContent = label;
         }
 
