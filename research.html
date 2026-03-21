@@ -16,123 +16,133 @@
 
   <style>
     :root {
-      --ink: #0f172a;       /* 深石板灰（用于主标题） */
-      --ink2: #334155;      /* 次深灰（用于正文，护眼易读） */
-      --muted: #64748b;     /* 柔和灰（用于辅助说明） */
-      --line: #e2e8f0;      /* 极浅灰（用于分割线和边框） */
-      --soft: #f8fafc;      /* 浅灰底色（用于页面背景区分） */
-      --surface: #ffffff;   /* 纯白底色（用于卡片和内容块） */
-      --brand: #1d4ed8;     /* 经典学术蓝（用于强调色） */
-      --brand-light: #eff6ff; /* 浅学术蓝（用于标签底色） */
+      /* New Light Academic Color Palette */
+      --ink: #111827;       /* 深石板灰用于标题 */
+      --ink2: #374151;      /* 稍淡的灰用于正文 */
+      --muted: #6b7280;     /* 辅助文本灰 */
+      --line: #e5e7eb;      /* 分割线和轻边框 */
+      --soft: #f9fafb;      /* 极浅灰用于页面背景区分 */
+      --brand: #1e40af;     /* 研究蓝用于强调色 */
+      --surface: #ffffff;   /* 纯白用于Hero和卡片底色 */
+      --chip-bg: #eff6ff;   /* 极浅蓝用于标签底色 */
+      --chip-text: #1d4ed8; /* 标签文本色 */
     }
 
+    /* Reset some body properties to ensure cleanliness */
     body { 
       color: var(--ink2); 
       background: var(--soft); 
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
     
-    .navbar-inverse { background: #0f172a; border-color: #0f172a; }
-    .navbar-inverse .navbar-nav>li>a { color: #cbd5e1; }
-    .navbar-inverse .navbar-nav>.active>a { color: #fff; border-bottom: 3px solid var(--brand); background: transparent; }
+    /* Modify existing navbar classes to be light-themed */
+    .navbar-inverse { 
+      background: var(--surface); 
+      border-bottom: 1px solid var(--line); 
+    }
+    .navbar-inverse .navbar-nav>li>a { color: var(--ink2); transition: color 0.2s; }
+    .navbar-inverse .navbar-nav>li>a:hover { color: var(--brand); background: transparent; }
+    .navbar-inverse .navbar-nav>.active>a { 
+      color: var(--brand); 
+      border-bottom: 2px solid var(--brand); 
+      background: transparent; 
+      font-weight: 600;
+    }
+    /* Ensure the branding remains consistent or adapt logo_w if necessary */
+    .navbar-inverse .navbar-nav.navbar-right li a img {
+      filter: invert(1) brightness(0.2); /* Temporary inverted white logo for light theme */
+    }
 
-    /* Hero: Refined Dark Academic Style */
+    /* Hero: Modern Light Academic Style */
     .about-hero {
       margin-top: 70px;
       border-radius: 12px;
-      padding: 40px 32px;
-      background: #0f172a;
-      color: #f8fafc;
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
-      border: none;
+      padding: 40px 32px 30px;
+      background: var(--surface); /* Complete switch to white */
+      color: var(--ink2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03); /* Subtle, elegant shadow */
+      border: 1px solid var(--line);
     }
     .about-hero h1 {
-      margin: 0 0 12px; font-weight: 700; font-size: 32px; letter-spacing: -0.5px; color: #ffffff;
+      margin: 0 0 12px; font-weight: 800; letter-spacing: -0.5px; color: var(--ink); text-shadow: none;
     }
-    .about-hero .tagline { 
-      font-size: 16px; color: #cbd5e1; line-height: 1.6; margin-bottom: 20px; font-weight: 400;
-    }
+    .about-hero .tagline { opacity: 1; font-size: 16px; margin-bottom: 16px; color: var(--muted); }
     .about-hero .lead {
-      margin-top: 10px; font-size: 14.5px; line-height: 1.6; color: #e2e8f0;
-      background: rgba(255,255,255,0.04); border-left: 4px solid var(--brand);
-      border-radius: 0 8px 8px 0; padding: 16px 20px;
+      margin-top: 10px; font-size: 14.5px; line-height: 1.6; color: var(--ink2);
+      background: rgba(0,0,0,0.015); /* Very faint background tint */
+      border: 1px solid var(--line);
+      border-radius: 8px; padding: 14px 16px;
     }
     .pill {
-      display: inline-block; padding: 4px 14px; border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 20px; margin: 16px 10px 0 0; font-size: 12px; font-weight: 500; 
-      color: #93c5fd; background: rgba(255,255,255,0.03);
+      display: inline-flex; align-items: center; padding: 5px 14px; border: 1px solid var(--line);
+      border-radius: 20px; margin: 12px 10px 0 0; font-size: 12px; color: var(--muted); background: var(--surface);
+      transition: border-color 0.2s;
     }
-    .pill i { font-size: 12px; margin-right: 4px; }
+    .pill i { font-size: 13px; margin-right: 6px; color: var(--brand); }
+    .pill:hover { border-color: var(--brand); color: var(--brand); }
 
-    /* Cards: Clean White UI */
+    /* Cards: Clean Light UI */
     .cards-row { margin-top: 24px; }
     .research-card {
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 10px; padding: 24px;
       min-height: 250px; color: var(--ink2);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      transition: transform .2s ease, box-shadow .25s ease, border-color .2s ease;
       height: 100%;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
     .research-card:hover { 
       transform: translateY(-4px); 
-      box-shadow: 0 12px 24px -4px rgba(0,0,0,0.08); 
-      border-color: #cbd5e1; 
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05); 
+      border-color: rgba(30,64,175,0.3); /* Brand color hint on border */
     }
-    .research-card h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.4; }
-    .research-card h3 i { color: var(--brand); font-size: 16px; margin-right: 6px; }
+    .research-card h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+    .research-card h3 i { color: var(--brand); font-size: 18px; margin-right: 8px; }
     .research-card .mini { font-size: 12px; font-weight: 600; color: var(--brand); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
     .research-card p { font-size: 14px; line-height: 1.6; color: var(--ink2); margin-bottom: 16px; }
     .chip {
-      display: inline-block; background: var(--soft); border: 1px solid var(--line);
-      color: var(--muted); font-size: 11.5px; padding: 4px 8px; border-radius: 4px; margin: 0 6px 8px 0; white-space: nowrap;
+      display: inline-block; background: var(--chip-bg); border: 1px solid rgba(29,78,216,0.15);
+      color: var(--chip-text); font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 6px; margin: 0 6px 8px 0; white-space: nowrap;
     }
     .cta-row { margin-top: auto; padding-top: 12px; }
-    .cta-row a { color: var(--brand); font-size: 13px; font-weight: 500; text-decoration: none; margin-right: 16px; }
-    .cta-row a:hover { text-decoration: underline; color: #1e40af; }
+    .cta-row a { color: var(--brand); font-size: 13px; font-weight: 500; text-decoration: none; margin-right: 18px; display: inline-flex; align-items: center; }
+    .cta-row a i { margin-left: 4px; transition: transform 0.2s; }
+    .cta-row a:hover { text-decoration: underline; }
+    .cta-row a:hover i { transform: translate(2px, 2px); }
 
-    /* Details: Highly Readable Academic Layout */
+    /* Details: Already light-side, keep it mostly the same, soften style */
     .details-wrap {
       margin-top: 32px; margin-bottom: 40px; background: var(--surface); color: var(--ink2);
-      border: 1px solid var(--line); border-radius: 12px; padding: 32px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      border: 1px solid var(--line); border-radius: 12px; padding: 24px 24px 14px;
+      box-shadow: 0 1px 10px rgba(0,0,0,0.02);
     }
-    .details-wrap h2 { margin: 0 0 16px; font-size: 22px; font-weight: 700; color: var(--ink); }
-    .details-wrap .intro { color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+    .details-wrap h2 { margin: 0 0 16px; font-size: 24px; font-weight: 800; color: var(--ink); }
+    .details-wrap .intro { color: var(--muted); font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
 
-    /* Accordion Custom Skin */
+    /* Accordion Custom Skin (Bootstrap 3 collapse) */
     .accordion .panel {
       border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 12px;
       box-shadow: none;
     }
     .panel-heading { background: var(--soft); padding: 14px 16px; border-bottom: 1px solid var(--line); }
     .panel-title a { display: block; color: var(--ink); font-weight: 600; font-size: 15px; text-decoration: none; }
+    .panel-title a.collapsed { color: var(--ink2); }
     .panel-title a:hover { color: var(--brand); }
-    .panel-body { background: var(--surface); color: var(--ink2); padding: 20px; }
+    .panel-body { background: var(--surface); color: var(--ink2); padding: 20px; border-top: 1px solid var(--line); }
     .panel-body h4 { font-size: 15px; font-weight: 600; margin: 0 0 8px; color: var(--ink); }
-    .panel-body p { font-size: 14px; line-height: 1.65; margin-bottom: 16px; }
-    .panel-body ul { padding-left: 20px; font-size: 14px; line-height: 1.65; margin-bottom: 16px; }
+    .panel-body p { font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
+    .panel-body ul { padding-left: 20px; font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
     .panel-body ul li { margin-bottom: 6px; }
 
     .badge-kpi {
-      display: inline-block; background: var(--brand-light); color: var(--brand); border: 1px solid #bfdbfe;
-      padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; margin: 0 6px 8px 0;
+      display: inline-block; background: var(--soft); color: var(--ink2); border: 1px solid var(--line);
+      padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; margin: 0 6px 8px 0;
     }
-    .muted-note { color: var(--muted); font-size: 13px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
-
-    /* Fundings Styling (Keeping exact HTML list structure) */
-    .details-wrap > h2:last-of-type { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 32px; }
-    .details-wrap > ul { list-style: none; padding: 0; }
-    .details-wrap > ul > li { 
-      padding: 12px 16px; margin-bottom: 10px; 
-      background: var(--soft); border-left: 3px solid var(--brand); 
-      border-radius: 0 6px 6px 0; font-size: 14px; color: var(--ink2);
-      line-height: 1.5;
-    }
+    .muted-note { color: var(--muted); font-size: 13px; margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line); }
 
     /* Grid fixes: unify Bootstrap 3 layout */
-    .about-cards .col-sm-6 { margin-bottom: 24px; }
+    .about-cards .col-sm-6 { margin-bottom: 16px; }
     @media (min-width:1200px){ .about-cards .col-md-4{ display:flex; } .research-card{ width:100%; } }
   </style>
 </head>
@@ -155,7 +165,7 @@
             <ul class="dropdown-menu">
               <li><a href="journal.html">Journal Papers</a></li>
               <li><a href="conference.html">Conference Papers</a></li>
-              <li><a href="realtime.html">Submited Paper</a></li>
+              <li><a href="realtime.html">Submitted Paper</a></li>
             </ul>
           </li>
           <li><a href="gallery.html">Gallery</a></li>
@@ -202,8 +212,8 @@
             <span class="chip">Uncertainty</span>
           </div>
           <div class="cta-row">
-            <a href="#d1" data-toggle="collapse">Read details ↓</a>
-            <a href="./modules/IFD.html">Temporal Logic Nerual Network →</a>
+            <a href="#d1" data-toggle="collapse">Read details <i class="fa fa-angle-down"></i></a>
+            <a href="./modules/IFD.html">Temporal Logic Neural Network →</a>
           </div>
         </div>
       </div>
@@ -220,7 +230,7 @@
             <span class="chip">Runtime monitors</span>
           </div>
           <div class="cta-row">
-            <a href="#d2" data-toggle="collapse">Read details ↓</a>
+            <a href="#d2" data-toggle="collapse">Read details <i class="fa fa-angle-down"></i></a>
             <a href="./modules/CSTL.html">Control & STL →</a>
           </div>
         </div>
@@ -238,7 +248,7 @@
             <span class="chip">Fleet policies</span>
           </div>
           <div class="cta-row">
-            <a href="#d4" data-toggle="collapse">Read details ↓</a>
+            <a href="#d4" data-toggle="collapse">Read details <i class="fa fa-angle-down"></i></a>
              <a href="./modules/IFD.html">Interpretable Diagnosis →</a>
           </div>
         </div>
@@ -367,10 +377,8 @@
         <li>2022.01–2024.12 基于MEC的边缘控制与实时仿真基础理论与方法研究 国家重点研发计划课题</li>
       </ul>
     </div>
-  </div><footer class="footer">
-    <div class="footer-bottom">
+  </div><footer class="footer" style="text-align: center; padding: 20px 0; border-top: 1px solid var(--line); color: var(--muted); background: var(--surface);">
       <i class="fa fa-copyright"></i> Copyright 2022. All rights reserved.
-    </div>
   </footer>
 
   <script src="scripts/jquery.min.js"></script>
