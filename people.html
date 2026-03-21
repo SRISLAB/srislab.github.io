@@ -13,10 +13,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="style/jquery.bxslider.css" rel="stylesheet">
   <link href="style/style.css" rel="stylesheet">
 
-  <!-- 人物页面样式 - 与研究页面和主页风格统一 -->
+  <!-- 优化后的人物页面样式 -->
   <style>
     :root {
       --primary: #2563eb;
@@ -47,7 +46,7 @@
       overflow-x: hidden;
     }
     
-    /* 导航栏 - 与主页和研究页面统一 */
+    /* 导航栏 */
     .navbar {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
@@ -183,7 +182,7 @@
       font-size: 0.9rem;
     }
     
-    /* 人员卡片 - 横向设计 */
+    /* 研究人员部分 */
     .people-section {
       padding: 3rem 0 5rem;
       background-color: #ffffff;
@@ -198,7 +197,8 @@
       border-left: 4px solid var(--primary);
     }
     
-    .person-card {
+    /* PI卡片 - 横向详细布局 */
+    .pi-card {
       background: white;
       border-radius: 16px;
       padding: 0;
@@ -209,16 +209,16 @@
       position: relative;
       overflow: hidden;
       display: flex;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
     }
     
-    .person-card:hover {
+    .pi-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--card-shadow-hover);
       border-color: var(--primary-light);
     }
     
-    .person-card::before {
+    .pi-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -229,12 +229,12 @@
       transition: var(--transition);
     }
     
-    .person-card:hover::before {
+    .pi-card:hover::before {
       background: linear-gradient(to bottom, var(--primary), var(--secondary));
     }
     
-    /* 照片区域 */
-    .avatar-section {
+    /* PI照片区域 - 圆形 */
+    .pi-avatar-section {
       flex: 0 0 220px;
       display: flex;
       align-items: center;
@@ -244,38 +244,38 @@
       border-right: 1px solid #e2e8f0;
     }
     
-    .avatar-container {
-      width: 120px;
-      height: 180px;
-      border-radius: 12px;
+    .pi-avatar-container {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
       overflow: hidden;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: 3px solid white;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
     
-    .avatar-container img {
+    .pi-avatar-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
     
-    /* 信息区域 */
-    .info-section {
+    /* PI信息区域 */
+    .pi-info-section {
       flex: 1;
       padding: 2rem;
       display: flex;
       flex-direction: column;
     }
     
-    .person-name {
+    .pi-name {
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 0.5rem;
     }
     
-    .person-role {
+    .pi-role {
       font-size: 1.1rem;
       color: var(--primary);
       font-weight: 600;
@@ -285,7 +285,7 @@
       gap: 0.5rem;
     }
     
-    .person-meta {
+    .pi-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
@@ -315,7 +315,7 @@
       text-decoration: underline;
     }
     
-    .person-bio {
+    .pi-bio {
       color: var(--dark);
       line-height: 1.6;
       margin-bottom: 1.5rem;
@@ -346,117 +346,95 @@
       transform: translateY(-2px);
     }
     
-    /* 博士后招聘广告 - 优化版 */
-    .recruitment-section {
-      padding: 2rem 0 5rem;
-      background-color: #f8fafc;
-    }
-    
-    .recruitment-card {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      border-radius: 20px;
-      padding: 2.5rem;
-      border: 2px solid var(--primary-light);
-      box-shadow: var(--card-shadow-hover);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .recruitment-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
-      border-radius: 50%;
-      transform: translate(100px, -100px);
-    }
-    
-    .recruitment-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--primary), #dc2626);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .recruitment-highlights {
+    /* 学生网格布局 - 紧凑型 */
+    .student-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
     
-    .highlight-item {
+    .student-card {
       background: white;
+      border-radius: 16px;
       padding: 1.5rem;
-      border-radius: 12px;
+      border: 1px solid #e2e8f0;
       box-shadow: var(--card-shadow);
       transition: var(--transition);
-    }
-    
-    .highlight-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--card-shadow-hover);
-    }
-    
-    .highlight-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      color: white;
+      text-align: center;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
     }
     
-    .highlight-title {
+    .student-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--primary-light);
+    }
+    
+    /* 学生圆形头像 */
+    .student-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid white;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.2rem;
+    }
+    
+    .student-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .student-info {
+      width: 100%;
+    }
+    
+    .student-name {
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 0.5rem;
+      line-height: 1.3;
     }
     
-    .highlight-desc {
+    .student-role {
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    
+    .student-bio {
+      font-size: 0.85rem;
       color: var(--gray);
-      font-size: 0.95rem;
-      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+      height: 2.5rem;
+      overflow: hidden;
     }
     
-    .recruitment-cta {
-      text-align: center;
-      margin-top: 2rem;
+    .student-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-top: auto;
     }
     
-    .btn-recruitment {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      text-decoration: none;
+    .student-tag {
+      padding: 0.2rem 0.6rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
       border-radius: 12px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border: none;
-      transition: var(--transition);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-    }
-    
-    .btn-recruitment:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-      color: white;
+      font-size: 0.7rem;
+      font-weight: 500;
+      border: 1px solid rgba(37, 99, 235, 0.2);
     }
     
     /* 校友部分 */
@@ -554,20 +532,30 @@
         font-size: 2rem;
       }
       
-      .person-card {
+      .pi-card {
         flex-direction: column;
       }
       
-      .avatar-section {
+      .pi-avatar-section {
         flex: 0 0 auto;
         width: 100%;
         border-right: none;
         border-bottom: 1px solid #e2e8f0;
       }
       
-      .avatar-container {
+      .pi-avatar-container {
         width: 140px;
-        height: 240px;
+        height: 140px;
+      }
+      
+      .student-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .student-avatar {
+        width: 100px;
+        height: 100px;
       }
       
       .filter-container {
@@ -579,14 +567,6 @@
       .filter-tag {
         white-space: nowrap;
       }
-      
-      .recruitment-title {
-        font-size: 1.8rem;
-      }
-      
-      .recruitment-highlights {
-        grid-template-columns: 1fr;
-      }
     }
     
     @media (max-width: 576px) {
@@ -594,13 +574,18 @@
         font-size: 2rem;
       }
       
-      .person-name {
-        font-size: 1.5rem;
+      .student-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
       }
       
-      .person-meta {
-        flex-direction: column;
-        gap: 0.5rem;
+      .student-avatar {
+        width: 90px;
+        height: 90px;
+      }
+      
+      .student-name {
+        font-size: 1rem;
       }
     }
   </style>
@@ -610,7 +595,7 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <i class="fa fa-flask"></i>
+        <i class="fa fa-brain"></i>
         <span>SRIS</span> Lab
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -639,9 +624,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="gallery.html">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -701,78 +683,23 @@
     </div>
   </section>
 
-  <!-- 博士后招聘广告  
-  <section class="recruitment-section">
-    <div class="container">
-      <div class="recruitment-card">
-        <h2 class="recruitment-title">
-          <i class="fa fa-bullhorn"></i> 博士后研究员火热招聘中！
-        </h2>
-        
-        <div class="recruitment-highlights">
-          <div class="highlight-item">
-            <div class="highlight-icon">
-              <i class="fa fa-money"></i>
-            </div>
-            <h3 class="highlight-title">卓越待遇</h3>
-            <p class="highlight-desc">综合年薪最高可达57万元，另有住房补贴、子女教育等全方位福利保障。</p>
-          </div>
-          
-          <div class="highlight-item">
-            <div class="highlight-icon">
-              <i class="fa fa-graduation-cap"></i>
-            </div>
-            <h3 class="highlight-title">成长通道</h3>
-            <p class="highlight-desc">出站后留校通道畅通，优秀者可直接获得教研岗位，打造终身学术生涯。</p>
-          </div>
-          
-          <div class="highlight-item">
-            <div class="highlight-icon">
-              <i class="fa fa-flask"></i>
-            </div>
-            <h3 class="highlight-title">科研支持</h3>
-            <p class="highlight-desc">顶尖科研平台支持，两院院士、国家级人才担任合作导师，提供高水平项目指导。</p>
-          </div>
-          
-          <div class="highlight-item">
-            <div class="highlight-icon">
-              <i class="fa fa-university"></i>
-            </div>
-            <h3 class="highlight-title">学校资源</h3>
-            <p class="highlight-desc">华南理工大学16个学科进入ESI全球前1%，拥有30个国家级科研平台，位居全国高校前列。</p>
-          </div>
-        </div>
-        
-        <div class="recruitment-cta">
-          <a href="https://mp.weixin.qq.com/s/PbOxURQhTcbXdEd7VlAbCw" target="_blank" class="btn-recruitment">
-            <i class="fa fa-external-link"></i> 查看详细招聘政策与待遇
-          </a>
-          <p style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">
-            💰 综合年薪最高57万元 • 🏠 住房补贴 • 👨‍👩‍👧‍👦 子女教育 • 🎓 出站留校机会
-          </p>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-
   <!-- 研究人员部分 -->
   <section class="people-section">
     <div class="container">
       <!-- Principal Investigator -->
       <h2 class="section-title" id="pi-section">Principal Investigator</h2>
-      <div class="person-card" data-group="pi">
-        <div class="avatar-section">
-          <div class="avatar-container">
+      <div class="pi-card" data-group="pi">
+        <div class="pi-avatar-section">
+          <div class="pi-avatar-container">
             <img src="images/photo/leftgangchen.png" alt="Gang Chen">
           </div>
         </div>
-        <div class="info-section">
-          <h3 class="person-name">陈 刚 · Gang Chen</h3>
-          <div class="person-role">
+        <div class="pi-info-section">
+          <h3 class="pi-name">陈 刚 · Gang Chen</h3>
+          <div class="pi-role">
             <i class="fa fa-graduation-cap"></i> Associate Professor, South China University of Technology
           </div>
-          <div class="person-meta">
+          <div class="pi-meta">
             <div class="meta-item">
               <i class="fa fa-envelope-o"></i>
               <a href="mailto:gangchen@scut.edu.cn">gangchen@scut.edu.cn</a>
@@ -782,7 +709,7 @@
               Guangzhou International Campus
             </div>
           </div>
-          <p class="person-bio">
+          <p class="pi-bio">
             Dr. Gang Chen received his Ph.D. from UC Davis and was a postdoctoral researcher at Nanyang Technological University, Singapore. 
             His research interests span machine learning, formal methods, control theory, and signal processing, with a focus on interpretable 
             fault diagnosis and trustworthy cyber-physical systems. He leads the SRIS Lab in developing unified methodologies that combine 
@@ -801,605 +728,288 @@
 
       <!-- Postdoctoral Fellows -->
       <h2 class="section-title" id="postdoc-section">Postdoctoral Fellows</h2>
-      <div class="person-card" data-group="postdoc">
-        <div class="avatar-section">
-          <div class="avatar-container">
+      <div class="student-grid" data-group="postdoc">
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/Khan.jpg" alt="Khan Tasir">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">Khan Tasir</h3>
-          <div class="person-role">
-            <i class="fa fa-flask"></i> Postdoctoral Fellow in Applied Mathematics
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2025.09 – Present
+          <div class="student-info">
+            <h4 class="student-name">Khan Tasir</h4>
+            <div class="student-role">Postdoctoral Fellow</div>
+            <p class="student-bio">Applied Mathematics, Wind prediction</p>
+            <div class="student-tags">
+              <span class="student-tag">Time Series</span>
+              <span class="student-tag">Forecasting</span>
+              <span class="student-tag">Optimization</span>
             </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:luph1356023588@126.com">luph1356023588@126.com</a>
-            </div>
-          </div>
-          <p class="person-bio">
-            Research focuses on advanced time series analysis and forecasting methods, with applications to wind energy prediction 
-            and renewable energy systems optimization. Developing novel mathematical models that combine statistical learning with 
-            domain-specific physical constraints for improved prediction accuracy and reliability.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Time Series Analysis</span>
-            <span class="research-tag">Forecasting</span>
-            <span class="research-tag">Optimization</span>
-            <span class="research-tag">Renewable Energy</span>
-            <span class="research-tag">Applied Mathematics</span>
           </div>
         </div>
       </div>
 
       <!-- PhD Students -->
       <h2 class="section-title" id="phd-section">PhD Students</h2>
-      
-      <div class="person-card" data-group="phd">
-        <div class="avatar-section">
-          <div class="avatar-container">
+      <div class="student-grid" data-group="phd">
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/Penghonglu.jpg" alt="Penghong Lu">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">逯鹏宏 · Penghong Lu</h3>
-          <div class="person-role">
-            <i class="fa fa-graduation-cap"></i> Ph.D. Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2022.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:luph1356023588@126.com">luph1356023588@126.com</a>
+          <div class="student-info">
+            <h4 class="student-name">逯鹏宏</h4>
+            <div class="student-role">PhD Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">STL</span>
+              <span class="student-tag">FTC</span>
+              <span class="student-tag">Diagnosis</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on formal methods for discrete-system fault diagnosis and fault-tolerant control. 
-            Developing Signal Temporal Logic (STL) based approaches for system monitoring and verification, 
-            with applications to industrial automation and safety-critical systems.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Fault-Tolerant Control</span>
-            <span class="research-tag">Diagnosis</span>
-            <span class="research-tag">Formal Methods</span>
-            <span class="research-tag">System Verification</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="phd">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/yuanjunlin.jpg" alt="Junlin Yuan">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">袁俊琳 · Junlin Yuan</h3>
-          <div class="person-role">
-            <i class="fa fa-graduation-cap"></i> Ph.D. Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2023.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:jlyuan20@163.com">jlyuan20@163.com</a>
+          <div class="student-info">
+            <h4 class="student-name">袁俊琳</h4>
+            <div class="student-role">PhD Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">STL</span>
+              <span class="student-tag">Diagnosis</span>
+              <span class="student-tag">Formal Methods</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on formal methods and their applications to fault diagnosis in complex systems. 
-            Exploring temporal logic approaches for system monitoring and anomaly detection, with particular 
-            interest in industrial applications and real-time system verification.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Fault Diagnosis</span>
-            <span class="research-tag">Formal Verification</span>
-            <span class="research-tag">System Monitoring</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="phd">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/zhenpeng.png" alt="Zhenpeng Lao">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">劳振鹏 · Zhenpeng Lao</h3>
-          <div class="person-role">
-            <i class="fa fa-graduation-cap"></i> Ph.D. Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2024.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:jlyuan20@163.com">jlyuan20@163.com</a>
+          <div class="student-info">
+            <h4 class="student-name">劳振鹏</h4>
+            <div class="student-role">PhD Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">STL</span>
+              <span class="student-tag">Explainability</span>
+              <span class="student-tag">Diagnosis</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on formal methods for interpretable fault diagnosis in complex systems. 
-            Developing explainable AI approaches that combine temporal logic with machine learning 
-            techniques to provide transparent and trustworthy diagnostic reasoning.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Explainable AI</span>
-            <span class="research-tag">Interpretable Diagnosis</span>
-            <span class="research-tag">Formal Methods</span>
-          </div>
         </div>
-      </div>
-
-
-      <div class="person-card" data-group="phd">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/weihong.jpg" alt="Weihong Cen">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">岑伟洪 · Weihong Cen</h3>
-          <div class="person-role">
-            <i class="fa fa-graduation-cap"></i> Ph.D. Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2022.09 – Present
+          <div class="student-info">
+            <h4 class="student-name">岑伟洪</h4>
+            <div class="student-role">PhD Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">Manufacturing AI</span>
+              <span class="student-tag">Systems</span>
+              <span class="student-tag">ML</span>
             </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:jlyuan20@163.com">jlyuan20@163.com</a>
-            </div>
-          </div>
-          <p class="person-bio">
-            Research focuses on formal methods for interpretable fault diagnosis in complex systems. 
-            Developing explainable AI approaches that combine temporal logic with machine learning 
-            techniques to provide transparent and trustworthy diagnostic reasoning.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Explainable AI</span>
-            <span class="research-tag">Interpretable Diagnosis</span>
-            <span class="research-tag">Formal Methods</span>
           </div>
         </div>
       </div>
 
- 
-
-      <!-- 硕士生部分 -->
+      <!-- Master Students -->
       <h2 class="section-title" id="master-section">Master Students</h2>
-      
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+      <div class="student-grid" data-group="master">
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/zhuhanrui.jpg" alt="Hanyue Zhu">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">朱涵悅 · Hanyue Zhu</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Electronic Information Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2023.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:zhyscu2023@163.com">zhyscu2023@163.com</a>
+          <div class="student-info">
+            <h4 class="student-name">朱涵悅</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Electronic Information Eng.</p>
+            <div class="student-tags">
+              <span class="student-tag">PINN</span>
+              <span class="student-tag">Modeling</span>
+              <span class="student-tag">ML</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on Physics-Informed Neural Networks (PINNs) for modeling complex physical systems. 
-            Developing novel approaches to incorporate physical constraints into deep learning models for improved 
-            accuracy and interpretability in scientific computing applications.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Physics-Informed Neural Networks</span>
-            <span class="research-tag">Scientific Machine Learning</span>
-            <span class="research-tag">Modeling</span>
-            <span class="research-tag">PINN</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/zhangjiarui.jpg" alt="Jiarui Zhang">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">张稼瑞 · Jiarui Zhang</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Electronic Information Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2023.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:2046236156@qq.com">2046236156@qq.com</a>
+          <div class="student-info">
+            <h4 class="student-name">张稼瑞</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Electronic Information Eng.</p>
+            <div class="student-tags">
+              <span class="student-tag">RL</span>
+              <span class="student-tag">Robotics</span>
+              <span class="student-tag">Control</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on robot control with reinforcement learning techniques. Developing intelligent 
-            control strategies for robotic systems that can learn and adapt to dynamic environments, with 
-            applications in industrial automation and assistive robotics.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Reinforcement Learning</span>
-            <span class="research-tag">Robotics</span>
-            <span class="research-tag">Control Systems</span>
-            <span class="research-tag">Machine Learning</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/zhangyishuo.png" alt="Yiyue Zhang">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">张艺栎 · Yiyue Zhang</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Electronic Information Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2023.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:wi21060223@mail.scut.edu.cn">wi21060223@mail.scut.edu.cn</a>
+          <div class="student-info">
+            <h4 class="student-name">张艺栎</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Electronic Information Eng.</p>
+            <div class="student-tags">
+              <span class="student-tag">PINN</span>
+              <span class="student-tag">Modeling</span>
+              <span class="student-tag">ML</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on Physics-Informed Neural Networks for solving inverse problems in engineering. 
-            Developing methods to incorporate physical laws and domain knowledge into neural network architectures 
-            for more accurate and physically consistent predictions in complex systems.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Physics-Informed Neural Networks</span>
-            <span class="research-tag">Inverse Problems</span>
-            <span class="research-tag">Scientific Computing</span>
-            <span class="research-tag">PINN</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/zhenhao.jpg" alt="Zhenhao Lin">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">林政豪 · Zhenhao Lin</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2024.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:wi21060223@mail.scut.edu.cn">wi21060223@mail.scut.edu.cn</a>
+          <div class="student-info">
+            <h4 class="student-name">林政豪</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">STL</span>
+              <span class="student-tag">Control</span>
+              <span class="student-tag">Synthesis</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on control synthesis with temporal logic specifications. Developing methods to 
-            automatically generate controllers that satisfy complex temporal requirements expressed in Signal 
-            Temporal Logic, with applications to safety-critical autonomous systems.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Control Synthesis</span>
-            <span class="research-tag">Formal Methods</span>
-            <span class="research-tag">Autonomous Systems</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/mingyu.jpg" alt="Mingyu Chen">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">陈明宇 · Mingyu Chen</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2024.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:wi21060223@mail.scut.edu.cn">wi21060223@mail.scut.edu.cn</a>
+          <div class="student-info">
+            <h4 class="student-name">陈明宇</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">Explainability</span>
+              <span class="student-tag">STL</span>
+              <span class="student-tag">Diagnosis</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on interpretable fault diagnosis using temporal logic methods. Developing 
-            explainable AI approaches that combine temporal logic reasoning with machine learning techniques 
-            to provide transparent diagnostic explanations for complex engineering systems.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Explainable AI</span>
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Fault Diagnosis</span>
-            <span class="research-tag">Interpretable ML</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/tangchao.jpg" alt="Chao Tang">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">唐超 · Chao Tang</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2024.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:wi21060223@mail.scut.edu.cn">wi21060223@mail.scut.edu.cn</a>
+          <div class="student-info">
+            <h4 class="student-name">唐超</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">RL</span>
+              <span class="student-tag">STL</span>
+              <span class="student-tag">Control</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on reinforcement learning control with temporal logic constraints. Developing 
-            safe reinforcement learning algorithms that incorporate Signal Temporal Logic specifications to 
-            ensure safety and performance requirements are met during learning and deployment.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Reinforcement Learning</span>
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Safe RL</span>
-            <span class="research-tag">Control Theory</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/jiayuanfeng.jpg" alt="Yuanfeng Jia">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">贾远峰 · Yuanfeng Jia</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2025.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:fe12012@163.com">fe12012@163.com</a>
+          <div class="student-info">
+            <h4 class="student-name">贾远峰</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">Control</span>
+              <span class="student-tag">STL</span>
+              <span class="student-tag">Theory</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on control theory with temporal logic specifications. Developing novel control 
-            strategies that can handle complex temporal constraints and performance requirements expressed in 
-            formal languages, with applications to cyber-physical systems.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Control Theory</span>
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Formal Methods</span>
-            <span class="research-tag">Cyber-Physical Systems</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/yinchuxing.jpg" alt="Chuqin Yin">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">殷楚钦 · Chuqin Yin</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Mechanical Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2025.09 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:ycqin1001@163.com">ycqin1001@163.com</a>
+          <div class="student-info">
+            <h4 class="student-name">殷楚钦</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Mechanical Engineering</p>
+            <div class="student-tags">
+              <span class="student-tag">Control</span>
+              <span class="student-tag">STL</span>
+              <span class="student-tag">Theory</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research focuses on control theory with temporal logic constraints. Developing control algorithms 
-            that can guarantee satisfaction of complex temporal specifications while optimizing performance 
-            metrics, with applications to autonomous vehicles and robotics.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Control Theory</span>
-            <span class="research-tag">Signal Temporal Logic</span>
-            <span class="research-tag">Autonomous Systems</span>
-            <span class="research-tag">Formal Verification</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="master">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/yinpengyu.jpg" alt="Pengyu Yin">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">尹鹏宇 · Pengyu Yin</h3>
-          <div class="person-role">
-            <i class="fa fa-mortar-board"></i> Master's Student in Electronic Information Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2025.09 – Present
+          <div class="student-info">
+            <h4 class="student-name">尹鹏宇</h4>
+            <div class="student-role">Master Student</div>
+            <p class="student-bio">Electronic Information Eng.</p>
+            <div class="student-tags">
+              <span class="student-tag">Causality</span>
+              <span class="student-tag">Diagnosis</span>
+              <span class="student-tag">Fault Sourcing</span>
             </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:eagleworld2333@163.com">eagleworld2333@163.com</a>
-            </div>
-          </div>
-          <p class="person-bio">
-            Research focuses on fault sourcing with causal inference methods. Developing algorithms to identify 
-            root causes of faults in complex systems by leveraging causal discovery and inference techniques, 
-            with applications to industrial diagnostics and maintenance.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Causal Inference</span>
-            <span class="research-tag">Fault Diagnosis</span>
-            <span class="research-tag">Causal Discovery</span>
-            <span class="research-tag">Root Cause Analysis</span>
           </div>
         </div>
       </div>
 
-      <!-- 本科生部分 -->
+      <!-- Undergraduate Students -->
       <h2 class="section-title" id="ug-section">Undergraduate Students</h2>
-      
-      <div class="person-card" data-group="ug">
-        <div class="avatar-section">
-          <div class="avatar-container">
+      <div class="student-grid" data-group="ug">
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/peixiyang.jpg" alt="Peixi Yang">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">杨沛希 · Peixi Yang</h3>
-          <div class="person-role">
-            <i class="fa fa-users"></i> Undergraduate Student in Smart Manufacturing Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2023.03 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:13630064677@163.com">13630064677@163.com</a>
+          <div class="student-info">
+            <h4 class="student-name">杨沛希</h4>
+            <div class="student-role">Undergraduate</div>
+            <p class="student-bio">Smart Manufacturing Eng.</p>
+            <div class="student-tags">
+              <span class="student-tag">Design</span>
+              <span class="student-tag">Prototyping</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research assistant focused on mechanical design and prototyping. Contributing to the development 
-            of experimental platforms and hardware systems for research projects, with emphasis on precision 
-            engineering and design optimization.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Mechanical Design</span>
-            <span class="research-tag">Prototyping</span>
-            <span class="research-tag">CAD/CAM</span>
-            <span class="research-tag">Engineering Design</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="ug">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/yanyulu.jpg" alt="Yanyu Lu">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">路延宇 · Yanyu Lu</h3>
-          <div class="person-role">
-            <i class="fa fa-users"></i> Undergraduate Student in Smart Manufacturing Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2023.03 – Present
-            </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:2269362564@qq.com">2269362564@qq.com</a>
+          <div class="student-info">
+            <h4 class="student-name">路延宇</h4>
+            <div class="student-role">Undergraduate</div>
+            <p class="student-bio">Smart Manufacturing Eng.</p>
+            <div class="student-tags">
+              <span class="student-tag">Design</span>
+              <span class="student-tag">CAD</span>
             </div>
           </div>
-          <p class="person-bio">
-            Research assistant specializing in mechanical design and structural analysis. Working on the 
-            development of research equipment and experimental setups, with focus on finite element analysis 
-            and design validation.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Mechanical Design</span>
-            <span class="research-tag">Finite Element Analysis</span>
-            <span class="research-tag">Structural Analysis</span>
-            <span class="research-tag">Product Development</span>
-          </div>
         </div>
-      </div>
-
-      <div class="person-card" data-group="ug">
-        <div class="avatar-section">
-          <div class="avatar-container">
+        
+        <div class="student-card">
+          <div class="student-avatar">
             <img src="images/photo/katongjia.jpg" alt="Katong Jia">
           </div>
-        </div>
-        <div class="info-section">
-          <h3 class="person-name">贾凯同 · Katong Jia</h3>
-          <div class="person-role">
-            <i class="fa fa-users"></i> Undergraduate Student in Smart Manufacturing Engineering
-          </div>
-          <div class="person-meta">
-            <div class="meta-item">
-              <i class="fa fa-clock-o"></i> 2023.03 – Present
+          <div class="student-info">
+            <h4 class="student-name">贾凯同</h4>
+            <div class="student-role">Undergraduate</div>
+            <p class="student-bio">Smart Manufacturing Eng.</p>
+            <div class="student-tags">
+              <span class="student-tag">Vision</span>
+              <span class="student-tag">Image Processing</span>
             </div>
-            <div class="meta-item">
-              <i class="fa fa-envelope-o"></i>
-              <a href="mailto:1467907567@qq.com">1467907567@qq.com</a>
-            </div>
-          </div>
-          <p class="person-bio">
-            Research assistant focused on computer vision and image processing. Developing algorithms for 
-            visual inspection, object detection, and image analysis applications in manufacturing and 
-            quality control contexts.
-          </p>
-          <div class="research-tags">
-            <span class="research-tag">Computer Vision</span>
-            <span class="research-tag">Image Processing</span>
-            <span class="research-tag">Machine Vision</span>
-            <span class="research-tag">Visual Inspection</span>
           </div>
         </div>
       </div>
-
- 
-  <!-- 校友部分 -->
-  <!-- 这里放置您之前提供的校友部分代码 -->
-      <!-- 此处添加更多人员卡片... -->
-      <!-- 由于篇幅限制，这里只展示部分人员卡片 -->
-      <!-- 完整实现应包含所有提供的人员信息 -->
-
     </div>
   </section>
 
@@ -1409,7 +1019,7 @@
       <h2 class="section-title" id="alumni-section">Alumni</h2>
       <div class="alumni-grid" data-group="alumni">
         <div class="alumni-card">
-          <h3 class="alumni-name">李杜 · Du Li</h3>
+          <h3 class="alumni-name">李杜· Du Li</h3>
           <div class="alumni-info">Master Student, 2022–2025</div>
           <div class="alumni-position">Position: —</div>
         </div>
@@ -1452,7 +1062,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <i class="fa fa-flask"></i>
+          <i class="fa fa-brain"></i>
           <span>SRIS</span> Lab
         </div>
         <p class="footer-text">
@@ -1474,7 +1084,8 @@
     document.addEventListener('DOMContentLoaded', function() {
       const filterContainer = document.getElementById('filterContainer');
       const filterTags = document.querySelectorAll('.filter-tag');
-      const personCards = document.querySelectorAll('.person-card, .alumni-grid');
+      const piCard = document.querySelector('.pi-card');
+      const studentGrids = document.querySelectorAll('.student-grid, .alumni-grid');
       const sectionTitles = document.querySelectorAll('.section-title');
       
       // 添加筛选功能
@@ -1486,38 +1097,48 @@
           filterTags.forEach(t => t.classList.remove('active'));
           this.classList.add('active');
           
-          // 显示/隐藏人员卡片
-          personCards.forEach(card => {
-            if (filterValue === 'all') {
-              card.style.display = 'flex';
+          // 处理PI卡片
+          if (filterValue === 'all' || filterValue === 'pi') {
+            piCard.style.display = 'flex';
+            document.getElementById('pi-section').style.display = 'block';
+          } else {
+            piCard.style.display = 'none';
+            document.getElementById('pi-section').style.display = 'none';
+          }
+          
+          // 处理学生网格
+          studentGrids.forEach(grid => {
+            const gridGroup = grid.getAttribute('data-group');
+            
+            if (filterValue === 'all' || gridGroup === filterValue) {
+              grid.style.display = 'grid';
+              if (document.getElementById(`${gridGroup}-section`)) {
+                document.getElementById(`${gridGroup}-section`).style.display = 'block';
+              }
             } else {
-              const cardGroup = card.getAttribute('data-group');
-              if (cardGroup === filterValue) {
-                card.style.display = 'flex';
-              } else {
-                card.style.display = 'none';
+              grid.style.display = 'none';
+              if (document.getElementById(`${gridGroup}-section`)) {
+                document.getElementById(`${gridGroup}-section`).style.display = 'none';
               }
             }
           });
           
-          // 显示/隐藏章节标题
-          sectionTitles.forEach(title => {
-            const sectionId = title.getAttribute('id');
-            if (filterValue === 'all') {
-              title.style.display = 'block';
-            } else if (sectionId && sectionId.includes(filterValue)) {
-              title.style.display = 'block';
-            } else if (!sectionId && filterValue === 'alumni') {
-              // 校友部分特殊处理
-              title.style.display = 'none';
-            } else {
-              title.style.display = 'none';
-            }
-          });
+          // 处理校友部分
+          const alumniSection = document.getElementById('alumni-section');
+          const alumniGrid = document.querySelector('.alumni-grid');
+          
+          if (filterValue === 'all' || filterValue === 'alumni') {
+            alumniSection.style.display = 'block';
+            alumniGrid.style.display = 'grid';
+          } else {
+            alumniSection.style.display = 'none';
+            alumniGrid.style.display = 'none';
+          }
           
           // 平滑滚动到第一个可见部分
           setTimeout(() => {
-            const firstVisible = document.querySelector('.person-card[style="display: flex;"]');
+            const firstVisible = document.querySelector('.pi-card[style="display: flex;"]') || 
+                               document.querySelector('.student-grid[style="display: grid;"]');
             if (firstVisible) {
               firstVisible.scrollIntoView({ 
                 behavior: 'smooth', 
@@ -1529,25 +1150,8 @@
         });
       });
       
-      // 平滑滚动锚点
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if(targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if(targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-      
       // 卡片悬停效果增强
-      document.querySelectorAll('.person-card').forEach(card => {
+      document.querySelectorAll('.student-card').forEach(card => {
         card.addEventListener('mouseenter', function() {
           this.style.transform = 'translateY(-8px)';
         });
@@ -1556,6 +1160,17 @@
           this.style.transform = 'translateY(0)';
         });
       });
+      
+      // PI卡片悬停效果
+      if (piCard) {
+        piCard.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-8px)';
+        });
+        
+        piCard.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      }
     });
   </script>
 </body>

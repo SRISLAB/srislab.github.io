@@ -13,7 +13,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="style/jquery.bxslider.css" rel="stylesheet">
   <link href="style/style.css" rel="stylesheet">
 
   <!-- 论文发表页面样式 - 与SRIS网站风格统一 -->
@@ -366,20 +365,25 @@
       font-size: 0.9rem;
     }
     
+    /* 修复摘要收起问题 */
     .publication-abstract {
       color: var(--dark);
       font-size: 0.95rem;
       line-height: 1.6;
-      margin-bottom: 1.5rem;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out;
+      opacity: 0;
+      transition: all 0.3s ease-out;
+      margin-bottom: 0;
     }
     
     .publication-abstract.expanded {
-      max-height: 500px;
+      max-height: 1000px;
+      opacity: 1;
+      margin-bottom: 1.5rem;
     }
     
+    /* 修复链接间隔问题 */
     .publication-links {
       display: flex;
       flex-wrap: wrap;
@@ -391,7 +395,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1.2rem;
       background: rgba(37, 99, 235, 0.1);
       color: var(--primary);
       border-radius: 8px;
@@ -400,6 +404,7 @@
       text-decoration: none;
       transition: var(--transition);
       border: 1px solid rgba(37, 99, 235, 0.2);
+      min-height: 40px;
     }
     
     .publication-link:hover {
@@ -410,7 +415,7 @@
     }
     
     .publication-link i {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
     }
     
     .toggle-abstract {
@@ -420,11 +425,12 @@
       font-size: 0.9rem;
       font-weight: 500;
       cursor: pointer;
-      padding: 0.5rem 0;
+      padding: 0.6rem 0;
       display: flex;
       align-items: center;
       gap: 0.5rem;
       transition: var(--transition);
+      margin-top: 0.5rem;
     }
     
     .toggle-abstract:hover {
@@ -505,6 +511,18 @@
         grid-template-columns: repeat(2, 1fr);
       }
       
+      /* 移动端增加链接间隔 */
+      .publication-links {
+        gap: 0.8rem;
+        row-gap: 0.8rem;
+      }
+      
+      .publication-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+      }
+      
       .filter-container {
         justify-content: flex-start;
         overflow-x: auto;
@@ -529,14 +547,34 @@
         font-size: 2rem;
       }
       
+      /* 移动端优化链接布局 */
       .publication-links {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.6rem;
+        row-gap: 0.6rem;
       }
       
       .publication-link {
-        width: 100%;
+        flex: 0 0 calc(50% - 0.3rem);
         justify-content: center;
+        text-align: center;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+      }
+      
+      /* 在非常小的屏幕上，链接垂直排列 */
+      @media (max-width: 400px) {
+        .publication-links {
+          flex-direction: column;
+        }
+        
+        .publication-link {
+          flex: 0 0 auto;
+          width: 100%;
+        }
       }
     }
   </style>
@@ -568,15 +606,12 @@
               Publications
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="journal.html">Journal Papers</a></li>
+              <li><a class="dropdown-item" href="Journal.html">Journal Papers</a></li>
               <li><a class="dropdown-item" href="realtime.html">Preprints</a></li>
             </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="gallery.html">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -625,6 +660,12 @@
         <div class="filter-tag" data-filter="preprint">
           <i class="fa fa-file-text"></i> Preprints
         </div>
+        <div class="filter-tag" data-filter="2026">
+          <i class="fa fa-calendar"></i> 2026
+        </div>
+        <div class="filter-tag" data-filter="2025">
+          <i class="fa fa-calendar"></i> 2025
+        </div>
         <div class="filter-tag" data-filter="2024">
           <i class="fa fa-calendar"></i> 2024
         </div>
@@ -642,31 +683,8 @@
   <section class="stats-section">
     <div class="container">
       <h2 class="section-title">Research Output</h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fa fa-book"></i>
-          </div>
-          <div class="stat-number">24</div>
-          <div class="stat-label">Journal Papers</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fa fa-users"></i>
-          </div>
-          <div class="stat-number">18</div>
-          <div class="stat-label">Conference Papers</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fa fa-file-text"></i>
-          </div>
-          <div class="stat-number">7</div>
-          <div class="stat-label">Preprints</div>
-        </div>
-        
+      <div class="stats-grid" id="statsGrid">
+        <!-- 统计卡片将通过JavaScript动态生成 -->
       </div>
     </div>
   </section>
@@ -674,238 +692,8 @@
   <!-- 论文发表区域 -->
   <section class="publications-section">
     <div class="container">
-      <!-- 2024年论文 -->
-      <div class="year-group" id="2024">
-        <h2 class="year-header">
-          <i class="fa fa-calendar"></i> 2024
-        </h2>
-        
-        <!-- 期刊论文示例 -->
-        <div class="publication-card" data-type="journal" data-year="2024">
-          <span class="publication-type journal">Journal Paper</span>
-          <h3 class="publication-title">Neuro-Symbolic Foundation Models for Interpretable Fault Diagnosis in Industrial Systems</h3>
-          <p class="publication-authors">Gang Chen, Penghong Lu, Junlin Yuan, Zhenpeng Lao</p>
-          <div class="publication-venue">
-            <i class="fa fa-book"></i> IEEE Transactions on Industrial Informatics, 20(3), 1234-1245
-          </div>
-          <p class="publication-abstract" id="abstract-2024-1">
-            This paper presents a novel neuro-symbolic framework that combines deep learning with signal temporal logic 
-            for interpretable fault diagnosis in industrial systems. Our approach leverages pre-trained foundation models 
-            with STL-regularized objectives to produce machine-checkable rationales for fault detection and classification. 
-            Experimental results on wind turbine and CNC machine datasets demonstrate state-of-the-art performance with 
-            significantly improved interpretability compared to black-box alternatives.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2024-1">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> IEEE Xplore
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-code"></i> Code
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-quote-right"></i> Cite
-            </a>
-          </div>
-        </div>
-        
-        <!-- 会议论文示例 -->
-        <div class="publication-card" data-type="conference" data-year="2024">
-          <span class="publication-type conference">Conference Paper</span>
-          <h3 class="publication-title">STL-Driven Safe Autonomy for Dual-Arm Robotic Manipulation</h3>
-          <p class="publication-authors">Gang Chen, Jiarui Zhang, Zhenhao Lin, Chao Tang</p>
-          <div class="publication-venue">
-            <i class="fa fa-users"></i> Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)
-          </div>
-          <p class="publication-abstract" id="abstract-2024-2">
-            We present a contract-based control framework for dual-arm robotic manipulation that guarantees safety 
-            through signal temporal logic specifications. Our approach combines reference governors with residual 
-            reinforcement learning to ensure safety constraints are satisfied while optimizing performance. 
-            The framework is validated on a 7-DOF dual-arm robot performing assembly tasks, demonstrating 
-            improved safety and efficiency compared to conventional methods.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2024-2">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> Proceedings
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-video-camera"></i> Video
-            </a>
-          </div>
-        </div>
-        
-        <!-- 预印本示例 -->
-        <div class="publication-card" data-type="preprint" data-year="2024">
-          <span class="publication-type preprint">Preprint</span>
-          <h3 class="publication-title">Causal-Logic PHM: Physics-Guided Causal Inference for Fleet-Level Health Management</h3>
-          <p class="publication-authors">Gang Chen, Weihong Cen, Pengyu Yin, Yuanfeng Jia</p>
-          <div class="publication-venue">
-            <i class="fa fa-archive"></i> arXiv preprint arXiv:2403.12345
-          </div>
-          <p class="publication-abstract" id="abstract-2024-3">
-            This work introduces a causal-logic framework for prognostics and health management (PHM) that 
-            combines physics-guided feature extraction with causal discovery and temporal logic abstractions. 
-            Our approach enables the reconstruction of fault propagation chains across equipment fleets and 
-            recommends cost-aware interventions. The framework is evaluated on wind turbine and railway 
-            traction system datasets, showing significant improvements in fault prediction accuracy and 
-            interpretability over state-of-the-art methods.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2024-3">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> arXiv
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 2023年论文 -->
-      <div class="year-group" id="2023">
-        <h2 class="year-header">
-          <i class="fa fa-calendar"></i> 2023
-        </h2>
-        
-        <!-- 期刊论文示例 -->
-        <div class="publication-card" data-type="journal" data-year="2023">
-          <span class="publication-type journal">Journal Paper</span>
-          <h3 class="publication-title">Temporal Logic Neural Networks for Interpretable Time Series Classification</h3>
-          <p class="publication-authors">Gang Chen, Hanyue Zhu, Yiyue Zhang</p>
-          <div class="publication-venue">
-            <i class="fa fa-book"></i> IEEE Transactions on Pattern Analysis and Machine Intelligence, 45(8), 9876-9889
-          </div>
-          <p class="publication-abstract" id="abstract-2023-1">
-            We propose Temporal Logic Neural Networks (TLNNs), a novel architecture that integrates signal 
-            temporal logic constraints directly into neural network layers for interpretable time series 
-            classification. TLNNs learn STL formulas that characterize class-discriminative temporal patterns, 
-            providing human-readable explanations for classification decisions. Experiments on 12 benchmark 
-            datasets demonstrate that TLNNs achieve competitive accuracy while providing significantly 
-            more interpretable models than conventional deep learning approaches.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2023-1">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> IEEE Xplore
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-code"></i> Code
-            </a>
-          </div>
-        </div>
-        
-        <!-- 会议论文示例 -->
-        <div class="publication-card" data-type="conference" data-year="2023">
-          <span class="publication-type conference">Conference Paper</span>
-          <h3 class="publication-title">Physics-Informed Neural Networks with Temporal Logic Constraints for System Identification</h3>
-          <p class="publication-authors">Gang Chen, Hanyue Zhu, Khan Tasir</p>
-          <div class="publication-venue">
-            <i class="fa fa-users"></i> Proceedings of the International Conference on Machine Learning (ICML)
-          </div>
-          <p class="publication-abstract" id="abstract-2023-2">
-            This paper introduces Physics-Informed Neural Networks with Temporal Logic Constraints (PINN-TL), 
-            a framework that combines physics-based modeling with STL constraints for system identification. 
-            PINN-TL enforces both physical laws and temporal logic specifications during training, resulting 
-            in models that are both physically consistent and satisfy desired temporal properties. We demonstrate 
-            the effectiveness of PINN-TL on several dynamical system identification tasks, showing improved 
-            accuracy and generalization compared to standard PINNs.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2023-2">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> Proceedings
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 2022年论文 -->
-      <div class="year-group" id="2022">
-        <h2 class="year-header">
-          <i class="fa fa-calendar"></i> 2022
-        </h2>
-        
-        <!-- 期刊论文示例 -->
-        <div class="publication-card" data-type="journal" data-year="2022">
-          <span class="publication-type journal">Journal Paper</span>
-          <h3 class="publication-title">Formal Methods for Interpretable Fault Diagnosis in Cyber-Physical Systems</h3>
-          <p class="publication-authors">Gang Chen, Penghong Lu, Junlin Yuan</p>
-          <div class="publication-venue">
-            <i class="fa fa-book"></i> ACM Transactions on Cyber-Physical Systems, 6(2), 45-67
-          </div>
-          <p class="publication-abstract" id="abstract-2022-1">
-            We present a formal methods approach to fault diagnosis in cyber-physical systems that provides 
-            interpretable diagnostic explanations. Our framework uses signal temporal logic to specify normal 
-            and faulty system behaviors, and employs model checking techniques to identify violations that 
-            indicate faults. The approach generates human-readable diagnostic reports that explain not only 
-            what fault occurred but also why it was detected. Case studies on automotive and industrial 
-            automation systems demonstrate the effectiveness and interpretability of our approach.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2022-1">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> ACM Digital Library
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-          </div>
-        </div>
-        
-        <!-- 会议论文示例 -->
-        <div class="publication-card" data-type="conference" data-year="2022">
-          <span class="publication-type conference">Conference Paper</span>
-          <h3 class="publication-title">Contract-Based Control with Signal Temporal Logic for Safe Autonomous Systems</h3>
-          <p class="publication-authors">Gang Chen, Jiarui Zhang, Mingyu Chen</p>
-          <div class="publication-venue">
-            <i class="fa fa-users"></i> Proceedings of the IEEE Conference on Decision and Control (CDC)
-          </div>
-          <p class="publication-abstract" id="abstract-2022-2">
-            This paper develops a contract-based control framework for autonomous systems where safety 
-            specifications are expressed in signal temporal logic. We introduce a hierarchical control 
-            architecture that synthesizes high-level plans and low-level controllers under STL contracts, 
-            with runtime monitoring for contract compliance. The framework is applied to autonomous 
-            vehicle navigation and robotic manipulation tasks, demonstrating provable safety guarantees 
-            while maintaining system performance.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2022-2">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> Proceedings
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-          </div>
-        </div>
+      <div id="publicationsContainer">
+        <!-- 论文将通过JavaScript动态生成 -->
       </div>
     </div>
   </section>
@@ -933,12 +721,1057 @@
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // 论文数据 - 包含所有论文的完整信息
+    const publicationsData = [
+      // 2025年论文
+  {
+    id: 1,
+    title: "A Neural-Symbolic Network for Interpretable Fault Diagnosis of Rolling Element Bearings Based on Temporal Logic",
+    authors: "Ruoyao Tian, Mengqian Cui, Gang Chen",
+    venue: "IEEE Transactions on Instrumentation and Measurement, 73, 3515614",
+    type: "journal",
+    year: "2024",
+    abstract: "We propose a neural-symbolic temporal logic network for interpretable rolling bearing fault diagnosis. By combining weighted signal temporal logic with a predicate network, an autoencoder, and a logic network, the method learns human-readable fault formulas and further visualizes fault-event relations with timed failure propagation graphs.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 2,
+    title: "Collaborative design of fault diagnosis and fault tolerance control under nested signal temporal logic specifications",
+    authors: "Penghong Lu, Gang Chen, Peng Wei, Rong Su",
+    venue: "IEEE Transactions on Automation Science and Engineering, 2, 2026",
+    type: "journal",
+    year: "2026",
+    abstract: "Signal Temporal Logic (STL) is widely used for specifying complex time-dependent behaviors in cyber-physical systems (CPSs), particularly in safety-critical domains. However, fault diagnosis (FD) and fault tolerant control (FTC) under nested STL (NSTL) specifications remain challenging, especially for nonlinear systems. This paper proposes a collaborative design (CoD) framework that jointly integrates FD and FTC under NSTL constraints to enhance detection accuracy and ensure robust system performance. First, a fault detection observer is developed by constructing fault tolerant feasible sets that can predict whether ongoing system trajectories satisfy NSTL specifications. To address the feasibility issue in real-time control synthesis, we introduce the concept of fault tolerant control with recursive feasibility (FTCRF), enabling the controller to maintain constraint satisfaction and system stability even under faults. A model predictive control scheme guided by control barrier functions (CBFs) ensures safe trajectory tracking within specified bounds. Simulation studies on single integrator and unicycle models demonstrate the effectiveness of the proposed method in accurately detecting faults and maintaining task satisfaction under NSTL constraints. Note to Practitioners—This work is motivated by the need for robust fault management in safety-critical cyber-physical systems such as autonomous vehicles, smart manufacturing systems, and robotic healthcare platforms. In these environments, rapid and accurate fault diagnosis—alongside continued safe operation despite faults—is essential to prevent downtime and maintain system integrity. Our proposed framework provides a practical methodology to jointly design fault detection and control strategies, explicitly accounting for complex temporal task constraints specified using nested Signal Temporal Logic. The key contribution is the collaborative integration of a fault diagnosis observer with a fault tolerant controller based on recursive feasibility, ensuring that the system can continue operating safely even when faults occur. Moreover, the use of STL Trees (STLTs) provides a tractable means of reasoning over complex time-based specifications. Practitioners can adopt this framework to improve system reliability, reduce intervention costs, and ensure compliance with temporal task requirements in dynamic and uncertain environments.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+    {
+    id: 2,
+    title: "Enhancing Reliability Through Interpretability: A Comprehensive Survey of Interpretable Intelligent Fault Diagnosis in Rotating Machinery",
+    authors: "Gang Chen, Junlin Yuan, Yiyue Zhang, Hanyue Zhu, Ruyi Huang, Fengtao Wang, Weihua Li",
+    venue: "IEEE Access, 12, 2024",
+    type: "journal",
+    year: "2024",
+    abstract: "This survey systematically reviews interpretable intelligent fault diagnosis for rotating machinery. It organizes the literature into post-hoc and ante-hoc paradigms, analyzes representative methods and their limitations, and highlights future directions for building more transparent and reliable diagnosis systems.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 3,
+    title: "Bearing Fault Diagnosis via Robust PCA with Nonconvex Rank Approximation",
+    authors: "Cai Li, Penghong Lu, Guangming Dong, Gang Chen",
+    venue: "IEEE Sensors Journal, Early Access, 2024",
+    type: "journal",
+    year: "2024",
+    abstract: "We develop a nonconvex robust PCA method for bearing fault diagnosis using a gamma-norm rank approximation. The method improves fault feature extraction in noisy vibration signals and outperforms conventional convex RPCA, VMD, and FMD baselines in both simulations and experiments.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 4,
+    title: "Fault Tracing in Multistage Gearbox Systems Based on an Improved Transfer Path Analysis Method",
+    authors: "Penghong Lu, Cai Li, Gang Chen, Gang Chen",
+    venue: "Measurement, 2024",
+    type: "journal",
+    year: "2024",
+    abstract: "This paper proposes an improved transfer path analysis framework for multistage gearbox fault tracing. By combining structural dynamics decoupling, bearing force identification, and dominant-path contribution analysis, the method enhances fault features and enables effective tracing of gear faults under different operating conditions.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 5,
+    title: "VNCCD: A Gearbox Fault Diagnosis Technique Under Nonstationary Conditions via Virtual Decoupled Transfer Path",
+    authors: "Cai Li, Penghong Lu, Gang Chen",
+    venue: "Mechanical Systems and Signal Processing, 221, 111741",
+    type: "journal",
+    year: "2024",
+    abstract: "We introduce VNCCD, a virtual nonlinear chirp component decoupling method for gearbox fault diagnosis under nonstationary conditions. The method first identifies virtual decoupled transfer paths and then extracts intrinsic nonlinear chirp components, improving vibration quality and strengthening diagnosis under complex structural coupling.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 6,
+    title: "Knowledge-based Clustering Federated Learning for Fault Diagnosis in Robotic Assembly",
+    authors: "Peng Xiao, Chuang Wang, Ze Lin, Ying Hao, Gang Chen, Longhan Xie",
+    venue: "Knowledge-Based Systems, 294, 111792",
+    type: "journal",
+    year: "2024",
+    abstract: "We propose KCFed, a knowledge-based clustering federated learning framework for robotic assembly fault diagnosis. The method addresses both few-shot diagnosis and Non-IID data distribution by clustering similar tasks and accumulating prior knowledge while preserving data privacy across clients.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 7,
+    title: "Task Attention-based Multimodal Fusion and Curriculum Residual Learning for Context Generalization in Robotic Assembly",
+    authors: "Chuang Wang, Ze Lin, Biao Liu, Chupeng Su, Gang Chen, Longhan Xie",
+    venue: "Applied Intelligence, 2024",
+    type: "journal",
+    year: "2024",
+    abstract: "We present a robotic assembly framework that combines task-attention multimodal fusion with curriculum residual reinforcement learning. The method improves context generalization, robustness to large random errors, and learning stability, achieving high-precision assembly in variable environments.",
+    links: [
+      { type: "external", label: "Springer", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 8,
+    title: "Extended Residual Learning with One-shot Imitation Learning for Robotic Assembly in Semi-structured Environment",
+    authors: "Chuang Wang, Chupeng Su, Baozheng Sun, Gang Chen, Longhan Xie",
+    venue: "Frontiers in Neurorobotics, 18:1355170",
+    type: "journal",
+    year: "2024",
+    abstract: "We propose an object-embodiment-centric imitation and residual reinforcement learning framework for robotic assembly in semi-structured environments. Using only a single demonstration and limited interaction, the method improves sample efficiency and significantly increases assembly success rate and speed.",
+    links: [
+      { type: "external", label: "Frontiers", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 9,
+    title: "Control/Physical Systems Co-design with Spectral Temporal Logic Specifications and Its Applications to MEMS",
+    authors: "Gang Chen, Zhaodan Kong, Longhan Xie",
+    venue: "International Journal of Control, 2024",
+    type: "journal",
+    year: "2024",
+    abstract: "We study control/physical co-design for LPV systems with spectral temporal logic specifications. By transforming spectral-temporal requirements into mixed-integer matrix inequality constraints, the paper develops an iterative optimization framework and demonstrates its effectiveness on MEMS applications.",
+    links: [
+      { type: "external", label: "Taylor & Francis", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+ 
+  {
+    id: 11,
+    title: "Fast Pareto Set Approximation for Multi-objective Flexible Job Shop Scheduling via Parallel Preference-conditioned Graph Reinforcement Learning",
+    authors: "Chupeng Su, Cong Zhang, Chuang Wang, Weihong Cen, Gang Chen, Longhan Xie",
+    venue: "Swarm and Evolutionary Computation, 88, 101605",
+    type: "journal",
+    year: "2024",
+    abstract: "We develop a preference-conditioned graph reinforcement learning framework for fast Pareto set approximation in multi-objective flexible job shop scheduling. The method parallelizes preference-based learning and substantially improves both solution quality and computational speed on large-scale scheduling problems.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 12,
+    title: "Evolution Strategies-based Optimized Graph Reinforcement Learning for Solving Dynamic Job Shop Scheduling Problem",
+    authors: "Chupeng Su, Cong Zhang, Dan Xia, Baoan Han, Chuang Wang, Gang Chen, Longhan Xie",
+    venue: "Applied Soft Computing, 145, 110596",
+    type: "journal",
+    year: "2023",
+    abstract: "We propose a graph reinforcement learning framework with evolution strategies for dynamic job shop scheduling under machine breakdown and stochastic processing times. The approach formulates the scheduling problem as an MDP and learns robust policies that outperform reinforcement-learning-based and traditional baselines.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 13,
+    title: "Timed Failure Propagation Graph Construction with Supremal Language Guided Tree-LSTM and Its Application to Interpretable Fault Diagnosis",
+    authors: "Gang Chen",
+    venue: "Applied Intelligence, 2022",
+    type: "journal",
+    year: "2022",
+    abstract: "This paper presents a data-driven approach to construct spectral timed failure propagation graphs directly from data. By transforming TFPG construction into a spectral-temporal logic inference problem and solving it with a Tree-LSTM guided by supremal language, the method achieves interpretable fault diagnosis without requiring expert-designed models.",
+    links: [
+      { type: "external", label: "Springer", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 14,
+    title: "Interpretable Fault Diagnosis with Shapelet Temporal Logic: Theory and Application",
+    authors: "Gang Chen, Yu Lu, Rong Su",
+    venue: "Automatica, 142, 110350",
+    type: "journal",
+    year: "2022",
+    abstract: "We introduce shapelet temporal logic, a formal language that describes temporal relations among discriminative shapelets in sequential data. An incremental inference algorithm with theoretical guarantees is developed to obtain interpretable fault diagnosis rules for rolling element bearing signals.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 15,
+    title: "Formal Language Generation for Fault Diagnosis with Spectral Logic via Adversarial Training",
+    authors: "Gang Chen, Peng Wei, Huiming Jiang, Mei Liu",
+    venue: "IEEE Transactions on Industrial Informatics, 2022",
+    type: "journal",
+    year: "2022",
+    abstract: "We formulate fault diagnoser construction as a formal language generation problem and introduce signal spectral logic for interpretable diagnosis in the frequency domain. Adversarial training is used to alleviate the sparse-reward issue and improve the robustness of generated logic formulas under noisy conditions.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 16,
+    title: "Fault Tolerance Makespan Synthesis in Multi-process Systems via Resource Sharing and Backtracking",
+    authors: "Gang Chen, Yu Lu, Rong Su",
+    venue: "IFAC PapersOnLine, 55(28), 30-37",
+    type: "conference",
+    year: "2022",
+    abstract: "This paper studies time-optimal fault-tolerant controllable string synthesis for multi-process systems. By combining system abstraction, resource sharing, and backtracking, the method checks fault tolerance and finds minimum-makespan recovery strings efficiently in manufacturing systems.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 17,
+    title: "Data-Driven Real-Valued Timed-Failure-Propagation-Graph Refinement for Complex System Fault Diagnosis",
+    authors: "Gang Chen, Xinfan Lin, Zhaodan Kong",
+    venue: "IEEE Control Systems Letters, 5(3), 1049-1054",
+    type: "journal",
+    year: "2021",
+    abstract: "We propose real-valued timed failure propagation graphs for continuous-state systems and a systematic refinement framework that combines expert knowledge with data-driven learning. Starting from a partial graph, the method automatically adds discrepancy nodes and causal edges from labeled signals for interpretable fault diagnosis.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 18,
+    title: "Temporal Logic Inference for Fault Detection of Switched Systems With Gaussian Process Dynamics",
+    authors: "Gang Chen, Peng Wei, Mei Liu",
+    venue: "IEEE Transactions on Automation Science and Engineering, Early Access, 2021",
+    type: "journal",
+    year: "2021",
+    abstract: "We develop an interpretable fault detector for switched nonlinear systems with partially unknown dynamics. The method approximates unknown dynamics using Gaussian processes and introduces a safe temporal logic inference algorithm that guarantees no missed faults during the search while providing probabilistic satisfaction guarantees.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+ 
+ 
+
+  {
+    id: 3,
+    title: "Frequency-temporal-logic-based Bearing Fault Diagnosis and Fault Interpretation Using Bayesian Optimization with Bayesian Neural Networks",
+    authors: "Gang Chen, Mei Liu, Jin Chen",
+    venue: "Mechanical Systems and Signal Processing, 145, 106951",
+    type: "journal",
+    year: "2020",
+    abstract: "We introduce a frequency-temporal logic (FTL) framework for bearing fault diagnosis and interpretation. The method combines Bayesian optimization with Bayesian neural networks to infer compact and interpretable logic formulas from vibration data, achieving competitive diagnostic performance while providing human-readable explanations of fault patterns.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 5,
+    title: "Temporal-Logic-Based Semantic Fault Diagnosis With Time-Series Data From Industrial Internet of Things",
+    authors: "Gang Chen, Mei Liu, Zhaodan Kong",
+    venue: "IEEE Transactions on Industrial Electronics, 68(5), 4393-4403",
+    type: "journal",
+    year: "2021",
+    abstract: "We formalize semantic fault diagnosis for IIoT systems as the task of learning signal temporal logic formulas directly from time-series data. To address combinatorial explosion, we propose an agenda-based, reinforcement-learning-enabled search strategy that discovers scalable and interpretable fault specifications from industrial sensor data.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 21,
+    title: "A Dual Spatial Temporal Neural Network for Bottleneck Prediction in Manufacturing Systems",
+    authors: "Weihong Cen, Chupeng Su, Kainuo Cen, Lie Yang, Gang Chen, Longhan Xie",
+    venue: "Engineering Applications of Artificial Intelligence, 159, 111586",
+    type: "journal",
+    year: "2025",
+    abstract: "We propose Dual-BDSTN, a dual spatial-temporal neural network for bottleneck prediction in manufacturing systems. By decoupling temporal and spatial modeling, introducing dynamic graph learning based on material flow, and integrating self-attention and cross-attention mechanisms, the method improves blockage/starvation prediction and bottleneck localization.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 22,
+    title: "Instantaneous Frequency Extraction of Overlapped Multicomponent Signals With an Adaptive Constraints Approach",
+    authors: "Du Li, Zhenpeng Lao, Penghong Lu, Gang Chen",
+    venue: "Engineering Research Express, 7, 035557",
+    type: "journal",
+    year: "2025",
+    abstract: "We develop an adaptive ridge path regrouping framework for instantaneous frequency extraction in overlapped multicomponent signals. The method combines a variation-constrained time-frequency filter, entropy-guided parameter adaptation, and a refined penalty term to improve robustness and accuracy in complex overlapping regions.",
+    links: [
+      { type: "external", label: "IOPscience", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 23,
+    title: "Decomposition-Based MPC for Uncertain Systems With Nested Signal Temporal Logic Specifications",
+    authors: "Jiarui Zhang, Penghong Lu, Gang Chen",
+    venue: "IEEE Control Systems Letters, 9, 2025",
+    type: "journal",
+    year: "2025",
+    abstract: "We study control synthesis for uncertain systems subject to nested STL tasks and propose a decomposition-based MPC framework. The method resolves nested specifications into atomic subtasks and combines them with distributed shrinking-horizon MPC to improve tractability and control performance under bounded disturbances.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 24,
+    title: "Event Driven Causal Knowledge Graphs for Bottleneck Root Cause Analysis in Manufacturing Systems",
+    authors: "Weihong Cen, Chupeng Su, Gang Chen, Longhan Xie",
+    venue: "Expert Systems With Applications, 296, 129117",
+    type: "journal",
+    year: "2025",
+    abstract: "We introduce BCKG, an event-driven causal knowledge graph framework for bottleneck root cause analysis in manufacturing systems. By combining expert-initialized causal graphs, overlap-duration-based pruning, reverse depth-first search, and a modified PageRank strategy, the method identifies root causes and propagation paths with high accuracy.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 25,
+    title: "Fault Tracing in Multistage Gearbox Systems Based on an Improved Transfer Path Analysis Method",
+    authors: "Penghong Lu, Cai Li, Gang Chen",
+    venue: "Measurement, 242, 115992",
+    type: "journal",
+    year: "2025",
+    abstract: "We develop an improved transfer path analysis method for multistage gearbox fault tracing. The method combines structural dynamics decoupling, inverse bearing-force identification, and path contribution analysis to enhance fault characteristics and determine dominant propagation paths across different gearbox configurations.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 26,
+    title: "F-DiffWave: A Fault-Aware Wavelet-Structured Diffusion Framework for Robust Fault Diagnosis Under Variable Operating Conditions",
+    authors: "Hanyue Zhu, Gang Chen, Zhenpeng Lao, Junlin Yuan, Lu Sun, Yiyue Zhang, Yingjie Zhang",
+    venue: "Measurement Science and Technology, 37, 056109",
+    type: "journal",
+    year: "2026",
+    abstract: "We propose F-DiffWave, a fault-aware wavelet-structured diffusion framework for multi-source domain generalization in rotating machinery diagnosis. By integrating wavelet-domain generation, accelerated diffusion-based synthesis, and contrastive discriminative learning, the method addresses data imbalance and improves generalization under variable operating conditions.",
+    links: [
+      { type: "external", label: "IOPscience", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 27,
+    title: "In-situ Quality Inspection Based on Coaxial Melt Pool Images for Laser Powder Bed Fusion With Depth Graph Network Guided by Prior Knowledge",
+    authors: "Yingjie Zhang, Honghong Du, Kai Zhao, Jiali Gao, Xiaojun Peng, Lang Cheng, Canneng Fang, Gang Chen",
+    venue: "Mechanical Systems and Signal Processing, 224, 111993",
+    type: "journal",
+    year: "2025",
+    abstract: "We propose MK-DGNet, a prior-knowledge-guided deep graph network for in-situ quality inspection in laser powder bed fusion. The method fuses melt-pool image information with physically informed knowledge representations, improving defect-related quality monitoring while enhancing interpretability.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 28,
+    title: "Interpretable Knowledge Transfer With a Novel Structure Discrepancy Metrics for Unsupervised Bearing Fault Diagnosis From Simulation to Reality",
+    authors: "Kaitong Jia, Xin Wen, Gang Chen",
+    venue: "Journal of Physics: Conference Series, 3024, 012003",
+    type: "conference",
+    year: "2025",
+    abstract: "We present an interpretable transfer learning framework for unsupervised bearing fault diagnosis from simulation to reality. Built on a Wavelet Temporal Logic Network encoder and a Temporal Logic Discrepancy Metric, the approach aligns structural knowledge across domains while preserving transparent decision logic.",
+    links: [
+      { type: "external", label: "IOPscience", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 29,
+    title: "Temporal Logic Inference for Interpretable Fault Diagnosis of Bearings via Sparse and Structured Neural Attention",
+    authors: "Gang Chen, Guangming Dong",
+    venue: "ISA Transactions, Early Access, 2025",
+    type: "journal",
+    year: "2025",
+    abstract: "We propose a Sparse Temporal Logic Network for interpretable bearing fault diagnosis. The framework combines wavelet-based predicate extraction, sparse and structured neural attention, and temporal logic inference to deliver accurate diagnosis together with formal, human-readable explanations.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 30,
+    title: "Multi-source Data Fusion Monitoring System for Super-elevation in Laser Powder Bed Fusion Based on Bi-stream Cross-mode Fusion Network",
+    authors: "Yingjie Zhang, Canneng Fang, Jiong Zhang, Gang Chen, Zhangdong Chen, Honghong Du, Lang Cheng, Di Wang",
+    venue: "Optics and Lasers in Engineering, 186, 108794",
+    type: "journal",
+    year: "2025",
+    abstract: "We propose BCFNet, a bi-stream cross-mode fusion network for super-elevation monitoring in laser powder bed fusion. By jointly analyzing image and acoustic signals across recoater and laser scenarios, the method improves monitoring accuracy, robustness, and interpretability for defect severity assessment.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 31,
+    title: "WPANet: A Physically Consistent and Interpretable Framework for Fault Diagnosis via Wavelet Prior-Guided Algorithm Unrolling",
+    authors: "Yiyue Zhang, Gang Chen, Zhenpeng Lao, Junlin Yuan, Hanyue Zhu",
+    venue: "Neurocomputing, 666, 132275",
+    type: "journal",
+    year: "2026",
+    abstract: "We propose WPANet, an interpretable fault diagnosis framework that combines wavelet priors with algorithm unrolling. By embedding wavelet-guided reconstruction and an unrolled time-enhanced iterative soft-thresholding solver, the method improves physical consistency, robustness, and transparency under time-varying conditions.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 32,
+    title: "An Interpretable Causal Invariant Graph Neural Network for Unseen Domain Gear Fault Diagnosis",
+    authors: "Zhenpeng Lao, Gang Chen, Yiyue Zhang, Penghong Lu, Zhenzhen Jin",
+    venue: "Engineering Applications of Artificial Intelligence, 170, 114227",
+    type: "journal",
+    year: "2026",
+    abstract: "We develop CIGNN, an interpretable causal invariant graph neural network for unseen-domain gear fault diagnosis. The framework combines structural causal modeling, causal disentanglement, cross-domain consistency learning, and intervention-based risk minimization to improve robustness and interpretability under distribution shift.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 33,
+    title: "Automated High-Precision Control of Twisted and Coiled Polymers Under Parameter Variability",
+    authors: "Chen Zhang, Jiashi Du, Boyi Xu, Zhanhua Chang, Gang Chen, Yitong Zhou",
+    venue: "IEEE Robotics and Automation Letters, Early Access, 2026",
+    type: "journal",
+    year: "2026",
+    abstract: "We propose an automated two-stage IGAPSO-based framework for high-precision control of twisted and coiled polymer artificial muscles under parameter variability. The method combines neural-network-assisted offline optimization with rapid online fine-tuning to reduce manual calibration while improving accuracy and robustness.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 34,
+    title: "Collaborative Design of Fault Diagnosis and Fault Tolerance Control Under Nested Signal Temporal Logic Specifications",
+    authors: "Penghong Lu, Gang Chen, Peng Wei, Rong Su",
+    venue: "Preprint, 2025",
+    type: "journal",
+    year: "2025",
+    abstract: "We propose a collaborative design framework that jointly integrates fault diagnosis and fault-tolerant control under nested signal temporal logic specifications. The method combines a diagnosis observer with recursively feasible fault-tolerant MPC guided by control barrier functions to maintain task satisfaction under faults.",
+    links: [
+      { type: "external", label: "Link", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 35,
+    title: "A Novel Wrapper Method for Feature Selection and Its Applications",
+    authors: "Gang Chen, Jin Chen",
+    venue: "Neurocomputing, 159, 219-226",
+    type: "journal",
+    year: "2015",
+    abstract: "We propose CSMSVM, a wrapper-based feature selection framework that integrates cosine similarity into support vector machines. The method jointly performs feature selection and classifier learning in kernel space, improving classification accuracy while reducing redundant or irrelevant features.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 36,
+    title: "Active Learning Based Requirement Mining for Cyber-Physical Systems",
+    authors: "Gang Chen, Zachary Sabato, Zhaodan Kong",
+    venue: "2016 IEEE 55th Conference on Decision and Control (CDC), 4586-4593",
+    type: "conference",
+    year: "2016",
+    abstract: "We study requirement mining for cyber-physical systems by combining signal temporal logic with active learning. The proposed GP-ACB algorithm accelerates the search for parametric temporal logic requirements by selecting informative samples, leading to faster convergence than existing Gaussian-process-based alternatives.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 37,
+    title: "An Adaptive Analog Circuit for LVDT's Nanometer Measurement Without Losing Sensitivity and Range",
+    authors: "Gang Chen, Bo Zhang, Pinkuan Liu, Han Ding",
+    venue: "IEEE Sensors Journal, 15(4), 2015",
+    type: "journal",
+    year: "2015",
+    abstract: "We develop a self-adaptive signal-conditioning circuit for LVDT-based displacement measurement. By combining a fuzzy-PID-controlled programmable gain amplifier array with adaptive reference generation, the design improves nanometer-scale resolution across a wide measurement range without sacrificing sensitivity.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 38,
+    title: "An Adaptive Non-parametric Short-Time Fourier Transform: Application to Echolocation",
+    authors: "Gang Chen, Jin Chen, Guangming Dong, Huiming Jiang",
+    venue: "Applied Acoustics, 87, 131-141",
+    type: "journal",
+    year: "2015",
+    abstract: "We propose an adaptive non-parametric short-time Fourier transform for high-resolution time-frequency representation. By rotating local signal components and estimating the optimal rotation angle through an iterative approximation algorithm, the method improves generalization ability and performs well in echolocation signal analysis.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 39,
+    title: "Chirplet Wigner–Ville Distribution for Time–Frequency Representation and Its Application",
+    authors: "G. Chen, J. Chen, G.M. Dong",
+    venue: "Mechanical Systems and Signal Processing, 41, 1-13",
+    type: "journal",
+    year: "2013",
+    abstract: "We present a Chirplet Wigner–Ville Distribution for cross-term-free time-frequency analysis. The method combines frequency-rotating operators with Wigner–Ville analysis and instantaneous-frequency relocation, enabling more concentrated energy representations and accurate analysis of nonlinear and multicomponent signals.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 40,
+    title: "Correct-by-Construction Approach for Self-Evolvable Robots",
+    authors: "Gang Chen, Zhaodan Kong",
+    venue: "Proceedings of the ASME 2017 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference (IDETC/CIE 2017)",
+    type: "conference",
+    year: "2017",
+    abstract: "We introduce a formal modeling and design framework for self-evolvable robots that supports both structural and functional reconfiguration. The approach uses reconfiguration grammars and a correct-by-construction synthesis strategy to generate robot designs guaranteed to satisfy task specifications in a given workspace.",
+    links: [
+      { type: "external", label: "ASME", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 41,
+    title: "Data-Driven Approximate Abstraction for Black-Box Piecewise Affine Systems",
+    authors: "Gang Chen, Zhaodan Kong",
+    venue: "arXiv preprint arXiv:1801.09289",
+    type: "preprint",
+    year: "2018",
+    abstract: "We develop a data-driven algorithm for constructing approximate abstractions of black-box piecewise affine systems under temporal logic specifications. By integrating system identification, abstraction refinement, and active sampling, the method derives abstractions with bounded error and probability guarantees even when the system dynamics are unknown.",
+    links: [
+      { type: "external", label: "arXiv", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 42,
+    title: "Formal Interpretation of Cyber-Physical System Performance with Temporal Logic",
+    authors: "Gang Chen, Zachary Sabato, Zhaodan Kong",
+    venue: "Cyber-Physical Systems, 4(3), 175-203",
+    type: "journal",
+    year: "2018",
+    abstract: "We propose a formal interpretation framework that allows a human user to interrogate a cyber-physical system using temporal logic queries. The method formulates interpretation as a temporal logic inference problem and introduces a Gaussian-process-based active learning algorithm to obtain probably approximately correct solutions efficiently.",
+    links: [
+      { type: "external", label: "Taylor & Francis", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 43,
+    title: "Necessary and Sufficient Conditions for Lossless Negative Imaginary Systems",
+    authors: "Mei Liu, Xingjian Jing, Gang Chen",
+    venue: "Journal of the Franklin Institute, 357, 2330-2353",
+    type: "journal",
+    year: "2020",
+    abstract: "We study lossless negative imaginary systems in both continuous-time and discrete-time settings. The paper establishes necessary and sufficient frequency-domain and state-space conditions, develops decomposition results, and derives new relationships between lossless positive real and lossless negative imaginary systems.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 44,
+    title: "Optimised Dispensing of Predatory Mites by Multirotor UAVs in Wind: A Distribution Pattern Modelling Approach for Precision Pest Management",
+    authors: "April L. Teske, Gang Chen, Christian Nansen, Zhaodan Kong",
+    venue: "Biosystems Engineering, 187, 226-238",
+    type: "journal",
+    year: "2019",
+    abstract: "We propose a data-driven modeling approach for UAV-based autonomous dispensing of predatory mites in wind. Using outdoor experiments and machine learning, the method characterizes vermiculite distribution as a function of wind conditions and UAV operating parameters, enabling more accurate precision pest management.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 45,
+    title: "Semantic Inference for Cyber-Physical Systems with Signal Temporal Logic",
+    authors: "Gang Chen, Mei Liu, Zhaodan Kong",
+    venue: "2019 IEEE 58th Conference on Decision and Control (CDC)",
+    type: "conference",
+    year: "2019",
+    abstract: "We present the problem of semantic inference for cyber-physical systems, aiming to translate system behaviors into signal temporal logic specifications automatically. To address combinatorial explosion in formula search, we propose an agenda-based computation framework and formulate semantic inference as a Markov decision process solved with reinforcement learning.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+
+  {
+    id: 1,
+    title: "Active Requirement Mining of Bounded-Time Temporal Properties of Cyber-Physical Systems",
+    authors: "Gang Chen, Zachary Sabato, Zhaodan Kong",
+    venue: "arXiv preprint arXiv:1603.00814",
+    type: "preprint",
+    year: "2016",
+    abstract: "We study active requirement mining for bounded-time signal temporal logic properties of cyber-physical systems and propose the GP-ACB algorithm to accelerate falsification-based mining with stronger convergence behavior than existing Gaussian-process active learning baselines.",
+    links: [
+      { type: "external", label: "arXiv", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 2,
+    title: "Cognitive Manipulation: Semi-supervised Visual Representation and Classroom-to-real Reinforcement Learning for Assembly in Semi-structured Environments",
+    authors: "Chuang Wang, Lie Yang, Ze Lin, Yizhi Liao, Gang Chen, Longhan Xie",
+    venue: "arXiv preprint arXiv:2406.00364",
+    type: "preprint",
+    year: "2024",
+    abstract: "We propose a cognitive manipulation framework for robotic assembly in semi-structured environments that integrates skill-graph-guided object detection, coarse operation planning, and classroom-to-real residual reinforcement learning for robust and efficient fine manipulation.",
+    links: [
+      { type: "external", label: "arXiv", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 3,
+    title: "Semantic Parsing of Automobile Steering Systems",
+    authors: "Gang Chen, Zachary Sabato, Zhaodan Kong",
+    venue: "Proceedings of the 8th International Conference on the Internet of Things (IoT '18)",
+    type: "conference",
+    year: "2018",
+    abstract: "We present a human-in-the-loop semantic parsing framework that automatically translates automobile steering behaviors into signal temporal logic specifications using agenda-based parsing and reinforcement learning.",
+    links: [
+      { type: "external", label: "ACM DL", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 4,
+    title: "Instantaneous Frequency Extraction of Overlapped Multicomponent Signals with an Adaptive Constraints Approach",
+    authors: "Du Li, Zhenpeng Lao, Penghong Lu, Gang Chen",
+    venue: "Engineering Research Express, 7, 035557",
+    type: "journal",
+    year: "2025",
+    abstract: "We propose the adaptive ridge path regrouping algorithm for overlapped multicomponent signals, combining variation-constrained time-frequency filtering, entropy-guided parameter adaptation, and a refined penalty term to improve instantaneous-frequency estimation accuracy and robustness.",
+    links: [
+      { type: "external", label: "IOPscience", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 5,
+    title: "AD-STLN: A Neural-Symbolic Framework with Dictionary Learning for Transparent Bearing Fault Classification",
+    authors: "Peixi Yang, Gang Chen",
+    venue: "2025 International Conference on Sensing, Measurement & Data Analytics in the era of Artificial Intelligence (ICSMD)",
+    type: "conference",
+    year: "2025",
+    abstract: "We introduce AD-STLN, an interpretable bearing fault diagnosis framework that combines adaptive dictionary convolution, sparse attention, and weighted signal temporal logic reasoning to produce transparent STL-like diagnostic rules.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 6,
+    title: "An Interpretable Diagnosis Method for Wind Turbine Gearbox Based on Causal-Aware Neural Network",
+    authors: "Zhenpeng Lao, Gang Chen, Junlin Yuan",
+    venue: "2025 International Conference on Sensing, Measurement & Data Analytics in the era of Artificial Intelligence (ICSMD)",
+    type: "conference",
+    year: "2025",
+    abstract: "We propose a causal-aware neural network for wind turbine gearbox diagnosis that models causal mechanisms, disentangles causal and non-causal subgraphs, and uses causal intervention to improve interpretability and robustness under distribution shift.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 7,
+    title: "Control Synthesis of Energy Harvesting MEMS Devices with Load-based Spectral Logic Specifications",
+    authors: "Gang Chen, Yu Lu, Rong Su",
+    venue: "2022 IEEE 17th International Conference on Control & Automation (ICCA)",
+    type: "conference",
+    year: "2022",
+    abstract: "We study control synthesis for energy-harvesting MEMS devices under load-based spectral logic specifications, derive satisfaction conditions as LMIs, and develop an iterative semidefinite-programming-based controller synthesis algorithm.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 8,
+    title: "Data-Driven Approximate Abstraction for Black-Box Piecewise Affine Systems",
+    authors: "Gang Chen, Zhaodan Kong",
+    venue: "Preprint",
+    type: "preprint",
+    year: "2018",
+    abstract: "We develop a data-driven algorithm to construct approximate abstractions for black-box piecewise affine systems by integrating system identification, abstraction, and active sampling under temporal-logic specifications with bounded error and probability guarantees.",
+    links: [
+      { type: "external", label: "Preprint", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 9,
+    title: "Fault-Tolerant Synthesis for Multi-process Systems via Resource Sharing: A Discrete-Event Approach",
+    authors: "Gang Chen, Penghong Lu",
+    venue: "2024 4th International Conference on Computer, Control and Robotics (ICCCR)",
+    type: "conference",
+    year: "2024",
+    abstract: "We propose a discrete-event framework for fault-tolerant supervisory control in automated manufacturing systems, using resource sharing and incremental abstraction to characterize the existence of fault-tolerant supervisors and synthesize them efficiently when feasible.",
+    links: [
+      { type: "external", label: "Preprint", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 10,
+    title: "Fault Tolerance Makespan Synthesis in Multi-process Systems via Resource Sharing and Backtracking",
+    authors: "Gang Chen, Yu Lu, Rong Su",
+    venue: "IFAC PapersOnLine, 55(28), 30-37",
+    type: "conference",
+    year: "2022",
+    abstract: "We propose algorithms for checking fault-tolerant properties and synthesizing time-optimal fault-tolerant controllable strings in multi-process systems by combining abstraction, resource sharing, and sequential backtracking.",
+    links: [
+      { type: "external", label: "ScienceDirect", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 11,
+    title: "Interpretable Fault Diagnosis of Rolling Element Bearings with Temporal Logic Neural Network",
+    authors: "Gang Chen, Penghong Lu, Yukun Tang",
+    venue: "2024 18th International Conference on Control, Automation, Robotics and Vision (ICARCV)",
+    type: "conference",
+    year: "2024",
+    abstract: "We propose a temporal logic neural network in which neurons act as logic propositions and the whole network can be interpreted as weighted signal temporal logic, enabling accurate and formally interpretable bearing fault diagnosis.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 12,
+    title: "A Neural-Symbolic Network for Interpretable Fault Diagnosis of Rolling Element Bearings Based on Temporal Logic",
+    authors: "Ruoyao Tian, Mengqian Cui, Gang Chen",
+    venue: "IEEE Transactions on Instrumentation and Measurement, 73, 3515614",
+    type: "journal",
+    year: "2024",
+    abstract: "We develop a neural-symbolic learning architecture for interpretable rolling-bearing diagnosis that combines weighted signal temporal logic, predicate extraction, autoencoding, and timed failure propagation graphs to produce accurate and explainable fault decisions.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 13,
+    title: "LTQU-Net: Learnable TQWT-Enhanced Unrolling Net for Interpretable Cross-Domain Fault Diagnosis",
+    authors: "Yiyue Zhang, Gang Chen, Zhenpeng Lao",
+    venue: "2025 International Conference on Sensing, Measurement & Data Analytics in the era of Artificial Intelligence (ICSMD)",
+    type: "conference",
+    year: "2025",
+    abstract: "We propose LTQU-Net, which integrates differentiable tunable Q-factor wavelet decomposition with deep unfolding to learn interpretable and invariant time-frequency features for robust cross-domain fault diagnosis.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 14,
+    title: "Requirement Mining from Closed-Loop Control Models via Human-Computer Collaboration",
+    authors: "Penghong Lu, Gang Chen",
+    venue: "2024 4th International Conference on Computer, Control and Robotics (ICCCR)",
+    type: "conference",
+    year: "2024",
+    abstract: "We introduce a human-computer collaboration framework for requirement mining from closed-loop control models, allowing designers and a computer agent to iteratively explore, refine, and optimize signal temporal logic specifications.",
+    links: [
+      { type: "external", label: "IEEE Xplore", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+
+  {
+    id: 16,
+    title: "Efficient Learning Residual Policy for Peg-in-Hole Task with Inaccurate Trajectory",
+    authors: "Chuang Wang, Juncheng Li, Biao Liu, Pengpeng Xu, Chupeng Su, Gang Chen, Longhan Xie",
+    venue: "SSRN Preprint",
+    type: "preprint",
+    year: "2022",
+    abstract: "We present a residual reinforcement learning framework for peg-in-hole assembly with inaccurate trajectories, using task information to balance prior policy and exploration, improve learning efficiency, and reduce collision risk.",
+    links: [
+      { type: "external", label: "SSRN", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  },
+  {
+    id: 17,
+    title: "A Knowledge-informed Learning Framework for Precise Assembly Task with Uncertainties",
+    authors: "Chuang Wang, Juncheng Li, Biao Liu, Pengpeng Xu, Chupeng Su, Gang Chen, Longhan Xie",
+    venue: "SSRN Preprint",
+    type: "preprint",
+    year: "2023",
+    abstract: "We propose a knowledge-informed learning and control framework for precise peg-in-hole assembly that combines a partial model, uncertainty-aware reward shaping, and residual reinforcement learning to improve adaptability, safety, and sample efficiency.",
+    links: [
+      { type: "external", label: "SSRN", icon: "fa-external-link" },
+      { type: "pdf", label: "PDF", icon: "fa-file-pdf-o" },
+      { type: "code", label: "Code", icon: "fa-code" }
+    ]
+  }
+    ];
+
+    // 计算各种类型论文的数量
+    function calculatePublicationStats() {
+      const stats = {
+        journal: 0,
+        conference: 0,
+        preprint: 0,
+        total: publicationsData.length
+      };
+      
+      // 计算每种类型的论文数量
+      publicationsData.forEach(paper => {
+        if (paper.type === 'journal') {
+          stats.journal++;
+        } else if (paper.type === 'conference') {
+          stats.conference++;
+        } else if (paper.type === 'preprint') {
+          stats.preprint++;
+        }
+      });
+      
+      return stats;
+    }
+
+    // 渲染统计卡片
+    function renderStatsCards() {
+      const stats = calculatePublicationStats();
+      const statsGrid = document.getElementById('statsGrid');
+      
+      if (!statsGrid) return;
+      
+      statsGrid.innerHTML = `
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa fa-book"></i>
+          </div>
+          <div class="stat-number">${stats.journal}</div>
+          <div class="stat-label">Journal Papers</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa fa-users"></i>
+          </div>
+          <div class="stat-number">${stats.conference}</div>
+          <div class="stat-label">Conference Papers</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa fa-file-text"></i>
+          </div>
+          <div class="stat-number">${stats.preprint}</div>
+          <div class="stat-label">Preprints</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa fa-quote-right"></i>
+          </div>
+          <div class="stat-number">${stats.total}</div>
+          <div class="stat-label">Total Publications</div>
+        </div>
+      `;
+    }
+
+    // 根据年份和类型筛选论文
+    function filterPublications(year, type) {
+      return publicationsData.filter(paper => {
+        const yearMatch = !year || year === 'all' || paper.year === year;
+        const typeMatch = !type || type === 'all' || paper.type === type;
+        return yearMatch && typeMatch;
+      });
+    }
+
+    // 按年份分组论文
+    function groupPublicationsByYear(publications) {
+      const publicationsByYear = {};
+      
+      publications.forEach(paper => {
+        if (!publicationsByYear[paper.year]) {
+          publicationsByYear[paper.year] = [];
+        }
+        publicationsByYear[paper.year].push(paper);
+      });
+      
+      return publicationsByYear;
+    }
+
+    // 创建论文卡片
+    function createPublicationCard(paper) {
+      const typeClass = paper.type === 'journal' ? 'journal' : 
+                        paper.type === 'conference' ? 'conference' : 'preprint';
+      
+      const typeText = paper.type === 'journal' ? 'Journal Paper' : 
+                       paper.type === 'conference' ? 'Conference Paper' : 'Preprint';
+      
+      // 生成链接HTML
+      let linksHTML = '';
+      if (paper.links && paper.links.length > 0) {
+        linksHTML = '<div class="publication-links">';
+        paper.links.forEach(link => {
+          linksHTML += `
+            <a href="${link.url}" class="publication-link" target="_blank">
+              <i class="fa ${link.icon}"></i> ${link.label}
+            </a>
+          `;
+        });
+        linksHTML += '</div>';
+      }
+      
+      return `
+        <div class="publication-card" data-type="${paper.type}" data-year="${paper.year}">
+          <span class="publication-type ${typeClass}">${typeText}</span>
+          <h3 class="publication-title">${paper.title}</h3>
+          <p class="publication-authors">${paper.authors}</p>
+          <div class="publication-venue">
+            <i class="fa fa-${paper.type === 'journal' ? 'book' : paper.type === 'conference' ? 'users' : 'archive'}"></i> ${paper.venue}
+          </div>
+          <p class="publication-abstract" id="abstract-${paper.year}-${paper.id}">
+            ${paper.abstract}
+          </p>
+          <button class="toggle-abstract" data-target="abstract-${paper.year}-${paper.id}">
+            <i class="fa fa-chevron-down"></i> Show Abstract
+          </button>
+          ${linksHTML}
+        </div>
+      `;
+    }
+
+    // 渲染论文
+    function renderPublications(year = 'all', type = 'all') {
+      const filteredPublications = filterPublications(year, type);
+      const publicationsByYear = groupPublicationsByYear(filteredPublications);
+      const container = document.getElementById('publicationsContainer');
+      
+      if (!container) return;
+      
+      // 清空容器
+      container.innerHTML = '';
+      
+      // 如果没有论文，显示提示
+      if (filteredPublications.length === 0) {
+        container.innerHTML = `
+          <div class="no-results text-center py-5">
+            <i class="fa fa-file-text-o fa-3x mb-3" style="color: #cbd5e1;"></i>
+            <h3>No Publications Found</h3>
+            <p class="text-muted">No publications match the selected filter criteria.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      // 按年份降序排列
+      const years = Object.keys(publicationsByYear).sort((a, b) => b - a);
+      
+      // 渲染每个年份的论文
+      years.forEach(year => {
+        const yearPublications = publicationsByYear[year];
+        const yearSection = document.createElement('div');
+        yearSection.className = 'year-group';
+        yearSection.id = year;
+        
+        yearSection.innerHTML = `
+          <h2 class="year-header">
+            <i class="fa fa-calendar"></i> ${year}
+          </h2>
+        `;
+        
+        // 添加论文卡片
+        yearPublications.forEach(paper => {
+          const paperCardHTML = createPublicationCard(paper);
+          yearSection.innerHTML += paperCardHTML;
+        });
+        
+        container.appendChild(yearSection);
+      });
+    }
+
     // 论文过滤功能
     document.addEventListener('DOMContentLoaded', function() {
       const filterContainer = document.getElementById('filterContainer');
       const filterTags = document.querySelectorAll('.filter-tag');
-      const publicationCards = document.querySelectorAll('.publication-card');
-      const yearGroups = document.querySelectorAll('.year-group');
+      
+      // 初始化时渲染统计卡片和论文
+      renderStatsCards();
+      renderPublications('all', 'all');
       
       // 添加筛选功能
       filterTags.forEach(tag => {
@@ -949,40 +1782,22 @@
           filterTags.forEach(t => t.classList.remove('active'));
           this.classList.add('active');
           
-          // 显示/隐藏论文卡片
-          publicationCards.forEach(card => {
-            if (filterValue === 'all') {
-              card.style.display = 'block';
-            } else {
-              const cardType = card.getAttribute('data-type');
-              const cardYear = card.getAttribute('data-year');
-              
-              if (cardType === filterValue || cardYear === filterValue) {
-                card.style.display = 'block';
-              } else {
-                card.style.display = 'none';
-              }
-            }
-          });
+          // 判断是年份筛选还是类型筛选
+          const isYearFilter = ['2026', '2025', '2024', '2023', '2022', 'all'].includes(filterValue);
           
-          // 显示/隐藏年份分组
-          yearGroups.forEach(group => {
-            const year = group.getAttribute('id');
-            const hasVisibleCards = Array.from(group.querySelectorAll('.publication-card'))
-              .some(card => card.style.display !== 'none');
-            
-            if (filterValue === 'all' || year === filterValue || hasVisibleCards) {
-              group.style.display = 'block';
-            } else {
-              group.style.display = 'none';
-            }
-          });
+          if (filterValue === 'all') {
+            renderPublications('all', 'all');
+          } else if (isYearFilter) {
+            renderPublications(filterValue, 'all');
+          } else {
+            renderPublications('all', filterValue);
+          }
           
-          // 平滑滚动到第一个可见部分
+          // 平滑滚动到论文区域
           setTimeout(() => {
-            const firstVisible = document.querySelector('.publication-card[style="display: block;"]');
-            if (firstVisible) {
-              firstVisible.scrollIntoView({ 
+            const publicationsSection = document.querySelector('.publications-section');
+            if (publicationsSection) {
+              publicationsSection.scrollIntoView({ 
                 behavior: 'smooth', 
                 block: 'start',
                 inline: 'nearest'
@@ -993,49 +1808,37 @@
       });
       
       // 摘要展开/收起功能
-      document.querySelectorAll('.toggle-abstract').forEach(button => {
-        button.addEventListener('click', function() {
-          const targetId = this.getAttribute('data-target');
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('toggle-abstract') || e.target.closest('.toggle-abstract')) {
+          const button = e.target.classList.contains('toggle-abstract') ? e.target : e.target.closest('.toggle-abstract');
+          const targetId = button.getAttribute('data-target');
           const abstract = document.getElementById(targetId);
           
-          if (abstract.classList.contains('expanded')) {
+          if (abstract && abstract.classList.contains('expanded')) {
             abstract.classList.remove('expanded');
-            this.innerHTML = '<i class="fa fa-chevron-down"></i> Show Abstract';
-            this.classList.remove('expanded');
-          } else {
+            button.innerHTML = '<i class="fa fa-chevron-down"></i> Show Abstract';
+            button.classList.remove('expanded');
+          } else if (abstract) {
             abstract.classList.add('expanded');
-            this.innerHTML = '<i class="fa fa-chevron-up"></i> Hide Abstract';
-            this.classList.add('expanded');
+            button.innerHTML = '<i class="fa fa-chevron-up"></i> Hide Abstract';
+            button.classList.add('expanded');
           }
-        });
+        }
       });
       
       // 卡片悬停效果增强
-      document.querySelectorAll('.publication-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-8px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
-        });
+      document.addEventListener('mouseover', function(e) {
+        const publicationCard = e.target.closest('.publication-card');
+        if (publicationCard) {
+          publicationCard.style.transform = 'translateY(-8px)';
+        }
       });
       
-      // 平滑滚动锚点
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if(targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if(targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
+      document.addEventListener('mouseout', function(e) {
+        const publicationCard = e.target.closest('.publication-card');
+        if (publicationCard) {
+          publicationCard.style.transform = 'translateY(0)';
+        }
       });
     });
   </script>
