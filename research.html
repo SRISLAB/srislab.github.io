@@ -4,19 +4,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SRIS Lab — Publications">
+  <meta name="description" content="SRIS Lab - Research Directions">
   <meta name="author" content="SRIS Lab">
   <link rel="icon" href="images/logo/RMX_16.ico">
-  <title>Publications | SRIS Lab</title>
+  <title>Research | SRIS Lab</title>
 
-  <!-- Bootstrap 5 & Font Awesome 4.4.0 -->
+  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="style/jquery.bxslider.css" rel="stylesheet">
-  <link href="style/style.css" rel="stylesheet">
 
-  <!-- 论文发表页面样式 - 与SRIS网站风格统一 -->
   <style>
     :root {
       --primary: #2563eb;
@@ -32,13 +29,13 @@
       --card-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: #ffffff;
@@ -46,8 +43,8 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-    
-    /* 导航栏 - 与SRIS网站统一 */
+
+    /* 导航栏样式 */
     .navbar {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
@@ -55,7 +52,7 @@
       padding: 1rem 0;
       border-bottom: 1px solid #e2e8f0;
     }
-    
+
     .navbar-brand {
       font-weight: 800;
       color: var(--dark);
@@ -64,11 +61,11 @@
       align-items: center;
       gap: 0.5rem;
     }
-    
+
     .navbar-brand span {
       color: var(--primary);
     }
-    
+
     .nav-link {
       font-weight: 500;
       color: var(--dark) !important;
@@ -77,21 +74,21 @@
       border-radius: 8px;
       transition: var(--transition);
     }
-    
+
     .nav-link:hover, .nav-link.active {
       color: var(--primary) !important;
       background-color: rgba(37, 99, 235, 0.08);
     }
-    
+
     .navbar-toggler {
       border: none;
       padding: 0.5rem;
     }
-    
+
     .navbar-toggler:focus {
       box-shadow: none;
     }
-    
+
     /* 主标题区域 */
     .hero-section {
       padding: 6rem 0 4rem;
@@ -99,7 +96,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .hero-section::before {
       content: '';
       position: absolute;
@@ -111,7 +108,7 @@
       background-size: cover;
       opacity: 0.5;
     }
-    
+
     .hero-title {
       font-size: 3.5rem;
       font-weight: 800;
@@ -121,44 +118,23 @@
       margin-bottom: 1.5rem;
       line-height: 1.1;
     }
-    
+
     .hero-subtitle {
       font-size: 1.25rem;
       color: var(--gray);
       max-width: 800px;
       margin-bottom: 2rem;
     }
-    
-    .hero-highlight {
-      background: linear-gradient(90deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
-      border-left: 4px solid var(--primary);
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin: 2rem 0;
-    }
-    
-    .hero-highlight p {
-      margin: 0;
-      font-size: 1.1rem;
-      color: var(--dark);
-    }
-    
-    /* 过滤标签栏 */
-    .filter-section {
-      padding: 2rem 0 1rem;
-      background-color: #ffffff;
-    }
-    
-    .filter-container {
+
+    .tag-container {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      justify-content: center;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
-    
-    .filter-tag {
-      padding: 0.6rem 1.5rem;
+
+    .tag {
+      padding: 0.5rem 1.25rem;
       background: rgba(37, 99, 235, 0.1);
       color: var(--primary);
       border-radius: 50px;
@@ -166,133 +142,52 @@
       font-weight: 500;
       border: 1px solid rgba(37, 99, 235, 0.2);
       transition: var(--transition);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
-    
-    .filter-tag:hover, .filter-tag.active {
-      background: var(--primary);
-      color: white;
+
+    .tag:hover {
+      background: rgba(37, 99, 235, 0.15);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     }
-    
-    .filter-tag i {
-      font-size: 0.9rem;
+
+    .tag i {
+      margin-right: 0.5rem;
     }
-    
-    /* 统计信息卡片 */
-    .stats-section {
-      padding: 3rem 0 5rem;
+
+    /* 研究卡片 */
+    .research-section {
+      padding: 5rem 0;
       background-color: #ffffff;
     }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    
-    .stat-card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      border: 1px solid #e2e8f0;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      text-align: center;
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--card-shadow-hover);
-      border-color: var(--primary-light);
-    }
-    
-    .stat-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin: 0 auto 1rem;
-    }
-    
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      line-height: 1;
-    }
-    
-    .stat-label {
-      color: var(--gray);
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-    
-    /* 论文卡片区域 */
-    .publications-section {
-      padding: 3rem 0 5rem;
-      background-color: #ffffff;
-    }
-    
+
     .section-title {
+      text-align: center;
       font-size: 2.5rem;
       font-weight: 800;
       color: var(--dark);
-      margin-bottom: 2rem;
-      padding-left: 1rem;
-      border-left: 4px solid var(--primary);
+      margin-bottom: 1rem;
     }
-    
-    .year-group {
-      margin-bottom: 3rem;
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
     }
-    
-    .year-header {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #e2e8f0;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .year-header i {
-      color: var(--primary);
-    }
-    
-    .publication-card {
+
+    .research-card {
       background: white;
       border-radius: 16px;
       padding: 2rem;
+      height: 100%;
       border: 1px solid #e2e8f0;
       box-shadow: var(--card-shadow);
       transition: var(--transition);
-      margin-bottom: 1.5rem;
       position: relative;
       overflow: hidden;
     }
-    
-    .publication-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--card-shadow-hover);
-      border-color: var(--primary-light);
-    }
-    
-    .publication-card::before {
+
+    .research-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -302,143 +197,270 @@
       background: var(--primary);
       transition: var(--transition);
     }
-    
-    .publication-card:hover::before {
+
+    .research-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--primary-light);
+    }
+
+    .research-card:hover::before {
       background: linear-gradient(to bottom, var(--primary), var(--secondary));
     }
-    
-    .publication-type {
-      display: inline-block;
-      padding: 0.4rem 0.8rem;
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--primary);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(37, 99, 235, 0.2);
+
+    .research-card:nth-child(2)::before {
+      background: var(--secondary);
     }
-    
-    .publication-type.journal {
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--secondary);
-      border-color: rgba(16, 185, 129, 0.2);
+
+    .research-card:nth-child(3)::before {
+      background: var(--accent);
     }
-    
-    .publication-type.conference {
-      background: rgba(139, 92, 246, 0.1);
-      color: var(--accent);
-      border-color: rgba(139, 92, 246, 0.2);
-    }
-    
-    .publication-type.preprint {
-      background: rgba(245, 158, 11, 0.1);
-      color: #f59e0b;
-      border-color: rgba(245, 158, 11, 0.2);
-    }
-    
-    .publication-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-    }
-    
-    .publication-authors {
-      color: var(--gray);
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.5;
-    }
-    
-    .publication-venue {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 1rem;
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .publication-venue i {
-      font-size: 0.9rem;
-    }
-    
-    .publication-abstract {
-      color: var(--dark);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      justify-content: center;
       margin-bottom: 1.5rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
+      font-size: 1.5rem;
+      color: white;
     }
-    
-    .publication-abstract.expanded {
-      max-height: 500px;
+
+    .card-1 .card-icon {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
     }
-    
-    .publication-links {
+
+    .card-2 .card-icon {
+      background: linear-gradient(135deg, var(--secondary), #34d399);
+    }
+
+    .card-3 .card-icon {
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-subtitle {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .card-description {
+      color: #64748b;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
     }
-    
-    .publication-link {
+
+    .tech-tag {
+      padding: 0.25rem 0.75rem;
+      background-color: #f1f5f9;
+      color: #475569;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .tech-tag:hover {
+      background-color: #e2e8f0;
+      transform: translateY(-1px);
+    }
+
+    .card-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .card-link {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: rgba(37, 99, 235, 0.1);
       color: var(--primary);
-      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .card-link:hover {
+      color: var(--primary-dark);
+      gap: 0.75rem;
+    }
+
+    .card-link i {
+      transition: var(--transition);
+    }
+
+    /* 手风琴区域 */
+    .details-section {
+      padding: 5rem 0;
+      background-color: #f8fafc;
+    }
+
+    .accordion-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .accordion-header {
+      background: white;
+    }
+
+    .accordion-button {
+      padding: 1.5rem;
+      font-weight: 600;
+      color: var(--dark);
+      background: white;
+      box-shadow: none;
+      font-size: 1.1rem;
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: var(--primary);
+      background-color: rgba(37, 99, 235, 0.05);
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: var(--primary-light);
+    }
+
+    .accordion-button::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%232563eb'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+
+    .accordion-body {
+      padding: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .detail-title {
+      color: var(--primary);
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .detail-title:first-child {
+      margin-top: 0;
+    }
+
+    .metric-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background-color: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 500;
-      text-decoration: none;
-      transition: var(--transition);
+      margin: 0.25rem 0.5rem 0.25rem 0;
       border: 1px solid rgba(37, 99, 235, 0.2);
     }
-    
-    .publication-link:hover {
-      background: rgba(37, 99, 235, 0.2);
-      color: var(--primary-dark);
-      transform: translateY(-2px);
-      text-decoration: none;
+
+    .metric-badge:nth-child(4n+2) {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--secondary);
+      border-color: rgba(16, 185, 129, 0.2);
     }
-    
-    .publication-link i {
-      font-size: 0.8rem;
+
+    .metric-badge:nth-child(4n+3) {
+      background-color: rgba(139, 92, 246, 0.1);
+      color: var(--accent);
+      border-color: rgba(139, 92, 246, 0.2);
     }
-    
-    .toggle-abstract {
-      background: none;
-      border: none;
-      color: var(--primary);
+
+    .metric-badge:nth-child(4n) {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.2);
+    }
+
+    .national-fit {
+      color: var(--gray);
+      font-style: italic;
       font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      padding: 0.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--secondary);
+      margin-top: 1.5rem;
+    }
+
+    /* 资金部分 */
+    .funding-section {
+      padding: 2rem 0 5rem;
+      background-color: #ffffff;
+    }
+
+    .funding-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .funding-item {
+      padding: 1.25rem 1.5rem;
+      border-left: 4px solid var(--primary);
+      background: white;
+      margin-bottom: 1rem;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
       transition: var(--transition);
+      position: relative;
     }
-    
-    .toggle-abstract:hover {
-      color: var(--primary-dark);
+
+    .funding-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
-    
-    .toggle-abstract i {
-      transition: transform 0.3s ease;
+
+    .funding-item:nth-child(2n) {
+      border-left-color: var(--secondary);
     }
-    
-    .toggle-abstract.expanded i {
-      transform: rotate(180deg);
+
+    .funding-item:nth-child(3n) {
+      border-left-color: var(--accent);
     }
-    
+
+    .funding-year {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .funding-title {
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .funding-source {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
     /* 页脚 */
     .footer {
       background: var(--dark);
@@ -446,35 +468,35 @@
       padding: 3rem 0 2rem;
       margin-top: 2rem;
     }
-    
+
     .footer-content {
       text-align: center;
     }
-    
+
     .footer-logo {
       font-size: 1.5rem;
       font-weight: 800;
       color: white;
       margin-bottom: 1rem;
     }
-    
+
     .footer-logo span {
       color: var(--primary-light);
     }
-    
+
     .footer-text {
       max-width: 600px;
       margin: 0 auto 2rem;
       color: #94a3b8;
     }
-    
+
     .copyright {
       padding-top: 2rem;
       border-top: 1px solid #334155;
       color: #94a3b8;
       font-size: 0.9rem;
     }
-    
+
     /* 响应式调整 */
     @media (max-width: 768px) {
       .hero-title {
@@ -489,54 +511,29 @@
         font-size: 2rem;
       }
       
-      .year-header {
-        font-size: 1.7rem;
+      .research-card {
+        margin-bottom: 1.5rem;
       }
       
-      .publication-title {
-        font-size: 1.2rem;
-      }
-      
-      .publication-card {
-        padding: 1.5rem;
-      }
-      
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .filter-container {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-      }
-      
-      .filter-tag {
-        white-space: nowrap;
+      .card-links {
+        flex-direction: column;
+        gap: 0.75rem;
       }
     }
-    
+
     @media (max-width: 576px) {
       .hero-title {
         font-size: 2rem;
       }
       
-      .stats-grid {
-        grid-template-columns: 1fr;
+      .tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
       }
       
-      .stat-number {
-        font-size: 2rem;
-      }
-      
-      .publication-links {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .publication-link {
-        width: 100%;
-        justify-content: center;
+      .accordion-button {
+        padding: 1.25rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -545,8 +542,8 @@
   <!-- 导航栏 -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="fa fa-flask"></i>
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-brain"></i>
         <span>SRIS</span> Lab
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -561,16 +558,16 @@
             <a class="nav-link" href="people.html">People</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="research.html">Research</a>
+            <a class="nav-link active" href="research.html">Research</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
               Publications
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#journal">Journal Papers</a></li>
-              <li><a class="dropdown-item" href="#conference">Conference Papers</a></li>
-              <li><a class="dropdown-item" href="#preprint">Preprints</a></li>
+              <li><a class="dropdown-item" href="journal.html">Journal Papers</a></li>
+              <li><a class="dropdown-item" href="conference.html">Conference Papers</a></li>
+              <li><a class="dropdown-item" href="realtime.html">Submitted Papers</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -580,14 +577,6 @@
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
         </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">EN</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index_x.html">中文</a>
-          </li>
-        </ul>
       </div>
     </div>
   </nav>
@@ -595,326 +584,282 @@
   <!-- 主标题区域 -->
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-title">Publications</h1>
-      <p class="hero-subtitle">
-        Explore the research outputs of the SRIS Lab. Our publications span journals, conferences, and preprints, 
-        covering topics in interpretable AI, signal temporal logic, fault diagnosis, cyber-physical systems, and more.
-      </p>
-      
-      <div class="hero-highlight">
-        <p>
-          Our research is regularly published in top-tier journals and conferences. This page provides access to 
-          our latest publications, with links to full papers, code repositories, and supplementary materials.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 过滤标签栏 -->
-  <section class="filter-section">
-    <div class="container">
-      <div class="filter-container" id="filterContainer">
-        <div class="filter-tag active" data-filter="all">
-          <i class="fa fa-th-large"></i> All Publications
-        </div>
-        <div class="filter-tag" data-filter="journal">
-          <i class="fa fa-book"></i> Journal Papers
-        </div>
-        <div class="filter-tag" data-filter="conference">
-          <i class="fa fa-users"></i> Conference Papers
-        </div>
-        <div class="filter-tag" data-filter="preprint">
-          <i class="fa fa-file-text"></i> Preprints
-        </div>
-        <div class="filter-tag" data-filter="2024">
-          <i class="fa fa-calendar"></i> 2024
-        </div>
-        <div class="filter-tag" data-filter="2023">
-          <i class="fa fa-calendar"></i> 2023
-        </div>
-        <div class="filter-tag" data-filter="2022">
-          <i class="fa fa-calendar"></i> 2022
+      <div class="row">
+        <div class="col-lg-8">
+          <h1 class="hero-title">Intelligent Systems Research</h1>
+          <p class="hero-subtitle">
+            At the <strong>Smart, Reliable, and Interpretable Systems (SRIS) Lab</strong>, we integrate <strong>logic</strong>, <strong>physics</strong>, and <strong>learning</strong> to engineer trustworthy, high-performance systems for intelligent manufacturing and critical infrastructure.
+          </p>
+          <p>
+            Our research advances a unified methodology—combining Signal Temporal Logic (STL), causal inference, and physics-guided priors—to achieve verifiable diagnosis, safe autonomy, interpretable machine learning, and fleet‑level health management.
+          </p>
+          <div class="tag-container">
+            <div class="tag"><i class="fas fa-shield-alt"></i> Verifiable</div>
+            <div class="tag"><i class="fas fa-industry"></i> Industrial‑Grade</div>
+            <div class="tag"><i class="fas fa-eye"></i> Interpretable</div>
+            <div class="tag"><i class="fas fa-robot"></i> Autonomous</div>
+            <div class="tag"><i class="fas fa-bolt"></i> High‑Performance</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 统计信息 -->
-  <section class="stats-section">
+  <!-- 研究卡片 -->
+  <section class="research-section">
     <div class="container">
-      <h2 class="section-title">Research Output</h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fa fa-book"></i>
+      <h2 class="section-title">Research Directions</h2>
+      <p class="section-subtitle">Our work spans three interconnected research thrusts, each addressing fundamental challenges in building trustworthy intelligent systems.</p>
+      
+      <div class="row">
+        <!-- 卡片 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="research-card card-1">
+            <div class="card-icon">
+              <i class="fas fa-sitemap"></i>
+            </div>
+            <h3 class="card-title">Neuro‑Symbolic Foundation Models</h3>
+            <div class="card-subtitle">Trustworthy Manufacturing AI</div>
+            <p class="card-description">Multimodal industrial pretraining with <em>STL‑regularized</em> objectives and causal priors for machine‑checkable rationales and controller‑aware outputs.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Causal KGs</span>
+              <span class="tech-tag">Rule distillation</span>
+              <span class="tech-tag">Cross‑site transfer</span>
+              <span class="tech-tag">Uncertainty</span>
+            </div>
+            <div class="card-links">
+              <a href="#d1" class="card-link" data-bs-toggle="collapse">
+                <i class="fas fa-chevron-down"></i> Read details
+              </a>
+              <a href="./modules/IFD.html" class="card-link">
+                Temporal Logic Neural Network <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
-          <div class="stat-number">24</div>
-          <div class="stat-label">Journal Papers</div>
         </div>
         
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fa fa-users"></i>
+        <!-- 卡片 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="research-card card-2">
+            <div class="card-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="card-title">STL‑Driven Safe Autonomy</h3>
+            <div class="card-subtitle">Dual‑Arm & Mobile Manipulation</div>
+            <p class="card-description">Plans and controllers synthesized under temporal‑logic contracts. Reference governors guarantee safety; residual RL optimizes within verified tubes.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Contract mining</span>
+              <span class="tech-tag">Compositional proofs</span>
+              <span class="tech-tag">Vision‑force skills</span>
+              <span class="tech-tag">Runtime monitors</span>
+            </div>
+            <div class="card-links">
+              <a href="#d2" class="card-link" data-bs-toggle="collapse">
+                <i class="fas fa-chevron-down"></i> Read details
+              </a>
+              <a href="./modules/CSTL.html" class="card-link">
+                Control & STL <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
-          <div class="stat-number">18</div>
-          <div class="stat-label">Conference Papers</div>
         </div>
         
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fa fa-file-text"></i>
+        <!-- 卡片 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="research-card card-3">
+            <div class="card-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h3 class="card-title">Causal‑Logic PHM</h3>
+            <div class="card-subtitle">Critical Equipment Ecosystems</div>
+            <p class="card-description">Physics‑guided features + causal graphs + STL abstractions to reconstruct propagation chains and recommend cost‑aware interventions across fleets.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Order/TP features</span>
+              <span class="tech-tag">PHM ontology</span>
+              <span class="tech-tag">Causal invariants</span>
+              <span class="tech-tag">Fleet policies</span>
+            </div>
+            <div class="card-links">
+              <a href="#d3" class="card-link" data-bs-toggle="collapse">
+                <i class="fas fa-chevron-down"></i> Read details
+              </a>
+              <a href="./modules/IFD.html" class="card-link">
+                Interpretable Diagnosis <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
-          <div class="stat-number">7</div>
-          <div class="stat-label">Preprints</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fa fa-quote-right"></i>
-          </div>
-          <div class="stat-number">350+</div>
-          <div class="stat-label">Citations</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 论文发表区域 -->
-  <section class="publications-section">
+  <!-- 详细内容手风琴 -->
+  <section class="details-section">
     <div class="container">
-      <!-- 2024年论文 -->
-      <div class="year-group" id="2024">
-        <h2 class="year-header">
-          <i class="fa fa-calendar"></i> 2024
-        </h2>
-        
-        <!-- 期刊论文示例 -->
-        <div class="publication-card" data-type="journal" data-year="2024">
-          <span class="publication-type journal">Journal Paper</span>
-          <h3 class="publication-title">Neuro-Symbolic Foundation Models for Interpretable Fault Diagnosis in Industrial Systems</h3>
-          <p class="publication-authors">Gang Chen, Penghong Lu, Junlin Yuan, Zhenpeng Lao</p>
-          <div class="publication-venue">
-            <i class="fa fa-book"></i> IEEE Transactions on Industrial Informatics, 20(3), 1234-1245
-          </div>
-          <p class="publication-abstract" id="abstract-2024-1">
-            This paper presents a novel neuro-symbolic framework that combines deep learning with signal temporal logic 
-            for interpretable fault diagnosis in industrial systems. Our approach leverages pre-trained foundation models 
-            with STL-regularized objectives to produce machine-checkable rationales for fault detection and classification. 
-            Experimental results on wind turbine and CNC machine datasets demonstrate state-of-the-art performance with 
-            significantly improved interpretability compared to black-box alternatives.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2024-1">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> IEEE Xplore
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-code"></i> Code
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-quote-right"></i> Cite
-            </a>
-          </div>
-        </div>
-        
-        <!-- 会议论文示例 -->
-        <div class="publication-card" data-type="conference" data-year="2024">
-          <span class="publication-type conference">Conference Paper</span>
-          <h3 class="publication-title">STL-Driven Safe Autonomy for Dual-Arm Robotic Manipulation</h3>
-          <p class="publication-authors">Gang Chen, Jiarui Zhang, Zhenhao Lin, Chao Tang</p>
-          <div class="publication-venue">
-            <i class="fa fa-users"></i> Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)
-          </div>
-          <p class="publication-abstract" id="abstract-2024-2">
-            We present a contract-based control framework for dual-arm robotic manipulation that guarantees safety 
-            through signal temporal logic specifications. Our approach combines reference governors with residual 
-            reinforcement learning to ensure safety constraints are satisfied while optimizing performance. 
-            The framework is validated on a 7-DOF dual-arm robot performing assembly tasks, demonstrating 
-            improved safety and efficiency compared to conventional methods.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2024-2">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> Proceedings
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-video-camera"></i> Video
-            </a>
-          </div>
-        </div>
-        
-        <!-- 预印本示例 -->
-        <div class="publication-card" data-type="preprint" data-year="2024">
-          <span class="publication-type preprint">Preprint</span>
-          <h3 class="publication-title">Causal-Logic PHM: Physics-Guided Causal Inference for Fleet-Level Health Management</h3>
-          <p class="publication-authors">Gang Chen, Weihong Cen, Pengyu Yin, Yuanfeng Jia</p>
-          <div class="publication-venue">
-            <i class="fa fa-archive"></i> arXiv preprint arXiv:2403.12345
-          </div>
-          <p class="publication-abstract" id="abstract-2024-3">
-            This work introduces a causal-logic framework for prognostics and health management (PHM) that 
-            combines physics-guided feature extraction with causal discovery and temporal logic abstractions. 
-            Our approach enables the reconstruction of fault propagation chains across equipment fleets and 
-            recommends cost-aware interventions. The framework is evaluated on wind turbine and railway 
-            traction system datasets, showing significant improvements in fault prediction accuracy and 
-            interpretability over state-of-the-art methods.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2024-3">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> arXiv
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-          </div>
-        </div>
-      </div>
+      <h2 class="section-title">Research Details</h2>
+      <p class="section-subtitle">Click on each research direction to expand and see detailed information about our approach, methodology, and applications.</p>
       
-      <!-- 2023年论文 -->
-      <div class="year-group" id="2023">
-        <h2 class="year-header">
-          <i class="fa fa-calendar"></i> 2023
-        </h2>
-        
-        <!-- 期刊论文示例 -->
-        <div class="publication-card" data-type="journal" data-year="2023">
-          <span class="publication-type journal">Journal Paper</span>
-          <h3 class="publication-title">Temporal Logic Neural Networks for Interpretable Time Series Classification</h3>
-          <p class="publication-authors">Gang Chen, Hanyue Zhu, Yiyue Zhang</p>
-          <div class="publication-venue">
-            <i class="fa fa-book"></i> IEEE Transactions on Pattern Analysis and Machine Intelligence, 45(8), 9876-9889
-          </div>
-          <p class="publication-abstract" id="abstract-2023-1">
-            We propose Temporal Logic Neural Networks (TLNNs), a novel architecture that integrates signal 
-            temporal logic constraints directly into neural network layers for interpretable time series 
-            classification. TLNNs learn STL formulas that characterize class-discriminative temporal patterns, 
-            providing human-readable explanations for classification decisions. Experiments on 12 benchmark 
-            datasets demonstrate that TLNNs achieve competitive accuracy while providing significantly 
-            more interpretable models than conventional deep learning approaches.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2023-1">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> IEEE Xplore
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-code"></i> Code
-            </a>
+      <div class="accordion" id="researchAccordion">
+        <!-- 研究方向 1 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              1. Industrial Neuro‑Symbolic Foundation Models for Trustworthy Manufacturing AI
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#researchAccordion">
+            <div class="accordion-body">
+              <h4 class="detail-title">Introduction</h4>
+              <p>We build the next generation of manufacturing AI by unifying data‑driven learning with logic, physics, and causality. By embedding Signal Temporal Logic (STL) constraints and causal structure into the representation space, our models produce machine‑checkable rationales and calibrated uncertainty, enabling cross‑factory transfer and controller‑aware recommendations.</p>
+              
+              <h4 class="detail-title">Core idea (theory‑forward)</h4>
+              <p>Pretrain on multimodal industrial data (time series, events, logs) with <em>STL‑regularized objectives</em>, <em>causal priors</em> from knowledge graphs, and <em>physics‑consistent invariants</em>. Dual formulations turn logic satisfaction into differentiable losses; distilled symbolic rules align human audit with closed‑loop control.</p>
+              
+              <h4 class="detail-title">Key tasks</h4>
+              <ul>
+                <li>Cross‑site adaptation via knowledge‑based federated learning and domain‑invariant causal anchors.</li>
+                <li>Rule distillation from embeddings to minimal STL clauses with margin guarantees.</li>
+                <li>Controller‑aware heads that output safe set‑points and alarms aligned with contracts.</li>
+                <li>Uncertainty quantification (e.g., conformal prediction) tied to logic satisfaction margins.</li>
+              </ul>
+              
+              <h4 class="detail-title">Pilots & Metrics</h4>
+              <div>
+                <span class="metric-badge">Flexible job‑shops</span>
+                <span class="metric-badge">Robotic assembly</span>
+                <span class="metric-badge">Rotating machinery</span>
+                <span class="metric-badge">Rationale fidelity</span>
+                <span class="metric-badge">Zero/low‑shot transfer</span>
+                <span class="metric-badge">Causal precision/recall</span>
+              </div>
+              
+              <p class="national-fit">National fit: 工业软件自主可控 / 新质生产力。</p>
+            </div>
           </div>
         </div>
         
-        <!-- 会议论文示例 -->
-        <div class="publication-card" data-type="conference" data-year="2023">
-          <span class="publication-type conference">Conference Paper</span>
-          <h3 class="publication-title">Physics-Informed Neural Networks with Temporal Logic Constraints for System Identification</h3>
-          <p class="publication-authors">Gang Chen, Hanyue Zhu, Khan Tasir</p>
-          <div class="publication-venue">
-            <i class="fa fa-users"></i> Proceedings of the International Conference on Machine Learning (ICML)
+        <!-- 研究方向 2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+              2. STL‑Driven Safe Autonomy for Dual‑Arm & Mobile Manipulation
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#researchAccordion">
+            <div class="accordion-body">
+              <h4 class="detail-title">Introduction</h4>
+              <p>We engineer robot autonomy that is safe by construction and fast by design. Safety is specified up‑front as <em>temporal logic contracts</em> and embedded throughout planning, learning, and control. The result is dual‑arm and mobile manipulation that adapts to changing workcells while certifying task timing, force limits, and human–robot interaction rules.</p>
+              
+              <h4 class="detail-title">Core idea (theory‑forward)</h4>
+              <p>A hierarchical stack where high‑level plans and low‑level controllers are synthesized and trained under STL specifications. <em>Reference governors</em> project actions onto contract‑satisfying manifolds; <em>residual RL</em> optimizes performance inside verified tubes. Runtime monitors provide certificate‑based intervention and graceful recovery.</p>
+              
+              <h4 class="detail-title">Key tasks</h4>
+              <ul>
+                <li>Contract mining from expert procedures; automatic refinement to STL/contract forms.</li>
+                <li>Certifiable motion primitives with compositional proofs of safety and timing.</li>
+                <li>Vision–force multimodal policies trained with curriculum schedules respecting contracts.</li>
+                <li>Online contract monitoring with recovery policies and formal violation explanations.</li>
+              </ul>
+              
+              <h4 class="detail-title">Pilots & Metrics</h4>
+              <div>
+                <span class="metric-badge">Force‑controlled assembly</span>
+                <span class="metric-badge">AGV–arm handoff</span>
+                <span class="metric-badge">Rapid changeover</span>
+                <span class="metric-badge">STL satisfaction</span>
+                <span class="metric-badge">Verified accuracy</span>
+                <span class="metric-badge">Near‑miss reduction</span>
+              </div>
+              
+              <p class="national-fit">National fit: 先进制造装备与智能机器人。</p>
+            </div>
           </div>
-          <p class="publication-abstract" id="abstract-2023-2">
-            This paper introduces Physics-Informed Neural Networks with Temporal Logic Constraints (PINN-TL), 
-            a framework that combines physics-based modeling with STL constraints for system identification. 
-            PINN-TL enforces both physical laws and temporal logic specifications during training, resulting 
-            in models that are both physically consistent and satisfy desired temporal properties. We demonstrate 
-            the effectiveness of PINN-TL on several dynamical system identification tasks, showing improved 
-            accuracy and generalization compared to standard PINNs.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2023-2">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> Proceedings
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
+        </div>
+        
+        <!-- 研究方向 3 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+              3. Causal‑Logic PHM for Critical Equipment Ecosystems
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#researchAccordion">
+            <div class="accordion-body">
+              <h4 class="detail-title">Introduction</h4>
+              <p>We move beyond alarms to actionable causality in Prognostics & Health Management. By coupling physics‑guided signal processing with causal graphs and temporal logic abstraction, we reconstruct fault propagation chains across components, systems, and fleets—turning heterogeneous data into interventions that save uptime, energy, and cost.</p>
+              
+              <h4 class="detail-title">Core idea (theory‑forward)</h4>
+              <p>Fuse order/transfer‑path–aware features with causal discovery and do‑calculus–informed reasoning, then elevate events to STL templates that encode mechanism‑consistent signatures. Perform inference on a multi‑layer PHM knowledge graph to generate interventions (derating, maintenance windows) with transparent justifications.</p>
+              
+              <h4 class="detail-title">Key tasks</h4>
+              <ul>
+                <li>Unified ontology linking events → mechanisms → actions across fleets and vendors.</li>
+                <li>Robust feature extraction under variable regimes; virtual decoupling of mixed excitations.</li>
+                <li>Domain generalization with causal invariants for cross‑asset transfer.</li>
+                <li>Fleet‑level decision support: counterfactual simulation and cost‑aware maintenance policies with logic guarantees.</li>
+              </ul>
+              
+              <h4 class="detail-title">Pilots & Metrics</h4>
+              <div>
+                <span class="metric-badge">Wind & gas turbines</span>
+                <span class="metric-badge">Rail traction</span>
+                <span class="metric-badge">CNC & spindles</span>
+                <span class="metric-badge">Lead time↑</span>
+                <span class="metric-badge">Forced outage↓</span>
+                <span class="metric-badge">RUL precision↑</span>
+              </div>
+              
+              <p class="national-fit">National fit: 能源安全 / 交通强国 / 高端装备可靠性工程。</p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 资金部分 -->
+  <section class="funding-section">
+    <div class="container">
+      <h2 class="section-title">Research Fundings</h2>
+      <p class="section-subtitle">Our research is supported by national and provincial funding agencies, enabling cutting‑edge work in intelligent systems and manufacturing.</p>
       
-      <!-- 2022年论文 -->
-      <div class="year-group" id="2022">
-        <h2 class="year-header">
-          <i class="fa fa-calendar"></i> 2022
-        </h2>
-        
-        <!-- 期刊论文示例 -->
-        <div class="publication-card" data-type="journal" data-year="2022">
-          <span class="publication-type journal">Journal Paper</span>
-          <h3 class="publication-title">Formal Methods for Interpretable Fault Diagnosis in Cyber-Physical Systems</h3>
-          <p class="publication-authors">Gang Chen, Penghong Lu, Junlin Yuan</p>
-          <div class="publication-venue">
-            <i class="fa fa-book"></i> ACM Transactions on Cyber-Physical Systems, 6(2), 45-67
-          </div>
-          <p class="publication-abstract" id="abstract-2022-1">
-            We present a formal methods approach to fault diagnosis in cyber-physical systems that provides 
-            interpretable diagnostic explanations. Our framework uses signal temporal logic to specify normal 
-            and faulty system behaviors, and employs model checking techniques to identify violations that 
-            indicate faults. The approach generates human-readable diagnostic reports that explain not only 
-            what fault occurred but also why it was detected. Case studies on automotive and industrial 
-            automation systems demonstrate the effectiveness and interpretability of our approach.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2022-1">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> ACM Digital Library
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-          </div>
-        </div>
-        
-        <!-- 会议论文示例 -->
-        <div class="publication-card" data-type="conference" data-year="2022">
-          <span class="publication-type conference">Conference Paper</span>
-          <h3 class="publication-title">Contract-Based Control with Signal Temporal Logic for Safe Autonomous Systems</h3>
-          <p class="publication-authors">Gang Chen, Jiarui Zhang, Mingyu Chen</p>
-          <div class="publication-venue">
-            <i class="fa fa-users"></i> Proceedings of the IEEE Conference on Decision and Control (CDC)
-          </div>
-          <p class="publication-abstract" id="abstract-2022-2">
-            This paper develops a contract-based control framework for autonomous systems where safety 
-            specifications are expressed in signal temporal logic. We introduce a hierarchical control 
-            architecture that synthesizes high-level plans and low-level controllers under STL contracts, 
-            with runtime monitoring for contract compliance. The framework is applied to autonomous 
-            vehicle navigation and robotic manipulation tasks, demonstrating provable safety guarantees 
-            while maintaining system performance.
-          </p>
-          <button class="toggle-abstract" data-target="abstract-2022-2">
-            <i class="fa fa-chevron-down"></i> Show Abstract
-          </button>
-          <div class="publication-links">
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-external-link"></i> Proceedings
-            </a>
-            <a href="#" class="publication-link" target="_blank">
-              <i class="fa fa-file-pdf-o"></i> PDF
-            </a>
-          </div>
-        </div>
-      </div>
+      <ul class="funding-list">
+        <li class="funding-item">
+          <div class="funding-year">2026.01–2028.12</div>
+          <div class="funding-title">外骨骼具身智能关键技术与应用</div>
+          <div class="funding-source">广东省重点领域研发项目子课题</div>
+        </li>
+        <li class="funding-item">
+          <div class="funding-year">2026.01–2028.12</div>
+          <div class="funding-title">基于时序逻辑的协作机器人可解释"监控"一体化方法研究</div>
+          <div class="funding-source">广东省自然科学基金面上项目</div>
+        </li>
+        <li class="funding-item">
+          <div class="funding-year">2024.01–2026.12</div>
+          <div class="funding-title">基于时序逻辑的风电齿轮箱故障演化机理可解释定量表征方法研究</div>
+          <div class="funding-source">国家自然科学基金青年项目</div>
+        </li>
+        <li class="funding-item">
+          <div class="funding-year">2022.10–2025.09</div>
+          <div class="funding-title">海上风电机组传动链可解释故障诊断形式化定义、验证与推理</div>
+          <div class="funding-source">广东省自然科学基金面上项目</div>
+        </li>
+        <li class="funding-item">
+          <div class="funding-year">2023.01–2025.12</div>
+          <div class="funding-title">制造大数据驱动的智能装备可解释故障诊断与形式化验证</div>
+          <div class="funding-source">广东省自然科学基金面上项目</div>
+        </li>
+        <li class="funding-item">
+          <div class="funding-year">2023.01–2025.12</div>
+          <div class="funding-title">基于迁移学习的产线可解释故障诊断</div>
+          <div class="funding-source">广东省自然科学基金面上项目</div>
+        </li>
+        <li class="funding-item">
+          <div class="funding-year">2022.01–2024.12</div>
+          <div class="funding-title">基于MEC的边缘控制与实时仿真基础理论与方法研究</div>
+          <div class="funding-source">国家重点研发计划课题</div>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -923,128 +868,60 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <i class="fa fa-flask"></i>
+          <i class="fas fa-brain"></i>
           <span>SRIS</span> Lab
         </div>
         <p class="footer-text">
           Smart, Reliable, and Interpretable Systems Laboratory<br>
-          South China University of Technology • Guangzhou International Campus<br>
           Integrating logic, physics, and learning for trustworthy intelligent systems.
         </p>
         <div class="copyright">
-          <i class="fa fa-copyright"></i> Copyright 2022‑2024 SRIS Lab. All rights reserved.
+          <i class="far fa-copyright"></i> Copyright 2022‑2026 SRIS Lab. All rights reserved.
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
   <script>
-    // 论文过滤功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const filterContainer = document.getElementById('filterContainer');
-      const filterTags = document.querySelectorAll('.filter-tag');
-      const publicationCards = document.querySelectorAll('.publication-card');
-      const yearGroups = document.querySelectorAll('.year-group');
-      
-      // 添加筛选功能
-      filterTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-          const filterValue = this.getAttribute('data-filter');
-          
-          // 更新活跃标签
-          filterTags.forEach(t => t.classList.remove('active'));
-          this.classList.add('active');
-          
-          // 显示/隐藏论文卡片
-          publicationCards.forEach(card => {
-            if (filterValue === 'all') {
-              card.style.display = 'block';
-            } else {
-              const cardType = card.getAttribute('data-type');
-              const cardYear = card.getAttribute('data-year');
-              
-              if (cardType === filterValue || cardYear === filterValue) {
-                card.style.display = 'block';
-              } else {
-                card.style.display = 'none';
-              }
-            }
-          });
-          
-          // 显示/隐藏年份分组
-          yearGroups.forEach(group => {
-            const year = group.getAttribute('id');
-            const hasVisibleCards = Array.from(group.querySelectorAll('.publication-card'))
-              .some(card => card.style.display !== 'none');
-            
-            if (filterValue === 'all' || year === filterValue || hasVisibleCards) {
-              group.style.display = 'block';
-            } else {
-              group.style.display = 'none';
-            }
-          });
-          
-          // 平滑滚动到第一个可见部分
-          setTimeout(() => {
-            const firstVisible = document.querySelector('.publication-card[style="display: block;"]');
-            if (firstVisible) {
-              firstVisible.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start',
-                inline: 'nearest'
-              });
-            }
-          }, 100);
-        });
-      });
-      
-      // 摘要展开/收起功能
-      document.querySelectorAll('.toggle-abstract').forEach(button => {
-        button.addEventListener('click', function() {
-          const targetId = this.getAttribute('data-target');
-          const abstract = document.getElementById(targetId);
-          
-          if (abstract.classList.contains('expanded')) {
-            abstract.classList.remove('expanded');
-            this.innerHTML = '<i class="fa fa-chevron-down"></i> Show Abstract';
-            this.classList.remove('expanded');
-          } else {
-            abstract.classList.add('expanded');
-            this.innerHTML = '<i class="fa fa-chevron-up"></i> Hide Abstract';
-            this.classList.add('expanded');
-          }
-        });
-      });
-      
-      // 卡片悬停效果增强
-      document.querySelectorAll('.publication-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-8px)';
-        });
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
         
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
-        });
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // 卡片悬停效果增强
+    document.querySelectorAll('.research-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px)';
       });
       
-      // 平滑滚动锚点
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if(targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if(targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
       });
+    });
+
+    // 页面加载动画
+    window.addEventListener('load', function() {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      
+      setTimeout(function() {
+        document.body.style.opacity = '1';
+      }, 100);
     });
   </script>
 </body>
