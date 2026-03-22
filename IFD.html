@@ -205,28 +205,7 @@
         Research
        </a>
       </li>
-      <li class="nav-item dropdown">
-       <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="pubDropdown" role="button">
-        Publications
-       </a>
-       <ul class="dropdown-menu dropdown-menu-end">
-        <li>
-         <a class="dropdown-item" href="publications.html">
-          All Output
-         </a>
-        </li>
-        <li>
-         <a class="dropdown-item" href="Journal.html">
-          Journal Papers
-         </a>
-        </li>
-        <li>
-         <a class="dropdown-item" href="conference.html">
-          Conference Papers
-         </a>
-        </li>
-       </ul>
-      </li>
+<li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
       <li class="nav-item">
        <a class="nav-link" href="gallery.html">
         Gallery
@@ -362,9 +341,11 @@
      </div>
      <div class="module-note">
       <strong style="color:var(--text)">
-       Integration note.
+      Three key scientific problems:
       </strong>
-      The six uploaded modular files were integrated into the website as navigable module pages. Their presentation now matches the unified SRIS visual system and links directly to the broader Research, People, Publications, and Gallery sections.
+      <li>how to construct expressive yet tractable temporal fault representations</li>
+      <li>how to achieve accurate and robust fault inference under noise, uncertainty, and limited data</li>
+      <li>how to provide formally verifiable and physically meaningful diagnostic explanations that support root-cause isolation and decision-making.</li>
      </div>
     </div>
    </section>
@@ -481,66 +462,37 @@
         We introduce shapelet temporal logic, a formal language that describes temporal relations among discriminative shapelets in sequential data. An incremental inference algorithm with theoretical guarantees is developed to obtain interpretable fault diagnosis rules for rolling element bearing signals.
        </div>
       </article>
+      <article class="paper-card" data-type="journal" data-year="2026">
+       <div class="paper-top">
+        <div>
+         <h3 class="paper-title">
+         An interpretable causal invariant graph neural network for unseen domain gear fault diagnosis
+         </h3>
+         <div class="paper-meta">
+          Zhenpeng Lao, Gang Chen, Yiyue Zhang, Penghong Lu, Zhenzhen Jin
+          <br/>
+          Engineering Applications of Artificial Intelligence,170,114227
+         </div>
+        </div>
+        <span class="badge-type badge-journal">
+         Journal
+        </span>
+       </div>
+       <button class="inline-btn" data-toggle-abstract="">
+        <i class="fa-regular fa-file-lines">
+        </i>
+        Abstract
+       </button>
+       <div class="abstract">
+        In recent years, causal learning has provided application prospects for revealing the internal causal relationships of equipment and the explainability of intelligent diagnostic models. However, existing methods still have limitations of the difficulty in eliminating spurious causal correlations in high-dimensional data and insufficient explainability, leading to unstable and unreliable diagnostic performance in unseen domains. Aiming at the above problems, an interpretable fault diagnosis method based on causal invariant graph neural network (CIGNN) is proposed to enhance model’s accuracy and interpretability for gears in the unseen domain. Firstly, a structural causal model is constructed from the cross-domain perspective and combined with GNN to clarify the internal causal mechanism of faults. Then, a causal disentanglement refining module is proposed to separate the effective causal parts from the high 
+       </div>
+      </article>
+
+
      </div>
     </div>
    </section>
-   <section class="section">
-    <div class="container two-col">
-     <div class="detail-card-unified">
-      <div class="section-kicker">
-       Position in the lab
-      </div>
-      <h2 class="section-title" style="font-size:1.8rem">
-       How this module fits the SRIS portfolio
-      </h2>
-      <div class="kv">
-       <div class="kv-item">
-        <div class="kv-key">
-         Module identity
-        </div>
-        <div class="feature-text">
-         Interpretable Fault Diagnosis is presented as a reusable research block that can connect to papers, projects, talks, and demonstrations across the website.
-        </div>
-       </div>
-       <div class="kv-item">
-        <div class="kv-key">
-         Typical outputs
-        </div>
-        <div class="feature-text">
-         This module can aggregate theory papers, application case studies, tutorial materials, project narratives, and visual evidence under one stable page structure.
-        </div>
-       </div>
-       <div class="kv-item">
-        <div class="kv-key">
-         Cross-links
-        </div>
-        <div class="feature-text">
-         Use the quick-access tiles below to move from this module page to research overviews, team pages, publication lists, and lab visuals.
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="timeline-card">
-      <div class="section-kicker">
-       Related themes
-      </div>
-      <h2 class="section-title" style="font-size:1.8rem">
-       Connections
-      </h2>
-      <ul class="list-clean">
-       <li>
-        Interpretable diagnosis
-       </li>
-       <li>
-        Signal processing
-       </li>
-       <li>
-        Formal reasoning
-       </li>
-      </ul>
-     </div>
-    </div>
-   </section>
+   
    <section class="section">
     <div class="container">
      <div class="section-head">
@@ -551,9 +503,6 @@
        <h2 class="section-title">
         Continue through the site
        </h2>
-       <p class="section-desc">
-        These links make the modular page part of the full site flow rather than a dead-end standalone file.
-       </p>
       </div>
      </div>
      <div class="link-grid">
@@ -680,8 +629,8 @@
         "title": "Temporal Logic for Fault Detection",
         "description": "Signal-temporal-logic based diagnosis and interpretable detection for nonlinear and switching systems.",
         "pdfUrl": "slides/slides.pdf",
-        "embedUrl": "https://www.youtube.com/embed/XlKHf7AbCik",
-        "videoUrl": "https://www.youtube.com/watch?v=XlKHf7AbCik",
+        "embedUrl": "https://www.youtube.com/embed/oG0x3ASnl6Q",
+        "videoUrl": "https://www.youtube.com/watch?v=oG0x3ASnl6Q",
         "tags": [
             "Diagnosis",
             "STL",
@@ -692,8 +641,8 @@
         "title": "Interpretable Bearing Diagnosis",
         "description": "Neural-symbolic diagnosis with sparse temporal evidence and human-readable decision channels.",
         "pdfUrl": "source/pdf/chen2021temporal.pdf",
-        "embedUrl": "https://www.youtube.com/embed/REPLACE_WITH_VIDEO_2",
-        "videoUrl": "https://www.youtube.com/watch?v=REPLACE_WITH_VIDEO_2",
+        "embedUrl": "https://www.youtube.com/embed/-r1TguBPFAM",
+        "videoUrl": "https://www.youtube.com/watch?v=-r1TguBPFAM",
         "tags": [
             "Bearing",
             "Interpretable",
@@ -704,8 +653,8 @@
         "title": "Fault Tracing and Root-Cause Analysis",
         "description": "From symptom patterns to root-cause localization for rotating machinery and industrial assets.",
         "pdfUrl": "presentations/co-design.pdf",
-        "embedUrl": "https://www.youtube.com/embed/REPLACE_WITH_VIDEO_3",
-        "videoUrl": "https://www.youtube.com/watch?v=REPLACE_WITH_VIDEO_3",
+        "embedUrl": "https://www.youtube.com/embed/mOcGTXktsaE",
+        "videoUrl": "https://www.youtube.com/watch?v=mOcGTXktsaE",
         "tags": [
             "Root cause",
             "Machinery",
