@@ -155,6 +155,76 @@ linear-gradient(135deg,#edf5ff 0%,#f6f9ff 55%,#ffffff 100%)}
 .module-hero-title{font-size:clamp(2.4rem,4.8vw,4rem);font-weight:900;line-height:1.06;letter-spacing:-.03em;margin:1rem 0 .85rem}
 .module-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.4rem}
 .module-meta .stat-card{background:rgba(255,255,255,.86)}
+
+
+    /* 研究领域模块 */
+    .modules-section {
+      padding: 5rem 0;
+      background-color: #ffffff;
+    }
+    
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .module-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      box-shadow: var(--card-shadow);
+      height: 100%;
+    }
+    
+    .module-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--primary-light);
+    }
+
+    .module-visual {
+      position: relative;
+      height: 190px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 45%, #f8fafc 100%);
+    }
+
+    .module-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .module-card:hover .module-visual img {
+      transform: scale(1.04);
+    }
+
+    .module-content {
+      padding: 1.35rem 1.4rem 1.5rem;
+    }
+    
+    .module-content h4 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.55rem;
+      line-height: 1.35;
+    }
+    
+    .module-content p {
+      color: var(--gray);
+      font-size: 0.94rem;
+      margin: 0;
+    }
 .module-banner{padding:1.2rem 1.25rem;border-radius:20px;background:linear-gradient(135deg,rgba(15,76,129,.08),rgba(14,165,198,.08));border:1px solid rgba(217,228,242,.95);box-shadow:var(--shadow)}
 .module-note{padding:1rem 1.1rem;border-radius:16px;background:#fff;border:1px dashed var(--line);color:var(--muted);line-height:1.75}
 .link-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
