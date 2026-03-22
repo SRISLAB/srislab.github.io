@@ -358,7 +358,7 @@ linear-gradient(135deg,#edf5ff 0%,#f6f9ff 55%,#ffffff 100%)}
 .subpage-logo-card{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:290px;text-align:center}
 .subpage-logo-card .lab-logo{width:min(100%,300px);margin:0 auto 1rem;display:block;object-fit:contain}
 .subpage-logo-card .hero-caption{display:block;width:100%;font-weight:700;color:#475569;max-width:280px;margin:.95rem auto 0;text-align:center}
-.member-avatar{width:124px;height:124px;border-radius:999px!important;margin:0 auto 1rem;box-shadow:0 16px 34px rgba(15,23,42,.10)}
+.member-avatar{width:160px;height:160px;border-radius:999px!important;margin:0 auto 1rem;box-shadow:0 16px 34px rgba(15,23,42,.10)}
 .member-avatar img{object-fit:cover;object-position:center top}
 .member-card{text-align:center}
 .member-card .member-role,.member-card .member-meta,.member-card .feature-text{justify-content:center}
@@ -376,7 +376,7 @@ linear-gradient(135deg,#edf5ff 0%,#f6f9ff 55%,#ffffff 100%)}
 .research-accordion-content{margin-top:.75rem;padding:1.35rem 1.4rem}
 .research-accordion-content:hover{transform:none!important}
 @media (max-width:768px){
-  .member-avatar{width:104px;height:104px}
+  .member-avatar{width:160px;height:160px}
   .research-accordion-head{grid-template-columns:1fr;align-items:flex-start}
   .research-accordion-icon{display:none}
   .subpage-logo-card{min-height:240px}
