@@ -2896,19 +2896,23 @@
     var externalLink = card.querySelector('.paper-link-btn.external-link');
     var codeLink = card.querySelector('.paper-link-btn.code-link');
 
-    if (externalLink) {
-      externalLink.setAttribute('href', buildScholarUrl(title));
-      externalLink.setAttribute('target', '_blank');
-      externalLink.setAttribute('rel', 'noopener noreferrer');
-      externalLink.setAttribute('aria-label', 'Open external paper link for ' + title);
-    }
+if (externalLink) {
+  const currentHref = externalLink.getAttribute('href');
+  if (!currentHref || currentHref === '#') {
+    externalLink.setAttribute('href', buildScholarUrl(title));
+  }
+  externalLink.setAttribute('target', '_blank');
+  externalLink.setAttribute('rel', 'noopener noreferrer');
+}
 
-    if (codeLink) {
-      codeLink.setAttribute('href', buildGithubUrl(title));
-      codeLink.setAttribute('target', '_blank');
-      codeLink.setAttribute('rel', 'noopener noreferrer');
-      codeLink.setAttribute('aria-label', 'Open code link for ' + title);
-    }
+if (codeLink) {
+  const currentHref = codeLink.getAttribute('href');
+  if (!currentHref || currentHref === '#') {
+    codeLink.setAttribute('href', buildGithubUrl(title));
+  }
+  codeLink.setAttribute('target', '_blank');
+  codeLink.setAttribute('rel', 'noopener noreferrer');
+}
   });
 })();
   </script>

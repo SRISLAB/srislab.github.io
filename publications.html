@@ -303,7 +303,7 @@
          </i>
          External Link
         </a>
-        <a class="paper-link-btn code-link" href="#">
+        <a class="paper-link-btn code-link" href="https://ieeexplore.ieee.org/abstract/document/11345119">
          <i class="fa-solid fa-code">
          </i>
          Code Link
@@ -836,47 +836,7 @@
         interpretability for defect severity assessment.
        </div>
       </article>
-      <article class="paper-card" data-type="journal" data-year="2025">
-       <div class="paper-top">
-        <div>
-         <h3 class="paper-title">
-          Collaborative Design of Fault Diagnosis and Fault Tolerance Control Under Nested
-          Signal Temporal Logic Specifications
-         </h3>
-         <div class="paper-meta">
-          Penghong Lu, Gang Chen, Peng Wei, Rong Su
-          <br/>
-          Preprint, 2025
-         </div>
-        </div>
-        <span class="badge-type badge-journal">
-         Journal
-        </span>
-       </div>
-       <div class="paper-actions">
-        <button class="inline-btn" data-toggle-abstract="">
-         <i class="fa-regular fa-file-lines">
-         </i>
-         Abstract
-        </button>
-        <a class="paper-link-btn external-link" href="#">
-         <i class="fa-solid fa-up-right-from-square">
-         </i>
-         External Link
-        </a>
-        <a class="paper-link-btn code-link" href="#">
-         <i class="fa-solid fa-code">
-         </i>
-         Code Link
-        </a>
-       </div>
-       <div class="abstract">
-        We propose a collaborative design framework that jointly integrates fault diagnosis and
-        fault-tolerant control under nested signal temporal logic specifications. The method
-        combines a diagnosis observer with recursively feasible fault-tolerant MPC guided by
-        control barrier functions to maintain task satisfaction under faults.
-       </div>
-      </article>
+   
       <article class="paper-card" data-type="journal" data-year="2025">
        <div class="paper-top">
         <div>
@@ -2900,19 +2860,23 @@
     var externalLink = card.querySelector('.paper-link-btn.external-link');
     var codeLink = card.querySelector('.paper-link-btn.code-link');
 
-    if (externalLink) {
-      externalLink.setAttribute('href', buildScholarUrl(title));
-      externalLink.setAttribute('target', '_blank');
-      externalLink.setAttribute('rel', 'noopener noreferrer');
-      externalLink.setAttribute('aria-label', 'Open external paper link for ' + title);
-    }
+if (externalLink) {
+  const currentHref = externalLink.getAttribute('href');
+  if (!currentHref || currentHref === '#') {
+    externalLink.setAttribute('href', buildScholarUrl(title));
+  }
+  externalLink.setAttribute('target', '_blank');
+  externalLink.setAttribute('rel', 'noopener noreferrer');
+}
 
-    if (codeLink) {
-      codeLink.setAttribute('href', buildGithubUrl(title));
-      codeLink.setAttribute('target', '_blank');
-      codeLink.setAttribute('rel', 'noopener noreferrer');
-      codeLink.setAttribute('aria-label', 'Open code link for ' + title);
-    }
+if (codeLink) {
+  const currentHref = codeLink.getAttribute('href');
+  if (!currentHref || currentHref === '#') {
+    codeLink.setAttribute('href', buildGithubUrl(title));
+  }
+  codeLink.setAttribute('target', '_blank');
+  codeLink.setAttribute('rel', 'noopener noreferrer');
+}
   });
 })();
   </script>
